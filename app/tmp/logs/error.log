@@ -28,3 +28,23 @@ Stack Trace:
 #3 /Applications/MAMP/htdocs/planbox_new/lib/Cake/Core/App.php(906): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2015-09-05 10:20:43 Error: Fatal Error (4): syntax error, unexpected end of file in [/Applications/MAMP/htdocs/planbox/lib/Cake/Config/config.php, line 1]
+2015-09-05 10:20:43 Error: [FatalErrorException] syntax error, unexpected end of file
+Request URL: /planbox/dates/feed
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 1)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 1, Array)
+#2 /Applications/MAMP/htdocs/planbox/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 1, Array)
+#3 /Applications/MAMP/htdocs/planbox/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-05 10:21:12 Error: Fatal Error (64): require() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '/Applications/MAMP/htdocs/planbox/lib/Cake/Config/config.php' (include_path='/Applications/MAMP/htdocs/planbox/lib:.:/Applications/MAMP/bin/php/php5.6.2/lib/php') in [/Applications/MAMP/htdocs/planbox/lib/Cake/Core/Configure.php, line 404]
+2015-09-05 10:21:12 Error: [FatalErrorException] require() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '/Applications/MAMP/htdocs/planbox/lib/Cake/Config/config.php' (include_path='/Applications/MAMP/htdocs/planbox/lib:.:/Applications/MAMP/bin/php/php5.6.2/lib/php')
+Request URL: /planbox/dates/feed
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'require() [<a h...', '/Applications/M...', 404)
+#1 [internal function]: ErrorHandler::handleError(64, 'require() [<a h...', '/Applications/M...', 404, Array)
+#2 /Applications/MAMP/htdocs/planbox/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 64, 'require() [<a h...', '/Applications/M...', 404, Array)
+#3 /Applications/MAMP/htdocs/planbox/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
