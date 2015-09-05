@@ -1,0 +1,20 @@
+2015-09-04 10:54:08 Error: [MissingControllerException] Controller class DatesController could not be found.
+Exception Attributes: array (
+  'class' => 'DatesController',
+  'plugin' => NULL,
+)
+Request URL: /planbox/dates/feed.php
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-04 10:55:14 Error: [MissingActionException] Action DatesController::feed.php() could not be found.
+Exception Attributes: array (
+  'controller' => 'DatesController',
+  'action' => 'feed.php',
+)
+Request URL: /planbox/dates/feed.php
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/planbox/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/planbox/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
