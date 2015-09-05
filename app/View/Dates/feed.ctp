@@ -1,1 +1,2 @@
-<h1>表示出来てる？</h1>
+<?php 
+var_dump($dates);

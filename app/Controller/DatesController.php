@@ -8,7 +8,7 @@ class DatesController extends AppController {
 	}
 
 	public function feed() {
-
+		$this->set('dates',$this->Date->getdatesfromcouple(1));
 	}
 
 	public function memory() {
