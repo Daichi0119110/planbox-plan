@@ -1,6 +1,8 @@
 <?php 
-
 class Date extends AppModel {
+	/*public $hasMany=array(
+		'Post','Favorite'
+	);*/
 	public $name='Date';
 	public $useTable='dates';
 
@@ -9,7 +11,7 @@ class Date extends AppModel {
 			'conditions'=>
 			array('id'=>$id)
 		);
-	return $this->find('first',$status);
+	return $this->find('all',$status);
 	}
 
 	function getdatesfromcouple($Couple_id){
