@@ -401,7 +401,7 @@ class Configure {
  */
 	public static function version() {
 		if (!isset(static::$_values['Cake']['version'])) {
-			require CAKE . 'Config' . DS . 'config.php';
+		//	require CAKE . 'Config' . DS . 'config.php';
 			static::write($config);
 		}
 		return static::$_values['Cake']['version'];
