@@ -1,6 +1,7 @@
 <?php 
-
 class Couple extends AppModel {
+
+//	public $hasMany="Date";
 	public $name='Couple';
 	public $useTable='couples';
 
@@ -9,10 +10,6 @@ class Couple extends AppModel {
 			'conditions'=>
 			array('id'=>$id)
 		);
-return $this->find('first',$status);
-	}
-
-	function getAllcouple(){
-return $this->find('all');
+	return $this->find('all',$status);
 	}
 }
