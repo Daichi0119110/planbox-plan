@@ -1,0 +1,30 @@
+2015-09-04 10:54:08 Error: [MissingControllerException] Controller class DatesController could not be found.
+Exception Attributes: array (
+  'class' => 'DatesController',
+  'plugin' => NULL,
+)
+Request URL: /planbox/dates/feed.php
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-04 10:55:14 Error: [MissingActionException] Action DatesController::feed.php() could not be found.
+Exception Attributes: array (
+  'controller' => 'DatesController',
+  'action' => 'feed.php',
+)
+Request URL: /planbox/dates/feed.php
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/planbox/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/planbox/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-05 07:59:49 Error: Fatal Error (4): syntax error, unexpected '}' in [/Applications/MAMP/htdocs/planbox_new/app/Controller/DatesController.php, line 12]
+2015-09-05 07:59:49 Error: [FatalErrorException] syntax error, unexpected '}'
+Request URL: /planbox_new/dates/feed
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox_new/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 12)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 12, Array)
+#2 /Applications/MAMP/htdocs/planbox_new/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 12, Array)
+#3 /Applications/MAMP/htdocs/planbox_new/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
