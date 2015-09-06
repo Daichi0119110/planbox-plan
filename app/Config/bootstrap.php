@@ -23,6 +23,7 @@
  */
 
 // Setup a 'default' cache configuration for use in the application.
+CakePlugin::load('TwitterBootstrap');
 Cache::config('default', array('engine' => 'File'));
 
 /**
