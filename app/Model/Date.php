@@ -7,17 +7,17 @@ class Date extends AppModel {
 	public $useTable='dates';
 
 	function getdates($id){
-	$status=array(
+		$status=array(
 			'conditions'=>
 			array('id'=>$id)
 		);
-	return $this->find('all',$status);
+		return $this->find('all',$status);
 	}
 
-	function getdatesfromcouple($Couple_id){
+	function getdatesfromcouple($couple_ids){
 		$status=array(
 			'conditions'=>
-			array('couple_id'=>$Couple_id)
+			array('couple_id'=>$couple_ids)
 		);
 		return $this->find('all',$status);
 	}

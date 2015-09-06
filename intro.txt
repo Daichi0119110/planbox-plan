@@ -27,8 +27,8 @@ DatesController
 	feature(特集)
 		特集が見れる→詳細未定
 	index
-		自分がお気に入りしているカップルのデートプランが見れる
-		（user_idを渡し、favoriteテーブルのfavo_flgが1のcoupleのdate情報を取得）
+		自分がfollowしているカップルのデートプランが見れる
+		（user_idを渡し、favoriteテーブルのfav_flgが1のcoupleのdate情報を取得）
 	memory
 		自分達の投稿したデートプランを閲覧
 		(user_idを渡し、そのcouple_idに紐付いたdates情報を取得)

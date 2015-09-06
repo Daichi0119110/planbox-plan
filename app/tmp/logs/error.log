@@ -1,0 +1,37 @@
+2015-09-06 15:10:07 Error: Fatal Error (1): Call to a member function getcoupleid() on a non-object in [/Applications/MAMP/htdocs/planbox/app/Controller/DatesController.php, line 15]
+2015-09-06 15:10:07 Error: [FatalErrorException] Call to a member function getcoupleid() on a non-object
+Request URL: /planbox/dates/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 15)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 15, Array)
+#2 /Applications/MAMP/htdocs/planbox/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 15, Array)
+#3 /Applications/MAMP/htdocs/planbox/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-06 15:18:54 Error: Fatal Error (1): Call to a member function getdatesfromcouple() on a non-object in [/Applications/MAMP/htdocs/planbox/app/Controller/DatesController.php, line 18]
+2015-09-06 15:18:54 Error: [FatalErrorException] Call to a member function getdatesfromcouple() on a non-object
+Request URL: /planbox/dates/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 18)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 18, Array)
+#2 /Applications/MAMP/htdocs/planbox/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 18, Array)
+#3 /Applications/MAMP/htdocs/planbox/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-06 15:19:49 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /planbox/dates/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox/lib/Cake/Model/Datasource/DboSource.php(461): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/planbox/lib/Cake/Model/Datasource/DboSource.php(427): DboSource->_execute('SELECT `Date`.`...', Array)
+#2 /Applications/MAMP/htdocs/planbox/lib/Cake/Model/Datasource/DboSource.php(669): DboSource->execute('SELECT `Date`.`...', Array, Array)
+#3 /Applications/MAMP/htdocs/planbox/lib/Cake/Model/Datasource/DboSource.php(1114): DboSource->fetchAll('SELECT `Date`.`...', false)
+#4 /Applications/MAMP/htdocs/planbox/lib/Cake/Model/Model.php(3026): DboSource->read(Object(Date), Array)
+#5 /Applications/MAMP/htdocs/planbox/lib/Cake/Model/Model.php(2998): Model->_readDataSource('all', Array)
+#6 /Applications/MAMP/htdocs/planbox/app/Model/Date.php(22): Model->find('all', Array)
+#7 /Applications/MAMP/htdocs/planbox/app/Controller/DatesController.php(18): Date->getdatesfromcouple(Array)
+#8 [internal function]: DatesController->index()
+#9 /Applications/MAMP/htdocs/planbox/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
