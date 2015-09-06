@@ -1,0 +1,41 @@
+コントローラ
+	アクション（viewに1:1対応）
+
+UsersController
+	edit
+		自分のユーザー情報の編集(idを渡すとそのuser情報を取得＆フォームの作成)
+	mypage
+		自分のユーザー情報の閲覧(idを渡してそのuser情報を取得)
+	signup		
+		新規ユーザーの登録(フォーム→エラーチェック→登録)
+	user
+		自分以外のユーザー情報の閲覧(idを渡すとそのuser情報を取得)
+
+
+CouplesController
+	couple
+		カップルページの閲覧（user_idを渡すとcouple情報取得）
+	edit
+		自分たちのカップルページの編集	
+	signup
+		新規カップルの登録(フォーム→エラーチェック→登録)
+
+
+DatesController
+	favorite
+		自分がお気に入りしているデートプランが見れる()
+	feature(特集)
+		特集が見れる→詳細未定
+	index
+		自分がお気に入りしているカップルのデートプランが見れる
+		（user_idを渡し、favoriteテーブルのfavo_flgが1のcoupleのdate情報を取得）
+	memory
+		自分達の投稿したデートプランを閲覧
+		(user_idを渡し、そのcouple_idに紐付いたdates情報を取得)
+	recommend
+		おすすめが見れる→詳細未定
+
+
+PagesController
+	welcome
+		ランディングページ
