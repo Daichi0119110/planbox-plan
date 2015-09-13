@@ -20,7 +20,7 @@ class CouplesController extends AppController {
 			$this->request->data=$this->Couple->read(null,$id);
 		}
 	}
-
+//
 	public function delete($id){
 	$this->Date->deleateAll(array('Date.couple_id' => $id));	//投稿している記事も削除
 	$this->Couple->deleate($id,false);//ユーザ情報は削除しない
