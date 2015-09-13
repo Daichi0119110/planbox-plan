@@ -1,3 +1,2 @@
-<?php 
-
-debug($couples);
+<?php
+var_dump($couples);

@@ -1,5 +1,7 @@
 <?php 
 App::uses('CakeEmail', 'Network/Email');
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
 
@@ -29,7 +31,7 @@ class UsersController extends AppController {
 	public function user($id) {
 		$this->set('user',$this->User->getuser($id));
 	}
-	public function invite($id)//途中
+	public function invite($id)//メール
 	{
 	//諸所設定はhttp://qiita.com/kazu56/items/cd58366f5fb74881ae06を見て行う
 		$mail="";
@@ -39,7 +41,8 @@ class UsersController extends AppController {
 
 		}
 		$email = new CakeEmail('default');
-		$email->from('example@example.com');
+		$email->from('planbox.date@gmail.com');
+		//仮登録(あらたなテーブルが必要)して、フラグを立てる(24時間以内、あるいは改ざんの防止)
 		$email->to($mail);
 		$email->subject($name);
 		//メール送信する

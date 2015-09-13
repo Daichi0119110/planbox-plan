@@ -78,6 +78,16 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);
+/*	public $default = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'http://k0hei.science/planbox/mysql101.phy.lolipop.lan',
+		'login' => 'LAA0628410',
+		'password' => '',
+		'database' => 'LAA0628410-test',
+		'prefix' => '',
+		'encoding' => 'utf8',
+	);*/
 
 	public $test = array(
 		'datasource' => 'Database/Mysql',
