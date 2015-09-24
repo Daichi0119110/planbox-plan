@@ -41,16 +41,19 @@ class EmailConfig {
 
 	public $default = array(
 		'transport' => 'Mail',
-		'from' => 'you@localhost',
+		//'from' => 'you@localhost',
 		//'charset' => 'utf-8',
+		'host'=>'localhost',
+		'port'=>25,
 		//'headerCharset' => 'utf-8',
 	);
     public $gmail = array(
         'host' => 'ssl://smtp.gmail.com',
         'port' => 465,
-        'username' => 'username@gmail.com', // ユーザ名
-        'password' => 'password',           // パスワード
-        'transport' => 'Smtp'
+        'username' => 'example@gmail.com', // ユーザ名
+        'password' => 'example',           // パスワード
+        'transport' => 'Smtp',
+       // 'tls' => true,
     );
 	public $smtp = array(
 		'transport' => 'Smtp',
