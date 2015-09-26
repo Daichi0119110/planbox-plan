@@ -11,7 +11,7 @@ class FavoritesController extends AppController {
 			if ($this->Favorite->change_flg($_POST['date_id'],$_POST['user_id'])) {
 				$this->autoRender = false;
 				$this->autoLayout = false;
-				$response = array('id' => $_POST['date_id']);
+				$response = array('id' => $_POST['date_id'], 'favo' => $this->Favorite->getnumber($_POST['date_id']));
 				$this->header('Content-Type: application/json');
 				echo json_encode($response);
 				exit();

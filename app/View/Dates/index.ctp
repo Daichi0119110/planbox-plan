@@ -1,8 +1,9 @@
 
 <?php foreach($dates as $date) { ?>
 <p>
-	<li><?php echo $date['Date']['name'].'/いいね数→'.$date['Date']['favo']; ?></li>
-	<button id="<?php echo h($date['Date']['id']); ?>" class="favo" data-date-id="<?php echo $date['Date']['id']?>">行きたい！</button>
+	<li><?php echo $date['Date']['name']; ?></li>
+	<li>いいね数→<span id="favo_<?php echo h($date['Date']['id']); ?>"><?php echo $date['Date']['favo']; ?></span></li>
+	<button id="button_<?php echo h($date['Date']['id']); ?>" class="favo" data-date-id="<?php echo $date['Date']['id']?>">行きたい！</button>
 </p>
 <?php } ?>
 
@@ -12,8 +13,8 @@ $(function() {
 		{'user_id':1}
 		,function(res){
 			$.each(res,function(){
-				$('#'+this).css('color', 'red');
-				$('#'+this).html('登録済み！');	
+				$('#button_'+this).css('color', 'red');
+				$('#button_'+this).html('登録済み！');	
 			});
 		}, "json");
 
@@ -21,13 +22,14 @@ $(function() {
 		$.post('/planbox-plan/favorites/plus/',
 			{'date_id':$(this).data('date-id'), 'user_id':1}
 			,function(res){
-				if($('#'+res.id).html() == "行きたい！"){
-					$('#'+res.id).css('color', 'red');
-					$('#'+res.id).html('登録済み！');
+				if($('#button_'+res.id).html() == "行きたい！"){
+					$('#button_'+res.id).css('color', 'red');
+					$('#button_'+res.id).html('登録済み！');
 				} else{
-					$('#'+res.id).css('color', 'black');
-					$('#'+res.id).html('行きたい！');
+					$('#button_'+res.id).css('color', 'black');
+					$('#button_'+res.id).html('行きたい！');
 				}
+				$('#favo_'+res.id).html(res.favo);
 		}, "json");
 	});
 });
