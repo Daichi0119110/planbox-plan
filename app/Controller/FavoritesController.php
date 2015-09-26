@@ -2,6 +2,7 @@
 
 class FavoritesController extends AppController {
 	public $helper = array('HTML', 'form');
+	public $uses = array('Favorite', 'Date');
 
 	public function change() {
 		if ($this->request->is('get')) {
@@ -51,6 +52,11 @@ class FavoritesController extends AppController {
 			$this->autoRender = false;
 			$this->autoLayout = false;
 
+			// view数のカウント
+			$this->Date->read(null, $_POST['date_id']);
+			$this->Date->set('num_view', $_POST['view']+1);
+			$this->Date->save();
+
 			$status=array(
 				'conditions'=>array(
 					'AND'=>array(
@@ -61,9 +67,9 @@ class FavoritesController extends AppController {
 			);
 			// データベースから取得
 			$a = $this->Favorite->find('first',$status);
-
+			$response = array('fav_flg'=>$a['Favorite']['fav_flg'], 'view'=>$_POST['view']+1);
 			$this->header('Content-Type: application/json');
-			echo json_encode($a['Favorite']['fav_flg']);
+			echo json_encode($response);
 			exit();
 		}
 		$this->redirect(array('controller'=>'posts', 'action' => 'detail'));

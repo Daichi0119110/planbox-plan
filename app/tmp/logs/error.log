@@ -1343,3 +1343,43 @@ Stack Trace:
 #3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2015-09-26 17:49:08 Error: Fatal Error (1): Call to undefined function strtoint() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 57]
+2015-09-26 17:49:08 Error: [FatalErrorException] Call to undefined function strtoint()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 57)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:49:09 Error: Fatal Error (1): Call to undefined function strtoint() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 57]
+2015-09-26 17:49:09 Error: [FatalErrorException] Call to undefined function strtoint()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 57)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:49:11 Error: Fatal Error (1): Call to undefined function strtoint() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 57]
+2015-09-26 17:49:11 Error: [FatalErrorException] Call to undefined function strtoint()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 57)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:49:13 Error: Fatal Error (1): Call to undefined function strtoint() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 57]
+2015-09-26 17:49:13 Error: [FatalErrorException] Call to undefined function strtoint()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 57)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}

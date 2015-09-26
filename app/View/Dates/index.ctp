@@ -3,6 +3,7 @@
 <p>
 	<li><?php echo $date['Date']['name']; ?></li>
 	<li>いいね数→<span id="favo_<?php echo h($date['Date']['id']); ?>"><?php echo $date['Date']['favo']; ?></span></li>
+	<li>View数→<?php echo $date['Date']['num_view']; ?></li>
 	<button id="button_<?php echo h($date['Date']['id']); ?>" class="favo" data-date-id="<?php echo $date['Date']['id']?>">行きたい！</button>
 </p>
 <?php } ?>
