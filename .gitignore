@@ -1,4 +1,4 @@
 .DS_Store
 Daichi0119
 app/Config/database.php
-app/tmp/cache/
+app/tmp/
