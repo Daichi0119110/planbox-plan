@@ -20,4 +20,5 @@ class User extends AppModel {
 		$data=$this->find('all',$status);
 		return $data['couple_id'];
 	}
+	
 }
