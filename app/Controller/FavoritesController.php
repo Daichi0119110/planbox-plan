@@ -3,7 +3,7 @@
 class FavoritesController extends AppController {
 	public $helper = array('HTML', 'form');
 
-	public function plus() {
+	public function change() {
 		if ($this->request->is('get')) {
 			throw new MethodNotAllowedException();
 		}
@@ -41,5 +41,31 @@ class FavoritesController extends AppController {
 			exit();
 		}
 		$this->redirect(array('controller'=>'dates', 'action' => 'index'));
+	}
+
+	public function post_detail(){
+		if ($this->request->is('get')) {
+			throw new MethodNotAllowedException();
+		}
+		if ($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$this->autoLayout = false;
+
+			$status=array(
+				'conditions'=>array(
+					'AND'=>array(
+						'date_id'=>$_POST['date_id'],
+						'user_id'=>$_POST['user_id']
+					)
+				)
+			);
+			// データベースから取得
+			$a = $this->Favorite->find('first',$status);
+
+			$this->header('Content-Type: application/json');
+			echo json_encode($a['Favorite']['fav_flg']);
+			exit();
+		}
+		$this->redirect(array('controller'=>'posts', 'action' => 'detail'));
 	}
 }

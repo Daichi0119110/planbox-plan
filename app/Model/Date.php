@@ -6,7 +6,7 @@ class Date extends AppModel {
 	public $name='Date';
 	public $useTable='dates';
 
-	function getdates($id){
+	function getdate($id){
 		$status=array(
 			'conditions'=>
 			array('id'=>$id)

@@ -19,7 +19,7 @@ $(function() {
 		}, "json");
 
 	$('button.favo').click(function(e){
-		$.post('/planbox-plan/favorites/plus/',
+		$.post('/planbox-plan/favorites/change/',
 			{'date_id':$(this).data('date-id'), 'user_id':1}
 			,function(res){
 				if($('#button_'+res.id).html() == "行きたい！"){
