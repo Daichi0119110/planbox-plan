@@ -37,6 +37,14 @@ class DatesController extends AppController {
 		$this->set('favo', $this->Favorite->getnumber($date_id));
 	}
 
+	public function date_pc() {
+
+	}
+
+	public function date_sp() {
+
+	}
+
 	// public function viewnum(){ // google analyticsを利用してview数を取る
 
 	// 	// https://syncer.jp/google-analytics-api-tutorialを参考に作成
