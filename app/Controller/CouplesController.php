@@ -10,6 +10,13 @@ class CouplesController extends AppController {
 		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
 	}
 
+	public function mypage($id) {
+		
+		//$this->set('couples', $this->Couple->find('all'));
+		$this->set('couples',$this->Couple->getcouple($id));
+		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
+	}
+
 	public function edit($id) {
 		//フォームとして送られてくることを想定
 		$this->Couple->id=$id;
