@@ -54,4 +54,7 @@ class CouplesController extends AppController {
 	{
 		$this->date->deleate($date_id);
 	}
+	public function couple_pc() {
+
+	}
 }
