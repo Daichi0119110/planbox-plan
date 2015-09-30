@@ -5,8 +5,7 @@ App::uses('File', 'Utility');
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
 
-	public function mypage($id) {
-		//user関数と機能が全く同じ。認証機能などをつけるべき？
+	public function setting($id) {
 		$this->set('user',$this->User->getuser($id));
 	}
 
@@ -28,9 +27,6 @@ class UsersController extends AppController {
 		}
 	}
 
-	public function user($id) {
-		$this->set('user',$this->User->getuser($id));
-	}
 	public function invite($id)//メール
 	{
 	//諸所設定はhttp://qiita.com/kazu56/items/cd58366f5fb74881ae06を見て行う
@@ -54,6 +50,7 @@ class UsersController extends AppController {
 		$email->send("http://".$_SERVER["HTTP_HOST"]."/users/add/".$hashed_mail);
 		}
 	}
+
 	public function add($hashed_mail)
 	{
 		$status=array(
