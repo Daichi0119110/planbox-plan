@@ -2,7 +2,7 @@
 
 class DatesController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses = array('Date', 'Follow','Favorite');
+	public $uses = array('Date', 'Follow','Favorite','Post');
 
 	public function favorite() {
 
@@ -30,7 +30,11 @@ class DatesController extends AppController {
 	}
 
 	public function date($id){
-		
+		$date_id = 3;	// 一旦ユーザーidが3だと想定
+		$this->set('posts', $this->Post->getposts($date_id));
+		$this->set('date', $this->Date->getdate($date_id));
+		$this->set('date_id', $date_id);
+		$this->set('favo', $this->Favorite->getnumber($date_id));
 	}
 
 	// public function viewnum(){ // google analyticsを利用してview数を取る
