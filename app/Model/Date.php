@@ -6,12 +6,12 @@ class Date extends AppModel {
 	public $name='Date';
 	public $useTable='dates';
 
-	function getdates($id){
+	function getdate($id){
 		$status=array(
 			'conditions'=>
 			array('id'=>$id)
 		);
-		return $this->find('all',$status);
+		return $this->find('first',$status);
 	}
 
 	function getdatesfromcouple($couple_ids){

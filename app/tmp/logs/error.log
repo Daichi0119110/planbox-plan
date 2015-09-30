@@ -767,3 +767,619 @@ Stack Trace:
 #2 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
 >>>>>>> dev
+2015-09-26 09:11:44 Error: Fatal Error (4): syntax error, unexpected 'if' (T_IF), expecting ')' in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php, line 72]
+2015-09-26 09:11:44 Error: [FatalErrorException] syntax error, unexpected 'if' (T_IF), expecting ')'
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 72)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 72, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 72, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 09:12:41 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '../Vender/google-api-php-client-master/autoload.php' (include_path='/Applications/MAMP/htdocs/planbox-plan/lib:.:/Applications/MAMP/bin/php/php5.4.34/lib/php') in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php, line 47]
+2015-09-26 09:12:41 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '../Vender/google-api-php-client-master/autoload.php' (include_path='/Applications/MAMP/htdocs/planbox-plan/lib:.:/Applications/MAMP/bin/php/php5.4.34/lib/php')
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'require_once() ...', '/Applications/M...', 47)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/Applications/M...', 47, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/Applications/M...', 47, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 09:13:05 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '../Vender/google-api-php-client/autoload.php' (include_path='/Applications/MAMP/htdocs/planbox-plan/lib:.:/Applications/MAMP/bin/php/php5.4.34/lib/php') in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php, line 47]
+2015-09-26 09:13:05 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '../Vender/google-api-php-client/autoload.php' (include_path='/Applications/MAMP/htdocs/planbox-plan/lib:.:/Applications/MAMP/bin/php/php5.4.34/lib/php')
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'require_once() ...', '/Applications/M...', 47)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/Applications/M...', 47, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/Applications/M...', 47, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 09:24:28 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '../../Vender/google-api-php-client/autoload.php' (include_path='/Applications/MAMP/htdocs/planbox-plan/lib:.:/Applications/MAMP/bin/php/php5.4.34/lib/php') in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php, line 47]
+2015-09-26 09:24:28 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '../../Vender/google-api-php-client/autoload.php' (include_path='/Applications/MAMP/htdocs/planbox-plan/lib:.:/Applications/MAMP/bin/php/php5.4.34/lib/php')
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'require_once() ...', '/Applications/M...', 47)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/Applications/M...', 47, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/Applications/M...', 47, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 09:24:39 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '/Vender/google-api-php-client/autoload.php' (include_path='/Applications/MAMP/htdocs/planbox-plan/lib:.:/Applications/MAMP/bin/php/php5.4.34/lib/php') in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php, line 47]
+2015-09-26 09:24:39 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '/Vender/google-api-php-client/autoload.php' (include_path='/Applications/MAMP/htdocs/planbox-plan/lib:.:/Applications/MAMP/bin/php/php5.4.34/lib/php')
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'require_once() ...', '/Applications/M...', 47)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/Applications/M...', 47, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/Applications/M...', 47, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 09:24:58 Error: [Google_Auth_Exception] Unable to parse the p12 file.  Is this a .p12 file?  Is the password correct?  OpenSSL error: 
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Auth/AssertionCredentials.php(130): Google_Signer_P12->__construct(false, 'notasecret')
+#1 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Auth/AssertionCredentials.php(107): Google_Auth_AssertionCredentials->makeSignedJwt(Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Auth/OAuth2.php(312): Google_Auth_AssertionCredentials->generateAssertion()
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(87): Google_Auth_OAuth2->refreshTokenWithAssertion(Object(Google_Auth_AssertionCredentials))
+#4 [internal function]: DatesController->viewnum()
+#5 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#6 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#7 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#8 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-09-26 09:25:50 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath%2C+ga%3Adate&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(97): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 09:26:36 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath%2C+ga%3Adate&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(97): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 09:27:23 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath%2C+ga%3Adate&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(97): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 10:03:52 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(97): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 10:10:07 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(97): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 10:27:04 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(96): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 10:27:14 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(95): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 10:28:52 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(95): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 10:29:23 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(95): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 10:34:37 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(95): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 10:35:45 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(95): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 10:42:59 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(95): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 10:50:32 Error: [Google_Service_Exception] Error calling GET https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A109105240&start-date=2000-11-10&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApageTitle%2C+ga%3ApagePath&max-results=10&sort=-ga%3Apageviews: (400) Date 2000-11-10 precedes Google Analytics launch date 2005-01-01
+Request URL: /planbox-plan/dates/viewnum
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /Applications/MAMP/htdocs/planbox-plan/app/Vendor/google-api-php-client/src/Google/Service/Analytics.php(2023): Google_Service_Resource->call('get', Array, 'Google_Service_...')
+#7 /Applications/MAMP/htdocs/planbox-plan/app/Controller/DatesController.php(95): Google_Service_Analytics_DataGa_Resource->get('ga:109105240', '2000-11-10', 'today', 'ga:pageviews', Array)
+#8 [internal function]: DatesController->viewnum()
+#9 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(DatesController), Array)
+#10 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DatesController), Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-09-26 12:41:11 Error: [MissingActionException] Action PostsController::1() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => '1',
+)
+Request URL: /planbox-plan/posts/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-26 12:47:10 Error: [MissingActionException] Action PostsController::1() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => '1',
+)
+Request URL: /planbox-plan/posts/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/planbox-plan/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-26 12:47:24 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 8]
+2015-09-26 12:47:24 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/index/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 8)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 8, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 8, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 12:48:43 Error: Fatal Error (4): syntax error, unexpected '$this' (T_VARIABLE) in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 12:48:43 Error: [FatalErrorException] syntax error, unexpected '$this' (T_VARIABLE)
+Request URL: /planbox-plan/posts/index
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 12:49:04 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 12:49:04 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/index
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 12:49:18 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 12:49:18 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/index
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 12:51:30 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 12:51:30 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/detail
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 15:23:26 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 15:23:26 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/detail
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 15:24:16 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 15:24:16 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/detail
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 15:25:18 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 15:25:18 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/detail
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 15:26:49 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 15:26:49 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/detail
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 15:33:46 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 15:33:46 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/detail
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 15:34:04 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 15:34:04 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/detail
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 15:36:35 Error: Fatal Error (1): Call to a member function getposts() on a non-object in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 9]
+2015-09-26 15:36:35 Error: [FatalErrorException] Call to a member function getposts() on a non-object
+Request URL: /planbox-plan/posts/detail
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 9, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 16:34:52 Error: Fatal Error (4): syntax error, unexpected ';' in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/PostsController.php, line 12]
+2015-09-26 16:34:52 Error: [FatalErrorException] syntax error, unexpected ';'
+Request URL: /planbox-plan/posts/detail
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 12)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 12, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 12, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 16:36:02 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 16:36:02 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 16:51:45 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 16:51:45 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 16:52:47 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 16:52:47 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:01:05 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:01:05 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:03:21 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:03:21 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:04:25 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:04:25 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:04:42 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:04:43 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:05:28 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:05:28 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:07:45 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:07:45 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:08:37 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:08:37 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:10:09 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:10:09 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:10:14 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:10:14 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:12:08 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:12:08 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:12:24 Error: Fatal Error (1): Call to undefined method FavoritesController::find() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 63]
+2015-09-26 17:12:24 Error: [FatalErrorException] Call to undefined method FavoritesController::find()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 63)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 63, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:49:08 Error: Fatal Error (1): Call to undefined function strtoint() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 57]
+2015-09-26 17:49:08 Error: [FatalErrorException] Call to undefined function strtoint()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 57)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:49:09 Error: Fatal Error (1): Call to undefined function strtoint() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 57]
+2015-09-26 17:49:09 Error: [FatalErrorException] Call to undefined function strtoint()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 57)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:49:11 Error: Fatal Error (1): Call to undefined function strtoint() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 57]
+2015-09-26 17:49:11 Error: [FatalErrorException] Call to undefined function strtoint()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 57)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-26 17:49:13 Error: Fatal Error (1): Call to undefined function strtoint() in [/Applications/MAMP/htdocs/planbox-plan/app/Controller/FavoritesController.php, line 57]
+2015-09-26 17:49:13 Error: [FatalErrorException] Call to undefined function strtoint()
+Request URL: /planbox-plan/favorites/post_detail/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 57)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#2 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 57, Array)
+#3 /Applications/MAMP/htdocs/planbox-plan/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
