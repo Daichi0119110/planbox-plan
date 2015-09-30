@@ -77,7 +77,8 @@
                   <div class="col-sm-6">
                     <div class="row" style="position: relative;">
                       <div class="col-sm-6">
-                        <img src="img/kohei.jpg" style="height:100px;width:100px;">
+                        <?php echo $this->Html->image('kohei.jpg', array('alt' => 'baz'));?>
+                        <!--<img src="planbox-plan/app/webroot/img/userdata/kohei.jpg" style="height:100px;width:100px;">-->
                       </div>
                       <div class="col-sm-6" style="position: absolute;top: 20px;left:120px;">
                         <h4>新居航平</h4>
