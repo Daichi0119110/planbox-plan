@@ -8,10 +8,6 @@ class DatesController extends AppController {
 
 	}
 
-	public function feature() {
-		$this->set('dates',$this->Date->getdatesfromcouple(1));
-	}
-
 	public function index($id = null) {
 		//couple_ids,デートプランの取得
 		$couple_ids = array();
@@ -29,12 +25,12 @@ class DatesController extends AppController {
 
 	}
 
-	public function memory() {
-		
+	public function search(){
+
 	}
 
-	public function recommend() {
-
+	public function date($id){
+		
 	}
 
 	// public function viewnum(){ // google analyticsを利用してview数を取る
