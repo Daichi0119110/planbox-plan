@@ -14,7 +14,6 @@ $(function() {
 		{'user_id':1}
 		,function(res){
 			$.each(res,function(){
-				$('#button_'+this).css('color', 'red');
 				$('#button_'+this).html('登録済み！');	
 			});
 		}, "json");
@@ -24,10 +23,8 @@ $(function() {
 			{'date_id':$(this).data('date-id'), 'user_id':1}
 			,function(res){
 				if($('#button_'+res.id).html() == "行きたい！"){
-					$('#button_'+res.id).css('color', 'red');
 					$('#button_'+res.id).html('登録済み！');
 				} else{
-					$('#button_'+res.id).css('color', 'black');
 					$('#button_'+res.id).html('行きたい！');
 				}
 				$('#favo_'+res.id).html(res.favo);

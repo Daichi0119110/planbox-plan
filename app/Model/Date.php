@@ -21,4 +21,13 @@ class Date extends AppModel {
 		);
 		return $this->find('all',$status);
 	}
+
+	function getnewdate(){
+		$status=array(
+			'conditions' => array('couple_id'=>$couple_ids),
+			'order' => array('created'=> "desc"),
+			'limit' => 5
+		);
+		return $this->find('all',$status);
+	}
 }
