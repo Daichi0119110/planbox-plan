@@ -1,5 +1,5 @@
 <div class="container-fluid" style="padding-right:0;padding-left:0;"> 
-    <h2 style="text-align:center; margin-top:60px;">渋谷デート</h2>
+    <h2 style="text-align:center; margin-top:60px;"><?php echo $date['Date']['id']; ?></h2>
     <!--写真のスライドショー-->
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width:320px; height:200px; margin:5px auto 0 auto;">
@@ -122,3 +122,27 @@
 
 
 </div>
+
+<script>
+$(function() {
+  $.post('/planbox-plan/follows/ready/',
+    {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+    ,function(res){
+      if(res == 1){
+        $('#button_follow').html('登録済み');
+      }
+    }, "json");
+
+  $('button.follow').click(function(e){
+    $.post('/planbox-plan/follows/change/',
+      {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+      ,function(res){
+        if($('#button_follow').html() == "フォロー！"){
+          $('#button_follow').html('登録済み');
+        } else{
+          $('#button_follow').html('フォロー！');
+        }
+    }, "json");
+  });
+});
+</script>

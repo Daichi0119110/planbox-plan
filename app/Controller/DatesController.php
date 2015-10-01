@@ -29,17 +29,21 @@ class DatesController extends AppController {
 
 	}
 
-	public function date($id){
-		// $ua = $_SERVER['HTTP_USER_AGENT'];
-		// if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
-		// 	header('Location: ./sp/');
-		// 	exit();
-		// }
-		$date_id = 3;	// 一旦ユーザーidが3だと想定
-		$this->set('posts', $this->Post->getposts($date_id));
-		$this->set('date', $this->Date->getdate($date_id));
-		$this->set('date_id', $date_id);
-		$this->set('favo', $this->Favorite->getnumber($date_id));
+	public function date(){
+		$this->autoRender = false;
+		$this->autoLayout = false;
+		
+		// スマホかPCを判別して振り分け
+		$ua = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
+			// スマホだったら
+			$this->redirect(array('action' => 'date_sp'));
+			exit();
+		} else {
+			// PCだったら
+			$this->redirect(array('action' => 'date_pc'));
+			exit();
+		}
 	}
 
 	public function date_pc() {
