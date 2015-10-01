@@ -1,11 +1,11 @@
-<button id="button_follow" class="follow" data-couple-id="<?php echo $date['Date']['couple_id']?>" data-date-id="<?php echo $date['Date']['id']?>">フォロー！</button>
+<button id="button_follow" class="follow" data-couple-id="<?php echo $date['Date']['couple_id']?>">フォロー！</button>
 
 <script>
 $(function() {
 	$.post('/planbox-plan/follows/ready/',
 		{'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
 		,function(res){
-			if(res.fav_flg = 1){
+			if(res == 1){
 				$('#button_follow').html('登録済み');
 			}
 		}, "json");
@@ -13,7 +13,7 @@ $(function() {
 	$('button.follow').click(function(e){
 		$.post('/planbox-plan/follows/change/',
 			{'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
-			,function(){
+			,function(res){
 				if($('#button_follow').html() == "フォロー！"){
 					$('#button_follow').html('登録済み');
 				} else{

@@ -1,6 +1,6 @@
 <?php 
 
-class DatesController extends AppController {
+class FollowsController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('Date', 'Follow','Favorite','Post');
 
@@ -17,14 +17,13 @@ class DatesController extends AppController {
 					'AND'=>array(
 						'couple_id'=>$_POST['couple_id'],
 						'user_id'=>$_POST['user_id'],
-						'fav_flg'=>'1'　
+						'fav_flg'=>1
 					)
 				)
 			);
 			$a = $this->Follow->find('first',$status);
-			$response = array('fav_flg'=>$a['Follow']['fav_flg']);
 			$this->header('Content-Type: application/json');
-			echo json_encode($response);
+			echo json_encode($a['Follow']['fav_flg']);
 			exit();
 		}
 		$this->redirect(array('controller'=>'dates', 'action' => 'date'));
@@ -35,12 +34,11 @@ class DatesController extends AppController {
 			throw new MethodNotAllowedException();
 		}
 		if ($this->request->is('ajax')) {
-			if ($this->Follow->change_follow_flg($_POST['couple_id'],$_POST['user_id'])) {
+			if ($this->Follow->change_follow_flg($_POST['couple_id'], $_POST['user_id'])) {
 				$this->autoRender = false;
 				$this->autoLayout = false;
-				// $response = array('id' => $_POST['couple_id'], 'favo' => $this->Follow->getnumber($_POST['couple_id']));
-				// $this->header('Content-Type: application/json');
-				// echo json_encode($response);
+				$this->header('Content-Type: application/json');
+				echo json_encode('a');
 				exit();
 			}
 		}
