@@ -35,7 +35,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array();
+	public $uses = array('Date', 'Follow','Favorite','Post','User');
 
 /**
  * Displays a view
@@ -72,5 +72,21 @@ class PagesController extends AppController {
 			}
 			throw new NotFoundException();
 		}
+	}
+
+	public function home(){
+		// デートプランの取得
+		$dates_follow = $this->Date->getdatesfromcouple($this->Follow->getcoupleids(1));
+
+		//いいね数の取得
+		for ($i=0; $i < count($dates_follow); $i++) { 
+			$dates_follow[$i]['Date']['favo'] = $this->Favorite->getnumber($dates_follow[$i]['Date']['id']);
+		}
+		$this->set('dates_follow', $dates_follow);
+
+		$couple_ids = $this->Follow->getcoupleids(1);
+		$user_ids = $this->User->getuseridfromcoupleids($couple_ids);
+		$date_ids_recommend = $this->Favorite->getfavodateid($user_ids);
+		$this->set('dates_recommend', $this->Date->getdate($date_ids_recommend));
 	}
 }

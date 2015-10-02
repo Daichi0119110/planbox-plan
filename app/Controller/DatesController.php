@@ -7,15 +7,10 @@ class DatesController extends AppController {
 	public function favorite() {
 
 	}
-
+	// 削除してOK
 	public function index($id = null) {
-		//couple_ids,デートプランの取得
-		$couple_ids = array();
-		$a = $this->Follow->getcoupleid(1);
-		foreach ($a as $b) {
-			array_push($couple_ids, array_shift($b['Follow']));
-		}
-		$dates = $this->Date->getdatesfromcouple($couple_ids);
+		// デートプランの取得
+		$dates = $this->Date->getdatesfromcouple($this->Follow->getcoupleids(1));
 
 		//いいね数の取得
 		for ($i=0; $i < count($dates); $i++) { 
@@ -32,7 +27,7 @@ class DatesController extends AppController {
 	public function date(){
 		$this->autoRender = false;
 		$this->autoLayout = false;
-		
+
 		// スマホかPCを判別して振り分け
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {

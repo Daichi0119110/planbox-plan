@@ -10,42 +10,17 @@
         <div class="recommend-list">
         <div class="thumb-wrapper" style="margin:20px; padding: 10px 20px; background-color:#; overflow:visible; position: relative;">
             <div id="thumbNails">
+                <?php foreach ($dates_recommend as $date_recommend) { ?>
                 <div style="width:350px height: auto; float:left; border:1px solid #ccc;">
                     <img src="img/aragaki.jpg" style="width:350px; height: auto;">
                     <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
+                        <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['name']; ?></td></tr>
+                        <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['description']; ?></td></tr>
                         <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"> 渋谷</i></td></tr>
                         <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                 </div>
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc;">
-                    <img src="img/aragaki.jpg" style="width:350px; height: auto;">
-                    <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"> 渋谷</i></td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                </div>
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc;">
-                    <img src="img/aragaki.jpg" style="width:350px; height: auto;">
-                    <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"> 渋谷</i></td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                </div>
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc;">
-                    <img src="img/aragaki.jpg" style="width:350px; height: auto;">
-                    <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"> 渋谷</i></td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                </div>
+                <?php } ?>
             </div>
             <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

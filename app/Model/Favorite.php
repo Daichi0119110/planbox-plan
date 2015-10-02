@@ -3,7 +3,7 @@ class Favorite extends AppModel {
 	public $name='Favorite';
 	public $useTable='favorites';
 
-	function date_id($date_id){
+	function date($date_id){
 	$status=array(
 		'conditions'=>array(
 			'AND'=>array(
@@ -64,6 +64,11 @@ class Favorite extends AppModel {
 			),
 			'fields'=>array('date_id')
 		);
-	return $this->find('all',$status);
+		$a = $this->find('all',$status);
+		$date_ids = array();
+		foreach ($a as $b) {
+			array_push($date_ids, $b['Favorite']['date_id']);
+		}
+		return $date_ids;
 	}
 }

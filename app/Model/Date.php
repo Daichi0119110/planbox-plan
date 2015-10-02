@@ -11,7 +11,7 @@ class Date extends AppModel {
 			'conditions'=>
 			array('id'=>$id)
 		);
-		return $this->find('first',$status);
+		return $this->find('all',$status);
 	}
 
 	function getdatesfromcouple($couple_ids){
