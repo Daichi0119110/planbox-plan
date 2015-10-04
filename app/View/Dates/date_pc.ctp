@@ -45,7 +45,7 @@
 
         <!--デート全体説明-->
         <div style="border:1px solid #ccc;">
-          <h2 style="text-align:center;"><?php echo $date['Date']['name']; ?></h2>
+          <h2 style="text-align:center;"><?php echo $date[0]['Date']['name']; ?></h2>
           <div class="row">
             <div class="col-sm-5">
               <h3 style="text-align:center">デートスケジュール</h3>
@@ -66,11 +66,11 @@
                   <i class="fa fa-calendar" style="font-size:16px;font-weight:bold;"><?php echo $posts[1]['Post']['created']; ?></i>
                 </div>
                 <div class="col-sm-3">
-                  <i class="fa fa-jpy" style="font-size:16px;font-weight:bold;"><?php echo $date['Date']['budget']; ?></i>
+                  <i class="fa fa-jpy" style="font-size:16px;font-weight:bold;"><?php echo $date[0]['Date']['budget']; ?></i>
                 </div>
               </div>
               
-              <p style="font-weight:bold;"><?php echo $date['Date']['description']; ?></p>
+              <p style="font-weight:bold;"><?php echo $date[0]['Date']['description']; ?></p>
               <a href="couple.php"><!--カップルページへのリンク-->
                 <div class="row">
                   <div class="col-sm-6">
@@ -103,7 +103,7 @@
           </div>
         </div> 
         <!--デート全体説明終了--> 
-        <button id="button_follow" class="follow" data-couple-id="<?php echo $date['Date']['couple_id']?>">フォロー！</button>
+        <button id="button_follow" class="follow" data-couple-id="<?php echo $date[0]['Date']['couple_id']; ?>"> フォロー！</button>
         <!--デート詳細、サイドバー-->
 
         <div class="row" style="margin-top:40px;">

@@ -17,7 +17,7 @@
                         <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['name']; ?></td></tr>
                         <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['description']; ?></td></tr>
                         <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"> 渋谷</i></td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
+                        <tr><td style="text-align: right;">行きたい!!:<?php echo $date_recommend['Date']['favo']; ?></td></tr>
                     </table>
                 </div>
                 <?php } ?>

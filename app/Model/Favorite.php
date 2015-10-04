@@ -71,4 +71,17 @@ class Favorite extends AppModel {
 		}
 		return $date_ids;
 	}
+
+	function getfavonumber($date_id){
+		$status=array(
+			"conditions" => array(
+				'AND'=>array(
+					'date_id'=>$date_id, 
+					'fav_flg'=>1, 
+					'modified >'=>date("Y-m-d H:i:s", strtotime('-7 day'))
+				)
+			)
+		);
+		return $this->find('count',$status);
+	}
 }

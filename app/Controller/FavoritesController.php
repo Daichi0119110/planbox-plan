@@ -14,19 +14,14 @@ class FavoritesController extends AppController {
 			$this->autoLayout = false;
 
 			// お気に入りしているデートの取得
-			$date_ids = array();
-			$a = $this->Favorite->getfavodateid($_POST['user_id']);
-			foreach ($a as $b) {
-				array_push($date_ids, array_shift($b['Favorite']));
-			}
-
+			$date_ids = $this->Favorite->getfavodateid($_POST['user_id']);
 			$this->header('Content-Type: application/json');
 			echo json_encode($date_ids);
 			exit();
 		}
 		$this->redirect(array('controller'=>'dates', 'action' => 'index'));
 	}
-	
+
 	public function change() {
 		if ($this->request->is('get')) {
 			throw new MethodNotAllowedException();

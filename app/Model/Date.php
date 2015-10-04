@@ -30,4 +30,14 @@ class Date extends AppModel {
 		);
 		return $this->find('all',$status);
 	}
+
+	function getalldateids(){
+		$status=array('fields'=>'id');
+		$a = $this->find('all', $status);
+		$date_ids = array();
+		foreach ($a as $b) {
+			array_push($date_ids, $b['Date']['id']);
+		}
+		return $date_ids;
+	}
 }
