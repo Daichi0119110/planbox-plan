@@ -3,19 +3,16 @@
 class DatesController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('Date', 'Follow','Favorite','Post');
-
-	public function favorite() {
-
+	
+	public function favorite($user_id) {
+		$user_id = 1; //最終的に削除
+		$couple_ids = $this->Follow->getcoupleids($user_id);
+		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
 	}
-
+	// 削除してOK
 	public function index($id = null) {
-		//couple_ids,デートプランの取得
-		$couple_ids = array();
-		$a = $this->Follow->getcoupleid(1);
-		foreach ($a as $b) {
-			array_push($couple_ids, array_shift($b['Follow']));
-		}
-		$dates = $this->Date->getdatesfromcouple($couple_ids);
+		// デートプランの取得
+		$dates = $this->Date->getdatesfromcouple($this->Follow->getcoupleids(1));
 
 		//いいね数の取得
 		for ($i=0; $i < count($dates); $i++) { 
@@ -29,20 +26,41 @@ class DatesController extends AppController {
 
 	}
 
-	public function date($id){
-		$date_id = 3;	// 一旦ユーザーidが3だと想定
+	public function date(){
+		$this->autoRender = false;
+		$this->autoLayout = false;
+
+		// スマホかPCを判別して振り分け
+		$ua = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
+			// スマホだったら
+			$this->redirect(array('action' => 'date_sp'));
+			exit();
+		} else {
+			// PCだったら
+			$this->redirect(array('action' => 'date_pc'));
+			exit();
+		}
+	}
+
+	public function date_pc($date_id) {
+		$date_id = 3;	// 一旦date_idが3だと想定
 		$this->set('posts', $this->Post->getposts($date_id));
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
+
+		$user_ids = $this->Favorite->getuserids($date_id);
+		$date_ids_suggest = $this->Favorite->getfavodateid($user_ids);
+		$this->set('dates_suggest',$this->Date->getdate($date_ids_suggest));
 	}
 
-	public function date_pc() {
-
-	}
-
-	public function date_sp() {
-
+	public function date_sp($date_id) {
+		$date_id = 3;	// 一旦date_idが3だと想定
+		$this->set('posts', $this->Post->getposts($date_id));
+		$this->set('date', $this->Date->getdate($date_id));
+		$this->set('date_id', $date_id);
+		$this->set('favo', $this->Favorite->getnumber($date_id));
 	}
 
 	// public function viewnum(){ // google analyticsを利用してview数を取る

@@ -3,7 +3,7 @@ class Favorite extends AppModel {
 	public $name='Favorite';
 	public $useTable='favorites';
 
-	function date_id($date_id){
+	function date($date_id){
 	$status=array(
 		'conditions'=>array(
 			'AND'=>array(
@@ -64,6 +64,42 @@ class Favorite extends AppModel {
 			),
 			'fields'=>array('date_id')
 		);
-	return $this->find('all',$status);
+		$a = $this->find('all',$status);
+		$date_ids = array();
+		foreach ($a as $b) {
+			array_push($date_ids, $b['Favorite']['date_id']);
+		}
+		return $date_ids;
+	}
+
+	function getfavonumber($date_id){
+		$status=array(
+			"conditions" => array(
+				'AND'=>array(
+					'date_id'=>$date_id, 
+					'fav_flg'=>1, 
+					'modified >'=>date("Y-m-d H:i:s", strtotime('-7 day'))
+				)
+			)
+		);
+		return $this->find('count',$status);
+	}
+
+	function getuserids($date_id){
+		$status=array(
+			"conditions" => array(
+				'AND'=>array(
+					'date_id'=>$date_id, 
+					'fav_flg'=>1, 
+				)
+			),
+			"fields"=>array('user_id')
+		);
+		$a = $this->find("all",$status);
+		$user_ids = array();
+		foreach ($a as $b) {
+			array_push($user_ids, $b['Favorite']['user_id']);
+		}
+		return $user_ids;
 	}
 }
