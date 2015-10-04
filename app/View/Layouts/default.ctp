@@ -11,8 +11,6 @@
  
     <!-- Bootstrap -->
   <?php echo $this->Html->css('bootstrap.min'); ?>
-  <?php echo $this->Html->css( 'original_pc.css'); ?>
-  <?php echo $this->Html->css( 'original_sp.css'); ?>
  
   <!-- Le styles -->
   <style>
@@ -31,8 +29,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   </head>
   <body>
  
@@ -46,6 +42,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <?php echo $this->Html->script('bootstrap.min'); ?>
+    <?php echo $this->Html->script('jquery.carouFredSel-6.2.1-packed.js'); ?>
     <?php echo $this->fetch('script'); ?>
   </body>
 </html>
