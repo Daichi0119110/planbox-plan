@@ -11,7 +11,8 @@ class Post extends AppModel {
 	return $this->find('all',$status);
 	}
 
-	function AddPosts($text,$time,$user_id){
+	function AddPosts($text,$time,$user_id,$medias){
+	//	var_dump($medias);
 		date_default_timezone_set('Asia/Tokyo');
 		App::import('Model','Couple');
 		$Couple=new Couple;
@@ -21,46 +22,43 @@ class Post extends AppModel {
 		App::import('Model','Post');
 		$Date=new Date;
 		$Dateid=$Date->getRecentDate($time,$cid);
-		$data=array();
-		if($Dateid<0){
-			$Dateid=-$Dateid;
-			if($this->CheckDouble($text,$Dateid)==0){return;}
-			
-
-			$data['Post']=array(
- 				'date_id'=>$Dateid,
- 				'content'=>$text,);
-			var_dump($data);
-
-			if($this->CheckDouble($text,$Dateid)==0){return;}
-		//	$Date->makenewDate($cid);
-			$this->create();
-			$this->save($data);
-		}
-		else{
 
  		/*	$data=array('Post',array(
  				'date_id'=>$Dateid,
  				'content'=>$text,
  			));*/
-			if($this->CheckDouble($text,$Dateid)==0){return;}
+	//		if($this->CheckDouble($text,$Dateid)==0){echo "3return";return;}
 			$data['Post']=array(
  				'date_id'=>$Dateid,
  				'content'=>$text,);
 		//	var_dump($data);
-			if($this->CheckDouble($text,$Dateid)==0){return;}
+			if($this->CheckDouble($text,$Dateid,$time)==0){echo "4return";return;}
 			$this->create();
+			echo "saved!!!";
  			$this->save($data);
+ 		
+
  	//	echo $this->getDataSource()->getLog();
  		//	var_dump($data);
-		}
+		echo "確認";
+		$mypostid=$this->GetRecentPostid($Dateid);
+		App::import('Model','Photo');
+ 			$Photo=new Photo;
+ 			var_dump($medias);
+ 			foreach ($medias as $value) {
+
+ 				$Photo->loadgraphs($mypostid,$value->media_url);
+ 			}
+
 		$Date->updatebyNewPost($time,$Dateid);
 	}
-	function CheckDouble($text,$date_id)
+	function CheckDouble($text,$date_id,$time)
 	{
 		$status=array(
 			'conditions'=>array(
-				'content'=>$text,
+				'OR'=>array(
+					'content'=>$text,
+					'created'=>$time->format('Y-m-d H:i:s')),
 				'date_id'=>$date_id,
 				));
 		$data=$this->find('first',$status);
@@ -71,7 +69,7 @@ class Post extends AppModel {
 		//echo "notempty";
 		return 0;
 	}
-	function GetRecentPostCreated($date_id)
+	function GetRecentPostid($date_id)
 	{
 		$status=array(
 			'order'=>'created DESC',
@@ -82,7 +80,7 @@ class Post extends AppModel {
 				)
 			);
 		$data=$this->find('first',$status);
-		return $data['Post']['created'];
+		return $data['Post']['id'];
 	}
 
 }

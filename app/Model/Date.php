@@ -33,6 +33,7 @@ class Date extends AppModel {
 				'couple_id'=>$couple_id,
 			)
 		);
+		$dtime->modify('+1 days');
 		$data=$this->find('first',$status);
 		if(empty($data)){
 			$data=array();
@@ -42,7 +43,7 @@ class Date extends AppModel {
 
 			$status=array('order'=>'id DESC');
 			$data=$this->find('first',$status);
-			return -($data['Date']['id']);
+			return ($data['Date']['id']);
 		}
 		else{
 			return $data['Date']['id'];
@@ -58,7 +59,7 @@ class Date extends AppModel {
 	function updatebyNewPost($time,$date_id)
 	{
 		$data=array();
-		$data['Date']=array('id'=>$date_id,'post_updated'=>$time->modify('+1 days')->format('Y-m-d H:i:s'));
+		$data['Date']=array('id'=>$date_id,'post_updated'=>$time->format('Y-m-d H:i:s'));
 		$this->save($data);
 	}
 }

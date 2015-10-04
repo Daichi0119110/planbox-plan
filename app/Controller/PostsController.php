@@ -33,7 +33,10 @@ $to->streaming('user', function ($status) {
         	$time=new DateTime($status->created_at);
         	$time->setTimezone(new DateTimeZone('Asia/Tokyo'));
         	$time->format('Y-m-d h:i:s');
-        	$this->Post->AddPosts($status->text,$time,$id);
+
+        	$medias=$status->entities->media;
+        //	var_dump($medias);
+        	$this->Post->AddPosts($status->text,$time,$id,$medias);
         	//var_dump($time);
         	printf(
             	"@%s: %s\n",
