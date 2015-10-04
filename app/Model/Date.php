@@ -11,7 +11,7 @@ class Date extends AppModel {
 			'conditions'=>
 			array('id'=>$id)
 		);
-		return $this->find('first',$status);
+		return $this->find('all',$status);
 	}
 
 	function getdatesfromcouple($couple_ids){
@@ -61,5 +61,23 @@ class Date extends AppModel {
 		$data=array();
 		$data['Date']=array('id'=>$date_id,'post_updated'=>$time->format('Y-m-d H:i:s'));
 		$this->save($data);
+	}
+	function getnewdate(){
+		$status=array(
+			'conditions' => array('couple_id'=>$couple_ids),
+			'order' => array('created'=> "desc"),
+			'limit' => 5
+		);
+		return $this->find('all',$status);
+	}
+
+	function getalldateids(){
+		$status=array('fields'=>'id');
+		$a = $this->find('all', $status);
+		$date_ids = array();
+		foreach ($a as $b) {
+			array_push($date_ids, $b['Date']['id']);
+		}
+		return $date_ids;
 	}
 }

@@ -1,5 +1,5 @@
 <div class="container-fluid" style="padding-right:0;padding-left:0;"> 
-    <h2 style="text-align:center; margin-top:60px;">渋谷デート</h2>
+    <h2 style="text-align:center; margin-top:60px;"><?php echo $date['Date']['id']; ?></h2>
     <!--写真のスライドショー-->
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width:320px; height:200px; margin:5px auto 0 auto;">
@@ -12,18 +12,18 @@
 
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
-        <div class="item active" style="overflow: hidden;width:320px; height:200px;">
-          <img src="img/photo1.jpg" alt="photo1" style="width:320px;">
+        <div class="item active carousel-image-sp" style="overflow: hidden;width:320px; height:200px;">
+          <?php echo $this->Html->image('photo1.jpg', array('alt' => 'baz'));?>
           <div class="carousel-caption">
           </div>
         </div>
-        <div class="item" style="overflow: hidden;width:320px; height:200px;">
-          <img src="img/photo2.jpg" alt="photo2" style="width:320px;">
+        <div class="item carousel-image-sp" style="overflow: hidden;width:320px; height:200px;">
+          <?php echo $this->Html->image('photo2.jpg', array('alt' => 'baz'));?>
           <div class="carousel-caption">
           </div>
         </div>
-        <div class="item" style="overflow: hidden;width:320px; height:200px;">
-          <img src="img/photo3.jpg" alt="photo3" style="width:320px;">
+        <div class="item carousel-image-sp" style="overflow: hidden;width:320px; height:200px;">
+          <?php echo $this->Html->image('photo3.jpg', array('alt' => 'baz'));?>
           <div class="carousel-caption">
           </div>
         </div>
@@ -64,13 +64,13 @@
 
 
       <div class="row">
-        <div class="col-xs-6">
-          <img src="img/kohei.jpg" style="height:150px;width:150px;">
+        <div class="col-xs-6 user-image-sp">
+          <?php echo $this->Html->image('kohei.jpg', array('alt' => 'baz'));?>
           <h4 style="text-align:center;">新居航平</h4>
           <p style="text-align:center;">２２歳 / 学生</p>
         </div>
-        <div class="col-xs-6">
-          <img src="img/aragaki.jpg" style="height:150px;width:150px;">
+        <div class="col-xs-6 user-image-sp">
+          <?php echo $this->Html->image('photo1.jpg', array('alt' => 'baz'));?>
           <h4 style="text-align:center;">新垣結衣</h4>
           <p style="text-align:center;">２５歳 / 女優</p>
         </div>
@@ -88,8 +88,8 @@
         <div class="col-xs-6"><i class="fa fa-clock-o" style="font-size:15px;font-weight:bold;"> 10月10日11:15</i></div>
         <div class="col-xs-6"><i class="fa fa-map-marker" style="font-size:15px;font-weight:bold;"> 渋谷駅ハチ公口</i></div>
       </div>
-      <div style="width:320px;height:220px; overflow:hidden;">
-          <img src="img/photo1.jpg" style="width:320px;">
+      <div class ="tweet-image-sp" style="width:320px;height:220px; overflow:hidden;">
+          <?php echo $this->Html->image('photo1.jpg', array('alt' => 'baz'));?>          
       </div>
       <p style="font-weight:bold;font-size:14px;margin-top:20px;padding-left:10px;padding-right:10px;">初めての渋谷ー！まずはもちろんハチ公に直行！噂通り人が多すぎるー！とくに外人さん多いねー。さぁ、これから渋谷散策行ってきますー！</p>
 
@@ -108,8 +108,8 @@
     <hr>
     <a href="date.php"><!--このデートプランに飛ぶリンク-->
       <div style="background-color:#FF8C00; padding:5px;">
-        <div style="overflow:hidden; width:100%; height:180px;">
-          <img src="img/photo1.jpg" style="width:100%;">
+        <div class="sidebar-image-sp" style="overflow:hidden; width:100%; height:180px;">
+          <?php echo $this->Html->image('photo1.jpg', array('alt' => 'baz'));?>
         </div>
         <h4 >自由が丘スイーツ満喫デート</h4>
         <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘周辺</p>
@@ -120,5 +120,60 @@
   <!--似ているプラン終了-->
 
 
+<!--コメントの追加開始-->
+<hr>
+<h3 style="text-align:center">このデートへのコメント</h3>
+<div class="row">
+  <div class="col-xs-3 comment-image-sp">
+    <?php echo $this->Html->image('kohei.jpg', array('alt' => 'baz'));?>
+    <div>新居航平</div>       
+  </div>
+  <div class="col-xs-9">
+    <p>
+      自由が丘ちょうど行きたかったんですよね！ぜひ参考にさせていただきます！
+    </p>
+  </div>
+</div>
+<!--コメント新規投稿エリア-->
+<hr>
+<h3 style="text-align:center">新規コメント投稿</h3>
+<form>
+        <div class="form-group">
+          <input type="textarea" id="comment" class="form-control" placeholder="コメントを入力してください" style="height:150px;width:300px;margin:0 auto 0 auto">
+        </div>
+        <div class="form-group">
+          <input type="submit" value="submit" class="btn btn-primary" style="float:right;margin-right:20px;">
+        </div>
+      </form>
+
+
+<!--コメントの追加終了-->
+
+
+
 
 </div>
+
+<script>
+$(function() {
+  $.post('/planbox-plan/follows/ready/',
+    {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+    ,function(res){
+      if(res == 1){
+        $('#button_follow').html('登録済み');
+      }
+    }, "json");
+
+  $('button.follow').click(function(e){
+    $.post('/planbox-plan/follows/change/',
+      {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+      ,function(res){
+        if($('#button_follow').html() == "フォロー！"){
+          $('#button_follow').html('登録済み');
+        } else{
+          $('#button_follow').html('フォロー！');
+        }
+    }, "json");
+  });
+});
+</script>

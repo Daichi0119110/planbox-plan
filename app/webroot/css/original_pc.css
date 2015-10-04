@@ -1,0 +1,21 @@
+.user-image img{
+  width: 100px;
+  height:100px;
+}
+
+.tweet-image img{
+  width: 350px;
+}
+
+.sidebar-image img{
+  width:100%;
+}
+
+.carousel-image img{
+  width: 900px;
+}
+
+.comment-image img{
+	width: 120px;
+	height:120px;
+}

@@ -6,9 +6,30 @@ class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
 
 	public function setting($id) {
+		$this->autoRender = false;
+		$this->autoLayout = false;
+
+		// スマホかPCを判別して振り分け
+		$ua = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
+			// スマホだったら
+			$this->redirect('/users/setting_sp/'.$id);
+			exit();
+		} else {
+			// PCだったら
+			$this->redirect('/users/setting_pc/'.$id);
+			exit();
+		}
+	}
+
+	public function setting_pc($id){
 		$this->set('user',$this->User->getuser($id));
 	}
 
+	public function setting_sp($id){
+		$this->set('user',$this->User->getuser($id));
+	}
+	
 	public function edit($id) {
 	//フォームとして送られてくることを想定
 		$this->User->id=$id;
