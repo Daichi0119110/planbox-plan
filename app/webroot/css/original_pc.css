@@ -1,3 +1,5 @@
+
+/*デート個別ページ用のCSS*/
 .user-image img{
   width: 100px;
   height:100px;
@@ -18,4 +20,17 @@
 .comment-image img{
 	width: 120px;
 	height:120px;
+}
+
+
+/*カップル個別ページ用のCSS*/
+
+.user-image-top img{
+  width: 100%;
+  height:100%;
+}
+
+.user-image-side img{
+  width: 100px;
+  height:100px;
 }

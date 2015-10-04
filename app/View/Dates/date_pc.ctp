@@ -1,8 +1,3 @@
-<style>
-
-</style>
-
-
 <div class="container">
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
@@ -72,7 +67,7 @@
                 <i class="fa fa-calendar" style="font-size:16px;font-weight:bold;"> 2015年10月10日</i>
               </div>
               <div class="col-sm-3">
-                <i class="fa fa-jpy" style="font-size:16px;font-weight:bold;"> 4000(予算)</i>
+                <i class="fa fa-jpy" style="font-size:16px;font-weight:bold;"> 4000</i>
               </div>
             </div>
 
