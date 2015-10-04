@@ -13,20 +13,20 @@ class UsersController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect(array('action' => 'setting_sp'));
+			$this->redirect('/users/setting_sp/'.$id);
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect(array('action' => 'setting_pc'));
+			$this->redirect('/users/setting_pc/'.$id);
 			exit();
 		}
 	}
 
-	public function setting_pc(){
+	public function setting_pc($id){
 		$this->set('user',$this->User->getuser($id));
 	}
 
-	public function setting_sp(){
+	public function setting_sp($id){
 		$this->set('user',$this->User->getuser($id));
 	}
 	

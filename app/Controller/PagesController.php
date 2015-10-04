@@ -13,11 +13,11 @@ class PagesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect(array('action' => 'index_sp'));
+			$this->redirect('/pages/index_sp'));
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect(array('action' => 'index_pc'));
+			$this->redirect('/pages/index_pc');
 			exit();
 		}
 	}

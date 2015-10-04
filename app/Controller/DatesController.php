@@ -12,23 +12,25 @@ class DatesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect(array('action' => 'favorite_sp'));
+			$this->redirect('/dates/favorite_sp/'.$user_id);
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect(array('action' => 'favorite_pc'));
+			$this->redirect('/dates/favorite_pc/'.$user_id);
 			exit();
 		}
 	}
 
-	public function favorite_pc(){
+	public function favorite_pc($user_id){
 		$user_id = 1; //最終的に削除
 		$couple_ids = $this->Follow->getcoupleids($user_id);
 		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
 	}
 
-	public function favorite_sp(){
-
+	public function favorite_sp($user_id){
+		$user_id = 1; //最終的に削除
+		$couple_ids = $this->Follow->getcoupleids($user_id);
+		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
 	}
 
 	// 削除してOK
@@ -52,11 +54,11 @@ class DatesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect(array('action' => 'search_sp'));
+			$this->redirect('/dates/search_sp');
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect(array('action' => 'search_pc'));
+			$this->redirect('/dates/search_pc');
 			exit();
 		}
 	}
@@ -69,7 +71,7 @@ class DatesController extends AppController {
 
 	}
 
-	public function date(){
+	public function date($date_id){
 		$this->autoRender = false;
 		$this->autoLayout = false;
 
@@ -77,11 +79,11 @@ class DatesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect(array('action' => 'date_sp'));
+			$this->redirect('/dates/date_sp/'.$date_id);
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect(array('action' => 'date_pc'));
+			$this->redirect('/dates/date_pc/'.$date_id);
 			exit();
 		}
 	}

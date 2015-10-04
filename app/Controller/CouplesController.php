@@ -12,22 +12,22 @@ class CouplesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect(array('action' => 'couple_sp'));
+			$this->redirect('/couples/couple_sp/'.$id);
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect(array('action' => 'couple_pc'));
+			$this->redirect('/couples/couple_pc/'.$id);
 			exit();
 		}
 	}
 
-	public function couple_pc(){
+	public function couple_pc($id){
 		//$this->set('couples', $this->Couple->find('all'));
 		$this->set('couples',$this->Couple->getcouple($id));
 		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
 	}
 
-	public function couple_sp(){
+	public function couple_sp($id){
 		//$this->set('couples', $this->Couple->find('all'));
 		$this->set('couples',$this->Couple->getcouple($id));
 		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
@@ -41,22 +41,22 @@ class CouplesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect(array('action' => 'mypage_sp'));
+			$this->redirect('/couples/mypage_sp'.$id);
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect(array('action' => 'mypage_pc'));
+			$this->redirect('/couples/mypage_pc'.$id);
 			exit();
 		}
 	}
 
-	public function mypage_pc(){
+	public function mypage_pc($id){
 		//$this->set('couples', $this->Couple->find('all'));
 		$this->set('couples',$this->Couple->getcouple($id));
 		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
 	}
 
-	public function mypage_sp(){
+	public function mypage_sp($id){
 		//$this->set('couples', $this->Couple->find('all'));
 		$this->set('couples',$this->Couple->getcouple($id));
 		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
@@ -98,8 +98,5 @@ class CouplesController extends AppController {
 	public function deleatemydate($date_id)
 	{
 		$this->date->deleate($date_id);
-	}
-	public function couple_pc() {
-
 	}
 }
