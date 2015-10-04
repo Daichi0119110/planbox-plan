@@ -1,7 +1,10 @@
 <style>
 
 </style>
-
+<?php 
+$i = 1;
+$j = 1;
+ ?>
 
 <div class="container">
   <div class="row">
@@ -56,7 +59,8 @@
             <h3 style="text-align:center">デートスケジュール</h3>
             <?php foreach ($posts as $post) { ?>
             <table class="table table-hover">
-              <tr><td style="width:200px;height:40px;"><a href="#tweet1" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['created']; ?></a></td><td style="width:250px;height:40px;"><a href="#tweet1" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['location']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
+              <tr><td style="width:200px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['created']; ?></a></td><td style="width:250px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['location']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
+              <?php $i++; ?>
               <?php } ?>
             </table>
           </div>
@@ -115,7 +119,7 @@
         <div class="col-sm-8">
           <?php foreach ($posts as $post) { ?>
           <!--一つのツイートの塊-->
-          <div class="row" style="border:1px solid #ccc;" id="tweet1">
+          <div class="row" style="border:1px solid #ccc;" id="tweet<?php echo $j; ?>">
             <div class="col-sm-6" >
               <div class="tweet-image" style="width:300px;height:200px; overflow:hidden;">
                 <?php echo $this->Html->image('photo1.jpg', array('alt' => 'baz'));?>
@@ -134,6 +138,7 @@
             </div>
           </div>
           <!--一つのツイートの塊終了-->
+          <?php $j++; ?>
           <?php } ?>
         
 

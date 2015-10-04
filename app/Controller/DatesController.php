@@ -22,13 +22,11 @@ class DatesController extends AppController {
 	}
 
 	public function favorite_pc($user_id){
-		$user_id = 1; //最終的に削除
 		$couple_ids = $this->Follow->getcoupleids($user_id);
 		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
 	}
 
 	public function favorite_sp($user_id){
-		$user_id = 1; //最終的に削除
 		$couple_ids = $this->Follow->getcoupleids($user_id);
 		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
 	}
@@ -89,7 +87,6 @@ class DatesController extends AppController {
 	}
 
 	public function date_pc($date_id) {
-		$date_id = 3;	// 一旦date_idが3だと想定
 		$this->set('posts', $this->Post->getposts($date_id));
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
@@ -101,7 +98,6 @@ class DatesController extends AppController {
 	}
 
 	public function date_sp($date_id) {
-		$date_id = 3;	// 一旦date_idが3だと想定
 		$this->set('posts', $this->Post->getposts($date_id));
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
