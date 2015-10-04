@@ -180,7 +180,7 @@ $j = 1;
           <a href="date.php"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FF8C00; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
-                <?php echo $this->Html->image('photo1.jpg', array('alt' => 'photo1'));?>
+                <?php echo $this->Html->image($date_suggest['Date']['photo'], array('alt' => 'photo1'));?>
               </div>
               <h4 ><?php echo $date_suggest['Date']['name']; ?></h4>
               <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>

@@ -95,19 +95,34 @@ class DatesController extends AppController {
 		// 似ているデートの取得
 		$user_ids = $this->Favorite->getuserids($date_id);
 		$date_ids_suggest = $this->Favorite->getfavodateid($user_ids);
-		$this->set('dates_suggest',$this->Date->getdate($date_ids_suggest));
+		$dates_suggest = $this->Date->getdate($date_ids_suggest);
+		for ($i=0; $i < count($dates_suggest); $i++) {
+			$posts_suggest = $this->Post->getpostids($dates_suggest[$i]['Date']['id']);
+			$photos = $this->Photo->getpostallphotos($posts_suggest);
+			if(!$photos){
+				$dates_suggest[$i]['Date']['photo'] = null;
+				continue;
+			}
+			$dates_suggest[$i]['Date']['photo'] = $photos[0];
+		}
+		$this->set('dates_suggest', $dates_suggest);
 
 		// カルーセル用の写真の取得
 		$post_ids = $this->Post->getpostids($date_id);
 		$this->set('photos', $this->Photo->getpostallphotos($post_ids));
+
 		// post配列の中に写真の情報をいれる
-		for ($i=0; $i < count($posts); $i++) {
-			$a = $this->Photo->getphotos($posts[$i]['Post']['id']);
+		for ($j=0; $j < count($posts); $j++) {
+			$a = $this->Photo->getphotos($posts[$j]['Post']['id']);
 			$filenames = array();
 			foreach ($a as $b) {
 				array_push($filenames, $b['Photo']['filename']);
 			}
-			$posts[$i]['Post']['filename'] = $filenames;
+			if(!$filenames){
+				$posts[$j]['Post']['filename'] = null;
+				continue;
+			}
+			$posts[$j]['Post']['filename'] = $filenames;
 		}
 		$this->set('posts', $posts);
 

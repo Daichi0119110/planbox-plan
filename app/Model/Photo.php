@@ -30,10 +30,14 @@ class Photo extends AppModel {
 				'fields'=>array('filename')
 			);
 		$a = $this->find('all',$status);
-		$photos = array();
-		foreach ($a as $b) {
-			array_push($photos, $b['Photo']['filename']);
+		if (!$a) {
+			return null;
+		} else{
+			$photos = array();
+			foreach ($a as $b) {
+				array_push($photos, $b['Photo']['filename']);
+			}
+			return $photos;
 		}
-		return $photos;
 	}
 }
