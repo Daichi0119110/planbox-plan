@@ -86,10 +86,29 @@
                     </div>
                     <div class="col-sm-7">
                     <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i>渋谷</td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
+                        <tr><td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;">タイトル</td></tr>
+                        <tr><td colspan="3" style="text-align: center;">内容が無いよう</td></tr>
+                        <tr><!--３行目:デートの場所、日時、予算-->
+                            <td style="text-align:center;" class="fa fa-map-marker">渋谷</td>
+                            <td style="text-align:center;" class="fa fa-jpy">4000</td>
+                            <td style="text-align:center;" class="fa fa-calendar">2015年10月9日</td>
+                        </tr>
+                        <tr><!--４行目：カップルの一人目-->
+
+                            <td class="table-image"><!--写真-->
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei'));?>
+
+                          </td>
+                              <td class="table-image"><!--写真-->
+                            <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'kohei'));?>
+
+                            </td>
+                            <td>
+                                新居航平 (２２歳 / 学生)<br>
+                                新垣結衣 (２５歳 / 社会人)
+                            <td>
+                        </tr>
+                        <tr><td></td><td>1023View</td><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                     </div>
                 </div>
@@ -116,10 +135,29 @@
                     </div>
                     <div class="col-sm-7">
                     <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i>渋谷</td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
+                        <tr><td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;">タイトル</td></tr>
+                        <tr><td colspan="3" style="text-align: center;">内容が無いよう</td></tr>
+                        <tr><!--３行目:デートの場所、日時、予算-->
+                            <td style="text-align:center;" class="fa fa-map-marker">渋谷</td>
+                            <td style="text-align:center;" class="fa fa-jpy">4000</td>
+                            <td style="text-align:center;" class="fa fa-calendar">2015年10月9日</td>
+                        </tr>
+                        <tr><!--４行目：カップルの一人目-->
+
+                            <td class="table-image"><!--写真-->
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei'));?>
+
+                          </td>
+                              <td class="table-image"><!--写真-->
+                            <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'kohei'));?>
+
+                            </td>
+                            <td>
+                                新居航平 (２２歳 / 学生)<br>
+                                新垣結衣 (２５歳 / 社会人)
+                            <td>
+                        </tr>
+                        <tr><td></td><td>1023View</td><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                     </div>
                 </div>
@@ -146,10 +184,29 @@
                     </div>
                     <div class="col-sm-7">
                     <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容が無いよう</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i>渋谷</td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
+                        <tr><td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;">タイトル</td></tr>
+                        <tr><td colspan="3" style="text-align: center;">内容が無いよう</td></tr>
+                        <tr><!--３行目:デートの場所、日時、予算-->
+                            <td style="text-align:center;" class="fa fa-map-marker">渋谷</td>
+                            <td style="text-align:center;" class="fa fa-jpy">4000</td>
+                            <td style="text-align:center;" class="fa fa-calendar">2015年10月9日</td>
+                        </tr>
+                        <tr><!--４行目：カップルの一人目-->
+
+                            <td class="table-image"><!--写真-->
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei'));?>
+
+                          </td>
+                              <td class="table-image"><!--写真-->
+                            <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'kohei'));?>
+
+                            </td>
+                            <td>
+                                新居航平 (２２歳 / 学生)<br>
+                                新垣結衣 (２５歳 / 社会人)
+                            <td>
+                        </tr>
+                        <tr><td></td><td>1023View</td><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                     </div>
                 </div>
@@ -164,11 +221,11 @@
 <!--サイドバー開始-->
         <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
           <h4 style="text-align:center">今週のデートランキング</h4>
-          <!--似ているプラン-->
+          <!--ランキングプラン-->
           <hr>
           <h4 style="font-style: italic;">１位</h4>
           <a href="date.php"><!--このデートプランに飛ぶリンク-->
-            <div style="background-color:#FF8C00; padding:5px;">
+            <div style="background-color:#FFDAB9; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
                 <img src="img/photo2.jpg">
               </div>
@@ -177,11 +234,12 @@
               <p>渋谷</p>
             </div>
           </a>
-          <!--似ているプラン終了-->
+          <!--ランキングプラン終了-->
           <hr>
+          <!--ランキングプラン-->
           <h4 style="font-style: italic;">２位</h4>
           <a href="date.php"><!--このデートプランに飛ぶリンク-->
-            <div style="background-color:#FF8C00; padding:5px;">
+            <div style="background-color:#FFDAB9; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
                 <img src="img/photo2.jpg">
               </div>
@@ -190,11 +248,12 @@
               <p>渋谷</p>
             </div>
           </a>
-          <!--似ているプラン終了-->
+          <!--ランキングプラン終了-->
           <hr>
+          <!--ランキングプラン-->
           <h4 style="font-style: italic;">３位</h4>
           <a href="date.php"><!--このデートプランに飛ぶリンク-->
-            <div style="background-color:#FF8C00; padding:5px;">
+            <div style="background-color:#FFDAB9; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
                 <img src="img/photo2.jpg">
               </div>
@@ -203,11 +262,11 @@
               <p>渋谷</p>
             </div>
           </a>
-          <!--似ているプラン終了-->
+          <!--ランキングプラン終了-->
           <hr>
           <h4 style="font-style: italic;">４位</h4>
           <a href="date.php"><!--このデートプランに飛ぶリンク-->
-            <div style="background-color:#FF8C00; padding:5px;">
+            <div style="background-color:#FFDAB9; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
                 <img src="img/photo2.jpg">
               </div>
@@ -216,7 +275,7 @@
               <p>渋谷</p>
             </div>
           </a>
-          <!--似ているプラン終了-->
+          <!--ランキングプラン終了-->
 
         </div>        
         <!--サイドバー終了-->
