@@ -11,6 +11,8 @@
  
     <!-- Bootstrap -->
   <?php echo $this->Html->css('bootstrap.min'); ?>
+  <?php echo $this->Html->css( 'original_pc.css'); ?>
+  <?php echo $this->Html->css( 'original_sp.css'); ?>
  
   <!-- Le styles -->
   <style>

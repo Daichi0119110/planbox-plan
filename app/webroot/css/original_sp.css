@@ -1,0 +1,21 @@
+.user-image-sp img{
+  width: 150px;
+  height:150px;
+}
+
+.tweet-image-sp img{
+  width: 320px;
+}
+
+.sidebar-image-sp img{
+  width:100%;
+}
+
+.carousel-image-sp img{
+  width: 320px;
+}
+
+.comment-image-sp img{
+ width: 80px;
+ height: 80px;
+}
