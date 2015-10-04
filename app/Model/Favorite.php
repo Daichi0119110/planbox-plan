@@ -84,4 +84,22 @@ class Favorite extends AppModel {
 		);
 		return $this->find('count',$status);
 	}
+
+	function getuserids($date_id){
+		$status=array(
+			"conditions" => array(
+				'AND'=>array(
+					'date_id'=>$date_id, 
+					'fav_flg'=>1, 
+				)
+			),
+			"fields"=>array('user_id')
+		);
+		$a = $this->find("all",$status);
+		$user_ids = array();
+		foreach ($a as $b) {
+			array_push($user_ids, $b['Favorite']['user_id']);
+		}
+		return $user_ids;
+	}
 }

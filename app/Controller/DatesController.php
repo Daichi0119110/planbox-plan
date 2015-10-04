@@ -3,9 +3,11 @@
 class DatesController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('Date', 'Follow','Favorite','Post');
-
-	public function favorite() {
-
+	
+	public function favorite($user_id) {
+		$user_id = 1; //最終的に削除
+		$couple_ids = $this->Follow->getcoupleids($user_id);
+		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
 	}
 	// 削除してOK
 	public function index($id = null) {
@@ -41,16 +43,20 @@ class DatesController extends AppController {
 		}
 	}
 
-	public function date_pc() {
-		$date_id = 3;	// 一旦ユーザーidが3だと想定
+	public function date_pc($date_id) {
+		$date_id = 3;	// 一旦date_idが3だと想定
 		$this->set('posts', $this->Post->getposts($date_id));
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
+
+		$user_ids = $this->Favorite->getuserids($date_id);
+		$date_ids_suggest = $this->Favorite->getfavodateid($user_ids);
+		$this->set('dates_suggest',$this->Date->getdate($date_ids_suggest));
 	}
 
-	public function date_sp() {
-		$date_id = 3;	// 一旦ユーザーidが3だと想定
+	public function date_sp($date_id) {
+		$date_id = 3;	// 一旦date_idが3だと想定
 		$this->set('posts', $this->Post->getposts($date_id));
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);

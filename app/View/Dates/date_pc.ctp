@@ -180,17 +180,19 @@
         <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
           <h4 style="text-align:center">似ているプラン</h4>
           <!--似ているプラン-->
+          <?php foreach ($dates_suggest as $date_suggest) { ?>
           <hr>
           <a href="date.php"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FF8C00; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
                 <?php echo $this->Html->image('photo1.jpg', array('alt' => 'photo1'));?>
               </div>
-              <h4 >自由が丘スイーツ満喫デート</h4>
-              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘周辺</p>
-              <p>彼女が好きなデザートを巡りに自由が丘に行ってきました！自由が丘は歩いてるだけで楽しい街です！スイーツ、雑貨巡りにおすすめです！</p>
+              <h4 ><?php echo $date_suggest['Date']['name']; ?></h4>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
+              <p><?php echo $date_suggest['Date']['description']; ?></p>
             </div>
           </a>
+          <?php } ?>
           <!--似ているプラン終了-->
 
         </div>        
