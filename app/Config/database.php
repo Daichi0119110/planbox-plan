@@ -74,6 +74,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'dbuser',
 		'password' => 'planbox',
+
 		'database' => 'planbox',
 		'prefix' => '',
 		'encoding' => 'utf8',
