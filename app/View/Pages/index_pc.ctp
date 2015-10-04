@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <div class="pickup header" style="margin-top:60px;">
+        <div class="pickup header">
             <ul>
                 <div class="pickup" style="font-size:30px; text-decoration: underline;">PickUp!!</div>
             </ul>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
-    <div class="search-box" style="border:1px solid #ccc;">
+    <div class="search-box" style="border:1px solid #ccc; margin-bottom: 30px;">
         <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:180px">
             デートプラン検索
         </div>
@@ -59,14 +59,15 @@
     </div>
 
     <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
+    <div class="row">
     <div class="tabbox">
     <p class="tabs">
       <a href="#tab1" class="tab1" onclick="ChangeTab('tab1'); return false;">カップル</a>
       <a href="#tab2" class="tab2" onclick="ChangeTab('tab2'); return false;">自分</a>
       <a href="#tab3" class="tab3" onclick="ChangeTab('tab3'); return false;">相手</a>
    </p>
-   <div id="tab1" class="tab">
     <div class="col-sm-8">
+    <div id="tab1" class="tab">
     <div class="follow-list" style="border:1px solid #ccc;">
         <article>
             <a href="">
@@ -94,11 +95,9 @@
                 </div>
             </a>
         </article>
-    </div>
     </div>
     </div>
     <div id="tab2" class="tab">
-    <div class="col-sm-8">
     <div class="follow-list" style="border:1px solid #ccc;">
         <article>
             <a href="">
@@ -126,11 +125,9 @@
                 </div>
             </a>
         </article>
-    </div>
     </div>
     </div>
     <div id="tab3" class="tab">
-    <div class="col-sm-8">
     <div class="follow-list" style="border:1px solid #ccc;">
         <article>
             <a href="">
@@ -150,7 +147,7 @@
                     <div class="col-sm-7">
                     <table class="table">
                         <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
+                        <tr><td style="text-align: center;">内容が無いよう</td></tr>
                         <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i>渋谷</td></tr>
                         <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
@@ -161,6 +158,68 @@
     </div>
     </div>
     </div>
+</div>
+<!-- フォローしているリスト終了-->
+
+<!--サイドバー開始-->
+        <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
+          <h4 style="text-align:center">今週のデートランキング</h4>
+          <!--似ているプラン-->
+          <hr>
+          <h4 style="font-style: italic;">１位</h4>
+          <a href="date.php"><!--このデートプランに飛ぶリンク-->
+            <div style="background-color:#FF8C00; padding:5px;">
+              <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
+                <img src="img/photo2.jpg">
+              </div>
+              <h4 >デートの名前</h4>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
+              <p>渋谷</p>
+            </div>
+          </a>
+          <!--似ているプラン終了-->
+          <hr>
+          <h4 style="font-style: italic;">２位</h4>
+          <a href="date.php"><!--このデートプランに飛ぶリンク-->
+            <div style="background-color:#FF8C00; padding:5px;">
+              <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
+                <img src="img/photo2.jpg">
+              </div>
+              <h4 >デートの名前</h4>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
+              <p>渋谷</p>
+            </div>
+          </a>
+          <!--似ているプラン終了-->
+          <hr>
+          <h4 style="font-style: italic;">３位</h4>
+          <a href="date.php"><!--このデートプランに飛ぶリンク-->
+            <div style="background-color:#FF8C00; padding:5px;">
+              <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
+                <img src="img/photo2.jpg">
+              </div>
+              <h4 >デートの名前</h4>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
+              <p>渋谷</p>
+            </div>
+          </a>
+          <!--似ているプラン終了-->
+          <hr>
+          <h4 style="font-style: italic;">４位</h4>
+          <a href="date.php"><!--このデートプランに飛ぶリンク-->
+            <div style="background-color:#FF8C00; padding:5px;">
+              <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
+                <img src="img/photo2.jpg">
+              </div>
+              <h4 >デートの名前</h4>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
+              <p>渋谷</p>
+            </div>
+          </a>
+          <!--似ているプラン終了-->
+
+        </div>        
+        <!--サイドバー終了-->
 </div>
 </div>
 </div>
