@@ -13,11 +13,11 @@
             <div id="thumbNails">
                 <?php foreach ($dates_recommend as $date_recommend) { ?>
                 <div style="width:350px; height: auto; float:left; border:1px solid #ccc;">
-                    <img src="img/aragaki.jpg" style="width:350px; height: auto;">
+                    <?php echo $this->Html->image($date_recommend['Date']['photo'], array('alt' => 'baz', 'width'=>'350'));?>
                     <table class="table" style="word-break: break-all;">
                         <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['name']; ?></td></tr>
                         <tr><td style="text-align: center; "><?php echo $date_recommend['Date']['description']; ?></td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"> 渋谷</i></td></tr>
+                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $date_recommend['Date']['location']; ?></i></td></tr>
                         <tr><td style="text-align: right;">行きたい!!:<?php echo $date_recommend['Date']['favo']; ?></td></tr>
                     </table>
                 </div>
@@ -68,32 +68,27 @@
    <div id="tab1" class="tab">
     <div class="col-sm-8">
     <div class="follow-list" style="border:1px solid #ccc;">
+        <?php foreach($dates_follow as $date_follow) { ?>
         <article>
             <a href="">
                 <div class="row">
                     <div class="col-sm-5">
                         <div class="row">
-                        <div class="col-sm-6">
-                            <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                            <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                        </div>
-                        <div class="col-sm-6">
-                                <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                               <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto ">
-                        </div>
+                            <?php echo $this->Html->image($date_follow['Date']['photo'], array('alt' => 'baz', 'width'=>'200'));?>
                         </div>
                     </div>
                     <div class="col-sm-7">
                     <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i>渋谷</td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
+                        <tr><td style="text-align: center;"><?php echo $date_follow['Date']['name']; ?></td></tr>
+                        <tr><td style="text-align: center;"><?php echo $date_follow['Date']['description']; ?></td></tr>
+                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i><?php echo $date_follow['Date']['location']; ?></td></tr>
+                        <tr><td style="text-align: right;">行きたい!!:<?php echo $date_follow['Date']['favo']; ?></td></tr>
                     </table>
                     </div>
                 </div>
             </a>
         </article>
+        <?php } ?>
     </div>
     </div>
     </div>

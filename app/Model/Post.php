@@ -96,4 +96,13 @@ class Post extends AppModel {
 		return $data['Post']['id'];
 	}
 
+	function getlocation($date_id){
+		$status=array(
+			'conditions'=>array('date_id'=>$date_id),
+			'fields'=>array('location')
+		);
+		$a = $this->find('first',$status);
+		return $a['Post']['location'];
+	}
+
 }
