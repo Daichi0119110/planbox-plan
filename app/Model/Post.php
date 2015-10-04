@@ -11,7 +11,7 @@ class Post extends AppModel {
 	return $this->find('all',$status);
 	}
 
-	function AddPosts($text,$time,$user_id,$medias){
+	function AddPosts($text,$time,$user_id,$medias,$coordinates,$locatename){
 	//	var_dump($medias);
 		date_default_timezone_set('Asia/Tokyo');
 		App::import('Model','Couple');
@@ -28,11 +28,18 @@ class Post extends AppModel {
  				'content'=>$text,
  			));*/
 	//		if($this->CheckDouble($text,$Dateid)==0){echo "3return";return;}
+			$locatenames=explode(" ", $locatename);//都道府県と市区町村に分割
+	//		var_dump($locatenames);
 			$data['Post']=array(
  				'date_id'=>$Dateid,
- 				'content'=>$text,);
+ 				'content'=>$text,
+ 				'state'=>$locatenames['0'],
+ 				'city'=>$locatenames['1'],
+ 				);
 		//	var_dump($data);
 			if($this->CheckDouble($text,$Dateid,$time)==0){echo "4return";return;}
+		//	$location=$this->Getfromcoordinates($coordinates);
+		//var_dump($location);
 			$this->create();
 			echo "saved!!!";
  			$this->save($data);
@@ -82,5 +89,13 @@ class Post extends AppModel {
 		$data=$this->find('first',$status);
 		return $data['Post']['id'];
 	}
-
+	function Getfromcoordinates($coordinates)//緯度経度から取得。今は使わず。(正確な住所まで求められるので、きちんとやれば施設名まで求められると思います。)
+	{
+		var_dump($coordinates);
+		var_dump($coordinates->coordinates['0']);
+		$url="http://maps.google.com/maps/api/geocode/json?latlng=".$coordinates->coordinates['1'].",".$coordinates->coordinates['0']."&sensor=false&language=jp";
+		$json=file_get_contents($url);
+		$decoded=json_decode($json, true);
+		return $decoded;
+	}
 }
