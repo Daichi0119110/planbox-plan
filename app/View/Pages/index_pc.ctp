@@ -1,3 +1,4 @@
+<?php echo $this->Html->script('hoge', array('inline' => false)); ?>
 <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -11,11 +12,11 @@
         <div class="thumb-wrapper" style="margin:20px; padding: 10px 20px; background-color:#; overflow:visible; position: relative;">
             <div id="thumbNails">
                 <?php foreach ($dates_recommend as $date_recommend) { ?>
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc;">
+                <div style="width:350px height: auto; float:left; border:1px solid #ccc; word-break: break-all;">
                     <img src="img/aragaki.jpg" style="width:350px; height: auto;">
                     <table class="table">
                         <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['name']; ?></td></tr>
-                        <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['description']; ?></td></tr>
+                        <tr><td style="text-align: center; "><?php echo $date_recommend['Date']['description']; ?></td></tr>
                         <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"> 渋谷</i></td></tr>
                         <tr><td style="text-align: right;">行きたい!!:<?php echo $date_recommend['Date']['favo']; ?></td></tr>
                     </table>
@@ -89,16 +90,4 @@
     </div>
     </div>
     </div>
-    </div>
-  <script>
-    $(function(){
-        var carouObj = new Object();
-        carouObj.width = 1050;
-        carouObj.items = 3;
-        carouObj.auto = 5000;
-        carouObj.prev = ".left.carousel-control";
-        carouObj.next = ".right.carousel-control";
-        $("#thumbNails").carouFredSel(carouObj);
-    });
-  </script>
-</body>
+</div>
