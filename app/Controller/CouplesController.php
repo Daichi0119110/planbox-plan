@@ -57,4 +57,7 @@ class CouplesController extends AppController {
 	public function couple_pc() {
 
 	}
+	public function couple_sp() {
+
+	}
 }
