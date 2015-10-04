@@ -35,8 +35,12 @@ $to->streaming('user', function ($status) {
         	$time->format('Y-m-d h:i:s');
 
         	$medias=$status->entities->media;
+        	$locatename=$status->place->full_name;
+        	var_dump($locatename);
+        	//$coordinates=$status->coordinates;
+        //	var_dump($status);
         //	var_dump($medias);
-        	$this->Post->AddPosts($status->text,$time,$id,$medias);
+        	$this->Post->AddPosts($status->text,$time,$id,$medias,$coordinates,$locatename);
         	//var_dump($time);
         	printf(
             	"@%s: %s\n",
