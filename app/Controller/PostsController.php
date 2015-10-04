@@ -7,7 +7,8 @@ class PostsController extends AppController {
 	{	
 		$this->autoRender = false;
 		$this->autoLayout = false;
-		$to = new TwistOAuth('dummy','dummy','dummy','dummy');
+	$to = new TwistOAuth('dummy','dummy','dummy','dummy');
+
 		 set_time_limit(0);
 		while (ob_get_level()) {
     		ob_end_clean();
@@ -26,9 +27,14 @@ $to->streaming('user', function ($status) {
         {
         	$scname=$status->user->screen_name;
         	$id=intval($this->User->isexistname($scname));
-    //    var_dump($this->User->isexistname($scname));
+    	 //   var_dump($status);
         	if($id>0)
         	{
+        	$time=new DateTime($status->created_at);
+        	$time->setTimezone(new DateTimeZone('Asia/Tokyo'));
+        	$time->format('Y-m-d h:i:s');
+        	$this->Post->AddPosts($status->text,$time,$id);
+        	//var_dump($time);
         	printf(
             	"@%s: %s\n",
             	$status->user->screen_name,

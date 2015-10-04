@@ -23,17 +23,26 @@ class Date extends AppModel {
 	}
 
 	function getRecentDate($time,$couple_id){//時間とidから可能性のあるデート返す
+		//var_dump($time);
+		$dtime=$time;
 		$status=array(
 			'order'=> 'id DESC',
 			'conditions'=>array(
-				'modified <='=>$formated,
-				'modified >='=>strtotime('1 day',$formated),
-				'couple_id'=>$myid,
+				'post_updated <='=>$dtime->format('Y-m-d H:i:s'),
+				'post_updated >='=>$dtime->modify('-1 days')->format('Y-m-d H:i:s'),
+				'couple_id'=>$couple_id,
 			)
 		);
 		$data=$this->find('first',$status);
 		if(empty($data)){
-			return -1;
+			$data=array();
+			$this->create();
+			$data['Date']=array('couple_id'=>$couple_id);
+			$this->save($data);
+
+			$status=array('order'=>'id DESC');
+			$data=$this->find('first',$status);
+			return -($data['Date']['id']);
 		}
 		else{
 			return $data['Date']['id'];
@@ -41,7 +50,15 @@ class Date extends AppModel {
 	}
 
 	function makenewDate($couple_id){
-		$data=array('Date',array('couple_id'=>$couple_id));
-		$this->User->save($data);
+		$data=array();
+		$this->create();
+		$data['Date']=array('couple_id'=>$couple_id);
+		$this->save($data);
+	}
+	function updatebyNewPost($time,$date_id)
+	{
+		$data=array();
+		$data['Date']=array('id'=>$date_id,'post_updated'=>$time->modify('+1 days')->format('Y-m-d H:i:s'));
+		$this->save($data);
 	}
 }
