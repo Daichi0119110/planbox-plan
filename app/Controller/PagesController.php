@@ -1,80 +1,28 @@
 <?php
-/**
- * Static content controller.
- *
- * This file will render views from views/pages/
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.Controller
- * @since         CakePHP(tm) v 0.2.9
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
 
 App::uses('AppController', 'Controller');
 
-/**
- * Static content controller
- *
- * Override this controller by placing a copy in controllers directory of an application
- *
- * @package       app.Controller
- * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
- */
 class PagesController extends AppController {
-
-/**
- * This controller does not use a model
- *
- * @var array
- */
 	public $uses = array('Date', 'Follow','Favorite','Post','User');
 
-/**
- * Displays a view
- *
- * @return void
- * @throws NotFoundException When the view file could not be found
- *	or MissingViewException in debug mode.
- */
-	public function display() {
-		$path = func_get_args();
+	public function index(){
+		$this->autoRender = false;
+		$this->autoLayout = false;
 
-		$count = count($path);
-		if (!$count) {
-			return $this->redirect('/');
-		}
-		$page = $subpage = $title_for_layout = null;
-
-		if (!empty($path[0])) {
-			$page = $path[0];
-		}
-		if (!empty($path[1])) {
-			$subpage = $path[1];
-		}
-		if (!empty($path[$count - 1])) {
-			$title_for_layout = Inflector::humanize($path[$count - 1]);
-		}
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-
-		try {
-			$this->render(implode('/', $path));
-		} catch (MissingViewException $e) {
-			if (Configure::read('debug')) {
-				throw $e;
-			}
-			throw new NotFoundException();
+		// スマホかPCを判別して振り分け
+		$ua = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
+			// スマホだったら
+			$this->redirect(array('action' => 'index_sp'));
+			exit();
+		} else {
+			// PCだったら
+			$this->redirect(array('action' => 'index_pc'));
+			exit();
 		}
 	}
 
-	public function home(){
+	public function index_pc(){
 		// フィード
 		$dates_follow = $this->Date->getdatesfromcouple($this->Follow->getcoupleids(1));
 
@@ -109,6 +57,42 @@ class PagesController extends AppController {
 			$ranking_dates[$i]['Date']['favo'] = $this->Favorite->getnumber($ranking_dates[$i]['Date']['id']);
 		}
 		$this->set('ranking_dates', $ranking_dates);
+	}
 
+		public function index_sp(){
+		// フィード
+		$dates_follow = $this->Date->getdatesfromcouple($this->Follow->getcoupleids(1));
+
+		// いいね数の取得
+		for ($i=0; $i < count($dates_follow); $i++) { 
+			$dates_follow[$i]['Date']['favo'] = $this->Favorite->getnumber($dates_follow[$i]['Date']['id']);
+		}
+		$this->set('dates_follow', $dates_follow);
+
+		// おすすめ
+		$couple_ids = $this->Follow->getcoupleids(1);
+		$user_ids = $this->User->getuseridfromcoupleids($couple_ids);
+		$date_ids_recommend = $this->Favorite->getfavodateid($user_ids);
+		$dates_recommend = $this->Date->getdate($date_ids_recommend);
+
+		// いいね数の取得
+		for ($i=0; $i < count($dates_recommend); $i++) { 
+			$dates_recommend[$i]['Date']['favo'] = $this->Favorite->getnumber($dates_recommend[$i]['Date']['id']);
+		}
+		$this->set('dates_recommend', $dates_recommend);
+
+		// ランキング
+		$date_ids = $this->Date->getalldateids();
+		$ranking_date_id = array();
+		foreach ($date_ids as $date_id) {
+			$ranking_date_id += array($date_id => $this->Favorite->getfavonumber($date_id));
+		}
+		arsort($ranking_date_id);
+		$ranking_dates = $this->Date->getdate(array_keys($ranking_date_id));
+		// いいね数の取得
+		for ($i=0; $i < count($ranking_dates); $i++) { 
+			$ranking_dates[$i]['Date']['favo'] = $this->Favorite->getnumber($ranking_dates[$i]['Date']['id']);
+		}
+		$this->set('ranking_dates', $ranking_dates);
 	}
 }

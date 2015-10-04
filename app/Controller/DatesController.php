@@ -5,10 +5,32 @@ class DatesController extends AppController {
 	public $uses = array('Date', 'Follow','Favorite','Post');
 	
 	public function favorite($user_id) {
+		$this->autoRender = false;
+		$this->autoLayout = false;
+
+		// スマホかPCを判別して振り分け
+		$ua = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
+			// スマホだったら
+			$this->redirect(array('action' => 'favorite_sp'));
+			exit();
+		} else {
+			// PCだったら
+			$this->redirect(array('action' => 'favorite_pc'));
+			exit();
+		}
+	}
+
+	public function favorite_pc(){
 		$user_id = 1; //最終的に削除
 		$couple_ids = $this->Follow->getcoupleids($user_id);
 		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
 	}
+
+	public function favorite_sp(){
+
+	}
+
 	// 削除してOK
 	public function index($id = null) {
 		// デートプランの取得
@@ -23,6 +45,27 @@ class DatesController extends AppController {
 	}
 
 	public function search(){
+		$this->autoRender = false;
+		$this->autoLayout = false;
+
+		// スマホかPCを判別して振り分け
+		$ua = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
+			// スマホだったら
+			$this->redirect(array('action' => 'search_sp'));
+			exit();
+		} else {
+			// PCだったら
+			$this->redirect(array('action' => 'search_pc'));
+			exit();
+		}
+	}
+
+	public function search_pc(){
+
+	}
+
+	public function search_sp(){
 
 	}
 

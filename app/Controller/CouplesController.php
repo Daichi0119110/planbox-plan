@@ -3,15 +3,60 @@
 class CouplesController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses=array('Couple','Date');
+
 	public function couple($id) {
-		
+		$this->autoRender = false;
+		$this->autoLayout = false;
+
+		// スマホかPCを判別して振り分け
+		$ua = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
+			// スマホだったら
+			$this->redirect(array('action' => 'couple_sp'));
+			exit();
+		} else {
+			// PCだったら
+			$this->redirect(array('action' => 'couple_pc'));
+			exit();
+		}
+	}
+
+	public function couple_pc(){
 		//$this->set('couples', $this->Couple->find('all'));
 		$this->set('couples',$this->Couple->getcouple($id));
 		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
 	}
 
+	public function couple_sp(){
+		//$this->set('couples', $this->Couple->find('all'));
+		$this->set('couples',$this->Couple->getcouple($id));
+		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
+	}
+	
 	public function mypage($id) {
-		
+		$this->autoRender = false;
+		$this->autoLayout = false;
+
+		// スマホかPCを判別して振り分け
+		$ua = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
+			// スマホだったら
+			$this->redirect(array('action' => 'mypage_sp'));
+			exit();
+		} else {
+			// PCだったら
+			$this->redirect(array('action' => 'mypage_pc'));
+			exit();
+		}
+	}
+
+	public function mypage_pc(){
+		//$this->set('couples', $this->Couple->find('all'));
+		$this->set('couples',$this->Couple->getcouple($id));
+		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
+	}
+
+	public function mypage_sp(){
 		//$this->set('couples', $this->Couple->find('all'));
 		$this->set('couples',$this->Couple->getcouple($id));
 		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
