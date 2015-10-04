@@ -45,15 +45,14 @@
 
       <!--デート全体説明-->
       <div style="border:1px solid #ccc;">
-        <h2 style="text-align:center;">渋谷デート</h2>
+        <h2 style="text-align:center;"><?php echo $date[0]['Date']['name']; ?></h2>
         <div class="row">
           <div class="col-sm-5">
             <h3 style="text-align:center">デートスケジュール</h3>
+            <?php foreach ($posts as $post) { ?>
             <table class="table table-hover">
-              <tr><td style="width:200px;height:40px;"><a href="#tweet1" class="fa fa-clock-o" style="display:block;width:100%;height:100%;">10月10日11:15</a></td><td style="width:250px;height:40px;"><a href="#tweet1" class="fa fa-map-marker" style="display:block;width:100%;height:100%;">渋谷駅ハチ公口</a></td></tr><!--ページ内リンクを貼り付け-->
-              <tr><td style="width:200px;height:40px;"><a href="#tweet2" class="fa fa-clock-o" style="display:block;width:100%;height:100%;">10月10日12:35</a></td><td style="width:250px;height:40px;"><a href="#tweet2" class="fa fa-map-marker" style="display:block;width:100%;height:100%;">スターバックスコーヒー</a></td></tr><!--ページ内リンクを貼り付け-->
-              <tr><td style="width:200px;height:40px;"><a href="#tweet3" class="fa fa-clock-o" style="display:block;width:100%;height:100%;">10月10日14:15</a></td><td style="width:250px;height:40px;"><a href="#tweet3" class="fa fa-map-marker" style="display:block;width:100%;height:100%;">宇田川カフェ</a></td></tr><!--ページ内リンクを貼り付け-->
-              <tr><td style="width:200px;height:40px;"><a href="#tweet4" class="fa fa-clock-o" style="display:block;width:100%;height:100%;">10月10日18:23</a></td><td style="width:250px;height:40px;"><a href="#tweet4" class="fa fa-map-marker" style="display:block;width:100%;height:100%;">センター街</a></td></tr><!--ページ内リンクを貼り付け-->
+              <tr><td style="width:200px;height:40px;"><a href="#tweet1" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['created']; ?></a></td><td style="width:250px;height:40px;"><a href="#tweet1" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['location']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
+              <?php } ?>
             </table>
           </div>
           <div class="col-sm-7">
@@ -61,17 +60,17 @@
 
             <div class="row" style="margin:10px 0 10px 0;">
               <div class="col-sm-4">
-                <i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"> 渋谷</i>
+                <i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $posts[0]['Post']['location']; ?></i>
               </div>
               <div class="col-sm-5">
-                <i class="fa fa-calendar" style="font-size:16px;font-weight:bold;"> 2015年10月10日</i>
+                <i class="fa fa-calendar" style="font-size:16px;font-weight:bold;"><?php echo $date[0]['Date']['created']; ?></i>
               </div>
               <div class="col-sm-3">
-                <i class="fa fa-jpy" style="font-size:16px;font-weight:bold;"> 4000</i>
+                <i class="fa fa-jpy" style="font-size:16px;font-weight:bold;"><?php echo $date[0]['Date']['budget']; ?></i>
               </div>
             </div>
 
-            <p style="font-weight:bold;">初めての渋谷に来るカップルにおすすめのデートプランです！センター街で歩きながらThe都会の雰囲気を感じながら、宇田川カフェで一息休憩しました。本当に充実の一日でした！</p>
+            <p style="font-weight:bold;"><?php echo $date[0]['Date']['description']; ?></p>
             <a href="couple.php"><!--カップルページへのリンク-->
               <div class="row">
                 <div class="col-sm-6">
@@ -103,12 +102,13 @@
         </div>
       </div> 
       <!--デート全体説明終了--> 
-
+      <button id="button_follow" class="follow" data-couple-id="<?php echo $date[0]['Date']['couple_id']; ?>"> フォロー！</button>
       <!--デート詳細、サイドバー-->
 
       <div class="row" style="margin-top:40px;">
         <!--デート詳細-->
         <div class="col-sm-8">
+          <?php foreach ($posts as $post) { ?>
           <!--一つのツイートの塊-->
           <div class="row" style="border:1px solid #ccc;" id="tweet1">
             <div class="col-sm-6" >
@@ -117,18 +117,19 @@
               </div>
             </div>
             <div class="col-sm-6" style="position: relative; width:300px;height:200px;">
-              <p style="font-weight:bold;font-size:18px;margin-top:20px;">初めての渋谷ー！まずはもちろんハチ公に直行！噂通り人が多すぎるー！とくに外人さん多いねー。さぁ、これから渋谷散策行ってきますー！</p>
+              <p style="font-weight:bold;font-size:18px;margin-top:20px;"><?php echo $post['Post']['content']; ?></p>
               <div class="row" style="position: absolute;bottom: 10px; width:300px;">
                 <div class="col-sm-6">
-                  <i class="fa fa-clock-o" style="font-size:13px;font-weight:bold;"> 10月10日11:15</i>
+                  <i class="fa fa-clock-o" style="font-size:13px;font-weight:bold;"><?php echo $post['Post']['created']; ?></i>
                 </div>
                 <div class="col-sm-6">
-                  <i class="fa fa-map-marker" style="font-size:13px;font-weight:bold;"> 渋谷駅ハチ公口</i>
+                  <i class="fa fa-map-marker" style="font-size:13px;font-weight:bold;"><?php echo $post['Post']['location']; ?></i>
                 </div>
               </div>
             </div>
           </div>
           <!--一つのツイートの塊終了-->
+          <?php } ?>
         
 
         <!--コメントエリア開始-->
@@ -174,17 +175,19 @@
         <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
           <h4 style="text-align:center">似ているプラン</h4>
           <!--似ているプラン-->
+          <?php foreach ($dates_suggest as $date_suggest) { ?>
           <hr>
           <a href="date.php"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FF8C00; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
                 <?php echo $this->Html->image('photo1.jpg', array('alt' => 'photo1'));?>
               </div>
-              <h4 >自由が丘スイーツ満喫デート</h4>
-              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘周辺</p>
-              <p>彼女が好きなデザートを巡りに自由が丘に行ってきました！自由が丘は歩いてるだけで楽しい街です！スイーツ、雑貨巡りにおすすめです！</p>
+              <h4 ><?php echo $date_suggest['Date']['name']; ?></h4>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
+              <p><?php echo $date_suggest['Date']['description']; ?></p>
             </div>
           </a>
+          <?php } ?>
           <!--似ているプラン終了-->
 
         </div>        
@@ -196,3 +199,27 @@
     </div>
   </div>
 </div>
+<script>
+$(function() {
+  $.post('/planbox-plan/follows/ready/',
+    {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+    ,function(res){
+      if(res == 1){
+        $('#button_follow').html('登録済み');
+      }
+    }, "json");
+
+  $('button.follow').click(function(e){
+    $.post('/planbox-plan/follows/change/',
+      {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+      ,function(res){
+        if($('#button_follow').html() == "フォロー！"){
+          $('#button_follow').html('登録済み');
+        } else{
+          $('#button_follow').html('フォロー！');
+        }
+    }, "json");
+  });
+});
+</script>
+
