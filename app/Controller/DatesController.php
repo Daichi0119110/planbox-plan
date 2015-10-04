@@ -2,7 +2,7 @@
 
 class DatesController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses = array('Date', 'Follow','Favorite','Post','Photo');
+	public $uses = array('Date','Follow','Favorite','Post','Photo','User');
 	
 	public function favorite($user_id) {
 		$this->autoRender = false;
@@ -110,6 +110,13 @@ class DatesController extends AppController {
 			$posts[$i]['Post']['filename'] = $filenames;
 		}
 		$this->set('posts', $posts);
+
+		//投稿カップルの写真を取得
+		$couple_id = $this->Date->getcoupleid($date_id);
+		$users = $this->User->getuserfromcouple($couple_id);
+		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
+		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
+		$this->set('users', $users);
 	}
 
 	public function date_sp($date_id) {
@@ -127,13 +134,13 @@ class DatesController extends AppController {
 		$post_ids = $this->Post->getpostids($date_id);
 		$this->set('photos', $this->Photo->getpostallphotos($post_ids));
 		// post配列の中に写真の情報をいれる
-		foreach ($posts as $post) {
-			$a = $this->Photo->getphotos($post['Post']['id']);
+		for ($i=0; $i < count($posts); $i++) {
+			$a = $this->Photo->getphotos($posts[$i]['Post']['id']);
 			$filenames = array();
 			foreach ($a as $b) {
 				array_push($filenames, $b['Photo']['filename']);
 			}
-			$post['Post']['filename'] = $filenames;
+			$posts[$i]['Post']['filename'] = $filenames;
 		}
 		$this->set('posts', $posts);
 

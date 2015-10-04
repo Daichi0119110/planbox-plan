@@ -40,4 +40,13 @@ class Date extends AppModel {
 		}
 		return $date_ids;
 	}
+
+	function getcoupleid($date_ids){
+		$status=array(
+			'conditions'=>array('id'=>$date_ids),
+			'fields'=>array('couple_id')
+		);
+		$a = $this->find('first',$status);
+		return $a['Date']['couple_id'];
+	}
 }

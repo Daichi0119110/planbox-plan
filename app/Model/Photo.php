@@ -17,7 +17,10 @@ class Photo extends AppModel {
 				'order'=>array('modified'=> "desc"),
 				'fields'=>array('filename')
 			);
-		$photo = $this->find('first',$status);
+		$photo = $this->find('first', $status);
+		if (!$photo){
+			return null;
+		}
 		return $photo['Photo']['filename'];
 	}
 

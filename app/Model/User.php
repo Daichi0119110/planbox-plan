@@ -33,4 +33,12 @@ class User extends AppModel {
 		}
 		return $user_ids;
 	}
+
+	public function getuserfromcouple($couple_id){
+		$status=array(
+			'conditions'=>array('couple_id'=>$couple_id),
+			'order'=>array('gender')
+		);
+		return $this->find('all',$status);
+	}
 }

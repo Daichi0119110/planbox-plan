@@ -80,29 +80,21 @@ $j = 1;
             <p style="font-weight:bold;"><?php echo $date[0]['Date']['description']; ?></p>
             <a href="couple.php"><!--カップルページへのリンク-->
               <div class="row">
-                <div class="col-sm-6">
-                  <div class="row" style="position: relative;">
-                    <div class="col-sm-6 user-image">
-                      <?php echo $this->Html->image('kohei.jpg', array('alt' => 'baz'));?>
-                    </div>
-                    <div class="col-sm-6" style="position: absolute;top: 20px;left:120px;">
-                      <h4>新居航平</h4>
-                      <p>２２歳 / 学生</p>
-                    </div>
-                  </div>
-                </div>
 
+                <?php foreach ($users as $user) { ?>
                 <div class="col-sm-6">
                   <div class="row" style="position: relative;">
                     <div class="col-sm-6 user-image">
-                      <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'baz'));?>
+                      <?php echo $this->Html->image($user['User']['photo'], array('alt' => 'baz'));?>
                     </div>
                     <div class="col-sm-6" style="position: absolute;top: 20px;left:120px;">
-                      <h4>新垣結衣</h4>
-                      <p>２５歳 / 女優</p>
+                      <h4><?php echo $user['User']['name']?></h4>
+                      <p><?php echo $user['User']['age']?></p>
                     </div>
                   </div>
                 </div>
+                <?php } ?>
+
               </div>
             </a>
           </div>
