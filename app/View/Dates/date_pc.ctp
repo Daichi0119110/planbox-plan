@@ -16,28 +16,26 @@ $j = 1;
         <!-- Indicators -->
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <?php for ($i=1; $i < count($photos); $i++) { ?>
+          <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i; ?>"></li>
+          <?php } ?>
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
+          <?php for ($i=0; $i < count($photos); $i++) { ?>
+          <?php if($i == 0) {?>
           <div class="item active carousel-image" style="overflow: hidden;width:900px; height:500px;">
-            <?php echo $this->Html->image('photo1.jpg', array('alt' => 'baz'));?>
-            <div class="carousel-caption">
-            </div>
-          </div>
+          <?php } else { ?>
           <div class="item carousel-image" style="overflow: hidden;width:900px; height:500px;">
-            <?php echo $this->Html->image('photo2.jpg', array('alt' => 'baz'));?>              
+          <?php } ?>
+          <?php echo $this->Html->image($photos[$i], array('alt' => 'baz'));?>
             <div class="carousel-caption">
             </div>
           </div>
-          <div class="item carousel-image" style="overflow: hidden;width:900px; height:500px;">
-            <?php echo $this->Html->image('photo2.jpg', array('alt' => 'baz'));?>
-            <div class="carousel-caption">
-            </div>
-          </div>
+          <?php } ?>
         </div>
+
 
         <!-- Controls -->
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -122,7 +120,7 @@ $j = 1;
           <div class="row" style="border:1px solid #ccc;" id="tweet<?php echo $j; ?>">
             <div class="col-sm-6" >
               <div class="tweet-image" style="width:300px;height:200px; overflow:hidden;">
-                <?php echo $this->Html->image('photo1.jpg', array('alt' => 'baz'));?>
+                <?php echo $this->Html->image($post['Post']['filename'][0], array('alt' => 'baz'));?>
               </div>
             </div>
             <div class="col-sm-6" style="position: relative; width:300px;height:200px;">

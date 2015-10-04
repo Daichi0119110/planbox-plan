@@ -2,7 +2,7 @@
 
 class DatesController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses = array('Date', 'Follow','Favorite','Post');
+	public $uses = array('Date', 'Follow','Favorite','Post','Photo');
 	
 	public function favorite($user_id) {
 		$this->autoRender = false;
@@ -87,21 +87,58 @@ class DatesController extends AppController {
 	}
 
 	public function date_pc($date_id) {
-		$this->set('posts', $this->Post->getposts($date_id));
+		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
 
+		// 似ているデートの取得
 		$user_ids = $this->Favorite->getuserids($date_id);
 		$date_ids_suggest = $this->Favorite->getfavodateid($user_ids);
 		$this->set('dates_suggest',$this->Date->getdate($date_ids_suggest));
+
+		// カルーセル用の写真の取得
+		$post_ids = $this->Post->getpostids($date_id);
+		$this->set('photos', $this->Photo->getpostallphotos($post_ids));
+		// post配列の中に写真の情報をいれる
+		for ($i=0; $i < count($posts); $i++) {
+			$a = $this->Photo->getphotos($posts[$i]['Post']['id']);
+			$filenames = array();
+			foreach ($a as $b) {
+				array_push($filenames, $b['Photo']['filename']);
+			}
+			$posts[$i]['Post']['filename'] = $filenames;
+		}
+		$this->set('posts', $posts);
 	}
 
 	public function date_sp($date_id) {
-		$this->set('posts', $this->Post->getposts($date_id));
+		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
+
+		// 似ているデートの取得
+		$user_ids = $this->Favorite->getuserids($date_id);
+		$date_ids_suggest = $this->Favorite->getfavodateid($user_ids);
+		$this->set('dates_suggest',$this->Date->getdate($date_ids_suggest));
+
+		// カルーセル用の写真の取得
+		$post_ids = $this->Post->getpostids($date_id);
+		$this->set('photos', $this->Photo->getpostallphotos($post_ids));
+		// post配列の中に写真の情報をいれる
+		foreach ($posts as $post) {
+			$a = $this->Photo->getphotos($post['Post']['id']);
+			$filenames = array();
+			foreach ($a as $b) {
+				array_push($filenames, $b['Photo']['filename']);
+			}
+			$post['Post']['filename'] = $filenames;
+		}
+		$this->set('posts', $posts);
+
+		// 投稿カップルの写真を取得
+
 	}
 
 	// public function viewnum(){ // google analyticsを利用してview数を取る

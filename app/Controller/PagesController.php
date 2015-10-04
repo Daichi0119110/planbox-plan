@@ -3,7 +3,7 @@
 App::uses('AppController', 'Controller');
 
 class PagesController extends AppController {
-	public $uses = array('Date', 'Follow','Favorite','Post','User');
+	public $uses = array('Date','Follow','Favorite','Post','User','Photo');
 
 	public function index(){
 		$this->autoRender = false;
@@ -13,7 +13,7 @@ class PagesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect('/pages/index_sp'));
+			$this->redirect('/pages/index_sp');
 			exit();
 		} else {
 			// PCだったら
@@ -22,7 +22,8 @@ class PagesController extends AppController {
 		}
 	}
 
-	public function index_pc(){
+	public function index_pc($user_id){
+		$user_id = 1; // 一旦idを1とする
 		// フィード
 		$dates_follow = $this->Date->getdatesfromcouple($this->Follow->getcoupleids(1));
 
@@ -33,7 +34,7 @@ class PagesController extends AppController {
 		$this->set('dates_follow', $dates_follow);
 
 		// おすすめ
-		$couple_ids = $this->Follow->getcoupleids(1);
+		$couple_ids = $this->Follow->getcoupleids($user_id);
 		$user_ids = $this->User->getuseridfromcoupleids($couple_ids);
 		$date_ids_recommend = $this->Favorite->getfavodateid($user_ids);
 		$dates_recommend = $this->Date->getdate($date_ids_recommend);
@@ -59,7 +60,8 @@ class PagesController extends AppController {
 		$this->set('ranking_dates', $ranking_dates);
 	}
 
-		public function index_sp(){
+		public function index_sp($user_id){
+		$user_id = 1; // 一旦idを1とする
 		// フィード
 		$dates_follow = $this->Date->getdatesfromcouple($this->Follow->getcoupleids(1));
 
@@ -70,7 +72,7 @@ class PagesController extends AppController {
 		$this->set('dates_follow', $dates_follow);
 
 		// おすすめ
-		$couple_ids = $this->Follow->getcoupleids(1);
+		$couple_ids = $this->Follow->getcoupleids($user_id);
 		$user_ids = $this->User->getuseridfromcoupleids($couple_ids);
 		$date_ids_recommend = $this->Favorite->getfavodateid($user_ids);
 		$dates_recommend = $this->Date->getdate($date_ids_recommend);

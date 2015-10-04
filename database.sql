@@ -114,9 +114,9 @@ create table photos (
 insert into photos (post_id, user_id, filename, created, modified) values 
     (null, 2, 'kohei.jpg', now(), now()),
     (null, 5, 'aragaki.jpg', now(), now()),
-    (1, null, 'kohei.jpg', now(), now()),
-    (2, null, 'aragaki.jpg', now(), now()),
-    (3, null, 'kohei.jpg', now(), now());
+    (1, null, 'photo1.jpg', now(), now()),
+    (2, null, 'photo2.jpg', now(), now()),
+    (3, null, 'photo3.jpg', now(), now());
      
 /*countriesのテーブル作成*/
 create table favorites (
