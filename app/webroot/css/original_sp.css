@@ -1,3 +1,5 @@
+/*デート個別ページ用のCSS*/
+
 .user-image-sp img{
   width: 150px;
   height:150px;
@@ -18,4 +20,21 @@
 .comment-image-sp img{
  width: 80px;
  height: 80px;
+}
+
+
+/*カップル個別ページ用のCSS*/
+
+.user-image-top-sp img{
+  width: 130px;
+  height:130px;
+}
+
+.couple-table-sp>tbody>tr>td{
+ font-size: 10px;
+}
+
+.user-image-side-sp img{
+  width: 140px;
+  height:140px;
 }

@@ -1,4 +1,4 @@
-create database planbox character set utf8;
+﻿create database planbox character set utf8;
 
 grant all on planbox.* to dbuser@localhost identified by 'planbox';
 
@@ -57,15 +57,16 @@ create table dates (
     description varchar(255),
     budget varchar(255),
     num_view int default 0,
+    post_updated datetime default null, 
     created datetime default null,
     modified datetime default null
 );
 
 insert into dates (couple_id, name, description, budget, num_view, created, modified) values 
-    (4, "ハッカソン＠PAAK", "今からデモを披露いたします！！", "100億", 5, now(), now()),
-    (1, "渋谷デート", "晴れの日を二人で過ごしました。お金がなかったので、有名どころを回って来ました(^^)", "4000", 4, now(), now()),
-    (2, "自由が丘デート", "オシャレな街、自由が丘。カフェや雑貨屋さんを見てきました。まったりしたい方におすすめです！！", "5000", 6,now(), now()),
-    (3, "江ノ島デート", "夏ということで江ノ島に行ってきました！海に入らなくても江ノ島は楽しいですよ！", "6000", 7, now(), now());
+    (4, "ハッカソン＠PAAK", "今からデモを披露いたします！！", "100億", 5, now(), now(),now()),
+    (1, "渋谷デート", "晴れの日を二人で過ごしました。お金がなかったので、有名どころを回って来ました(^^)", "4000", 4, now(), now(),now()),
+    (2, "自由が丘デート", "オシャレな街、自由が丘。カフェや雑貨屋さんを見てきました。まったりしたい方におすすめです！！", "5000", 6,now(), now(),now()),
+    (3, "江ノ島デート", "夏ということで江ノ島に行ってきました！海に入らなくても江ノ島は楽しいですよ！", "6000", 7, now(), now(),now());
 
 /*postsのテーブル作成*/
 create table posts(
