@@ -34,3 +34,16 @@
   width: 100px;
   height:100px;
 }
+
+.table-image img{
+  width: 80px;
+  height:80px;
+}
+
+.table-image{
+  align:center;
+  valign:middle;
+}
+
+
+
