@@ -2,7 +2,7 @@
 
 class CouplesController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses=array('Couple','Date');
+	public $uses=array('Couple','Date','Post','User','Favorite','Follow','Photo');
 
 	public function couple($id) {
 		$this->autoRender = false;
@@ -21,16 +21,96 @@ class CouplesController extends AppController {
 		}
 	}
 
-	public function couple_pc($id){
-		//$this->set('couples', $this->Couple->find('all'));
-		$this->set('couples',$this->Couple->getcouple($id));
-		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
+	public function couple_pc($couple_id){
+		// カップル情報の取得
+		$this->set('couple',$this->Couple->getcouple($couple_id));
+		$users = $this->User->getuserfromcouple($couple_id);
+		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
+		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
+		$this->set('users', $users);
+
+		// カルーセル用の写真の取得
+		$date_ids = $this->Date->getdateidsfromcouple($couple_id);
+		$post_ids = $this->Post->getpostids($date_ids);
+		$this->set('photos', $this->Photo->getpostallphotos($post_ids));
+
+		// デートの情報の取得
+		$dates = $this->Date->getdatesfromcouple($couple_id);
+		for ($i=0; $i < count($dates); $i++) {
+			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']); // いいね数の取得
+			$dates[$i]['Date']['location'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
+
+			// 写真の読み込み
+			$posts = $this->Post->getpostids($dates[$i]['Date']['id']);
+			$photos = $this->Photo->getpostallphotos($posts);
+			if(!$photos){
+				$dates[$i]['Date']['photo'] = null;
+				continue;
+			}
+			$dates[$i]['Date']['photo'] = $photos[0];
+		}
+		$this->set('dates', $dates);
+
+		// フォローしているカップルの取得
+		$user_ids = array($users[0]['User']['id'], $users[1]['User']['id']);
+		$couple_ids = $this->Follow->getcoupleids($user_ids);
+		$couples = $this->Couple->getcouple($couple_ids);
+		for($i=0; $i < count($couples); $i++){
+			$users_follow = $this->User->getuserfromcouple($couples[$i]['Couple']['id']);
+			$a = array();
+			for ($j=0; $j < 2; $j++) { 
+				$users_follow[$j]['User']['photo'] = $this->Photo->getuserphoto($users_follow[$j]['User']['id']);
+				$couples[$i]['Couple']['user'][$j] = $users_follow[$j]['User'];
+				$couples[$i]['Couple']['user'][$j]['photo'] = $this->Photo->getuserphoto($couples[$i]['Couple']['user'][$j]['id']);
+			}
+		}
+		$this->set('couples', $couples);
 	}
 
-	public function couple_sp($id){
-		//$this->set('couples', $this->Couple->find('all'));
-		$this->set('couples',$this->Couple->getcouple($id));
-		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
+	public function couple_sp($couple_id){
+		// カップル情報の取得
+		$this->set('couple',$this->Couple->getcouple($couple_id));
+		$users = $this->User->getuserfromcouple($couple_id);
+		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
+		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
+		$this->set('users', $users);
+
+		// カルーセル用の写真の取得
+		$date_ids = $this->Date->getdateidsfromcouple($couple_id);
+		$post_ids = $this->Post->getpostids($date_ids);
+		$this->set('photos', $this->Photo->getpostallphotos($post_ids));
+
+		// デートの情報の取得
+		$dates = $this->Date->getdatesfromcouple($couple_id);
+		for ($i=0; $i < count($dates); $i++) {
+			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']); // いいね数の取得
+			$dates[$i]['Date']['location'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
+
+			// 写真の読み込み
+			$posts = $this->Post->getpostids($dates[$i]['Date']['id']);
+			$photos = $this->Photo->getpostallphotos($posts);
+			if(!$photos){
+				$dates[$i]['Date']['photo'] = null;
+				continue;
+			}
+			$dates[$i]['Date']['photo'] = $photos[0];
+		}
+		$this->set('dates', $dates);
+
+		// フォローしているカップルの取得
+		$user_ids = array($users[0]['User']['id'], $users[1]['User']['id']);
+		$couple_ids = $this->Follow->getcoupleids($user_ids);
+		$couples = $this->Couple->getcouple($couple_ids);
+		for($i=0; $i < count($couples); $i++){
+			$users_follow = $this->User->getuserfromcouple($couples[$i]['Couple']['id']);
+			$a = array();
+			for ($j=0; $j < 2; $j++) { 
+				$users_follow[$j]['User']['photo'] = $this->Photo->getuserphoto($users_follow[$j]['User']['id']);
+				$couples[$i]['Couple']['user'][$j] = $users_follow[$j]['User'];
+				$couples[$i]['Couple']['user'][$j]['photo'] = $this->Photo->getuserphoto($couples[$i]['Couple']['user'][$j]['id']);
+			}
+		}
+		$this->set('couples', $couples);
 	}
 	
 	public function mypage($id) {
