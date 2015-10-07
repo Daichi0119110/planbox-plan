@@ -24,4 +24,11 @@ class Couple extends AppModel {
 		$data=$this->find('first',$status);
 		return $data['Couple']['id'];
 	}
+
+	function makecouple($male_id,$female_id){
+		$this->create();
+		$data=array();
+		$data['Couple']=array('male_id'=>$male_id,'female_id'=>$female_id);
+		$this->save($data);
+	}
 }
