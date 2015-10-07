@@ -1,6 +1,3 @@
-<style>
-
-</style>
 <?php 
 $i = 1;
 $j = 1;
@@ -89,7 +86,7 @@ $j = 1;
                     </div>
                     <div class="col-sm-6" style="position: absolute;top: 20px;left:120px;">
                       <h4><?php echo $user['User']['name']?></h4>
-                      <p><?php echo $user['User']['age']?></p>
+                      <p><?php echo $user['User']['age']?>歳</p>
                     </div>
                   </div>
                 </div>
@@ -198,7 +195,7 @@ $j = 1;
 
     </div>
   </div>
-</div>
+  </div>
 <script>
 $(function() {
   $.post('/planbox-plan/follows/ready/',
