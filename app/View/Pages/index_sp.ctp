@@ -72,19 +72,15 @@
         <article>
             <a href="">
                 <div class="row">
-                    <div class="col-sm-5">
-                        <div class="row">
                         <div class="col-sm-6">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto">
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
                         </div>
                         <div class="col-sm-6">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto ">
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
                         </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-12">
                     <table class="table">
                         <tr><td colspan="3" style="text-align: center;">タイトル</td></tr>
                         <tr><td colspan="3" style="text-align: center;">内容</td></tr>
@@ -121,19 +117,15 @@
         <article>
             <a href="">
                 <div class="row">
-                    <div class="col-sm-5">
-                        <div class="row">
                         <div class="col-sm-6">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto">
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
                         </div>
                         <div class="col-sm-6">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto ">
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
                         </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-12">
                     <table class="table">
                         <tr><td colspan="3" style="text-align: center;">タイトル</td></tr>
                         <tr><td colspan="3" style="text-align: center;">内容</td></tr>
@@ -170,19 +162,15 @@
         <article>
             <a href="">
                 <div class="row">
-                    <div class="col-sm-5">
-                        <div class="row">
                         <div class="col-sm-6">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto">
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
                         </div>
                         <div class="col-sm-6">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto">
-                            <img src="img/photo2.jpg" style="float: left; width: 170px; height: auto ">
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 190px; height: auto'));?>
                         </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-12">
                     <table class="table">
                         <tr><td colspan="3" style="text-align: center;">タイトル</td></tr>
                         <tr><td colspan="3" style="text-align: center;">内容</td></tr>

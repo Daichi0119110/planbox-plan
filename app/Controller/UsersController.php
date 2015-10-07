@@ -4,6 +4,7 @@ App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
+	public $uses = array('User', 'Date', 'Photo');
 
 	public function setting($id) {
 		$this->autoRender = false;

@@ -105,37 +105,20 @@ insert into posts (date_id, content, location, created, modified) values
 /*photosのテーブル作成*/
 create table photos (
     id int not null auto_increment primary key,
-    post_id int,
+    post_id int default null,
+    user_id int default null,
     filename varchar(255),
     created datetime default null, 
     modified datetime default null
 );
 
-insert into photos (post_id, filename, created, modified) values 
-    (1, 'hikarie.jpg', now(), now()),
-    (2, 'hachiko.jpg', now(), now()),
-    (3, 'tohocinema.jpeg', now(), now()),
-    (4, 'rakutencafe_inner.jpg', now(), now()),
-    (4, 'rakutencafe_outer.jpg', now(), now()),
-    (5, 'loft.jpg', now(), now()),
-    (6, 'dinner.jpg', now(), now()),
-    (7, 'omotesando.jpg', now(), now()),
-    (8, 'j.station.jpg', now(), now()),
-    (9, 'j.starbucks.jpg', now(), now()),
-    (10, 'j.walking.jpg', now(), now()),
-    (11, 'j.deseart.jpg', now(), now()),
-    (12, 'j.store.jpg', now(), now()),
-    (13, 'j.italian.jpg', now(), now()),
-    (14, 'j.nightview.jpg', now(), now()),
-    (15, 'f.station.jpg', now(), now()),
-    (16, 'f.train.jpg', now(), now()),
-    (17, 'f.highschool.jpg', now(), now()),
-    (18, 'f.bridge.jpg', now(), now()),
-    (19, 'f.shirasu.jpg', now(), now()),
-    (20, 'f.nightview.jpg', now(), now()),
-    (21, 'f.yokohama.jpg', now(), now()),
-    (22, 'paak.png', now(), now());
-
+insert into photos (post_id, user_id, filename, created, modified) values 
+    (null, 2, 'kohei.jpg', now(), now()),
+    (null, 5, 'aragaki.jpg', now(), now()),
+    (1, null, 'photo1.jpg', now(), now()),
+    (2, null, 'photo2.jpg', now(), now()),
+    (3, null, 'photo3.jpg', now(), now());
+     
 /*countriesのテーブル作成*/
 create table favorites (
     id int not null auto_increment primary key,
