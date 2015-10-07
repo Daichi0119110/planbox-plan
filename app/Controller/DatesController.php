@@ -26,6 +26,7 @@ class DatesController extends AppController {
             'conditions' => $this->Date->parseCriteria($this->passedArgs),
         );
     $this->set('results', $this->paginate());
+    	$this->set('title', '検索ページ');
   	}
 
 	public function search_sp(){
@@ -34,6 +35,7 @@ class DatesController extends AppController {
    			'conditions' => $this->Date->parseCriteria($this->passedArgs),
         );
    	    $this->set('results', $this->paginate());
+   	    $this->set('title', '検索ページ');
 	}
   	//ここから上が検索・・・
 	public function favorite($user_id) {
@@ -56,11 +58,13 @@ class DatesController extends AppController {
 	public function favorite_pc($user_id){
 		$couple_ids = $this->Follow->getcoupleids($user_id);
 		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
+		$this->set('title', '行きたいリスト');
 	}
 
 	public function favorite_sp($user_id){
 		$couple_ids = $this->Follow->getcoupleids($user_id);
 		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
+		$this->set('title', '行きたいリスト');
 	}
 
 	// 削除してOK
