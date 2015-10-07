@@ -17,7 +17,6 @@ $j = 1;
           <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i; ?>"></li>
           <?php } ?>
         </ol>
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
           <?php for ($i=0; $i < count($photos); $i++) { ?>
@@ -30,6 +29,7 @@ $j = 1;
             <div class="carousel-caption">
             </div>
           </div>
+          <?php $i++ ?>
           <?php } ?>
         </div>
 
@@ -45,7 +45,7 @@ $j = 1;
         </a>
       </div>
       <!--写真のスライドショー終了-->
-
+<?php $i = 1;?>
       <!--デート全体説明-->
       <div style="border:1px solid #ccc;">
         <h2 style="text-align:center;"><?php echo $date[0]['Date']['name']; ?></h2>
@@ -75,7 +75,7 @@ $j = 1;
             </div>
 
             <p style="font-weight:bold;"><?php echo $date[0]['Date']['description']; ?></p>
-            <a href="couple.php"><!--カップルページへのリンク-->
+            <a href="/planbox-plan/couples/couple/<?php echo $date[0]['Date']['couple_id']; ?>"><!--カップルページへのリンク-->
               <div class="row">
 
                 <?php foreach ($users as $user) { ?>
@@ -165,16 +165,13 @@ $j = 1;
         <!--デート詳細終了-->
 
 
-
-
-
         <!--サイドバー開始-->
         <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
           <h4 style="text-align:center">似ているプラン</h4>
           <!--似ているプラン-->
           <?php foreach ($dates_suggest as $date_suggest) { ?>
           <hr>
-          <a href="date.php"><!--このデートプランに飛ぶリンク-->
+          <a href="/planbox-plan/dates/date/<?php echo $date_suggest['Date']['id']; ?>"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FF8C00; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
                 <?php echo $this->Html->image($date_suggest['Date']['photo'], array('alt' => 'photo1'));?>

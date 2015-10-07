@@ -113,7 +113,7 @@ class CouplesController extends AppController {
 		$this->set('couples', $couples);
 	}
 	
-	public function mypage($id) {
+	public function mypage($user_id) {
 		$this->autoRender = false;
 		$this->autoLayout = false;
 
@@ -121,25 +121,25 @@ class CouplesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect('/couples/mypage_sp'.$id);
+			$this->redirect('/couples/mypage_sp'.$user_id);
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect('/couples/mypage_pc'.$id);
+			$this->redirect('/couples/mypage_pc'.$user_id);
 			exit();
 		}
 	}
 
-	public function mypage_pc($id){
+	public function mypage_pc($user_id){
 		//$this->set('couples', $this->Couple->find('all'));
-		$this->set('couples',$this->Couple->getcouple($id));
-		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
+		$this->set('couples',$this->Couple->getcouple($user_id));
+		$this->set('mydate',$this->Date->getdatesfromcouple($user_id));//ここから記事の投稿数もとれる？
 	}
 
-	public function mypage_sp($id){
+	public function mypage_sp($user_id){
 		//$this->set('couples', $this->Couple->find('all'));
-		$this->set('couples',$this->Couple->getcouple($id));
-		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
+		$this->set('couples',$this->Couple->getcouple($user_id));
+		$this->set('mydate',$this->Date->getdatesfromcouple($user_id));//ここから記事の投稿数もとれる？
 	}
 
 	public function edit($id) {
