@@ -2,6 +2,7 @@
 
 class DatesController extends AppController {
 	public $helper = array('HTML', 'form');
+
 	public $uses = array('Date','Follow','Favorite','Post','Photo','User');
 	
 	public $components = array(
