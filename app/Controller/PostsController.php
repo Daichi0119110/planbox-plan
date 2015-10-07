@@ -66,6 +66,7 @@ class PostsController extends AppController {
            		}
             }
         });
+
 	}
     //　planboxというアプリ自体、そしてこの関数のインスタグラム側への登録
     //  二度と実行する必要はないよ

@@ -6,6 +6,24 @@ class Date extends AppModel {
 	public $name='Date';
 	public $useTable='dates';
 
+	public $actsAs=array('Search.Searchable');
+/*	public $filterArgs=array(
+		'name'=>array(
+			'type'=>'like'),
+		'description'=>array(
+			'type'=>'like'),
+		'state'=>array(
+			'type'=>'like'),
+		'city'=>array(
+			'type'=>'like')//カラムが追加されたらコメントアウトを外す
+	);*///全部バラバラver
+	public $filterArgs=array(//全部まとめて検索ver
+		'keyword'=>array(
+			'type'=>'like',
+			'field'=>array('name','description'))
+		//	'field'=>array('name','description','state','city'))//カラムが追加されたらこっち
+		);
+//ここから上が検索・・・
 	function getdate($id){
 		$status=array(
 			'conditions'=>
@@ -76,6 +94,28 @@ class Date extends AppModel {
 		$a = $this->find('all', $status);
 		$date_ids = array();
 		foreach ($a as $b) {
+			array_push($date_ids, $b['Date']['id']);
+		}
+		return $date_ids;
+	}
+
+	function getcoupleid($date_ids){
+		$status=array(
+			'conditions'=>array('id'=>$date_ids),
+			'fields'=>array('couple_id')
+		);
+		$a = $this->find('first',$status);
+		return $a['Date']['couple_id'];
+	}
+
+	function getdateidsfromcouple($couple_id){
+		$status=array(
+			'conditions'=>array('couple_id'=>$couple_id),
+			'fields'=>'id'
+		);
+		$a = $this->find('all',$status);
+		$date_ids = array();
+		foreach ($a as $b){
 			array_push($date_ids, $b['Date']['id']);
 		}
 		return $date_ids;

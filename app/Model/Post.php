@@ -8,7 +8,20 @@ class Post extends AppModel {
 		$status=array(
 			'conditions'=>array('date_id'=>$date_id)
 		);
-	return $this->find('all',$status);
+		return $this->find('all',$status);
+	}
+
+	function getpostids($date_id){
+		$status=array(
+			'conditions'=>array('date_id'=>$date_id),
+			'fields'=>array('id')
+		);
+		$a = $this->find('all',$status);
+		$post_ids = array();
+		foreach ($a as $b) {
+			array_push($post_ids, $b['Post']['id']);
+		}
+		return $post_ids;
 	}
 
 	function AddPosts($text,$time,$user_id,$medias,$coordinates,$locatename){
@@ -89,6 +102,16 @@ class Post extends AppModel {
 		$data=$this->find('first',$status);
 		return $data['Post']['id'];
 	}
+
+	function getlocation($date_id){
+		$status=array(
+			'conditions'=>array('date_id'=>$date_id),
+			'fields'=>array('location')
+		);
+		$a = $this->find('first',$status);
+		return $a['Post']['location'];
+	}
+
 	function Getfromcoordinates($coordinates)//緯度経度から取得。今は使わず。(正確な住所まで求められるので、きちんとやれば施設名まで求められると思います。)
 	{
 		var_dump($coordinates);
