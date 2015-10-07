@@ -1,3 +1,4 @@
+<?php echo $this->Html->script('hoge', array('inline' => false)); ?>
 <div class="container">
 
   <!--写真スライドショー、カップル情報開始-->
@@ -182,7 +183,16 @@
 <!--フォローしているカップル（サイドバー)開始-->
 <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
   <h4 style="text-align:center">フォローしているカップル一覧</h4>
+  <p class="tabs">
+          <a href="#tab1" class="tab1" onclick="ChangeTab('tab1'); return false;">カップル</a>
+          <a href="#tab2" class="tab2" onclick="ChangeTab('tab2'); return false;">自分</a>
+          <a href="#tab3" class="tab3" onclick="ChangeTab('tab3'); return false;">相手</a>
+  </p>
+  
+  <!--カップル二人のフォローが見える開始-->
+  <div id="tab1" class="tab">      
   <!--フォローしているカップルの一つの塊開始-->
+  <h5>二人のフォロー一覧</h5>
   <hr>
   <a href="couple.php"><!--このカップルに飛ぶリンク-->
     <div style="background-color:#FFFFCC; padding:5px;">
@@ -203,10 +213,73 @@
         <td style="width:;height:;">渋谷、表参道、お台場</td>
       </tr>      
     </table>
-
   </div>
-</a>
+　</a>
 <!--フォローしているカップルの一つの塊終了-->
+  </div>
+  <!--カップル二人のフォローが見える終了-->
+
+
+    <!--自分のフォローが見える開始-->
+  <div id="tab2" class="tab">      
+  <!--フォローしているカップルの一つの塊開始-->
+  <h5>自分のフォロー一覧</h5>
+  <hr>
+  <a href="couple.php"><!--このカップルに飛ぶリンク-->
+    <div style="background-color:#FFFFCC; padding:5px;">
+      <div class="user-image-side" style="overflow:hidden; width:100%; height:100px;">
+        <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei'));?>
+        <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'aragaki'));?>
+
+      </div>
+      <h4 class="fa fa-heart-o" style="font-size:13px;font-weight:bold;text-align:center;">新居航平(22歳)/新垣結衣(25歳)カップル</h4>
+
+      <table class="table table-hover table-bordered">
+       <tr>
+        <td style="width:;height:;">付き合い歴</td>
+        <td style="width:;height:;">１年２ヶ月</td>
+      </tr>
+      <tr>
+        <td style="width:;height:;">よく行くデート先</td>
+        <td style="width:;height:;">渋谷、表参道、お台場</td>
+      </tr>      
+    </table>
+  </div>
+　</a>
+<!--フォローしているカップルの一つの塊終了-->
+  </div>
+  <!--自分のフォローが見える終了-->
+  
+  <!--相手のフォローが見える開始-->
+  <div id="tab3" class="tab">      
+  <!--フォローしているカップルの一つの塊開始-->
+  <h5>相手のフォロー一覧</h5>
+  <hr>
+  <a href="couple.php"><!--このカップルに飛ぶリンク-->
+    <div style="background-color:#FFFFCC; padding:5px;">
+      <div class="user-image-side" style="overflow:hidden; width:100%; height:100px;">
+        <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei'));?>
+        <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'aragaki'));?>
+
+      </div>
+      <h4 class="fa fa-heart-o" style="font-size:13px;font-weight:bold;text-align:center;">新居航平(22歳)/新垣結衣(25歳)カップル</h4>
+
+      <table class="table table-hover table-bordered">
+       <tr>
+        <td style="width:;height:;">付き合い歴</td>
+        <td style="width:;height:;">１年２ヶ月</td>
+      </tr>
+      <tr>
+        <td style="width:;height:;">よく行くデート先</td>
+        <td style="width:;height:;">渋谷、表参道、お台場</td>
+      </tr>      
+    </table>
+  </div>
+　</a>
+<!--フォローしているカップルの一つの塊終了-->
+  </div>
+  <!--カップル二人のフォローが見える終了-->
+
 
 </div>        
 
