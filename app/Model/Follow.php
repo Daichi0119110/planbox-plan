@@ -49,4 +49,16 @@ class Follow extends AppModel {
 		);
 		return $this->find('all', $status);
 	}
+
+	function getnumber($couple_id){
+		$status=array(
+			'conditions'=>array(
+				'AND'=>array(
+					'couple_id'=>$couple_id,
+					'fav_flg'=>1
+				)
+			),
+		);
+	return $this->find('count',$status);
+	}
 }

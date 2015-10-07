@@ -98,7 +98,7 @@ $j = 1;
         </div>
       </div> 
       <!--デート全体説明終了--> 
-      <button id="button_follow" class="follow" data-couple-id="<?php echo $date[0]['Date']['couple_id']; ?>"> フォロー！</button>
+
       <!--デート詳細、サイドバー-->
 
       <div class="row" style="margin-top:40px;">
@@ -197,26 +197,58 @@ $j = 1;
   </div>
 </div>
 
-<?php echo $this->element('footer'); ?>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <ol class="nav navbar-nav list-inline">
+      <li style="margin: 0 50px 0 400px;"><button id="button_favo" type="button" class="btn btn-warning btn-lg" data-date-id="<?php echo $date[0]['Date']['id']; ?>" data-user-id="">行きたい！</button></li>
+      <li style="margin: 0 200px 0 0;"><span id="favo_num"><?php echo $favo;?></span>人が行きたい<br>と言っています</li>
+      <li  style="margin: 0 50px 0 0;"><button id="button_follow" type="button" class="btn btn-warning btn-lg" data-couple-id="<?php echo $date[0]['Date']['couple_id']; ?>" data-user-id="">フォロー！</button></li>
+      <li style="margin: 0 200px 0 0;"><span id="follow_num"><?php echo $follow;?></span>人がフォロー<br>しています</li>
+
+    </ol>
+</nav>
+
 <script>
 $(function() {
-  $.post('/planbox-plan/follows/ready/',
+  $.post('/planbox-plan/follows/ready_date/',
     {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
     ,function(res){
       if(res == 1){
-        $('#button_follow').html('登録済み');
+        $('#button_follow').html('フォロー済！');
+      }
+    }, "json");
+  $.post('/planbox-plan/favorites/ready_date/',
+    {'user_id':1, 'date_id':$('#button_favo').data('date-id')}
+    ,function(res){
+      if(res == 1){
+        $('#button_favo').html('Planbox済！');
       }
     }, "json");
 
-  $('button.follow').click(function(e){
-    $.post('/planbox-plan/follows/change/',
+  // フォローボタン押したら
+  $('#button_follow').click(function(e){
+    $.post('/planbox-plan/follows/change_date/',
       {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
       ,function(res){
         if($('#button_follow').html() == "フォロー！"){
-          $('#button_follow').html('登録済み');
+          $('#button_follow').html('フォロー済');
         } else{
           $('#button_follow').html('フォロー！');
         }
+        $('#follow_num').html(res.follow);
+    }, "json");
+  });
+
+  // 行きたいボタン押したら
+  $('#button_favo').click(function(e){
+    $.post('/planbox-plan/favorites/change_date/',
+      {'date_id':$('#button_favo').data('date-id'), 'user_id':1}
+      ,function(res){
+        if($('#button_favo').html() == "行きたい！"){
+          $('#button_favo').html('Planbox済！');
+        } else{
+          $('#button_favo').html('行きたい！');
+        }
+        $('#favo_num').html(res.favo);
     }, "json");
   });
 });

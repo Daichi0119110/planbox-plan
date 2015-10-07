@@ -100,8 +100,8 @@
 
                             </td>
                             <td>
-                                <?php echo $date_follow['Date']['user'][0]['name']; ?> (<?php echo $date_follow['Date']['user'][0]['age']; ?>歳 / 学生)<br>
-                                <?php echo $date_follow['Date']['user'][1]['name']; ?> (<?php echo $date_follow['Date']['user'][1]['age']; ?>歳 / 社会人)
+                                <?php echo $date_follow['Date']['user'][0]['name']; ?> (<?php echo $date_follow['Date']['user'][0]['age']; ?>歳)<br>
+                                <?php echo $date_follow['Date']['user'][1]['name']; ?> (<?php echo $date_follow['Date']['user'][1]['age']; ?>歳)
                             <td>
                         </tr>
                         <tr><td></td><td><?php echo $date_follow['Date']['num_view']; ?>View</td><td style="text-align: right;">行きたい!!:<?php echo $date_follow['Date']['favo']; ?></td></tr>

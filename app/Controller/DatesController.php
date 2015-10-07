@@ -91,6 +91,8 @@ class DatesController extends AppController {
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
+		$couple_id = $this->Date->getcoupleid($date_id);
+		$this->set('follow', $this->Follow->getnumber($couple_id));
 
 		// 似ているデートの取得
 		$user_ids = $this->Favorite->getuserids($date_id);
@@ -127,7 +129,6 @@ class DatesController extends AppController {
 		$this->set('posts', $posts);
 
 		//投稿カップルの写真を取得
-		$couple_id = $this->Date->getcoupleid($date_id);
 		$users = $this->User->getuserfromcouple($couple_id);
 		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
 		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
@@ -139,6 +140,8 @@ class DatesController extends AppController {
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
+		$couple_id = $this->Date->getcoupleid($date_id);
+		$this->set('follow', $this->Follow->getnumber($couple_id));
 
 		// 似ているデートの取得
 		$user_ids = $this->Favorite->getuserids($date_id);
@@ -175,7 +178,6 @@ class DatesController extends AppController {
 		$this->set('posts', $posts);
 
 		//投稿カップルの写真を取得
-		$couple_id = $this->Date->getcoupleid($date_id);
 		$users = $this->User->getuserfromcouple($couple_id);
 		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
 		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
