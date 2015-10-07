@@ -53,4 +53,17 @@ class User extends AppModel {
 		);
 		return $this->find('all',$status);
 	}
+
+	public function getlover($user_id){
+		$status=array('conditions'=>array('id'=>$user_id));
+		$data=$this->find('first',$status);
+		$status=array(
+			'conditions'=>array(
+				'couple_id'=>$data['User']['couple_id'],
+				'id !='=>$user_id
+			)
+		);
+		$user=$this->find('first',$status);
+		return $user;
+	}
 }

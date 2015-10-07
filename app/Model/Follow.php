@@ -42,4 +42,11 @@ class Follow extends AppModel {
 		}
 		return true;
 	}
+
+	function getcouples($user_id){
+		$status=array(
+			'conditions'=>array('user_id'=>$user_id, 'fav_flg'=>1)
+		);
+		return $this->find('all', $status);
+	}
 }

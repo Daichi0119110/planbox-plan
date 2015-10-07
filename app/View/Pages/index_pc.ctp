@@ -67,9 +67,11 @@
       <a href="#tab3" class="tab3" onclick="ChangeTab('tab3'); return false;">相手</a>
    </p>
     <div class="col-sm-8">
-    <div id="tab1" class="tab">
+    <!-- タブ開始 -->
+    <?php for ($i=1; $i < 4; $i++) { ?>
+    <div id="tab<?php echo $i; ?>" class="tab">
     <div class="follow-list" style="border:1px solid #ccc;">
-        <?php foreach($dates_follow as $date_follow) { ?>
+        <?php foreach($dates_follow[$i] as $date_follow) { ?>
         <article>
             <a href="">
                 <div class="row">
@@ -90,19 +92,19 @@
                         <tr><!--４行目：カップルの一人目-->
 
                             <td class="table-image"><!--写真-->
-                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei'));?>
+                            <?php echo $this->Html->image($date_follow['Date']['user'][0]['photo'], array('alt' => $date_follow['Date']['user'][0]['name']));?>
 
                           </td>
                               <td class="table-image"><!--写真-->
-                            <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'kohei'));?>
+                            <?php echo $this->Html->image($date_follow['Date']['user'][1]['photo'], array('alt' => $date_follow['Date']['user'][1]['name']));?>
 
                             </td>
                             <td>
-                                新居航平 (２２歳 / 学生)<br>
-                                新垣結衣 (２５歳 / 社会人)
+                                <?php echo $date_follow['Date']['user'][0]['name']; ?> (<?php echo $date_follow['Date']['user'][0]['age']; ?>歳 / 学生)<br>
+                                <?php echo $date_follow['Date']['user'][1]['name']; ?> (<?php echo $date_follow['Date']['user'][1]['age']; ?>歳 / 社会人)
                             <td>
                         </tr>
-                        <tr><td></td><td>1023View</td><td style="text-align: right;">行きたい!!:<?php echo $date_follow['Date']['favo']; ?></td></tr>
+                        <tr><td></td><td><?php echo $date_follow['Date']['num_view']; ?>View</td><td style="text-align: right;">行きたい!!:<?php echo $date_follow['Date']['favo']; ?></td></tr>
                     </table>
                     </div>
                 </div>
@@ -111,104 +113,9 @@
         <?php } ?>
     </div>
     </div>
-    <div id="tab2" class="tab">
-    <div class="follow-list" style="border:1px solid #ccc;">
-        <article>
-            <a href="">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="row">
-                        <div class="col-sm-6">
-                            <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                            <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                        </div>
-                        <div class="col-sm-6">
-                                <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                               <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto ">
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                    <table class="table">
-                        <tr><td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;">タイトル</td></tr>
-                        <tr><td colspan="3" style="text-align: center;">内容が無いよう</td></tr>
-                        <tr><!--３行目:デートの場所、日時、予算-->
-                            <td style="text-align:center;" class="fa fa-map-marker">渋谷</td>
-                            <td style="text-align:center;" class="fa fa-jpy">4000</td>
-                            <td style="text-align:center;" class="fa fa-calendar">2015年10月9日</td>
-                        </tr>
-                        <tr><!--４行目：カップルの一人目-->
+    <?php } ?>
+<!-- タブ終了 -->
 
-                            <td class="table-image"><!--写真-->
-                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei'));?>
-
-                          </td>
-                              <td class="table-image"><!--写真-->
-                            <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'kohei'));?>
-
-                            </td>
-                            <td>
-                                新居航平 (２２歳 / 学生)<br>
-                                新垣結衣 (２５歳 / 社会人)
-                            <td>
-                        </tr>
-                        <tr><td></td><td>1023View</td><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                    </div>
-                </div>
-            </a>
-        </article>
-    </div>
-    </div>
-    <div id="tab3" class="tab">
-    <div class="follow-list" style="border:1px solid #ccc;">
-        <article>
-            <a href="">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="row">
-                        <div class="col-sm-6">
-                            <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                            <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                        </div>
-                        <div class="col-sm-6">
-                                <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                               <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto ">
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                    <table class="table">
-                        <tr><td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;">タイトル</td></tr>
-                        <tr><td colspan="3" style="text-align: center;">内容が無いよう</td></tr>
-                        <tr><!--３行目:デートの場所、日時、予算-->
-                            <td style="text-align:center;" class="fa fa-map-marker">渋谷</td>
-                            <td style="text-align:center;" class="fa fa-jpy">4000</td>
-                            <td style="text-align:center;" class="fa fa-calendar">2015年10月9日</td>
-                        </tr>
-                        <tr><!--４行目：カップルの一人目-->
-
-                            <td class="table-image"><!--写真-->
-                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei'));?>
-
-                          </td>
-                              <td class="table-image"><!--写真-->
-                            <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'kohei'));?>
-
-                            </td>
-                            <td>
-                                新居航平 (２２歳 / 学生)<br>
-                                新垣結衣 (２５歳 / 社会人)
-                            <td>
-                        </tr>
-                        <tr><td></td><td>1023View</td><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                    </div>
-                </div>
-            </a>
-        </article>
-    </div>
-    </div>
     </div>
 </div>
 <!-- フォローしているリスト終了-->
@@ -216,62 +123,25 @@
 <!--サイドバー開始-->
         <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
           <h4 style="text-align:center">今週のデートランキング</h4>
+          <?php $i = 1; ?>
+          <?php foreach ($ranking_dates as $ranking_date) { ?>
           <!--ランキングプラン-->
           <hr>
-          <h4 style="font-style: italic;">１位</h4>
+          <h4 style="font-style: italic;"><?php echo $i; ?>位</h4>
           <a href="date.php"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FFDAB9; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
-                <img src="img/photo2.jpg">
+                <img src="<?php echo $ranking_date['Date']['photo']; ?>">
               </div>
-              <h4 >デートの名前</h4>
-              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
-              <p>渋谷</p>
+              <h4 ><?php echo $ranking_date['Date']['name']; ?></h4>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $ranking_date['Date']['location']; ?></p>
+              <p><?php echo $ranking_date['Date']['favo']; ?>行きたい！</p>
             </div>
           </a>
-          <!--ランキングプラン終了-->
           <hr>
-          <!--ランキングプラン-->
-          <h4 style="font-style: italic;">２位</h4>
-          <a href="date.php"><!--このデートプランに飛ぶリンク-->
-            <div style="background-color:#FFDAB9; padding:5px;">
-              <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
-                <img src="img/photo2.jpg">
-              </div>
-              <h4 >デートの名前</h4>
-              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
-              <p>渋谷</p>
-            </div>
-          </a>
           <!--ランキングプラン終了-->
-          <hr>
-          <!--ランキングプラン-->
-          <h4 style="font-style: italic;">３位</h4>
-          <a href="date.php"><!--このデートプランに飛ぶリンク-->
-            <div style="background-color:#FFDAB9; padding:5px;">
-              <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
-                <img src="img/photo2.jpg">
-              </div>
-              <h4 >デートの名前</h4>
-              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
-              <p>渋谷</p>
-            </div>
-          </a>
-          <!--ランキングプラン終了-->
-          <hr>
-          <h4 style="font-style: italic;">４位</h4>
-          <a href="date.php"><!--このデートプランに飛ぶリンク-->
-            <div style="background-color:#FFDAB9; padding:5px;">
-              <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
-                <img src="img/photo2.jpg">
-              </div>
-              <h4 >デートの名前</h4>
-              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
-              <p>渋谷</p>
-            </div>
-          </a>
-          <!--ランキングプラン終了-->
-
+          <?php $i=$i+1 ;?>
+          <?php } ?>
         </div>        
         <!--サイドバー終了-->
 </div>

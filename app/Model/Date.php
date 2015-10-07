@@ -89,4 +89,17 @@ class Date extends AppModel {
 		$a = $this->find('first',$status);
 		return $a['Date']['couple_id'];
 	}
+
+	function getdateidsfromcouple($couple_id){
+		$status=array(
+			'conditions'=>array('couple_id'=>$couple_id),
+			'fields'=>'id'
+		);
+		$a = $this->find('all',$status);
+		$date_ids = array();
+		foreach ($a as $b){
+			array_push($date_ids, $b['Date']['id']);
+		}
+		return $date_ids;
+	}
 }
