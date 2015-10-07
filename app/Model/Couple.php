@@ -12,4 +12,16 @@ class Couple extends AppModel {
 		);
 	return $this->find('all',$status);
 	}
+
+	function getcidfromuid($user_id){
+		$status=array(
+			'conditions'=>array(
+				'OR'=>array(
+					'male_id'=>$user_id,
+					'female_id'=>$user_id,
+					))
+			);
+		$data=$this->find('first',$status);
+		return $data['Couple']['id'];
+	}
 }

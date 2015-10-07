@@ -11,9 +11,10 @@
  
     <!-- Bootstrap -->
   <?php echo $this->Html->css('bootstrap.min'); ?>
-  <?php echo $this->Html->css('original_pc'); ?>
-  <?php echo $this->Html->css('original_sp'); ?>
- 
+  <?php echo $this->Html->css('original_pc.css'); ?>
+  <?php echo $this->Html->css('original_sp.css'); ?>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
   <!-- Le styles -->
   <style>
     body {

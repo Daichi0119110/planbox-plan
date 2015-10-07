@@ -72,8 +72,9 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'root',
+		'login' => 'dbuser',
+		'password' => 'planbox',
+
 		'database' => 'planbox',
 		'prefix' => '',
 		'encoding' => 'utf8',
