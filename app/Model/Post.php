@@ -20,40 +20,37 @@ class Post extends AppModel {
 
 		App::import('Model','Date');
 		App::import('Model','Post');
+		$locatenames=explode(" ", $locatename);//都道府県と市区町村に分割
+	//		var_dump($locatenames);
+		
 		$Date=new Date;
-		$Dateid=$Date->getRecentDate($time,$cid);
-
+		$Dateid=$Date->getRecentDate($time,$cid,$locatenames['0'],$locatenames['1']);
+		$data['Post']=array(
+ 			'date_id'=>$Dateid,
+ 			'content'=>$text,
+ 			'state'=>$locatenames['0'],
+ 			'city'=>$locatenames['1'],
+		);
  		/*	$data=array('Post',array(
  				'date_id'=>$Dateid,
  				'content'=>$text,
- 			));*/
+ 			));
+ 		*/
 	//		if($this->CheckDouble($text,$Dateid)==0){echo "3return";return;}
-			$locatenames=explode(" ", $locatename);//都道府県と市区町村に分割
-	//		var_dump($locatenames);
-			$data['Post']=array(
- 				'date_id'=>$Dateid,
- 				'content'=>$text,
- 				'state'=>$locatenames['0'],
- 				'city'=>$locatenames['1'],
- 				);
-		//	var_dump($data);
-			if($this->CheckDouble($text,$Dateid,$time)==0){echo "4return";return;}
+			
+	//		var_dump($data);
+			if($this->CheckDouble($text,$Dateid,$time)==0){return;}
 		//	$location=$this->Getfromcoordinates($coordinates);
 		//var_dump($location);
-			$this->create();
-			echo "saved!!!";
- 			$this->save($data);
- 		
+		$this->create();
+//		echo "saved!!!";
+ 		$this->save($data);
 
- 	//	echo $this->getDataSource()->getLog();
- 		//	var_dump($data);
-		echo "確認";
 		$mypostid=$this->GetRecentPostid($Dateid);
 		App::import('Model','Photo');
  			$Photo=new Photo;
- 			var_dump($medias);
+ 		//	var_dump($medias);
  			foreach ($medias as $value) {
-
  				$Photo->loadgraphs($mypostid,$value->media_url);
  			}
 
@@ -91,8 +88,8 @@ class Post extends AppModel {
 	}
 	function Getfromcoordinates($coordinates)//緯度経度から取得。今は使わず。(正確な住所まで求められるので、きちんとやれば施設名まで求められると思います。)
 	{
-		var_dump($coordinates);
-		var_dump($coordinates->coordinates['0']);
+	//	var_dump($coordinates);
+	//	var_dump($coordinates->coordinates['0']);
 		$url="http://maps.google.com/maps/api/geocode/json?latlng=".$coordinates->coordinates['1'].",".$coordinates->coordinates['0']."&sensor=false&language=jp";
 		$json=file_get_contents($url);
 		$decoded=json_decode($json, true);

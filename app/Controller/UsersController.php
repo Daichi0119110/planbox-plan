@@ -42,9 +42,12 @@ class UsersController extends AppController {
 
 	}
 
-	public function signup() {
-			if($this->request->is('post')){
+	public function signup($isinvited=0) {
+		if($this->request->is('post')){
 			$this->User->save($this->request->data);
+		}
+		if($isinvited==0){
+			
 		}
 	}
 
