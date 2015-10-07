@@ -73,14 +73,15 @@
                 <a href="">
                   <div class="row">
                     <div class="col-sm-5">
-                      <div class="row">
+                        <div class="row" style="margin-top: 60px;">
                         <div class="col-sm-6">
-                          <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                          <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 130px; height: auto'));?>
+                            <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 130px; height: auto'));?>
+                            </div>
+                        <div class="col-sm-6">
+                               <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 130px; height: auto'));?>
+                               <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei','style' => 'float: left; width: 130px; height: auto'));?>
                         </div>
-                        <div class="col-sm-6">
-                          <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto">
-                          <img src="img/photo2.jpg" style="float: left; width: 200px; height: auto ">
                         </div>
                       </div>
                     </div>
