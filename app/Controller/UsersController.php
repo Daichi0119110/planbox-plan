@@ -89,7 +89,7 @@ class UsersController extends AppController {
 		}	
 	}
 
-	public function authorizeInstagram($id){
+	public function authorize_instagram($id){
 
 		$this->User->id=$id;
 

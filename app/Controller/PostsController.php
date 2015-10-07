@@ -4,18 +4,13 @@ class PostsController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('Date', 'Couple','User','Post');
 
-    // insta 用にpostを受け取る
-    if($this->request->is('post')){
-        getInstagram();
-    }
+    // // insta 用にpostを受け取る
+    // if($this->request->is('post')){
+    //     $this->getInstagram();
+    // }
     
     // 登録時の、Instagram側の確認用アクセスを受けて対処
-    if( $_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['hub_verify_token']) && $_GET['hub_verify_token'] == $verify_token && isset($_GET['hub_challenge']) && isset($_GET['hub_mode']) && $_GET['hub_mode'] == 'subscribe' )
-    {
-        // 確認用のキーを返却する
-        echo $_GET[ 'hub_challenge' ] ;
-        exit ;
-    }
+    
 
 	public function getTweet()//とりあえずここに記述。ユーザはアクセスしない。
 	{	
@@ -70,22 +65,30 @@ class PostsController extends AppController {
 	}
     //　planboxというアプリ自体、そしてこの関数のインスタグラム側への登録
     //  二度と実行する必要はないよ
-    public function registerInstagramAPI(){
+    public function register_instagram(){
+    if($this->request->is('post')){
+
             // 設定
         $client_id = '36a31414781e4cb494cf812d233e31ad' ;       // クライアントID
         $client_secret = '0b239a81a69844dd8b900236cb21bb43' ;       // クライアントシークレット
-//        $callback_url = 'http://k0hei.science/PostsController.php' ;        // コールバックURL
+        // $callback_url = 'http://k0hei.science/PostsController.php' ;        // コールバックURL
         $callback_url = explode( '?' , ( !isset($_SERVER['HTTPS']) || empty($_SERVER['HTTPS']) ? 'http://' : 'https://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] )[0] ;      // このプログラムを設置するURL
         $verify_token = 'techlabpaak' ;     // 合い言葉となるキー
   
+        if( $_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['hub_verify_token']) && $_GET['hub_verify_token'] == $verify_token && isset($_GET['hub_challenge']) && isset($_GET['hub_mode']) && $_GET['hub_mode'] == 'subscribe' )
+        {
+            // 確認用のキーを返却する
+            echo $_GET[ 'hub_challenge' ] ;
+            exit ;
+        }
         // パラメータを連想配列形式で指定(サンプルはGeographyの場合)
         $params = array(
-            'client_id' => $client_id ,
-            'client_secret' => $client_secret ,
-            'object' => 'user' ,
-            'aspect' => 'media' ,
-            'verify_token' => $verify_token ,
-            'callback_url' => $callback_url ,
+        'client_id' => $client_id ,
+        'client_secret' => $client_secret ,
+        'object' => 'user' ,
+        'aspect' => 'media' ,
+        'verify_token' => $verify_token ,
+        'callback_url' => $callback_url ,
         ) ;
 
         // POSTリクエストを送信し、返ってきたJSONデータをオブジェクト形式に変換
@@ -97,6 +100,9 @@ class PostsController extends AppController {
                 'content' => http_build_query( $params ) ,
             )))
         ) ;
+        echo $callback_url;
+
+        echo $json;
 
         // 取得したJSONをオブジェクトに変換
         $obj = json_decode( $json ) ;
@@ -115,7 +121,7 @@ class PostsController extends AppController {
         $html .=    '<p><textarea rows="8">' . $json . '</textarea></p>' ;
         $html .=    '<h3>登録状況の確認</h3>' ;
         $html .=    '<p><a href="' . $url . '" target="_blank">' . $url . '</a></p>' ;
-
+    }
     }
 
     public function getInstagram(){
