@@ -89,9 +89,9 @@ class UsersController extends AppController {
 		}	
 	}
 
-	public function authorize_instagram($id){
+	public function authorize_instagram(){
 
-		$this->User->id=$id;
+		$id = $this->User->id;
 
 	//////////////////////////////////////////
 		// 設定
@@ -122,7 +122,6 @@ class UsersController extends AppController {
 					) ) ,
 				) ,
 			) ;
-
 			// CURLを使ってリクエスト
 			$curl = curl_init() ;
 
@@ -158,15 +157,17 @@ class UsersController extends AppController {
 			else
 			{
 				// 各データを整理
-				$user_id = $obj->user->id;		// ユーザーID
+				$insta_id = $obj->user->id;		// ユーザーID
 				$user_name = $obj->user->username ;		// ユーザーネーム
 				$access_token = $obj->access_token ;		// アクセストークン
 				
 				//　データの保存
-				// 
-				$data = array()
-
-				$this->User->save($data);
+				//登録する値
+				$data = array('User' => array('id' => $id, 'insta_id' => $insta_id, 'insta_token' => $access_token));
+				// 登録するフィールド
+				$fields = array('insta_id', 'insta_token');
+				// 更新
+				$this->User->save($data, false, $fields);
 
 				// セッション終了
 				$_SESSION = array() ;

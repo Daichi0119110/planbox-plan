@@ -4,11 +4,6 @@ class PostsController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('Date', 'Couple','User','Post');
 
-    // // insta 用にpostを受け取る
-    // if($this->request->is('post')){
-    //     $this->getInstagram();
-    // }
-    
     // 登録時の、Instagram側の確認用アクセスを受けて対処
     
 
@@ -71,8 +66,8 @@ class PostsController extends AppController {
             // 設定
         $client_id = '36a31414781e4cb494cf812d233e31ad' ;       // クライアントID
         $client_secret = '0b239a81a69844dd8b900236cb21bb43' ;       // クライアントシークレット
-        // $callback_url = 'http://k0hei.science/PostsController.php' ;        // コールバックURL
-        $callback_url = explode( '?' , ( !isset($_SERVER['HTTPS']) || empty($_SERVER['HTTPS']) ? 'http://' : 'https://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] )[0] ;      // このプログラムを設置するURL
+        $callback_url = 'http://k0hei.science/posts/get_instagram/' ;        // コールバックURL
+        // $callback_url = explode( '?' , ( !isset($_SERVER['HTTPS']) || empty($_SERVER['HTTPS']) ? 'http://' : 'https://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] )[0] ;      // このプログラムを設置するURL
         $verify_token = 'techlabpaak' ;     // 合い言葉となるキー
   
         if( $_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['hub_verify_token']) && $_GET['hub_verify_token'] == $verify_token && isset($_GET['hub_challenge']) && isset($_GET['hub_mode']) && $_GET['hub_mode'] == 'subscribe' )
@@ -124,52 +119,63 @@ class PostsController extends AppController {
     }
     }
 
-    public function getInstagram(){
+    public function get_instagram(){
 
+        if($this->request->is('post')){
 
-        // 読み込み専用のストリームにアクセスし、JSONデータを取得
-        $json = @file_get_contents( 'php://input' ) ;
+            // 読み込み専用のストリームにアクセスし、JSONデータを取得
+            $json = @file_get_contents( 'php://input' ) ;
 
-        // JSONデータをオブジェクト形式に変換
-        $obj = json_decode( $json ) ;
-        $object = $obj->object;// "user"
-        $user_id = $obj->object_id; // instaのuserid
-         // $timestamp = $obj->time;// unix timestamp形式
-        $mediaID = $obj->data->media_id; // 写真のid
+            // JSONデータをオブジェクト形式に変換
+            $obj = json_decode( $json ) ;
+            $object = $obj->object;// "user"
+            $user_id = $obj->object_id; // instaのuserid
+             // $timestamp = $obj->time;// unix timestamp形式
+            $mediaID = $obj->data->media_id; // 写真のid
 
-        if(strpos($object, "user")!==false){
+            if(strpos($object, "user")!==false){
 
-             $token = getUserToken($user_id);
+                $this->set('token',$this->User->find('first',array(
+                'conditions' => array('User.insta_id' => $user_id))
+                ));
+                $token = $this->viewVars['token'];
 
-             // 特定ユーザの投稿データ最新3件を取得する
-            $photos_api_url = 'https://api.instagram.com/v1/users/'.$user_id.'/media/recent?access_token=' . $token . "&count=3";
-            $item = json_decode(@file_get_contents($photos_api_url));
-            // タグ情報
-            $tags = ( isset($item->tags) && !empty($item->tags) ) ? '#' . implode( '、#' , (array)$contents->tags ) : '' ;
+                 // 特定ユーザの投稿データ最新3件を取得する
+                $photos_api_url = 'https://api.instagram.com/v1/users/'.$user_id.'/media/recent?access_token=' . $token . "&count=3";
+                $items = json_decode(@file_get_contents($photos_api_url));
 
-            if(strpos($tags, "planbox")!==false){
-                // 日付、整形
-                $date = $item->created_time;
-                $date = date( 'Y/m/d H:i' , $date ) ;
-                // 文章
-                $text = $item->caption->text;
-                // 場所情報
-                $location_id = ( isset($item->location->id) ) ? $item->location->id : '' ;      // 場所ID
-                $location_name = ( isset($item->location->name) ) ? $item->location->name : '' ;        // 場所名
-                $location_lat = ( isset($item->location->latitude) ) ? $item->location->latitude : '' ;     // 緯度
-                $location_long = ( isset($item->location->longitude) ) ? $item->location->longitude : '' ;      // 経度
-                // 写真
-                $photo = $item->data->images->standard_resolution->url;
-                
-                // 保存
-                $post = array();
-                $this->Post->save($data);
+                foreach ($photos_data->data as $item) {
+                    // タグ情報
+                    $tags = ( isset($item->tags) && !empty($item->tags) ) ? '#' . implode( '、#' , (array)$contents->tags ) : '' ;
+
+                    if(array_search("planbox", $tags)!==false || array_search("Planbox", $tags)!==false){
+                        // 日付、整形
+                        $date = $item->created_time;
+                        $date = date( 'Y/m/d H:i' , $date ) ;
+                        // 文章
+                        $text = $item->caption->text;
+                        // 場所情報
+                        $location_id = ( isset($item->location->id) ) ? $item->location->id : '' ;      // 場所ID
+                        $location_name = ( isset($item->location->name) ) ? $item->location->name : '' ;        // 場所名
+                        $location_lat = ( isset($item->location->latitude) ) ? $item->location->latitude : '' ;     // 緯度
+                        $location_long = ( isset($item->location->longitude) ) ? $item->location->longitude : '' ;      // 経度
+                        // 写真
+                        $photo = $item->data->images->standard_resolution->url;
+                        
+
+                        $date_id = ???
+                        // 保存
+                        $post = array('Post' => array('date_id' => $date_id, 'content' => $text, 'location' => $location_name, 'created' => $date, 'modified' => $date ));
+                        // 登録するフィールド
+                        $fields = array('date_id', 'content', 'location', 'created', 'modified');
+                        // 更新
+                        $this->Post->save($post, false, $fields);
+
+                    }
+                }
 
             }
-
         }
-
-
     }
 
 }
