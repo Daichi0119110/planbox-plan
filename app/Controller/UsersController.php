@@ -4,7 +4,7 @@ App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses = array('User', 'Date', 'Photo');
+	public $uses = array('User', 'Date','Couple','Photo');
 
 	public function setting($id) {
 		$this->autoRender = false;
@@ -43,13 +43,19 @@ class UsersController extends AppController {
 
 	}
 
-	public function signup($isinvited=0) {
+	public function signup($isinvited=null) {
 		if($this->request->is('post')){
 			$this->User->save($this->request->data);
-		}
-		if($isinvited==0){
-			
-		}
+			$myid=$this->User->isexistname($this->request->data['name']);
+			if($isinvited==null){
+				return $this->redirect(
+        			array('controller' => 'Users', 'action' => 'invite',$myid));
+			}
+			else{
+				$this->Couple->MakeCouple($myid,$this->User->getuseridfromhash($isinvited));
+			}
+		}	
+		
 	}
 
 	public function invite($id)//メール
@@ -60,19 +66,22 @@ class UsersController extends AppController {
 	//var_dump($user[0]["User"]);
 		$name=$user[0]["User"]["name"];
 		if($this->request->is('post')){
-			var_dump($this->request->data);
-			$mail=$this->request->data["User"]["mail"];
+		//	var_dump($this->request->data);
+		$mail=$this->request->data["User"]["mail"];
 		
 		$email = new CakeEmail('gmail');
 		$email->from('example@gmail.com');
 		//仮登録(あらたなテーブルを作成)して、フラグを立てる(24時間以内、あるいは改ざんの防止)
 		$hashed_mail=crypt($mail,'$2y$04$GP9aBSZyYevt7Sdeb9HrJj');//
 		$data=array('User'=>array('hashed_mail'=>$hashed_mail));
-		$this->User->save($data);
+	//	$this->User->save($data);
 		$email->to($mail);
 		$email->subject($name);
 		//メール送信する
 		$email->send("http://".$_SERVER["HTTP_HOST"]."/users/add/".$hashed_mail);
+
+		$userdata['User']=array('id'=>$id,'hashed_mail'=>$hashed_mail);
+		$this->User->save($userdata);
 		}
 	}
 
@@ -86,7 +95,8 @@ class UsersController extends AppController {
 		if(empty($data)){
 
 		}else{
-			var_dump($data);
+			return $this->redirect(
+       			array('controller' => 'Users', 'action' => 'signup',$hashed_mail));
 			//signupに飛ばすなりなんなりする
 		}	
 	}
