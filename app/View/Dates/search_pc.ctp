@@ -23,7 +23,7 @@
 
         <div class="recommend-list">
                 <a href="">
-                <div style="width:300px height: auto; float:left; border:1px solid #ccc; margin: 10px 5px;">
+                <div style="width:300px; height: auto; float:left; border:1px solid #ccc; margin: 10px 5px;">
                     <img src="img/aragaki.jpg" style="width:300px; height: auto;">
                     <table class="table">
                         <tr><td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;">タイトル</td></tr>
@@ -37,87 +37,22 @@
 
                             <td class="table-image"><!--写真-->
                             <?php echo $this->Html->image('kohei.jpg', array('alt' => 'kohei'));?>
+                            <br>新居航平 (２２歳 / 学生)
 
                           </td>
                               <td class="table-image"><!--写真-->
                             <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'kohei'));?>
+                            <br>新垣結衣 (２５歳 / 社会人)
 
                             </td>
                             <td>
-                                新居航平 (２２歳 / 学生)<br>
-                                新垣結衣 (２５歳 / 社会人)
-                            <td>
+                            </td>
                         </tr>
-                        <tr><td></td><td>1023View</td><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
+                        <tr><td>1023View</td><td colspan="2" style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                 </div>
                 </a>
-                <a href="">
-                <div style="width:300px height: auto; float:left; border:1px solid #ccc; margin: 10px 5px;">
-                    <img src="img/aragaki.jpg" style="width:300px; height: auto;">
-                    <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i> 渋谷</td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                </div>
-                </a>
-                <a href="">
-                <div style="width:300px height: auto; float:left; border:1px solid #ccc; margin: 10px 5px;">
-                    <img src="img/aragaki.jpg" style="width:300px; height: auto;">
-                    <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i> 渋谷</td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                </div>
-                </a>
-                <a href="">
-                <div style="width:300px height: auto; float:left; border:1px solid #ccc; margin: 10px 5px;">
-                    <img src="img/aragaki.jpg" style="width:300px; height: auto;">
-                    <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i> 渋谷</td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                </div>
-                </a>
-                <a href="">
-                <div style="width:300px height: auto; float:left; border:1px solid #ccc; margin: 10px 5px;">
-                    <img src="img/aragaki.jpg" style="width:300px; height: auto;">
-                    <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i> 渋谷</td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                </div>
-                </a>
-                <a href="">
-                <div style="width:300px height: auto; float:left; border:1px solid #ccc; margin: 10px 5px;">
-                    <img src="img/aragaki.jpg" style="width:300px; height: auto;">
-                    <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i> 渋谷</td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                </div>
-                </a>
-                <a href="">
-                <div style="width:300px height: auto; float:left; border:1px solid #ccc; margin: 10px 5px;">
-                    <img src="img/aragaki.jpg" style="width:300px; height: auto;">
-                    <table class="table">
-                        <tr><td style="text-align: center;">タイトル</td></tr>
-                        <tr><td style="text-align: center;">内容</td></tr>
-                        <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"></i> 渋谷</td></tr>
-                        <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
-                    </table>
-                </div>  
-                </a>
+                
             </div>
         </div>
     </div>

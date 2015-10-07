@@ -22,7 +22,7 @@
         </div>
 
         <div class="recommend-list">
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
+                <div style="width:350px; height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
                     <img src="img/aragaki.jpg" style="width:350px; height: auto;">
                     <table class="table">
                         <tr><td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;">タイトル</td></tr>
@@ -50,7 +50,7 @@
                         <tr><td></td><td>1023View</td><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                 </div>
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
+                <div style="width:350px; height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
                     <img src="img/aragaki.jpg" style="width:350px; height: auto;">
                     <table class="table">
                         <tr><td style="text-align: center;">タイトル</td></tr>
@@ -59,7 +59,7 @@
                         <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                 </div>
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
+                <div style="width:350px; height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
                     <img src="img/aragaki.jpg" style="width:350px; height: auto;">
                     <table class="table">
                         <tr><td style="text-align: center;">タイトル</td></tr>
@@ -68,7 +68,7 @@
                         <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                 </div>
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
+                <div style="width:350px; height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
                     <img src="img/aragaki.jpg" style="width:350px; height: auto;">
                     <table class="table">
                         <tr><td style="text-align: center;">タイトル</td></tr>
@@ -77,7 +77,7 @@
                         <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                 </div>
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
+                <div style="width:350px; height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
                     <img src="img/aragaki.jpg" style="width:350px; height: auto;">
                     <table class="table">
                         <tr><td style="text-align: center;">タイトル</td></tr>
@@ -86,7 +86,7 @@
                         <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                 </div>
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
+                <div style="width:350px; height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
                     <img src="img/aragaki.jpg" style="width:350px; height: auto;">
                     <table class="table">
                         <tr><td style="text-align: center;">タイトル</td></tr>
@@ -95,7 +95,7 @@
                         <tr><td style="text-align: right;">行きたい!!:(行きたい数)</td></tr>
                     </table>
                 </div>
-                <div style="width:350px height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
+                <div style="width:350px; height: auto; float:left; border:1px solid #ccc; margin-top: 20px;">
                     <img src="img/aragaki.jpg" style="width:350px; height: auto;">
                     <table class="table">
                         <tr><td style="text-align: center;">タイトル</td></tr>
