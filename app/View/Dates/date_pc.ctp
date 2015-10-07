@@ -195,7 +195,9 @@ $j = 1;
 
     </div>
   </div>
-  </div>
+</div>
+
+<?php echo $this->element('footer'); ?>
 <script>
 $(function() {
   $.post('/planbox-plan/follows/ready/',
