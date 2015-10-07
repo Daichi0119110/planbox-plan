@@ -2,7 +2,7 @@
 
 class DatesController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses = array('Date', 'Follow','Favorite','Post');
+	public $uses = array('Date', 'Follow','Favorite','Post','Photo');
 	
 	public function favorite($user_id) {
 		$this->autoRender = false;
@@ -106,6 +106,10 @@ class DatesController extends AppController {
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
+
+		$user_ids = $this->Favorite->getuserids($date_id);
+		$date_ids_suggest = $this->Favorite->getfavodateid($user_ids);
+		$this->set('dates_suggest',$this->Date->getdate($date_ids_suggest));
 	}
 
 	// public function viewnum(){ // google analyticsを利用してview数を取る

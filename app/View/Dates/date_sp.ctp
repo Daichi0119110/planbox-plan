@@ -1,5 +1,5 @@
 <div class="container-fluid" style="padding-right:0;padding-left:0;"> 
-    <h2 style="text-align:center; margin-top:60px;"><?php echo $date['Date']['id']; ?></h2>
+    <h2 style="text-align:center; margin-top:60px;"></h2>
     <!--写真のスライドショー-->
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width:320px; height:200px; margin:5px auto 0 auto;">
