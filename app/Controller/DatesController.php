@@ -4,6 +4,38 @@ class DatesController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('Date', 'Follow','Favorite','Post');
 	
+	public $components = array(
+
+        'Search.Prg' => array(
+
+        'commonProcess' => array(
+
+          	'paramType' => 'querystring',
+
+          	'filterEmpty' =>  true,
+
+        	),
+
+    	 ),
+  	);
+  	public $presetVars = true;
+
+  	public function search_pc(){
+  		 $this->Prg->commonProcess();
+       $this->paginate = array(
+            'conditions' => $this->Date->parseCriteria($this->passedArgs),
+        );
+    $this->set('results', $this->paginate());
+  	}
+
+	public function search_sp(){
+		$this->Prg->commonProcess();
+   		$this->paginate = array(
+   			'conditions' => $this->Date->parseCriteria($this->passedArgs),
+        );
+   	    $this->set('results', $this->paginate());
+	}
+  	//ここから上が検索・・・
 	public function favorite($user_id) {
 		$this->autoRender = false;
 		$this->autoLayout = false;
@@ -63,13 +95,13 @@ class DatesController extends AppController {
 		}
 	}
 
-	public function search_pc(){
+	/*public function search_pc(){
 
-	}
+	}*/
 
-	public function search_sp(){
+/*	public function search_sp(){
 
-	}
+	}*/
 
 	public function date($date_id){
 		$this->autoRender = false;
