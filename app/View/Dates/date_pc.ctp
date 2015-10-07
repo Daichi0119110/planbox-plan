@@ -1,3 +1,8 @@
+<?php 
+$i = 1;
+$j = 1;
+ ?>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
@@ -8,28 +13,26 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <?php for ($i=1; $i < count($photos); $i++) { ?>
+          <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i; ?>"></li>
+          <?php } ?>
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
+          <?php for ($i=0; $i < count($photos); $i++) { ?>
+          <?php if($i == 0) {?>
           <div class="item active carousel-image" style="overflow: hidden;width:900px; height:500px;">
-            <?php echo $this->Html->image('photo1.jpg', array('alt' => 'baz'));?>
-            <div class="carousel-caption">
-            </div>
-          </div>
+          <?php } else { ?>
           <div class="item carousel-image" style="overflow: hidden;width:900px; height:500px;">
-            <?php echo $this->Html->image('photo2.jpg', array('alt' => 'baz'));?>              
+          <?php } ?>
+          <?php echo $this->Html->image($photos[$i], array('alt' => 'baz'));?>
             <div class="carousel-caption">
             </div>
           </div>
-          <div class="item carousel-image" style="overflow: hidden;width:900px; height:500px;">
-            <?php echo $this->Html->image('photo2.jpg', array('alt' => 'baz'));?>
-            <div class="carousel-caption">
-            </div>
-          </div>
+          <?php } ?>
         </div>
+
 
         <!-- Controls -->
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -51,7 +54,8 @@
             <h3 style="text-align:center">デートスケジュール</h3>
             <?php foreach ($posts as $post) { ?>
             <table class="table table-hover">
-              <tr><td style="width:200px;height:40px;"><a href="#tweet1" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['created']; ?></a></td><td style="width:250px;height:40px;"><a href="#tweet1" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['location']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
+              <tr><td style="width:200px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['created']; ?></a></td><td style="width:250px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['location']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
+              <?php $i++; ?>
               <?php } ?>
             </table>
           </div>
@@ -73,36 +77,28 @@
             <p style="font-weight:bold;"><?php echo $date[0]['Date']['description']; ?></p>
             <a href="couple.php"><!--カップルページへのリンク-->
               <div class="row">
-                <div class="col-sm-6">
-                  <div class="row" style="position: relative;">
-                    <div class="col-sm-6 user-image">
-                      <?php echo $this->Html->image('kohei.jpg', array('alt' => 'baz'));?>
-                    </div>
-                    <div class="col-sm-6" style="position: absolute;top: 20px;left:120px;">
-                      <h4>新居航平</h4>
-                      <p>２２歳 / 学生</p>
-                    </div>
-                  </div>
-                </div>
 
+                <?php foreach ($users as $user) { ?>
                 <div class="col-sm-6">
                   <div class="row" style="position: relative;">
                     <div class="col-sm-6 user-image">
-                      <?php echo $this->Html->image('aragaki.jpg', array('alt' => 'baz'));?>
+                      <?php echo $this->Html->image($user['User']['photo'], array('alt' => 'baz'));?>
                     </div>
                     <div class="col-sm-6" style="position: absolute;top: 20px;left:120px;">
-                      <h4>新垣結衣</h4>
-                      <p>２５歳 / 女優</p>
+                      <h4><?php echo $user['User']['name']?></h4>
+                      <p><?php echo $user['User']['age']?>歳</p>
                     </div>
                   </div>
                 </div>
+                <?php } ?>
+
               </div>
             </a>
           </div>
         </div>
       </div> 
       <!--デート全体説明終了--> 
-      <button id="button_follow" class="follow" data-couple-id="<?php echo $date[0]['Date']['couple_id']; ?>"> フォロー！</button>
+
       <!--デート詳細、サイドバー-->
 
       <div class="row" style="margin-top:40px;">
@@ -110,10 +106,10 @@
         <div class="col-sm-8">
           <?php foreach ($posts as $post) { ?>
           <!--一つのツイートの塊-->
-          <div class="row" style="border:1px solid #ccc;" id="tweet1">
+          <div class="row" style="border:1px solid #ccc;" id="tweet<?php echo $j; ?>">
             <div class="col-sm-6" >
               <div class="tweet-image" style="width:300px;height:200px; overflow:hidden;">
-                <?php echo $this->Html->image('photo1.jpg', array('alt' => 'baz'));?>
+                <?php echo $this->Html->image($post['Post']['filename'][0], array('alt' => 'baz'));?>
               </div>
             </div>
             <div class="col-sm-6" style="position: relative; width:300px;height:200px;">
@@ -129,6 +125,7 @@
             </div>
           </div>
           <!--一つのツイートの塊終了-->
+          <?php $j++; ?>
           <?php } ?>
         
 
@@ -180,7 +177,7 @@
           <a href="date.php"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FF8C00; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
-                <?php echo $this->Html->image('photo1.jpg', array('alt' => 'photo1'));?>
+                <?php echo $this->Html->image($date_suggest['Date']['photo'], array('alt' => 'photo1'));?>
               </div>
               <h4 ><?php echo $date_suggest['Date']['name']; ?></h4>
               <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
@@ -200,26 +197,58 @@
   </div>
 </div>
 
-<?php echo $this->element('footer'); ?>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <ol class="nav navbar-nav list-inline">
+      <li style="margin: 0 50px 0 400px;"><button id="button_favo" type="button" class="btn btn-warning btn-lg" data-date-id="<?php echo $date[0]['Date']['id']; ?>" data-user-id="">行きたい！</button></li>
+      <li style="margin: 0 200px 0 0;"><span id="favo_num"><?php echo $favo;?></span>人が行きたい<br>と言っています</li>
+      <li  style="margin: 0 50px 0 0;"><button id="button_follow" type="button" class="btn btn-warning btn-lg" data-couple-id="<?php echo $date[0]['Date']['couple_id']; ?>" data-user-id="">フォロー！</button></li>
+      <li style="margin: 0 200px 0 0;"><span id="follow_num"><?php echo $follow;?></span>人がフォロー<br>しています</li>
+
+    </ol>
+</nav>
+
 <script>
 $(function() {
-  $.post('/planbox-plan/follows/ready/',
+  $.post('/planbox-plan/follows/ready_date/',
     {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
     ,function(res){
       if(res == 1){
-        $('#button_follow').html('登録済み');
+        $('#button_follow').html('フォロー済！');
+      }
+    }, "json");
+  $.post('/planbox-plan/favorites/ready_date/',
+    {'user_id':1, 'date_id':$('#button_favo').data('date-id')}
+    ,function(res){
+      if(res == 1){
+        $('#button_favo').html('Planbox済！');
       }
     }, "json");
 
-  $('button.follow').click(function(e){
-    $.post('/planbox-plan/follows/change/',
+  // フォローボタン押したら
+  $('#button_follow').click(function(e){
+    $.post('/planbox-plan/follows/change_date/',
       {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
       ,function(res){
         if($('#button_follow').html() == "フォロー！"){
-          $('#button_follow').html('登録済み');
+          $('#button_follow').html('フォロー済');
         } else{
           $('#button_follow').html('フォロー！');
         }
+        $('#follow_num').html(res.follow);
+    }, "json");
+  });
+
+  // 行きたいボタン押したら
+  $('#button_favo').click(function(e){
+    $.post('/planbox-plan/favorites/change_date/',
+      {'date_id':$('#button_favo').data('date-id'), 'user_id':1}
+      ,function(res){
+        if($('#button_favo').html() == "行きたい！"){
+          $('#button_favo').html('Planbox済！');
+        } else{
+          $('#button_favo').html('行きたい！');
+        }
+        $('#favo_num').html(res.favo);
     }, "json");
   });
 });

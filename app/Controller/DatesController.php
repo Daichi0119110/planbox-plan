@@ -2,7 +2,7 @@
 
 class DatesController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses = array('Date', 'Follow','Favorite','Post');
+	public $uses = array('Date','Follow','Favorite','Post','Photo','User');
 	
 	public $components = array(
 
@@ -54,13 +54,11 @@ class DatesController extends AppController {
 	}
 
 	public function favorite_pc($user_id){
-		$user_id = 1; //最終的に削除
 		$couple_ids = $this->Follow->getcoupleids($user_id);
 		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
 	}
 
 	public function favorite_sp($user_id){
-		$user_id = 1; //最終的に削除
 		$couple_ids = $this->Follow->getcoupleids($user_id);
 		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
 	}
@@ -121,23 +119,101 @@ class DatesController extends AppController {
 	}
 
 	public function date_pc($date_id) {
-		$date_id = 3;	// 一旦date_idが3だと想定
-		$this->set('posts', $this->Post->getposts($date_id));
+		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
+		$couple_id = $this->Date->getcoupleid($date_id);
+		$this->set('follow', $this->Follow->getnumber($couple_id));
 
+		// 似ているデートの取得
 		$user_ids = $this->Favorite->getuserids($date_id);
 		$date_ids_suggest = $this->Favorite->getfavodateid($user_ids);
-		$this->set('dates_suggest',$this->Date->getdate($date_ids_suggest));
+		$dates_suggest = $this->Date->getdate($date_ids_suggest);
+		for ($i=0; $i < count($dates_suggest); $i++) {
+			$posts_suggest = $this->Post->getpostids($dates_suggest[$i]['Date']['id']);
+			$photos = $this->Photo->getpostallphotos($posts_suggest);
+			if(!$photos){
+				$dates_suggest[$i]['Date']['photo'] = null;
+				continue;
+			}
+			$dates_suggest[$i]['Date']['photo'] = $photos[0];
+		}
+		$this->set('dates_suggest', $dates_suggest);
+
+		// カルーセル用の写真の取得
+		$post_ids = $this->Post->getpostids($date_id);
+		$this->set('photos', $this->Photo->getpostallphotos($post_ids));
+
+		// post配列の中に写真の情報をいれる
+		for ($j=0; $j < count($posts); $j++) {
+			$a = $this->Photo->getphotos($posts[$j]['Post']['id']);
+			$filenames = array();
+			foreach ($a as $b) {
+				array_push($filenames, $b['Photo']['filename']);
+			}
+			if(!$filenames){
+				$posts[$j]['Post']['filename'] = null;
+				continue;
+			}
+			$posts[$j]['Post']['filename'] = $filenames;
+		}
+		$this->set('posts', $posts);
+
+		//投稿カップルの写真を取得
+		$users = $this->User->getuserfromcouple($couple_id);
+		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
+		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
+		$this->set('users', $users);
 	}
 
 	public function date_sp($date_id) {
-		$date_id = 3;	// 一旦date_idが3だと想定
-		$this->set('posts', $this->Post->getposts($date_id));
+		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
+		$couple_id = $this->Date->getcoupleid($date_id);
+		$this->set('follow', $this->Follow->getnumber($couple_id));
+
+		// 似ているデートの取得
+		$user_ids = $this->Favorite->getuserids($date_id);
+		$date_ids_suggest = $this->Favorite->getfavodateid($user_ids);
+		$dates_suggest = $this->Date->getdate($date_ids_suggest);
+		for ($i=0; $i < count($dates_suggest); $i++) {
+			$posts_suggest = $this->Post->getpostids($dates_suggest[$i]['Date']['id']);
+			$photos = $this->Photo->getpostallphotos($posts_suggest);
+			if(!$photos){
+				$dates_suggest[$i]['Date']['photo'] = null;
+				continue;
+			}
+			$dates_suggest[$i]['Date']['photo'] = $photos[0];
+		}
+		$this->set('dates_suggest', $dates_suggest);
+
+		// カルーセル用の写真の取得
+		$post_ids = $this->Post->getpostids($date_id);
+		$this->set('photos', $this->Photo->getpostallphotos($post_ids));
+
+		// post配列の中に写真の情報をいれる
+		for ($j=0; $j < count($posts); $j++) {
+			$a = $this->Photo->getphotos($posts[$j]['Post']['id']);
+			$filenames = array();
+			foreach ($a as $b) {
+				array_push($filenames, $b['Photo']['filename']);
+			}
+			if(!$filenames){
+				$posts[$j]['Post']['filename'] = null;
+				continue;
+			}
+			$posts[$j]['Post']['filename'] = $filenames;
+		}
+		$this->set('posts', $posts);
+
+		//投稿カップルの写真を取得
+		$users = $this->User->getuserfromcouple($couple_id);
+		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
+		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
+		$this->set('users', $users);
 	}
 
 	// public function viewnum(){ // google analyticsを利用してview数を取る
