@@ -136,7 +136,7 @@
         </tr>
             <tr>
               <td><?php echo $date['Date']['num_view']; ?>View</td>
-              <td><button id="<?php echo $date['Date']['id']; ?>" type="button" class="btn btn-warning button_favo" data-date-id="<?php echo $date['Date']['id']; ?>">行きたい！</button></td>
+              <td><button id="favo<?php echo $date['Date']['id']; ?>" type="button" class="btn btn-warning button_favo" data-date-id="<?php echo $date['Date']['id']; ?>">行きたい！</button></td>
               <td>行きたい数：<span id='favo_num<?php echo $date['Date']['id']; ?>'><?php echo $date['Date']['favo']; ?></span></td>
             </tr>
           </table>
@@ -175,9 +175,10 @@
         <td style="width:;height:;"><?php echo $couple['Couple']['often_area']; ?></td>
       </tr>      
     </table>
-
+    </a>
+    <button id="follow<?php echo $couple['Couple']['id']; ?>" type="button" class="btn btn-warning btn-lg button_follow" data-couple-id='<?php echo $couple['Couple']['id']; ?>'>フォロー！</button>
+    <span id="follow_num<?php echo $couple['Couple']['id']; ?>"><?php echo $couple['Couple']['num_follow']; ?></span>人がフォローしています
   </div>
-</a>
 <!--フォローしているカップルの一つの塊終了-->
 <?php } ?>
 </div>        
@@ -196,22 +197,44 @@ $(function() {
   $.post('/planbox-plan/favorites/ready_favorite/',
     {'user_id':$('div.container').data('user-id')}
     ,function(res){
-        $.each(res, function(){
-            $('#'+this).html('Planbox済！');
-        });
+      $.each(res, function(){
+          $('#favo'+this).html('Planbox済！');
+      });
+    }, "json");
+
+  $.post('/planbox-plan/follows/ready_couple/',
+    {'user_id':$('div.container').data('user-id')}
+    ,function(res){
+      $.each(res, function(){
+          $('#follow'+this).html('フォロー済');
+      });
     }, "json");
 
   // 行きたいボタン押したら
-  $('button').click(function(e){
+  $('button.button_favo').click(function(e){
     $.post('/planbox-plan/favorites/change_favorite/',
       {'date_id':$(this).data('date-id'), 'user_id':$('div.container').data('user-id')}
       ,function(res){
-        if($('#'+res.id).html() == "行きたい！"){
-          $('#'+res.id).html('Planbox済！');
+        if($('#favo'+res.id).html() == "行きたい！"){
+          $('#favo'+res.id).html('Planbox済！');
         } else{
-          $('#'+res.id).html('行きたい！');
+          $('#favo'+res.id).html('行きたい！');
         }
         $('#favo_num'+res.id).html(res.favo);
+    }, "json");
+  });
+
+  // フォローボタン押したら
+  $('button.button_follow').click(function(e){
+    $.post('/planbox-plan/follows/change_couple/',
+      {'user_id':$('div.container').data('user-id'), 'couple_id':$(this).data('couple-id')}
+      ,function(res){
+        if($('#follow'+res.id).html() == "フォロー！"){
+          $('#follow'+res.id).html('フォロー済');
+        } else{
+          $('#follow'+res.id).html('フォロー！');
+        }
+        $('#follow_num'+res.id).html(res.follow);
     }, "json");
   });
 });

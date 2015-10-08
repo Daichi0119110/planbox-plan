@@ -210,9 +210,10 @@ $(function() {
     {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
     ,function(res){
       if(res == 1){
-        $('#button_follow').html('フォロー済！');
+        $('#button_follow').html('フォロー済');
       }
     }, "json");
+
   $.post('/planbox-plan/favorites/ready_date/',
     {'user_id':1, 'date_id':$('#button_favo').data('date-id')}
     ,function(res){

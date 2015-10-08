@@ -66,6 +66,7 @@ class CouplesController extends AppController {
 				$couples[$i]['Couple']['user'][$j] = $users_follow[$j]['User'];
 				$couples[$i]['Couple']['user'][$j]['photo'] = $this->Photo->getuserphoto($couples[$i]['Couple']['user'][$j]['id']);
 			}
+			$couples[$i]['Couple']['num_follow'] = $this->Follow->getnumber($couples[$i]['Couple']['id']);
 		}
 		$this->set('couples', $couples);
 
@@ -128,6 +129,7 @@ class CouplesController extends AppController {
 				$couples[$i]['Couple']['user'][$j] = $users_follow[$j]['User'];
 				$couples[$i]['Couple']['user'][$j]['photo'] = $this->Photo->getuserphoto($couples[$i]['Couple']['user'][$j]['id']);
 			}
+			$couples[$i]['Couple']['num_follow'] = $this->Follow->getnumber($couple[$i]['Couple']['id']);
 		}
 		$this->set('couples', $couples);
 		$this->set('title', 'カップル個別ページ');

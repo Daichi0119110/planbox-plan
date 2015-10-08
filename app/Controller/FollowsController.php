@@ -54,6 +54,23 @@ class FollowsController extends AppController {
 		$this->redirect(array('controller'=>'dates', 'action' => 'date'));
 	}
 
+	public function ready_couple() {
+		if ($this->request->is('get')) {
+			throw new MethodNotAllowedException();
+		}
+		if ($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$this->autoLayout = false;
+
+			// お気に入りしているデートの取得
+			$couple_ids = $this->Follow->getcoupleids($_POST['user_id']);
+			$this->header('Content-Type: application/json');
+			echo json_encode($couple_ids);
+			exit();
+		}
+		$this->redirect(array('controller'=>'couples', 'action' => 'couple'));
+	}
+
 	public function change() {
 		if ($this->request->is('get')) {
 			throw new MethodNotAllowedException();
@@ -85,6 +102,23 @@ class FollowsController extends AppController {
 			}
 		}
 		$this->redirect(array('controller'=>'dates', 'action' => 'index'));
+	}
+
+	public function change_couple() {
+		if ($this->request->is('get')) {
+			throw new MethodNotAllowedException();
+		}
+		if ($this->request->is('ajax')) {
+			if ($this->Follow->change_follow_flg($_POST['couple_id'], $_POST['user_id'])) {
+				$this->autoRender = false;
+				$this->autoLayout = false;
+				$response = array('id' => $_POST['couple_id'], 'follow' => $this->Follow->getnumber($_POST['couple_id']));
+				$this->header('Content-Type: application/json');
+				echo json_encode($response);
+				exit();
+			}
+		}
+		$this->redirect(array('controller'=>'couple', 'action' => 'couple'));
 	}
 
 }
