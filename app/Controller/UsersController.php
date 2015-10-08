@@ -50,7 +50,7 @@ class UsersController extends AppController {
 			$myid=$this->User->isexistname($this->request->data['User']['name']);
 			if($isinvited==null){
 				return $this->redirect(
-        			array('controller' => 'Users', 'action' => 'invite',$myid));
+        			array('controller' => 'Users', 'action' => 'setting',$myid));
 			}
 			else{
 				$partner_id=$this->User->getuseridfromhash($isinvited);
@@ -65,7 +65,8 @@ class UsersController extends AppController {
 				$this->create();
 				$data['User']=array('id'=>$partner_id,'hashed_mail'=>'');
 				$this->save($data);
-
+				return $this->redirect(
+        			array('controller' => 'Users', 'action' => 'setting',$myid));
 			}
 		}	
 		
@@ -95,6 +96,9 @@ class UsersController extends AppController {
 
 		$userdata['User']=array('id'=>$id,'hashed_mail'=>$hashed_mail);
 		$this->User->save($userdata);
+
+		return $this->redirect(
+        			array('controller' => 'Users', 'action' => 'setting',$myid));
 		}
 	}
 
@@ -110,7 +114,6 @@ class UsersController extends AppController {
 		}else{
 			return $this->redirect(
        			array('controller' => 'Users', 'action' => 'signup',$hashed_mail));
-			//signupに飛ばすなりなんなりする
 		}	
 	}
 
