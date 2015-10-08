@@ -21,6 +21,7 @@ class DatesController extends AppController {
             'conditions' => $this->Date->parseCriteria($this->passedArgs),
         );
     $this->set('results', $this->paginate());
+    	$this->set('title', '検索ページ');
   	}
 
 	public function search_sp(){
@@ -29,6 +30,7 @@ class DatesController extends AppController {
    			'conditions' => $this->Date->parseCriteria($this->passedArgs),
         );
    	    $this->set('results', $this->paginate());
+   	    $this->set('title', '検索ページ');
 	}
   	//ここから上が検索・・・
 	public function favorite() {

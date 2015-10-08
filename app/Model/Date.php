@@ -40,7 +40,7 @@ class Date extends AppModel {
 		return $this->find('all',$status);
 	}
 
-	function getRecentDate($time,$couple_id){//時間とidから可能性のあるデート返す
+	function getRecentDate($time,$couple_id,$state,$city){//時間とidから可能性のあるデート返す
 		//var_dump($time);
 		$dtime=$time;
 		$status=array(
@@ -56,7 +56,7 @@ class Date extends AppModel {
 		if(empty($data)){
 			$data=array();
 			$this->create();
-			$data['Date']=array('couple_id'=>$couple_id);
+			$data['Date']=array('couple_id'=>$couple_id,'state'=>$state,'city'=>$city);
 			$this->save($data);
 
 			$status=array('order'=>'id DESC');

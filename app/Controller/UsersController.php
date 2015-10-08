@@ -4,7 +4,7 @@ App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses = array('User', 'Date', 'Photo');
+	public $uses = array('User', 'Date','Couple','Photo');
 
 	public function setting() {
 		$this->autoRender = false;
@@ -55,10 +55,32 @@ class UsersController extends AppController {
 
 	}
 
-	public function signup() {
-			if($this->request->is('post')){
+	public function signup($isinvited=null) {
+		if($this->request->is('post')){
 			$this->User->save($this->request->data);
-		}
+
+			$myid=$this->User->isexistname($this->request->data['User']['name']);
+			if($isinvited==null){
+				return $this->redirect(
+        			array('controller' => 'Users', 'action' => 'setting',$myid));
+			}
+			else{
+				$partner_id=$this->User->getuseridfromhash($isinvited);
+				if($this->request->data['User']['gender']==0){
+					$this->Couple->MakeCouple($myid,$partner_id);	
+				}
+				else{
+					$this->Couple->MakeCouple($partner_id,$myid);	
+				}
+
+				$data=array();
+				$this->create();
+				$data['User']=array('id'=>$partner_id,'hashed_mail'=>'');
+				$this->save($data);
+				return $this->redirect(
+        			array('controller' => 'Users', 'action' => 'setting',$myid));
+			}
+		}	
 		$this->Session->write('user_id',1); // sessionにuser_idを保存
 	}
 
@@ -70,19 +92,25 @@ class UsersController extends AppController {
 	//var_dump($user[0]["User"]);
 		$name=$user[0]["User"]["name"];
 		if($this->request->is('post')){
-			var_dump($this->request->data);
-			$mail=$this->request->data["User"]["mail"];
+		//	var_dump($this->request->data);
+		$mail=$this->request->data["User"]["mail"];
 		
 		$email = new CakeEmail('gmail');
-		$email->from('example@gmail.com');
+		$email->from('planbox26@gmail.com');
 		//仮登録(あらたなテーブルを作成)して、フラグを立てる(24時間以内、あるいは改ざんの防止)
 		$hashed_mail=crypt($mail,'$2y$04$GP9aBSZyYevt7Sdeb9HrJj');//
 		$data=array('User'=>array('hashed_mail'=>$hashed_mail));
-		$this->User->save($data);
+	//	$this->User->save($data);
 		$email->to($mail);
 		$email->subject($name);
 		//メール送信する
 		$email->send("http://".$_SERVER["HTTP_HOST"]."/users/add/".$hashed_mail);
+
+		$userdata['User']=array('id'=>$id,'hashed_mail'=>$hashed_mail);
+		$this->User->save($userdata);
+
+		return $this->redirect(
+        			array('controller' => 'Users', 'action' => 'setting',$myid));
 		}
 	}
 
@@ -96,8 +124,13 @@ class UsersController extends AppController {
 		if(empty($data)){
 
 		}else{
-			var_dump($data);
-			//signupに飛ばすなりなんなりする
+			return $this->redirect(
+       			array('controller' => 'Users', 'action' => 'signup',$hashed_mail));
 		}	
+	}
+
+	public function upload()
+	{
+
 	}
 }
