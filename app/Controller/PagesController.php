@@ -28,6 +28,7 @@ class PagesController extends AppController {
 			$this->redirect('/users/signup');
 		}
 		$user_id = $this->Session->read('user_id');
+		$this->set('user_id', $user_id);
 
 		// フィード
 		for ($i=1; $i<4; $i++) { 

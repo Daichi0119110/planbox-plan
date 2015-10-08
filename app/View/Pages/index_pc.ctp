@@ -1,5 +1,5 @@
 <?php echo $this->Html->script('hoge', array('inline' => false)); ?>
-<div class="container">
+<div class="container" data-user-id='<?php echo $user_id; ?>'>
   <div class="row">
     <div class="col-sm-12">
       <div class="pickup header">
@@ -77,10 +77,12 @@
               <article>
                 <!-- <a href=""> -->
                   <div class="row">
+                    <a href='/planbox-plan/dates/date/<?php echo $date_follow['Date']['id']; ?>'>
                     <div class="col-sm-5">
                       <div class="row">
                         <?php echo $this->Html->image($date_follow['Date']['photo'], array('alt' => 'baz', 'width'=>'200'));?>
                       </div>
+                    
                     </div>
                     <div class="col-sm-7">
                     <table class="table">
@@ -91,6 +93,7 @@
                         <td style="text-align:center;" class="fa fa-jpy"><?php echo $date_follow['Date']['budget']; ?></td>
                         <td style="text-align:center;" class="fa fa-calendar"><?php echo $date_follow['Date']['created']; ?></td>
                       </tr>
+                      </a>
                       <tr><!--４行目：カップルの一人目-->
                         <td class="table-image"><!--写真-->
                           <a href="/planbox-plan/couples/couple/<?php echo $date_follow['Date']['couple_id'];?>">
@@ -109,7 +112,11 @@
                           </a>
                           </td>
                           </tr>
-                          <tr><td><?php echo $date_follow['Date']['num_view']; ?>View</td><td style="text-align: right;">行きたい!!:<?php echo $date_follow['Date']['favo']; ?></td></tr>
+                          <tr>
+                            <td><?php echo $date_follow['Date']['num_view']; ?>View</td>
+                            <td><button id="favo_feed<?php echo $date_follow['Date']['id']; ?>" type="button" class="btn btn-warning feed" data-date-id="<?php echo $date_follow['Date']['id']; ?>">行きたい！</button></td>
+                            <td style="text-align: right;">行きたい!!:<span id='favo_num_feed<?php echo $date_follow['Date']['id']; ?>'><?php echo $date_follow['Date']['favo']; ?></span></td>
+                          </tr>
                         </table>
                       </div>
                     </div>
@@ -136,13 +143,13 @@
           <a href="/planbox-plan/dates/date/<?php echo $ranking_date['Date']['id']; ?>"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FFDAB9; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
-                <img src="<?php echo $ranking_date['Date']['photo']; ?>">
+                 <?php echo $this->Html->image($ranking_date['Date']['photo'], array('alt' => $ranking_date['Date']['name']));?>
               </div>
               <h4 ><?php echo $ranking_date['Date']['name']; ?></h4>
               <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $ranking_date['Date']['location']; ?></p>
+              </a>
               <p><?php echo $ranking_date['Date']['favo']; ?>行きたい！</p>
             </div>
-          </a>
           <hr>
           <!--ランキングプラン終了-->
           <?php $i=$i+1 ;?>
@@ -155,3 +162,28 @@
 </div>
 </div>
 
+<script>
+$(function() {
+  $.post('/planbox-plan/favorites/ready_favorite/',
+    {'user_id':$('div.container').data('user-id')}
+    ,function(res){
+      $.each(res, function(){
+          $('#favo_feed'+this).html('Planbox済！');
+      });
+    }, "json");
+
+  // feedの行きたいボタン押したら
+  $('button.feed').click(function(e){
+    $.post('/planbox-plan/favorites/change_favorite/',
+      {'date_id':$(this).data('date-id'), 'user_id':$('div.container').data('user-id')}
+      ,function(res){
+        if($('#favo_feed'+res.id).html() == "行きたい！"){
+          $('#favo_feed'+res.id).html('Planbox済！');
+        } else{
+          $('#favo_feed'+res.id).html('行きたい！');
+        }
+        $('#favo_num_feed'+res.id).html(res.favo);
+    }, "json");
+  });
+});
+</script>
