@@ -22,6 +22,9 @@ class CouplesController extends AppController {
 	}
 
 	public function couple_pc($couple_id){
+		$user_id = $this->Session->read('user_id');
+		$this->set('user_id', $user_id);
+
 		// カップル情報の取得
 		$this->set('our',$this->Couple->getcouple($couple_id));
 		$users = $this->User->getuserfromcouple($couple_id);

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-user-id='<?php echo $user_id; ?>'>
 
   <!--写真スライドショー、カップル情報開始-->
 
@@ -112,16 +112,18 @@
 
     <?php foreach($dates as $date) { ?>
     <!--一つのデートの塊開始-->
-    <a href="/planbox-plan/dates/date/<?php echo $date['Date']['id']; ?>"><!--そのデートへ飛ぶリンク-->
      <div class="row" style="border:1px solid #ccc;">
+      <a href="/planbox-plan/dates/date/<?php echo $date['Date']['id']; ?>">
        <div class="col-sm-5 tweet-image" style="width:300px;height:200px; overflow:hidden;margin-top:20px;">
         <?php echo $this->Html->image($date['Date']['photo'], array('alt' => 'kohei'));?>
       </div>
+      </a>
+
       <div class="col-sm-7">
-        
        <table class="table">
          <tr><!--１行目：タイトル-->
-          <td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;"><?php echo $date['Date']['name']; ?></td>
+          
+          <td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;"><a href="/planbox-plan/dates/date/<?php echo $date['Date']['id']; ?>"><?php echo $date['Date']['name']; ?></a></td>
         </tr>
         <tr><!--２行目:説明文-->
           <td colspan="3"><?php echo $date['Date']['description']; ?></td>
@@ -133,14 +135,13 @@
           <td style="text-align:center" class="fa fa-calendar"><?php echo $date['Date']['created']; ?></td>
         </tr>
             <tr>
-              <td></td>
               <td><?php echo $date['Date']['num_view']; ?>View</td>
-              <td>行きたい数：<?php echo $date['Date']['favo']; ?></td>
+              <td><button id="<?php echo $date['Date']['id']; ?>" type="button" class="btn btn-warning button_favo" data-date-id="<?php echo $date['Date']['id']; ?>">行きたい！</button></td>
+              <td>行きたい数：<span id='favo_num<?php echo $date['Date']['id']; ?>'><?php echo $date['Date']['favo']; ?></span></td>
             </tr>
           </table>
         </div>
     </div>
-  </a>
   <!--一つのデートの塊終了-->
   <?php } ?>
 
@@ -189,3 +190,29 @@
 
 
 </div>
+
+<script>
+$(function() {
+  $.post('/planbox-plan/favorites/ready_favorite/',
+    {'user_id':$('div.container').data('user-id')}
+    ,function(res){
+        $.each(res, function(){
+            $('#'+this).html('Planbox済！');
+        });
+    }, "json");
+
+  // 行きたいボタン押したら
+  $('button').click(function(e){
+    $.post('/planbox-plan/favorites/change_favorite/',
+      {'date_id':$(this).data('date-id'), 'user_id':$('div.container').data('user-id')}
+      ,function(res){
+        if($('#'+res.id).html() == "行きたい！"){
+          $('#'+res.id).html('Planbox済！');
+        } else{
+          $('#'+res.id).html('行きたい！');
+        }
+        $('#favo_num'+res.id).html(res.favo);
+    }, "json");
+  });
+});
+</script>

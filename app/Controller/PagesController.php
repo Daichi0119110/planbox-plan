@@ -61,6 +61,8 @@ class PagesController extends AppController {
 		// ランキング
 		$ranking_dates = $this->ranking();
 		$this->_date_set('ranking_dates', $ranking_dates);
+
+		// 新着
 	}
 
 		public function index_sp(){
