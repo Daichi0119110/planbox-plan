@@ -127,6 +127,9 @@ class DatesController extends AppController {
 	}
 
 	public function date_pc($date_id) {
+		$user_id = $this->Session->read('user_id');
+		$this->set('user_id', $user_id);
+		
 		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);

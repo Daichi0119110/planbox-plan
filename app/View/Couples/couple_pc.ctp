@@ -69,9 +69,12 @@
               <hr>
               <p>東京都の世田谷区に在住中。好きなデートスポットはおしゃれなバーなど</p>
             </div>
-
-
           </div>
+
+          <!-- フォロー用のボタン -->
+          <button id="follow" type="button" class="btn btn-warning btn-lg" data-couple-id='<?php echo $our[0]['Couple']['id']; ?>'>フォロー！</button>
+          <span id="follow_num"><?php echo $our[0]['Couple']['num_follow']; ?></span>人がフォローしています
+
           <!--カップル情報開始-->
           <div class="col-sm-4" style="height:;background-color:#FFFFCC;margin-left:10px;padding-top:12px;">
             <!--グレード情報-->
@@ -210,6 +213,14 @@ $(function() {
       });
     }, "json");
 
+  $.post('/planbox-plan/follows/ready/',
+    {'user_id':$('div.container').data('user-id'), 'couple_id':$('#follow').data('couple-id')}
+    ,function(res){
+      if(res==1){
+          $('#follow').html('フォロー済');
+      }
+    }, "json");
+
   // 行きたいボタン押したら
   $('button.button_favo').click(function(e){
     $.post('/planbox-plan/favorites/change_favorite/',
@@ -224,7 +235,7 @@ $(function() {
     }, "json");
   });
 
-  // フォローボタン押したら
+  // サイドバーのフォローボタン押したら
   $('button.button_follow').click(function(e){
     $.post('/planbox-plan/follows/change_couple/',
       {'user_id':$('div.container').data('user-id'), 'couple_id':$(this).data('couple-id')}
@@ -235,6 +246,20 @@ $(function() {
           $('#follow'+res.id).html('フォロー！');
         }
         $('#follow_num'+res.id).html(res.follow);
+    }, "json");
+  });
+
+  // メインのフォローボタン押したら
+  $('#follow').click(function(e){
+    $.post('/planbox-plan/follows/change_couple/',
+      {'user_id':$('div.container').data('user-id'), 'couple_id':$(this).data('couple-id')}
+      ,function(res){
+        if($('#follow').html() == "フォロー！"){
+          $('#follow').html('フォロー済');
+        } else{
+          $('#follow').html('フォロー！');
+        }
+        $('#follow_num').html(res.follow);
     }, "json");
   });
 });

@@ -26,7 +26,9 @@ class CouplesController extends AppController {
 		$this->set('user_id', $user_id);
 
 		// カップル情報の取得
-		$this->set('our',$this->Couple->getcouple($couple_id));
+		$our = $this->Couple->getcouple($couple_id);
+		$our[0]['Couple']['num_follow'] = $this->Follow->getnumber($our[0]['Couple']['id']);
+		$this->set('our',$our);
 		$users = $this->User->getuserfromcouple($couple_id);
 		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
 		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);

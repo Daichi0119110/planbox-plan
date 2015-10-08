@@ -3,7 +3,7 @@ $i = 1;
 $j = 1;
  ?>
 
-<div class="container">
+<div class="container" data-user-id='<?php echo $user_id; ?>'>
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
 
@@ -207,7 +207,7 @@ $j = 1;
 <script>
 $(function() {
   $.post('/planbox-plan/follows/ready_date/',
-    {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+    {'user_id':$('div.container').data('user-id'), 'couple_id':$('#button_follow').data('couple-id')}
     ,function(res){
       if(res == 1){
         $('#button_follow').html('フォロー済');
@@ -215,7 +215,7 @@ $(function() {
     }, "json");
 
   $.post('/planbox-plan/favorites/ready_date/',
-    {'user_id':1, 'date_id':$('#button_favo').data('date-id')}
+    {'user_id':$('div.container').data('user-id'), 'date_id':$('#button_favo').data('date-id')}
     ,function(res){
       if(res == 1){
         $('#button_favo').html('Planbox済！');
@@ -225,7 +225,7 @@ $(function() {
   // フォローボタン押したら
   $('#button_follow').click(function(e){
     $.post('/planbox-plan/follows/change_date/',
-      {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+      {'user_id':$('div.container').data('user-id'), 'couple_id':$('#button_follow').data('couple-id')}
       ,function(res){
         if($('#button_follow').html() == "フォロー！"){
           $('#button_follow').html('フォロー済');
@@ -239,7 +239,7 @@ $(function() {
   // 行きたいボタン押したら
   $('#button_favo').click(function(e){
     $.post('/planbox-plan/favorites/change_date/',
-      {'date_id':$('#button_favo').data('date-id'), 'user_id':1}
+      {'date_id':$('#button_favo').data('date-id'), 'user_id':$('div.container').data('user-id')}
       ,function(res){
         if($('#button_favo').html() == "行きたい！"){
           $('#button_favo').html('Planbox済！');
