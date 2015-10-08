@@ -4,7 +4,7 @@ App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses = array('User', 'Date', 'Photo')
+	public $uses = array('User', 'Date', 'Photo');
 
 	public function setting($id) {
 		$this->autoRender = false;
@@ -95,10 +95,13 @@ class UsersController extends AppController {
 
 	//////////////////////////////////////////
 		// 設定
-		$client_id = '36a31414781e4cb494cf812d233e31ad' ;		// クライアントID
-		$client_secret = '0b239a81a69844dd8b900236cb21bb43' ;		// クライアントシークレット
-		$redirect_uri = explode( '?' , ( !isset($_SERVER['HTTPS']) || empty($_SERVER['HTTPS']) ? 'http://' : 'https://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] )[0] ;		// このプログラムを設置するURL
+        $client_id = '028194e682b24657856781fbfeb8ed45' ;       // クライアントID
+        $client_secret = '888ac11b8ce84522a71fe7a6dac5ebd5' ;       // クライアントシークレット
+		
+		// $redirect_uri = explode( '?' , ( !isset($_SERVER['HTTPS']) || empty($_SERVER['HTTPS']) ? 'http://' : 'https://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] )[0] ;		// このプログラムを設置するURL
+		$redirect_uri = "http://k0hei.science/planbox_instatest/users/authorize_instagram";
 		$scope = 'basic' ;		// スコープ
+
 
 		// セッションスタート
 		session_start() ;
@@ -158,10 +161,11 @@ class UsersController extends AppController {
 			{
 				// 各データを整理
 				$insta_id = $obj->user->id;		// ユーザーID
-				$user_name = $obj->user->username ;		// ユーザーネーム
+				// $user_name = $obj->user->username ;		// ユーザーネーム
 				$access_token = $obj->access_token ;		// アクセストークン
 				
 				//　データの保存
+
 				//登録する値
 				$data = array('User' => array('id' => $id, 'insta_id' => $insta_id, 'insta_token' => $access_token));
 				// 登録するフィールド
@@ -172,6 +176,8 @@ class UsersController extends AppController {
 				// セッション終了
 				$_SESSION = array() ;
 				session_destroy() ;
+
+				$this->setting($id);
 			}
 		}
 		// [手順1] 初回アクセスの場合、ユーザーをアプリ認証画面へアクセスさせる

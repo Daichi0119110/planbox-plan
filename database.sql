@@ -13,7 +13,9 @@ create table users (
     password varchar(255),
     photo varchar(255),
     birthday varchar(255),
-    age int
+    age int,
+    insta_id int,
+    insta_token varchar(255)
 );
 
 insert into users (gender, name, couple_id, age, photo, birthday) values 
