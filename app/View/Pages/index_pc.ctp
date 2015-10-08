@@ -13,6 +13,7 @@
           <div id="thumbNails">
             <?php foreach ($dates_recommend as $date_recommend) { ?>
             <div style="width:350px; height: auto; float:left; border:1px solid #ccc;">
+              <a href="/planbox-plan/dates/date/<?php echo $date_recommend['Date']['id']; ?>">
               <?php echo $this->Html->image($date_recommend['Date']['photo'], array('alt' => 'baz', 'width'=>'350'));?>
               <table class="table" style="word-break: break-all;">
                 <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['name']; ?></td></tr>
@@ -20,6 +21,7 @@
                 <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $date_recommend['Date']['location']; ?></i></td></tr>
                 <tr><td style="text-align: right;">行きたい!!:<?php echo $date_recommend['Date']['favo']; ?></td></tr>
               </table>
+              </a>
             </div>
             <?php } ?>
           </div>
@@ -41,7 +43,7 @@
         <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:180px">
           デートプラン検索
         </div>
-        <form class="navbar-form" role="search">
+        <form class="navbar-form" action="search">
           <div class="form-group">
            <input type="text" class="form-control" placeholder="検索してください" size="100%">
          </div>
@@ -73,7 +75,7 @@
             <div class="follow-list" style="border:1px solid #ccc;">
               <?php foreach($dates_follow[$i] as $date_follow) { ?>
               <article>
-                <a href="">
+                <!-- <a href=""> -->
                   <div class="row">
                     <div class="col-sm-5">
                       <div class="row">
@@ -90,25 +92,28 @@
                         <td style="text-align:center;" class="fa fa-calendar"><?php echo $date_follow['Date']['created']; ?></td>
                       </tr>
                       <tr><!--４行目：カップルの一人目-->
-
                         <td class="table-image"><!--写真-->
+                          <a href="/planbox-plan/couples/couple/<?php echo $date_follow['Date']['couple_id'];?>">
                           <?php echo $this->Html->image($date_follow['Date']['user'][0]['photo'], array('alt' => $date_follow['Date']['user'][0]['name']));?>
-
+                        </a>
                         </td>
                         <td class="table-image"><!--写真-->
+                          <a href="/planbox-plan/couples/couple/<?php echo $date_follow['Date']['couple_id'];?>">
                           <?php echo $this->Html->image($date_follow['Date']['user'][1]['photo'], array('alt' => $date_follow['Date']['user'][1]['name']));?>
-
+                        </a>
                         </td>
                         <td>
+                          <a href="/planbox-plan/couples/couple/<?php echo $date_follow['Date']['couple_id'];?>">
                           <?php echo $date_follow['Date']['user'][0]['name']; ?> (<?php echo $date_follow['Date']['user'][0]['age']; ?>歳)<br>
                           <?php echo $date_follow['Date']['user'][1]['name']; ?> (<?php echo $date_follow['Date']['user'][1]['age']; ?>歳)
-                          <td>
+                          </a>
+                          </td>
                           </tr>
                           <tr><td></td><td><?php echo $date_follow['Date']['num_view']; ?>View</td><td style="text-align: right;">行きたい!!:<?php echo $date_follow['Date']['favo']; ?></td></tr>
                         </table>
                       </div>
                     </div>
-                  </a>
+                  <!-- </a> -->
                 </article>
                 <?php } ?>
               </div>
@@ -128,7 +133,7 @@
           <!--ランキングプラン-->
           <hr>
           <h4 style="font-style: italic;"><?php echo $i; ?>位</h4>
-          <a href="date.php"><!--このデートプランに飛ぶリンク-->
+          <a href="/planbox-plan/dates/date/<?php echo $ranking_date['Date']['id']; ?>"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FFDAB9; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
                 <img src="<?php echo $ranking_date['Date']['photo']; ?>">

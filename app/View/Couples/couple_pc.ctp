@@ -1,5 +1,3 @@
-<?php debug($couples); ?>
-
 <div class="container">
 
   <!--写真スライドショー、カップル情報開始-->
