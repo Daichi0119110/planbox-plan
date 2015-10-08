@@ -46,13 +46,26 @@ class UsersController extends AppController {
 	public function signup($isinvited=null) {
 		if($this->request->is('post')){
 			$this->User->save($this->request->data);
-			$myid=$this->User->isexistname($this->request->data['name']);
+
+			$myid=$this->User->isexistname($this->request->data['User']['name']);
 			if($isinvited==null){
 				return $this->redirect(
         			array('controller' => 'Users', 'action' => 'invite',$myid));
 			}
 			else{
-				$this->Couple->MakeCouple($myid,$this->User->getuseridfromhash($isinvited));
+				$partner_id=$this->User->getuseridfromhash($isinvited);
+				if($this->request->data['User']['gender']==0){
+					$this->Couple->MakeCouple($myid,$partner_id);	
+				}
+				else{
+					$this->Couple->MakeCouple($partner_id,$myid);	
+				}
+
+				$data=array();
+				$this->create();
+				$data['User']=array('id'=>$partner_id,'hashed_mail'=>'');
+				$this->save($data);
+
 			}
 		}	
 		
@@ -70,7 +83,7 @@ class UsersController extends AppController {
 		$mail=$this->request->data["User"]["mail"];
 		
 		$email = new CakeEmail('gmail');
-		$email->from('example@gmail.com');
+		$email->from('planbox26@gmail.com');
 		//仮登録(あらたなテーブルを作成)して、フラグを立てる(24時間以内、あるいは改ざんの防止)
 		$hashed_mail=crypt($mail,'$2y$04$GP9aBSZyYevt7Sdeb9HrJj');//
 		$data=array('User'=>array('hashed_mail'=>$hashed_mail));
@@ -99,5 +112,10 @@ class UsersController extends AppController {
        			array('controller' => 'Users', 'action' => 'signup',$hashed_mail));
 			//signupに飛ばすなりなんなりする
 		}	
+	}
+
+	public function upload()
+	{
+
 	}
 }
