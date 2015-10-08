@@ -56,6 +56,7 @@ class PagesController extends AppController {
 		// ランキング
 		$ranking_dates = $this->ranking();
 		$this->_date_set('ranking_dates', $ranking_dates);
+		$this->set('title', 'トップページ');
 	}
 
 		public function index_sp($user_id){
@@ -92,6 +93,7 @@ class PagesController extends AppController {
 		// ランキング
 		$ranking_dates = $this->ranking();
 		$this->_date_set('ranking_dates', $ranking_dates);
+		$this->set('title', 'トップページ');
 	}
 
 	// いいね数・場所・カップル・写真の読み込み、viewにセット

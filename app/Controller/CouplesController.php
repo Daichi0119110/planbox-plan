@@ -65,6 +65,7 @@ class CouplesController extends AppController {
 			}
 		}
 		$this->set('couples', $couples);
+
 		//グレードの取得
 		$points=0;
 		$followerscount=$this->Follow->getnumber($couple_id);
@@ -79,7 +80,7 @@ class CouplesController extends AppController {
 
 		$this->set('points',$points);
 		//view 1 ikitai 5 toukou 20 follower=30
-
+		$this->set('title', 'カップル個別ページ');
 	}
 
 	public function couple_sp($couple_id){
@@ -126,6 +127,7 @@ class CouplesController extends AppController {
 			}
 		}
 		$this->set('couples', $couples);
+		$this->set('title', 'カップル個別ページ');
 	}
 	
 	public function mypage($id) {
@@ -149,12 +151,14 @@ class CouplesController extends AppController {
 		//$this->set('couples', $this->Couple->find('all'));
 		$this->set('couples',$this->Couple->getcouple($id));
 		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
+		$this->set('title', 'マイページ');
 	}
 
 	public function mypage_sp($id){
 		//$this->set('couples', $this->Couple->find('all'));
 		$this->set('couples',$this->Couple->getcouple($id));
 		$this->set('mydate',$this->Date->getdatesfromcouple($id));//ここから記事の投稿数もとれる？
+		$this->set('title', 'マイページ');
 	}
 
 	public function edit($id) {
@@ -177,6 +181,7 @@ class CouplesController extends AppController {
 		if($this->request->is('post')){
 			$this->Couple->save($this->request->data);
 		}
+		$this->set('title', 'サインアップ');
 	}
 	public function editmydate($date_id)//coupleから飛んでくる？
 	{
