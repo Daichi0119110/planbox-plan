@@ -1,13 +1,13 @@
 <h1>Edit User</h1>
-<p>Edit Form.</p>
+<p>Edit BootstrapForm.</p>
 <?php
   echo $this->Form->create('User');
-  echo $this->Form->input('gender');
-  echo $this->Form->input('name');
-  echo $this->Form->input('password');
-  echo $this->Form->input('photo');
-  echo $this->Form->input('birthday');
-  echo $this->Form->input('age');
+  echo $this->BootstrapForm->input('gender');
+  echo $this->BootstrapForm->input('name');
+  echo $this->BootstrapForm->input('password');
+  echo $this->BootstrapForm->input('photo');
+  echo $this->BootstrapForm->input('birthday');
+  echo $this->BootstrapForm->input('age');
   echo $this->Form->end('Submit');
 ?>
  

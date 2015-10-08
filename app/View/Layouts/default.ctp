@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
-    <?php echo __('CakePHP: the rapid development php framework:'); ?>
-    <?php echo $title_for_layout; ?>
+    <?php echo $title; ?>| Planbox-これでデートには悩まない（仮）-
   </title>
  
     <!-- Bootstrap -->

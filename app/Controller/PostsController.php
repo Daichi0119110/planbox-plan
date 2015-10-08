@@ -191,5 +191,4 @@ class PostsController extends AppController {
 
         } // if false
     }
-
 }

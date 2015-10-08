@@ -4,8 +4,8 @@ App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses = array('User', 'Date', 'Photo');
-
+	public $uses = array('User', 'Date', 'Couple', 'Photo');
+	
 	public function setting($id) {
 		$this->autoRender = false;
 		$this->autoLayout = false;
@@ -43,10 +43,19 @@ class UsersController extends AppController {
 
 	}
 
-	public function signup() {
-			if($this->request->is('post')){
+	public function signup($isinvited=null) {
+		if($this->request->is('post')){
 			$this->User->save($this->request->data);
-		}
+			$myid=$this->User->isexistname($this->request->data['name']);
+			if($isinvited==null){
+				return $this->redirect(
+        			array('controller' => 'Users', 'action' => 'invite',$myid));
+			}
+			else{
+				$this->Couple->MakeCouple($myid,$this->User->getuseridfromhash($isinvited));
+			}
+		}	
+		
 	}
 
 	public function invite($id)//メール
@@ -58,9 +67,9 @@ class UsersController extends AppController {
 		$name=$user[0]["User"]["name"];
 
 		if($this->request->is('post')){
-			var_dump($this->request->data);
+			//	var_dump($this->request->data);
 			$mail=$this->request->data["User"]["mail"];
-		
+			
 			$email = new CakeEmail('gmail');
 			$email->from('example@gmail.com');
 			//仮登録(あらたなテーブルを作成)して、フラグを立てる(24時間以内、あるいは改ざんの防止)
@@ -71,6 +80,7 @@ class UsersController extends AppController {
 			$email->subject($name);
 			//メール送信する
 			$email->send("http://".$_SERVER["HTTP_HOST"]."/users/add/".$hashed_mail);
+
 		}
 	}
 
@@ -84,7 +94,8 @@ class UsersController extends AppController {
 		if(empty($data)){
 
 		}else{
-			var_dump($data);
+			return $this->redirect(
+       			array('controller' => 'Users', 'action' => 'signup',$hashed_mail));
 			//signupに飛ばすなりなんなりする
 		}	
 	}
@@ -93,7 +104,6 @@ class UsersController extends AppController {
 
 		$id = $this->User->id;
 
-	//////////////////////////////////////////
 		// 設定
         $client_id = '028194e682b24657856781fbfeb8ed45' ;       // クライアントID
         $client_secret = '888ac11b8ce84522a71fe7a6dac5ebd5' ;       // クライアントシークレット
@@ -199,9 +209,6 @@ class UsersController extends AppController {
 			$message = '<p><mark>' . $error . '</mark>エラーが発生しました。もう一度認証をするには、<a href="' . explode( '?' , $_SERVER['REQUEST_URI'] )[0] . '">こちら</a>をクリックして下さい。</p>' ;
 			// モーダル的にメッセージを出す
 		}
-
-
-	//////////////////////////////////////////
 	}
 
 }
