@@ -7,7 +7,7 @@ class Post extends AppModel {
 	function getposts($date_id){
 		$status=array(
 			'conditions'=>array('date_id'=>$date_id)
-		);
+			);
 		return $this->find('all',$status);
 	}
 
@@ -15,7 +15,7 @@ class Post extends AppModel {
 		$status=array(
 			'conditions'=>array('date_id'=>$date_id),
 			'fields'=>array('id')
-		);
+			);
 		$a = $this->find('all',$status);
 		$post_ids = array();
 		foreach ($a as $b) {
@@ -24,50 +24,40 @@ class Post extends AppModel {
 		return $post_ids;
 	}
 
-	function AddPosts($text,$time,$user_id,$medias,$coordinates,$locatename){
+	function AddPosts($text,$time,$user_id,$medias,$ido,$keido,$state,$city){
 	//	var_dump($medias);
 		date_default_timezone_set('Asia/Tokyo');
 		App::import('Model','Couple');
 		$Couple=new Couple;
-		$cid=$Couple->getcidfromuid($user_id);
+		$cid=$Couple->getcidfromuid($user_id);//ユーザIDからカップルIDを持ってきます
 
 		App::import('Model','Date');
 		App::import('Model','Post');
-		$locatenames=explode(" ", $locatename);//都道府県と市区町村に分割
 	//		var_dump($locatenames);
 		
 		$Date=new Date;
-		$Dateid=$Date->getRecentDate($time,$cid,$locatenames['0'],$locatenames['1']);
+		$Dateid=$Date->getRecentDate($time,$cid,$state,$city);//時間とカップルIDから入れるべきデートを検索し、なければ追加します
 		$data['Post']=array(
- 			'date_id'=>$Dateid,
- 			'content'=>$text,
- 			'state'=>$locatenames['0'],
- 			'city'=>$locatenames['1'],
-		);
- 		/*	$data=array('Post',array(
- 				'date_id'=>$Dateid,
- 				'content'=>$text,
- 			));
- 		*/
-	//		if($this->CheckDouble($text,$Dateid)==0){echo "3return";return;}
-			
-	//		var_dump($data);
-			if($this->CheckDouble($text,$Dateid,$time)==0){return;}
-		//	$location=$this->Getfromcoordinates($coordinates);
-		//var_dump($location);
+			'date_id'=>$Dateid,
+			'content'=>$text,
+			'state'=>$state,
+			'city'=>$city,
+			);
+		if($this->CheckDouble($text,$Dateid,$time)==0){return;}//多重取得の防止をしてくれてるはずです
+		//	$location=$this->Getfromcoordinates($coordinates);//緯度経度からいろいろなものを取得してきます
 		$this->create();
 //		echo "saved!!!";
- 		$this->save($data);
+		$this->save($data);
 
-		$mypostid=$this->GetRecentPostid($Dateid);
+		$mypostid=$this->GetRecentPostid($Dateid);//いま追加したばかりのpostidを拾ってきます
 		App::import('Model','Photo');
- 			$Photo=new Photo;
- 		//	var_dump($medias);
- 			foreach ($medias as $value) {
- 				$Photo->loadgraphs($mypostid,$value->media_url);
+		$Photo=new Photo;
+		foreach ($medias as $value) {
+ 				$Photo->loadgraphs($mypostid,$value->media_url);//画像をもらってきます
  			}
 
-		$Date->updatebyNewPost($time,$Dateid);
+		$Date->updatebyNewPost($time,$Dateid);//デートにポストが追加された時間を記述します
+		return $mypostid;
 	}
 	function CheckDouble($text,$date_id,$time)
 	{
@@ -79,41 +69,38 @@ class Post extends AppModel {
 				'date_id'=>$date_id,
 				));
 		$data=$this->find('first',$status);
-	//	var_dump($data);
 		if(empty($data)){
-		//echo "empty";
-		return 1;}
-		//echo "notempty";
-		return 0;
-	}
-	function GetRecentPostid($date_id)
-	{
-		$status=array(
-			'order'=>'created DESC',
-			'conditions'=>array(
-				'date_id'=>$date_id,
+			return 1;}
+			return 0;
+		}
+		function GetRecentPostid($date_id)
+		{
+			$status=array(
+				'order'=>'created DESC',
+				'conditions'=>array(
+					'date_id'=>$date_id,
 				//finished=> 0
 				//上は追加のコメントとかを付けたときに1にして、そうすると検索結果から外れる
-				)
-			);
-		$data=$this->find('first',$status);
-		return $data['Post']['id'];
-	}
+					)
+				);
+			$data=$this->find('first',$status);
+			return $data['Post']['id'];
+		}
 
-	function getlocation($date_id){
-		$status=array(
-			'conditions'=>array('date_id'=>$date_id),
-			'fields'=>array('location')
-		);
-		$a = $this->find('first',$status);
-		return $a['Post']['location'];
-	}
+		function getlocation($date_id){
+			$status=array(
+				'conditions'=>array('date_id'=>$date_id),
+				'fields'=>array('location')
+				);
+			$a = $this->find('first',$status);
+			return $a['Post']['location'];
+		}
 
-	function Getfromcoordinates($coordinates)//緯度経度から取得。今は使わず。(正確な住所まで求められるので、きちんとやれば施設名まで求められると思います。)
+	function Getfromcoordinates($ido,$keido)//緯度経度から取得。今は使わず。(正確な住所まで求められるので、きちんとやれば施設名まで求められると思います。)
 	{
 	//	var_dump($coordinates);
 	//	var_dump($coordinates->coordinates['0']);
-		$url="http://maps.google.com/maps/api/geocode/json?latlng=".$coordinates->coordinates['1'].",".$coordinates->coordinates['0']."&sensor=false&language=jp";
+		$url="http://maps.google.com/maps/api/geocode/json?latlng=".$ido.",".$keido."&sensor=false&language=jp";
 		$json=file_get_contents($url);
 		$decoded=json_decode($json, true);
 		return $decoded;
