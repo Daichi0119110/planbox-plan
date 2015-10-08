@@ -22,6 +22,10 @@ class PagesController extends AppController {
 		}
 	}
 
+	public function lp() {
+
+	}
+
 	public function index_pc($user_id){
 		$user_id = 1; // 一旦idを1とする
 		// フィード
