@@ -5,7 +5,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">Planbox</a>
+        <a class="navbar-brand" href="/planbox-plan/pages/index">Planbox</a>
       </div>
  
       <div class="collapse navbar-collapse target">
