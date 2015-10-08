@@ -65,6 +65,21 @@ class CouplesController extends AppController {
 			}
 		}
 		$this->set('couples', $couples);
+
+		//グレードの取得
+		$points=0;
+		$followerscount=$this->Follow->getnumber($couple_id);
+		$datecount=count($this->Date->getdatesfromcouple($couple_id));
+		for ($i=0; $i < count($dates); $i++) {
+			$points+=$dates[$i]['Date']['favo']*5; 
+			$points+=$dates[$i]['Date']['num_view'];
+		}
+		
+		$points+=$followerscount*30;
+		$points+=$datecount*20;
+
+		$this->set('points',$points);
+		//view 1 ikitai 5 toukou 20 follower=30
 		$this->set('title', 'カップル個別ページ');
 	}
 
@@ -158,8 +173,8 @@ class CouplesController extends AppController {
 	}
 //
 	public function delete($id){
-	$this->Date->deleateAll(array('Date.couple_id' => $id));	//投稿している記事も削除
-	$this->Couple->deleate($id,false);//ユーザ情報は削除しない
+	//$this->Date->deleteAll(array('couple_id' => $id));	//投稿している記事の削除
+	$this->Couple->delete($id,false);//ユーザ情報は削除しない
 	}
 
 	public function signup() {
@@ -180,8 +195,8 @@ class CouplesController extends AppController {
     }
 		
 	}
-	public function deleatemydate($date_id)
+	public function deletemydate($date_id)
 	{
-		$this->date->deleate($date_id);
+		$this->date->delete($date_id);
 	}
 }
