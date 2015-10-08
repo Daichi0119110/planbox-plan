@@ -121,4 +121,20 @@ class FollowsController extends AppController {
 		$this->redirect(array('controller'=>'couple', 'action' => 'couple'));
 	}
 
+	public function change_mypage() {
+		if ($this->request->is('get')) {
+			throw new MethodNotAllowedException();
+		}
+		if ($this->request->is('ajax')) {
+			if ($this->Follow->change_follow_flg($_POST['couple_id'], $_POST['user_id'])) {
+				$this->autoRender = false;
+				$this->autoLayout = false;
+				$this->header('Content-Type: application/json');
+				echo json_encode($_POST['couple_id']);
+				exit();
+			}
+		}
+		$this->redirect(array('controller'=>'dates', 'action' => 'index'));
+	}
+
 }

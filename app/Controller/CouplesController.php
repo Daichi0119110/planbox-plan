@@ -86,12 +86,17 @@ class CouplesController extends AppController {
 
 		$this->set('points',$points);
 		//view 1 ikitai 5 toukou 20 follower=30
-		$this->set('title', 'カップル個別ページ');
+		$this->set('title', 'カップル ');
 	}
 
 	public function couple_sp($couple_id){
+		$user_id = $this->Session->read('user_id');
+		$this->set('user_id', $user_id);
+
 		// カップル情報の取得
-		$this->set('couple',$this->Couple->getcouple($couple_id));
+		$our = $this->Couple->getcouple($couple_id);
+		$our[0]['Couple']['num_follow'] = $this->Follow->getnumber($our[0]['Couple']['id']);
+		$this->set('our',$our);
 		$users = $this->User->getuserfromcouple($couple_id);
 		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
 		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
@@ -131,10 +136,25 @@ class CouplesController extends AppController {
 				$couples[$i]['Couple']['user'][$j] = $users_follow[$j]['User'];
 				$couples[$i]['Couple']['user'][$j]['photo'] = $this->Photo->getuserphoto($couples[$i]['Couple']['user'][$j]['id']);
 			}
-			$couples[$i]['Couple']['num_follow'] = $this->Follow->getnumber($couple[$i]['Couple']['id']);
+			$couples[$i]['Couple']['num_follow'] = $this->Follow->getnumber($couples[$i]['Couple']['id']);
 		}
 		$this->set('couples', $couples);
-		$this->set('title', 'カップル個別ページ');
+
+		//グレードの取得
+		$points=0;
+		$followerscount=$this->Follow->getnumber($couple_id);
+		$datecount=count($this->Date->getdatesfromcouple($couple_id));
+		for ($i=0; $i < count($dates); $i++) {
+			$points+=$dates[$i]['Date']['favo']*5; 
+			$points+=$dates[$i]['Date']['num_view'];
+		}
+		
+		$points+=$followerscount*30;
+		$points+=$datecount*20;
+
+		$this->set('points',$points);
+		//view 1 ikitai 5 toukou 20 follower=30
+		$this->set('title', 'カップル ');
 	}
 	
 	public function mypage() {
@@ -160,6 +180,7 @@ class CouplesController extends AppController {
 			$this->redirect('/users/signup');
 		}
 		$user_id = $this->Session->read('user_id');
+		$this->set('user_id', $user_id);
 
 		// カップル情報の取得
 		$couple_id = $this->User->getcoupleid($user_id);
@@ -221,6 +242,7 @@ class CouplesController extends AppController {
 			}
 		}
 		$this->set('couples', $couples);
+		$this->set('title', 'マイページ ');
 	}
 
 	public function mypage_sp($user_id){
@@ -229,10 +251,11 @@ class CouplesController extends AppController {
 			$this->redirect('/users/signup');
 		}
 		$user_id = $this->Session->read('user_id');
+		$this->set('user_id', $user_id);
 
 		// カップル情報の取得
 		$couple_id = $this->User->getcoupleid($user_id);
-		$this->set('couple',$this->Couple->getcouple($couple_id));
+		$this->set('our',$this->Couple->getcouple($couple_id));
 		$users = $this->User->getuserfromcouple($couple_id);
 		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
 		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
@@ -290,6 +313,7 @@ class CouplesController extends AppController {
 			}
 		}
 		$this->set('couples', $couples);
+		$this->set('title', 'マイページ ');
 	}
 
 	public function edit($id) {

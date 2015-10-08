@@ -31,6 +31,8 @@ class UsersController extends AppController {
 		$user_id = $this->Session->read('user_id');
 
 		$this->set('user',$this->User->getuser($user_id));
+
+		$this->set('title', '設定 ');
 	}
 
 	public function setting_sp($user_id){
@@ -41,6 +43,8 @@ class UsersController extends AppController {
 		$user_id = $this->Session->read('user_id');
 
 		$this->set('user',$this->User->getuser($user_id));
+
+		$this->set('title', '設定 ');
 	}
 	
 	public function edit($id) {
@@ -56,6 +60,8 @@ class UsersController extends AppController {
 	}
 
 	public function signup($isinvited=null) {
+		$this->set('title', '新規登録 ');
+
 		if($this->request->is('post')){
 			$this->User->save($this->request->data);
 

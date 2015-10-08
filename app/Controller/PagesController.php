@@ -65,7 +65,7 @@ class PagesController extends AppController {
 
 		// 新着
 
-		$this->set('title', 'トップページ');
+		$this->set('title', 'トップページ ');
 	}
 
 		public function index_sp(){
@@ -74,7 +74,8 @@ class PagesController extends AppController {
 			$this->redirect('/users/signup');
 		}
 		$user_id = $this->Session->read('user_id');
-		
+		$this->set('user_id', $user_id);
+
 		// フィード
 		for ($i=1; $i<4; $i++) { 
 			switch ($i) {
@@ -107,7 +108,10 @@ class PagesController extends AppController {
 		// ランキング
 		$ranking_dates = $this->ranking();
 		$this->_date_set('ranking_dates', $ranking_dates);
-		$this->set('title', 'トップページ');
+
+		// 新着
+
+		$this->set('title', 'トップページ ');
 	}
 
 	// いいね数・場所・カップル・写真の読み込み、viewにセット

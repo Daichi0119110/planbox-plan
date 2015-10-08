@@ -1,5 +1,5 @@
  <?php echo $this->Html->script('hoge', array('inline' => false)); ?>
-<div class="container">
+<div class="container" data-user-id='<?php echo $user_id; ?>'>
 
   <!--写真スライドショー、カップル情報開始-->
   <div class="row">
@@ -179,10 +179,11 @@
         <tr>
           <td style="width:;height:;">よく行くデート先</td>
           <td style="width:;height:;"><?php echo $couple['Couple']['often_area']; ?></td>
-        </tr>      
+        </tr>  
       </table>
+      </a>
+      <button id="follow<?php echo $couple['Couple']['id']; ?>" type="button" class="btn btn-warning btn-lg follow" data-couple-id='<?php echo $couple['Couple']['id']; ?>'>フォローを外す</button>  
     </div>
-  　</a>
   <!--フォローしているカップルの一つの塊終了-->
   <?php } ?>
 </div>
@@ -196,3 +197,20 @@
 <!--今までのデート一覧、フォローしているカップル一覧終了-->
 
 </div>
+
+<script>
+$(function() {
+  // サイドバーの「フォローを外すボタン」を押すと
+  $('button.follow').click(function(e){
+    $.post('/planbox-plan/follows/change_mypage/',
+      {'user_id':$('div.container').data('user-id'), 'couple_id':$(this).data('couple-id')}
+      ,function(res){
+        if($('#follow'+res).html() == "フォローを外す"){
+          $('#follow'+res).html('フォロー！');
+        } else{
+          $('#follow'+res).html('フォローを外す');
+        }
+    }, "json");
+  });
+});
+</script>

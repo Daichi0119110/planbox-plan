@@ -21,7 +21,7 @@ class DatesController extends AppController {
             'conditions' => $this->Date->parseCriteria($this->passedArgs),
         );
     $this->set('results', $this->paginate());
-    	$this->set('title', '検索ページ');
+    	$this->set('title', '検索 ');
   	}
 
 	public function search_sp(){
@@ -30,7 +30,7 @@ class DatesController extends AppController {
    			'conditions' => $this->Date->parseCriteria($this->passedArgs),
         );
    	    $this->set('results', $this->paginate());
-   	    $this->set('title', '検索ページ');
+   	    $this->set('title', '検索 ');
 	}
   	//ここから上が検索・・・
 	public function favorite() {
@@ -79,6 +79,8 @@ class DatesController extends AppController {
 			$dates[$i] = $this->_date_road($dates[$i]);
 		}
 		$this->set('dates', $dates);
+
+		$this->set('title', 'お気に入り ');
 	}
 
 	public function favorite_sp(){
@@ -87,9 +89,31 @@ class DatesController extends AppController {
 			$this->redirect('/users/signup');
 		}
 		$user_id = $this->Session->read('user_id');
+		$this->set('user_id', $user_id);
 
-		$couple_ids = $this->Follow->getcoupleids($user_id);
-		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
+		for ($i=1; $i<4; $i++) { 
+			switch ($i) {
+				case 1: // カップル
+					$lover = $this->User->getlover($user_id);
+					$b = array();
+					array_push($b, $user_id);
+					array_push($b, $lover['User']['id']);
+					break;
+				case 2: // 自分
+					$b = $user_id;
+					break;		
+				case 3: // 相手
+					$lover = $this->User->getlover($user_id);
+					$b = $lover['User']['id'];
+					break;				
+			}
+			$date_ids = $this->Favorite->getfavodateid($b);
+			$dates[$i] = $this->Date->getdate($date_ids);
+			$dates[$i] = $this->_date_road($dates[$i]);
+		}
+		$this->set('dates', $dates);
+
+		$this->set('title', 'お気に入り ');
 	}
 
 	public function search(){
@@ -129,7 +153,7 @@ class DatesController extends AppController {
 	public function date_pc($date_id) {
 		$user_id = $this->Session->read('user_id');
 		$this->set('user_id', $user_id);
-		
+
 		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
@@ -176,9 +200,14 @@ class DatesController extends AppController {
 		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
 		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
 		$this->set('users', $users);
+
+		$this->set('title', 'デートの詳細 ');
 	}
 
 	public function date_sp($date_id) {
+		$user_id = $this->Session->read('user_id');
+		$this->set('user_id', $user_id);
+
 		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
@@ -225,6 +254,8 @@ class DatesController extends AppController {
 		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
 		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
 		$this->set('users', $users);
+
+		$this->set('title', 'デートの詳細 ');
 	}
 
 	public function _date_road($dates){
