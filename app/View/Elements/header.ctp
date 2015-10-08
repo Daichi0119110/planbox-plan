@@ -10,11 +10,11 @@
  
       <div class="collapse navbar-collapse target">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="">行きたいリスト</a></li>
-          <li><a href="">マイページ</a></li>
+          <li class="active"><a href="/planbox-plan/dates/favorite">行きたいリスト</a></li>
+          <li><a href="/planbox-plan/couples/mypage">マイページ</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="">設定</a></li>
+          <li><a href="/planbox-plan/users/setting">設定</a></li>
         </ul>
       </div>
       

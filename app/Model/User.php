@@ -14,11 +14,11 @@ class User extends AppModel {
 
 	public function getcoupleid($id){
 		$status=array(
-			'conditions'=>
-			array('id'=>$id)
+			'conditions'=>array('id'=>$id),
+			'fields'=>array('couple_id')
 		);
-		$data=$this->find('all',$status);
-		return $data['couple_id'];
+		$data=$this->find('first',$status);
+		return $data['User']['couple_id'];
 	}
 
 	public function isexistname($name){

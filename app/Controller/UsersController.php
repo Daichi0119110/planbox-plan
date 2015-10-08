@@ -6,7 +6,7 @@ class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('User', 'Date','Couple','Photo');
 
-	public function setting($id) {
+	public function setting() {
 		$this->autoRender = false;
 		$this->autoLayout = false;
 
@@ -14,21 +14,37 @@ class UsersController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect('/users/setting_sp/'.$id);
+			$this->redirect('/users/setting_sp');
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect('/users/setting_pc/'.$id);
+			$this->redirect('/users/setting_pc');
 			exit();
 		}
 	}
 
-	public function setting_pc($id){
-		$this->set('user',$this->User->getuser($id));
+	public function setting_pc(){
+		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
+		if(!$this->Session->check('user_id')){
+			$this->redirect('/users/signup');
+		}
+		$user_id = $this->Session->read('user_id');
+
+		$this->set('user',$this->User->getuser($user_id));
+
+		$this->set('title', '設定 ');
 	}
 
-	public function setting_sp($id){
-		$this->set('user',$this->User->getuser($id));
+	public function setting_sp($user_id){
+		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
+		if(!$this->Session->check('user_id')){
+			$this->redirect('/users/signup');
+		}
+		$user_id = $this->Session->read('user_id');
+
+		$this->set('user',$this->User->getuser($user_id));
+
+		$this->set('title', '設定 ');
 	}
 	
 	public function edit($id) {
@@ -44,6 +60,8 @@ class UsersController extends AppController {
 	}
 
 	public function signup($isinvited=null) {
+		$this->set('title', '新規登録 ');
+
 		if($this->request->is('post')){
 			$this->User->save($this->request->data);
 
@@ -69,7 +87,7 @@ class UsersController extends AppController {
         			array('controller' => 'Users', 'action' => 'setting',$myid));
 			}
 		}	
-		
+		$this->Session->write('user_id',1); // sessionにuser_idを保存
 	}
 
 	public function invite($id)//メール
