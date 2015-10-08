@@ -5,7 +5,7 @@ App::uses('AppController', 'Controller');
 class PagesController extends AppController {
 	public $uses = array('Date','Follow','Favorite','Post','User','Photo');
 
-	public function index($user_id){
+	public function index(){
 		$this->autoRender = false;
 		$this->autoLayout = false;
 
@@ -13,17 +13,22 @@ class PagesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect('/pages/index_sp/'.$user_id);
+			$this->redirect('/pages/index_sp');
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect('/pages/index_pc/'.$user_id);
+			$this->redirect('/pages/index_pc');
 			exit();
 		}
 	}
 
-	public function index_pc($user_id){
-		$user_id = 1; // 一旦idを1とする
+	public function index_pc(){
+		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
+		if(!$this->Session->check('user_id')){
+			$this->redirect('/users/signup');
+		}
+		$user_id = $this->Session->read('user_id');
+		
 		// フィード
 		for ($i=1; $i<4; $i++) { 
 			switch ($i) {
@@ -58,8 +63,13 @@ class PagesController extends AppController {
 		$this->_date_set('ranking_dates', $ranking_dates);
 	}
 
-		public function index_sp($user_id){
-		$user_id = 1; // 一旦idを1とする
+		public function index_sp(){
+		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
+		if(!$this->Session->check('user_id')){
+			$this->redirect('/users/signup');
+		}
+		$user_id = $this->Session->read('user_id');
+		
 		// フィード
 		for ($i=1; $i<4; $i++) { 
 			switch ($i) {

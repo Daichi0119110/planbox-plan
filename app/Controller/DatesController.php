@@ -37,7 +37,7 @@ class DatesController extends AppController {
    	    $this->set('results', $this->paginate());
 	}
   	//ここから上が検索・・・
-	public function favorite($user_id) {
+	public function favorite() {
 		$this->autoRender = false;
 		$this->autoLayout = false;
 
@@ -45,36 +45,35 @@ class DatesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect('/dates/favorite_sp/'.$user_id);
+			$this->redirect('/dates/favorite_sp');
 			exit();
 		} else {
 			// PCだったら
-			$this->redirect('/dates/favorite_pc/'.$user_id);
+			$this->redirect('/dates/favorite_pc');
 			exit();
 		}
 	}
 
-	public function favorite_pc($user_id){
-		$couple_ids = $this->Follow->getcoupleids($user_id);
-		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
-	}
-
-	public function favorite_sp($user_id){
-		$couple_ids = $this->Follow->getcoupleids($user_id);
-		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
-	}
-
-	// 削除してOK
-	public function index($id = null) {
-		// デートプランの取得
-		$dates = $this->Date->getdatesfromcouple($this->Follow->getcoupleids(1));
-
-		//いいね数の取得
-		for ($i=0; $i < count($dates); $i++) { 
-			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']);
+	public function favorite_pc(){
+		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
+		if(!$this->Session->check('user_id')){
+			$this->redirect('/users/signup');
 		}
-		$this->set('dates',$dates);
+		$user_id = $this->Session->read('user_id');
 
+		$couple_ids = $this->Follow->getcoupleids($user_id);
+		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
+	}
+
+	public function favorite_sp(){
+		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
+		if(!$this->Session->check('user_id')){
+			$this->redirect('/users/signup');
+		}
+		$user_id = $this->Session->read('user_id');
+
+		$couple_ids = $this->Follow->getcoupleids($user_id);
+		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
 	}
 
 	public function search(){
