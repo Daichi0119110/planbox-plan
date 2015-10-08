@@ -109,7 +109,7 @@
                           </a>
                           </td>
                           </tr>
-                          <tr><td></td><td><?php echo $date_follow['Date']['num_view']; ?>View</td><td style="text-align: right;">行きたい!!:<?php echo $date_follow['Date']['favo']; ?></td></tr>
+                          <tr><td><?php echo $date_follow['Date']['num_view']; ?>View</td><td style="text-align: right;">行きたい!!:<?php echo $date_follow['Date']['favo']; ?></td></tr>
                         </table>
                       </div>
                     </div>

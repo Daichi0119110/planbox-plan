@@ -23,7 +23,7 @@ class CouplesController extends AppController {
 
 	public function couple_pc($couple_id){
 		// カップル情報の取得
-		$this->set('couple',$this->Couple->getcouple($couple_id));
+		$this->set('our',$this->Couple->getcouple($couple_id));
 		$users = $this->User->getuserfromcouple($couple_id);
 		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
 		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
@@ -139,7 +139,7 @@ class CouplesController extends AppController {
 
 		// カップル情報の取得
 		$couple_id = $this->User->getcoupleid($user_id);
-		$this->set('couple',$this->Couple->getcouple($couple_id));
+		$this->set('our',$this->Couple->getcouple($couple_id));
 		$users = $this->User->getuserfromcouple($couple_id);
 		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
 		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);

@@ -6,17 +6,11 @@ class DatesController extends AppController {
 	public $uses = array('Date','Follow','Favorite','Post','Photo','User');
 	
 	public $components = array(
-
         'Search.Prg' => array(
-
         'commonProcess' => array(
-
           	'paramType' => 'querystring',
-
           	'filterEmpty' =>  true,
-
         	),
-
     	 ),
   	);
   	public $presetVars = true;
@@ -60,9 +54,29 @@ class DatesController extends AppController {
 			$this->redirect('/users/signup');
 		}
 		$user_id = $this->Session->read('user_id');
+		$this->set('user_id', $user_id);
 
-		$couple_ids = $this->Follow->getcoupleids($user_id);
-		$this->set('dates', $this->Date->getdatesfromcouple($couple_ids));
+		for ($i=1; $i<4; $i++) { 
+			switch ($i) {
+				case 1: // カップル
+					$lover = $this->User->getlover($user_id);
+					$b = array();
+					array_push($b, $user_id);
+					array_push($b, $lover['User']['id']);
+					break;
+				case 2: // 自分
+					$b = $user_id;
+					break;		
+				case 3: // 相手
+					$lover = $this->User->getlover($user_id);
+					$b = $lover['User']['id'];
+					break;				
+			}
+			$date_ids = $this->Favorite->getfavodateid($b);
+			$dates[$i] = $this->Date->getdate($date_ids);
+			$dates[$i] = $this->_date_road($dates[$i]);
+		}
+		$this->set('dates', $dates);
 	}
 
 	public function favorite_sp(){
@@ -92,14 +106,6 @@ class DatesController extends AppController {
 			exit();
 		}
 	}
-
-	/*public function search_pc(){
-
-	}*/
-
-/*	public function search_sp(){
-
-	}*/
 
 	public function date($date_id){
 		$this->autoRender = false;
@@ -216,64 +222,29 @@ class DatesController extends AppController {
 		$this->set('users', $users);
 	}
 
-	// public function viewnum(){ // google analyticsを利用してview数を取る
+	public function _date_road($dates){
+		for ($i=0; $i < count($dates); $i++) {
+			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']); // いいね数の取得
+			$dates[$i]['Date']['location'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
+			
+			// カップルの読み込み
+			$couple_id = $this->Date->getcoupleid($dates[$i]['Date']['id']);
+			$users = $this->User->getuserfromcouple($couple_id);
+			$a = array();
+			for ($j=0; $j < 2; $j++) { 
+				$users[$j]['User']['photo'] = $this->Photo->getuserphoto($users[$j]['User']['id']);
+				$dates[$i]['Date']['user'][$j] = $users[$j]['User'];
+			}
 
-	// 	// https://syncer.jp/google-analytics-api-tutorialを参考に作成
-
-	// 	// GoogleAnalyticsライブラリを読み込む
-	// 	require_once '../Vendor/google-api-php-client/src/Google/autoload.php';
-		
-	// 	// クライアントIDとビューIDの登録
-	// 	$client_id = '588018977183-sc6jkgogoiue1pelqkriogjsd9n7an6v@developer.gserviceaccount.com';
-	// 	$view_id = '109105240';
-		
-	// 	// 秘密キーファイルの読み込み
-	// 	$private_key = @file_get_contents('../Vendor/Planbox-a8d29190491c.p12');
-
-	// 	// 取得する期間 (YYYY-MM-DD)
-	// 	$from = '2000-11-10';		// 対象開始日
-	// 	$to = 'today';		// 対象終了日
-
-	// 	// 取得するデータの組み合わせ (複数の場合は[,]で区切る)
-	// 	$dimensions = 'ga:pageTitle, ga:pagePath';		// ディメンション
-	// 	$metrics = 'ga:pageviews';		// メトリクス
-
-	// 	//オプション
-	// 	$option = array(
-	// 	'dimensions' => $dimensions,
-	// 	'max-results' => 10,
-	// 	'sort' => '-ga:pageviews'
-	// 	// 'start-index' => 50, // 取得開始位置
-	// 	);
-
-	// 	// トークンのセット
-	// 	if(isset($_SESSION['service_token'])){
-	// 		$client->setAccessToken($_SESSION['service_token']);
-	// 	}
-	// 	// スコープのセット (読み込みオンリー)
-	// 	$scopes = array('https://www.googleapis.com/auth/analytics.readonly');
-	// 	// クレデンシャルの作成
-	// 	$credentials = new Google_Auth_AssertionCredentials($client_id, $scopes, $private_key);
-
-	// 	// Googleクライアントのインスタンスを作成
-	// 	$client = new Google_Client();
-	// 	$client->setAssertionCredentials($credentials);
-
-	// 	// トークンのリフレッシュ
-	// 	if($client->getAuth()->isAccessTokenExpired()){
-	// 		$client->getAuth()->refreshTokenWithAssertion($credentials);
-	// 	}
-
-	// 	// セッションの設定
-	// 	$_SESSION['service_token'] = $client->getAccessToken();
-
-	// 	// Analyticsのインスタンスを作成
-	// 	$analytics = new Google_Service_Analytics($client);
-
-	// 	// データの取得
-	// 	$obj = $analytics->data_ga->get('ga:'.$view_id, $from, $to, $metrics, $option);
-
-	// 	// JSONデータに変換して出力
-	// 	echo json_encode($obj);
-	// }
+			// 写真の読み込み
+			$posts = $this->Post->getpostids($dates[$i]['Date']['id']);
+			$photos = $this->Photo->getpostallphotos($posts);
+			if(!$photos){
+				$dates[$i]['Date']['photo'] = null;
+				continue;
+			}
+			$dates[$i]['Date']['photo'] = $photos[0];
+		}
+		return $dates;
+	}
 }
