@@ -82,7 +82,6 @@ class Date extends AppModel {
 	}
 	function getnewdate(){
 		$status=array(
-			'conditions' => array('couple_id'=>$couple_ids),
 			'order' => array('created'=> "desc"),
 			'limit' => 5
 		);
@@ -90,7 +89,7 @@ class Date extends AppModel {
 	}
 
 	function getalldateids(){
-		$status=array('fields'=>'id');
+		$status=array('fields'=>'id', 'order'=>array('Date.created'=>'Desc'));
 		$a = $this->find('all', $status);
 		$date_ids = array();
 		foreach ($a as $b) {

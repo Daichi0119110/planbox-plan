@@ -64,11 +64,13 @@ class PagesController extends AppController {
 		$this->_date_set('ranking_dates', $ranking_dates);
 
 		// 新着
+		$dates_new = $this->Date->getnewdate();
+		$this->_date_set('dates_new', $dates_new);
 
 		$this->set('title', 'トップページ ');
 	}
 
-		public function index_sp(){
+	public function index_sp(){
 		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
 		if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
@@ -110,6 +112,8 @@ class PagesController extends AppController {
 		$this->_date_set('ranking_dates', $ranking_dates);
 
 		// 新着
+		$dates_new = $this->Date->getnewdate();
+		$this->_date_set('dates_new', $dates_new);
 
 		$this->set('title', 'トップページ ');
 	}
@@ -118,7 +122,7 @@ class PagesController extends AppController {
 	function _date_set($name, $dates){
 		for ($i=0; $i < count($dates); $i++) {
 			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']); // いいね数の取得
-			$dates[$i]['Date']['location'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
+			$dates[$i]['Date']['city'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
 			
 			// カップルの読み込み
 			$couple_id = $this->Date->getcoupleid($dates[$i]['Date']['id']);
@@ -146,7 +150,7 @@ class PagesController extends AppController {
 	function _date_road($dates){
 		for ($i=0; $i < count($dates); $i++) {
 			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']); // いいね数の取得
-			$dates[$i]['Date']['location'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
+			$dates[$i]['Date']['city'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
 			
 			// カップルの読み込み
 			$couple_id = $this->Date->getcoupleid($dates[$i]['Date']['id']);

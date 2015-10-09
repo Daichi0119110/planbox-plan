@@ -90,10 +90,10 @@ class Post extends AppModel {
 		function getlocation($date_id){
 			$status=array(
 				'conditions'=>array('date_id'=>$date_id),
-				'fields'=>array('location')
+				'fields'=>array('city')
 				);
 			$a = $this->find('first',$status);
-			return $a['Post']['location'];
+			return $a['Post']['city'];
 		}
 
 	function Getfromcoordinates($ido,$keido)//緯度経度から取得。今は使わず。(正確な住所まで求められるので、きちんとやれば施設名まで求められると思います。)

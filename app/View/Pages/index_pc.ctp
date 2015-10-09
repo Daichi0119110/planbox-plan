@@ -1,4 +1,5 @@
 <?php echo $this->Html->script('hoge', array('inline' => false)); ?>
+
 <div class="container" data-user-id='<?php echo $user_id; ?>'>
   <div class="row">
     <div class="col-sm-12">
@@ -18,7 +19,7 @@
               <table class="table" style="word-break: break-all;">
                 <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['name']; ?></td></tr>
                 <tr><td style="text-align: center; "><?php echo $date_recommend['Date']['description']; ?></td></tr>
-                <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $date_recommend['Date']['location']; ?></i></td></tr>
+                <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $date_recommend['Date']['city']; ?></i></td></tr>
                 <tr><td style="text-align: right;">行きたい!!:<?php echo $date_recommend['Date']['favo']; ?></td></tr>
               </table>
               </a>
@@ -93,7 +94,7 @@
                         <td colspan="3" style="text-align: center;"><?php echo $date_follow['Date']['description']; ?></td>
                       </tr>
                       <tr><!--３行目:デートの場所、日時、予算-->
-                        <td style="text-align:center;" class="fa fa-map-marker"><?php echo $date_follow['Date']['location']; ?></td>
+                        <td style="text-align:center;" class="fa fa-map-marker"><?php echo $date_follow['Date']['city']; ?></td>
                         <td style="text-align:center;" class="fa fa-jpy"><?php echo $date_follow['Date']['budget']; ?></td>
                         <td style="text-align:center;" class="fa fa-calendar"><?php echo $date_follow['Date']['created']; ?></td>
                       </tr>
@@ -136,7 +137,9 @@
         <!-- フォローしているリスト終了-->
 
         <!--サイドバー開始-->
-        <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
+        <div class="col-sm-offset-1 col-sm-3" style="padding:0;">
+          <!--ランキング開始-->
+          <div style="border:1px solid #ccc; padding:5px;"> 
           <h4 style="text-align:center">今週のデートランキング</h4>
           <?php $i = 1; ?>
           <?php foreach ($ranking_dates as $ranking_date) { ?>
@@ -149,7 +152,7 @@
                  <?php echo $this->Html->image($ranking_date['Date']['photo'], array('alt' => $ranking_date['Date']['name']));?>
               </div>
               <h4 ><?php echo $ranking_date['Date']['name']; ?></h4>
-              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $ranking_date['Date']['location']; ?></p>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $ranking_date['Date']['city']; ?></p>
               </a>
               <p><?php echo $ranking_date['Date']['favo']; ?>行きたい！</p>
             </div>
@@ -157,6 +160,30 @@
           <!--ランキングプラン終了-->
           <?php $i=$i+1 ;?>
           <?php } ?>
+          </div>
+          <!--ランキング終了-->
+          <br>
+          <!--新着開始-->
+          <div style="border:1px solid #ccc; padding:5px;"> 
+          <h4 style="text-align:center">新着のデート</h4>
+          <?php foreach ($dates_new as $date_new) { ?>
+          <!--新着プラン-->
+          <hr>
+          <a href="/planbox-plan/dates/date/<?php echo $date_new['Date']['id']; ?>"><!--このデートプランに飛ぶリンク-->
+            <div style="background-color:#FFDAB9; padding:5px;">
+              <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
+                 <?php echo $this->Html->image($date_new['Date']['photo'], array('alt' => $date_new['Date']['name']));?>
+              </div>
+              <h4 ><?php echo $date_new['Date']['name']; ?></h4>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $date_new['Date']['city']; ?></p>
+              </a>
+              <p><?php echo $date_new['Date']['favo']; ?>行きたい！</p>
+            </div>
+          <hr>
+          <!--新着プラン終了-->
+          <?php } ?>
+          </div>
+          <!--新着終了-->
         </div>        
         <!--サイドバー終了-->
       </div>

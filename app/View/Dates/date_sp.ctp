@@ -169,29 +169,33 @@ $j = 1;
 
     <!--コメントの追加終了-->
 
-  </div>
-  <script>
-    $(function() {
-      $.post('/planbox-plan/follows/ready/',
-        {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
-        ,function(res){
-          if(res == 1){
-            $('#button_follow').html('登録済み');
-          }
-        }, "json");
 
-      $('button.follow').click(function(e){
-        $.post('/planbox-plan/follows/change/',
-          {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
-          ,function(res){
-            if($('#button_follow').html() == "フォロー！"){
-              $('#button_follow').html('登録済み');
-            } else{
-              $('#button_follow').html('フォロー！');
-            }
-          }, "json");
-      });
-    });
+<?php echo $this->element('footer_date_sp'); ?>
+
+</div>
+
+<script>
+$(function() {
+  $.post('/planbox-plan/follows/ready/',
+    {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+    ,function(res){
+      if(res == 1){
+        $('#button_follow').html('登録済み');
+      }
+    }, "json");
+
+  $('button.follow').click(function(e){
+    $.post('/planbox-plan/follows/change/',
+      {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+      ,function(res){
+        if($('#button_follow').html() == "フォロー！"){
+          $('#button_follow').html('登録済み');
+        } else{
+          $('#button_follow').html('フォロー！');
+        }
+    }, "json");
+  });
+});
 
 
 /* DOMの読み込み完了後に処理 */
@@ -219,5 +223,4 @@ window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 }
-  </script>
-
+</script>

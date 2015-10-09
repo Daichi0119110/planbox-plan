@@ -71,9 +71,7 @@
             </div>
           </div>
 
-          <!-- フォロー用のボタン -->
-          <button id="follow" type="button" class="btn btn-warning btn-lg" data-couple-id='<?php echo $our[0]['Couple']['id']; ?>'>フォロー！</button>
-          <span id="follow_num"><?php echo $our[0]['Couple']['num_follow']; ?></span>人がフォローしています
+          
 
           <!--カップル情報開始-->
           <div class="col-sm-4" style="height:;background-color:#FFFFCC;margin-left:10px;padding-top:12px;">
@@ -96,8 +94,17 @@
               <td><?php echo $our[0]['Couple']['often_place']; ?></td>
             </tr>
           </table>
+          <!-- フォロー用のボタン開始 -->
+          <div  style="margin:5px 0 15px 0;">
+          <button id="follow" type="button" class="btn btn-warning btn-lg" data-couple-id='<?php echo $our[0]['Couple']['id']; ?>'>フォローする
+          </button>
+          <br>
+          <span id="follow_num"><?php echo $our[0]['Couple']['num_follow']; ?></span>人がフォローしています
+          </div>
+           <!-- フォロー用のボタン終了 -->
         </div>
         <!--カップル情報終了-->
+
 
       </div>
     </div>
@@ -132,7 +139,7 @@
           <td colspan="3"><?php echo $date['Date']['description']; ?></td>
         </tr>
         <tr><!--３行目:デートの場所、日時、予算-->
-          <td style="text-align:center" class="fa fa-map-marker"><?php echo $date['Date']['location']; ?></td>
+          <td style="text-align:center" class="fa fa-map-marker"><?php echo $date['Date']['city']; ?></td>
           <td style="text-align:center" class="fa fa-jpy"><?php echo $date['Date']['budget']; ?></td>
           
           <td style="text-align:center" class="fa fa-calendar"><?php echo $date['Date']['created']; ?></td>
@@ -180,6 +187,7 @@
     </table>
     </a>
     <button id="follow<?php echo $couple['Couple']['id']; ?>" type="button" class="btn btn-warning btn-lg button_follow" data-couple-id='<?php echo $couple['Couple']['id']; ?>'>フォロー！</button>
+    <br>
     <span id="follow_num<?php echo $couple['Couple']['id']; ?>"><?php echo $couple['Couple']['num_follow']; ?></span>人がフォローしています
   </div>
 <!--フォローしているカップルの一つの塊終了-->
@@ -194,6 +202,8 @@
 
 
 </div>
+
+<?php echo $this->element('footer_couple_pc'); ?>
 
 <script>
 $(function() {

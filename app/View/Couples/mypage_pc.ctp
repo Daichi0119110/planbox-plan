@@ -109,6 +109,10 @@
     <!--今までのデート一覧開始-->
     <div class="col-sm-8">
 
+      <!--未完成のデート開始-->
+      <a href="/planbox-plan/dates/date_new/"><button type="button" class="btn btn-warning" style="width:100%;font-size:26px;">未完成のデート<span class="badge">2</span></button></a>
+      <!--未完成のデート終了-->
+      
       <?php foreach($dates as $date) { ?>
       <!--一つのデートの塊開始-->
       <a href="/planbox-plan/dates/date/<?php echo $date['Date']['id']; ?>"><!--そのデートへ飛ぶリンク-->
@@ -126,7 +130,7 @@
             <td colspan="3"><?php echo $date['Date']['description']; ?></td>
           </tr>
           <tr><!--３行目:デートの場所、日時、予算-->
-            <td style="text-align:center" class="fa fa-map-marker"><?php echo $date['Date']['location']; ?></td>
+            <td style="text-align:center" class="fa fa-map-marker"><?php echo $date['Date']['city']; ?></td>
             <td style="text-align:center" class="fa fa-jpy"><?php echo $date['Date']['budget']; ?></td>
 
             <td style="text-align:center" class="fa fa-calendar"><?php echo $date['Date']['created']; ?></td>
