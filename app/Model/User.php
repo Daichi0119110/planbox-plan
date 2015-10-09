@@ -14,11 +14,11 @@ class User extends AppModel {
 
 	public function getcoupleid($id){
 		$status=array(
-			'conditions'=>
-			array('id'=>$id)
+			'conditions'=>array('id'=>$id),
+			'fields'=>array('couple_id')
 		);
-		$data=$this->find('all',$status);
-		return $data['couple_id'];
+		$data=$this->find('first',$status);
+		return $data['User']['couple_id'];
 	}
 
 	public function isexistname($name){
@@ -54,6 +54,13 @@ class User extends AppModel {
 		return $this->find('all',$status);
 	}
 
+	public function getuseridfromhash($hashed_mail){
+		$status=array(
+			'conditions'=>array('hashed_mail'=>$hashed_mail)
+			);
+		$data=$this->find('first',$status);
+		return $data['User']['id'];
+	}
 	public function getlover($user_id){
 		$status=array('conditions'=>array('id'=>$user_id));
 		$data=$this->find('first',$status);
@@ -62,6 +69,7 @@ class User extends AppModel {
 				'couple_id'=>$data['User']['couple_id'],
 				'id !='=>$user_id
 			)
+
 		);
 		$user=$this->find('first',$status);
 		return $user;
