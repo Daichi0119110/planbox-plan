@@ -12,7 +12,7 @@
         <div class="thumb-wrapper" style="margin:20px; padding: 10px 20px; background-color:#; overflow:hidden; position: relative;">
           <div id="thumbNails">
             <?php foreach ($dates_recommend as $date_recommend) { ?>
-            <div style="width:350px; height: 400px; float:left; border:1px solid #ccc;">
+            <div style="width:350px; height: 500px; float:left; border:1px solid #ccc;">
               <a href="/planbox-plan/dates/date/<?php echo $date_recommend['Date']['id']; ?>">
               <div style="overflow:hidden; width:350px; height:260px;">
               <?php echo $this->Html->image($date_recommend['Date']['photo'], array('alt' => 'baz', 'width'=>'350'));?>
