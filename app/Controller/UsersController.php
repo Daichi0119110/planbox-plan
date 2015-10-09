@@ -54,6 +54,7 @@ class UsersController extends AppController {
 
 	public function signup($isinvited=null) {
 		if($this->request->is('post')){
+			$this->request->data['User']['password']=crypt($this->request->data['User']['password'],'$2y$10$VdH3ZiUm7EzSiPPyzsRXCc');
 			$this->User->save($this->request->data);
 
 			$myid=$this->User->isexistname($this->request->data['User']['name']);
