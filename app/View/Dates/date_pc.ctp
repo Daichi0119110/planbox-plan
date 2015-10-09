@@ -94,6 +94,25 @@ $j = 1;
 
               </div>
             </a>
+
+            <div class="social-area-syncer">
+              <ul class="social-button-syncer">
+                <!-- Twitter -->
+                <li class="sc-tw"><a data-url="<?php echo $currenturl ; ?>" href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="vertical" data-dnt="true">ツイート</a></li>
+
+                <!-- Facebook -->
+                <li class="sc-fb"><div class="fb-like" data-href="<?php echo $currenturl ; ?>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></li>
+
+                <!-- LINE [画像は公式ウェブサイトからダウンロードして下さい] -->
+                <li class="sc-li"><a href="http://line.me/R/msg/text/?<?php echo rawurlencode($currenturl); ?>"><img src="./linebutton_36x60.png" width="36" height="60" alt="LINEに送る" class="sc-li-img"></a></li>
+              </ul>
+
+            <!-- Facebook用 -->
+            <div id="fb-root"></div>
+
+            </div>
+            <!-- シェアボタン [ここまでコピー] -->
+
           </div>
         </div>
       </div> 
@@ -250,5 +269,31 @@ $(function() {
     }, "json");
   });
 });
+/* DOMの読み込み完了後に処理 */
+if(window.addEventListener) {
+  window.addEventListener( "load" , shareButtonReadSyncer, false );
+}else{
+  window.attachEvent( "onload", shareButtonReadSyncer );
+}
+
+/* シェアボタンを読み込む関数 */
+function shareButtonReadSyncer(){
+
+//遅延ロードする場合は次の行と、終わりの方にある行のコメント(//)を外す
+//setTimeout(function(){
+
+//Twitter
+window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+
+//Facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+}
 </script>
 
