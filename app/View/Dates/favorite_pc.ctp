@@ -35,9 +35,9 @@
                                 </tr>
                                 <tr><td colspan="3" style="text-align: center;"><?php echo $date['Date']['description']; ?></td></tr>
                                 <tr><!--３行目:デートの場所、日時、予算-->
-                                    <td style="text-align:center;" class="fa fa-map-marker"><?php echo $date['Date']['city']; ?></td>
-                                    <td style="text-align:center;" class="fa fa-jpy"><?php echo $date['Date']['budget']; ?></td>
-                                    <td style="text-align:center;" class="fa fa-calendar"><?php echo $date['Date']['created']; ?></td>
+                                    <td style="text-align:center;" class="fa fa-map-marker"> <?php echo $date['Date']['city']; ?></td>
+                                    <td style="text-align:center;" class="fa fa-jpy"> <?php echo $date['Date']['budget']; ?></td>
+                                    <td style="text-align:center;" class="fa fa-calendar"> <?php echo date('Y/n/j',strtotime($date['Date']['modified'])); ?></td>
                                 </tr>
                                 <tr><!--４行目：カップルの一人目-->
 

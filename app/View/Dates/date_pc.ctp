@@ -54,7 +54,7 @@ $j = 1;
             <h3 style="text-align:center">デートスケジュール</h3>
             <?php foreach ($posts as $post) { ?>
             <table class="table table-hover">
-              <tr><td style="width:200px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['created']; ?></a></td><td style="width:250px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['city']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
+              <tr><td style="width:200px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"> <?php echo date('H:i',strtotime($post['Post']['created'])); ?></a></td><td style="width:250px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"> <?php echo $post['Post']['city']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
               <?php $i++; ?>
               <?php } ?>
             </table>
@@ -64,13 +64,13 @@ $j = 1;
 
             <div class="row" style="margin:10px 0 10px 0;">
               <div class="col-sm-4">
-                <i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $posts[0]['Post']['city']; ?></i>
+                <i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"> <?php echo $posts[0]['Post']['city']; ?></i>
               </div>
               <div class="col-sm-5">
-                <i class="fa fa-calendar" style="font-size:16px;font-weight:bold;"><?php echo $date[0]['Date']['created']; ?></i>
+                <i class="fa fa-calendar" style="font-size:16px;font-weight:bold;"> <?php echo date('Y/n/j',strtotime($date[0]['Date']['modified'])); ?></i>
               </div>
               <div class="col-sm-3">
-                <i class="fa fa-jpy" style="font-size:16px;font-weight:bold;"><?php echo $date[0]['Date']['budget']; ?></i>
+                <i class="fa fa-jpy" style="font-size:16px;font-weight:bold;"> <?php echo $date[0]['Date']['budget']; ?></i>
               </div>
             </div>
 
@@ -136,10 +136,10 @@ $j = 1;
               <p style="font-weight:bold;font-size:18px;margin-top:20px;"><?php echo $post['Post']['content']; ?></p>
               <div class="row" style="position: absolute;bottom: 10px; width:300px;">
                 <div class="col-sm-6">
-                  <i class="fa fa-clock-o" style="font-size:13px;font-weight:bold;"><?php echo $post['Post']['created']; ?></i>
+                  <i class="fa fa-clock-o" style="font-size:13px;font-weight:bold;"> <?php echo date('H:i',strtotime($post['Post']['created'])); ?></i>
                 </div>
                 <div class="col-sm-6">
-                  <i class="fa fa-map-marker" style="font-size:13px;font-weight:bold;"><?php echo $post['Post']['city']; ?></i>
+                  <i class="fa fa-map-marker" style="font-size:13px;font-weight:bold;"> <?php echo $post['Post']['city']; ?></i>
                 </div>
               </div>
             </div>
