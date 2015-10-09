@@ -154,6 +154,9 @@ class DatesController extends AppController {
 		$user_id = $this->Session->read('user_id');
 		$this->set('user_id', $user_id);
 
+		$currenturl = Router::url( NULL, true );
+		$this->set('currenturl', $currenturl);
+
 		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
@@ -209,11 +212,15 @@ class DatesController extends AppController {
 		$user_id = $this->Session->read('user_id');
 		$this->set('user_id', $user_id);
 
+		$currenturl = Router::url( NULL, true );
+		$this->set('currenturl', $currenturl);
+
+
 		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
-		$couple_id = $this->Date->getcoupleid($date_id);
+		$couple_id = $this->Date->getcoupleid($date_id);	
 		$this->set('follow', $this->Follow->getnumber($couple_id));
 
 		// 似ているデートの取得
