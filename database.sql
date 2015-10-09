@@ -66,7 +66,7 @@ create table dates (
     modified datetime default null
 );
 
-insert into dates (couple_id, name, description, budget, num_view, created, modified) values 
+insert into dates (couple_id, name, description, budget, num_view, post_updated, created, modified) values 
     (4, "ハッカソン＠PAAK", "今からデモを披露いたします！！", "100億", 5, now(), now(),now()),
     (1, "渋谷デート", "晴れの日を二人で過ごしました。お金がなかったので、有名どころを回って来ました(^^)", "4000", 4, now(), now(),now()),
     (2, "自由が丘デート", "オシャレな街、自由が丘。カフェや雑貨屋さんを見てきました。まったりしたい方におすすめです！！", "5000", 6,now(), now(),now()),
@@ -77,17 +77,18 @@ create table posts(
     id int not null auto_increment primary key,
     date_id int not null,
     content varchar(255) not null,
-    location varchar(255),
+    state varchar(255),
+    city varchar(255),
     created datetime default null,
     modified datetime default null
 );
 
 insert into posts (date_id, content, state, city, created, modified) values 
-    (2, "ヒカリエに集合！天気も良好◎　さすが晴れ男！！", "渋谷", now(), now()),
-    (2, "ハチ公前で写真撮影！いぇーい！！", "渋谷区", "東京都", now(), now()),
+    (2, "ヒカリエに集合！天気も良好◎　さすが晴れ男！！", "渋谷", "東京都", now(), now()),
+    (2, "ハチ公前で写真撮影！いぇーい！！", "渋谷", "東京都", now(), now()),
     (2, "TOHOシネマで映画鑑賞！疲れてたからちょっと寝ちゃった…笑", "渋谷", "東京都", now(), now()),
     (2, "楽天カフェで一休み！ワンピースの音楽が永遠リピート。。。懐かしい！！", "渋谷","東京都", now(), now()),
-    (2, "LOFTでお買い物！二人でお揃いの手帳ゲッチュ(*^^*)カラクリすごかった！！", "渋谷","東京都" now(), now()),
+    (2, "LOFTでお買い物！二人でお揃いの手帳ゲッチュ(*^^*)カラクリすごかった！！", "渋谷","東京都", now(), now()),
     (2, "ディナーは予約してました！美味しい料理がたくさんあって幸せだった♪", "原宿", "東京都", now(), now()),
     (2, "寂しいけど、ばいばーい（泣）夜景すごくキレイだった！！", "表参道", "東京都", now(), now()),
     (3, "駅前で集合、人やばい。", "自由が丘", "東京都", now(), now()),

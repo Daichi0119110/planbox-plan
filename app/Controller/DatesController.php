@@ -166,6 +166,7 @@ class DatesController extends AppController {
 		$date_ids_suggest = $this->Favorite->getfavodateid($user_ids);
 		$dates_suggest = $this->Date->getdate($date_ids_suggest);
 		for ($i=0; $i < count($dates_suggest); $i++) {
+			$dates_suggest[$i]['Date']['city'] = $this->Post->getlocation($dates_suggest[$i]['Date']['id']);
 			$posts_suggest = $this->Post->getpostids($dates_suggest[$i]['Date']['id']);
 			$photos = $this->Photo->getpostallphotos($posts_suggest);
 			if(!$photos){
@@ -220,6 +221,7 @@ class DatesController extends AppController {
 		$date_ids_suggest = $this->Favorite->getfavodateid($user_ids);
 		$dates_suggest = $this->Date->getdate($date_ids_suggest);
 		for ($i=0; $i < count($dates_suggest); $i++) {
+			$dates_suggest[$i]['Date']['city'] = $this->Post->getlocation($dates_suggest[$i]['Date']['id']);
 			$posts_suggest = $this->Post->getpostids($dates_suggest[$i]['Date']['id']);
 			$photos = $this->Photo->getpostallphotos($posts_suggest);
 			if(!$photos){
@@ -261,7 +263,7 @@ class DatesController extends AppController {
 	public function _date_road($dates){
 		for ($i=0; $i < count($dates); $i++) {
 			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']); // いいね数の取得
-			$dates[$i]['Date']['location'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
+			$dates[$i]['Date']['city'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
 			
 			// カップルの読み込み
 			$couple_id = $this->Date->getcoupleid($dates[$i]['Date']['id']);
