@@ -90,9 +90,9 @@
                         <td colspan="3" style="text-align: center;"><?php echo $date_follow['Date']['description']; ?></td>
                       </tr>
                       <tr><!--３行目:デートの場所、日時、予算-->
-                        <td style="text-align:center;" class="fa fa-map-marker"><?php echo $date_follow['Date']['city']; ?></td>
-                        <td style="text-align:center;" class="fa fa-jpy"><?php echo $date_follow['Date']['budget']; ?></td>
-                        <td style="text-align:center;" class="fa fa-calendar"><?php echo $date_follow['Date']['modified']; ?></td>
+                        <td style="text-align:center;" class="fa fa-map-marker"> <?php echo $date_follow['Date']['city']; ?></td>
+                        <td style="text-align:center;" class="fa fa-jpy"> <?php echo $date_follow['Date']['budget']; ?></td>
+                        <td style="text-align:center;" class="fa fa-calendar"> <?php echo date('Y/n/j',strtotime($date_follow['Date']['modified'])); ?></td>
                       </tr>
                       <tr><!--４行目：カップルの一人目-->
                         <td class="table-image"><!--写真-->
