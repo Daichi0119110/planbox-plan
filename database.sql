@@ -1,4 +1,6 @@
-﻿create database planbox character set utf8;
+﻿drop database planbox
+
+create database planbox character set utf8;
 
 grant all on planbox.* to dbuser@localhost identified by 'planbox';
 
