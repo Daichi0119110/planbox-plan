@@ -9,12 +9,14 @@
       </div>
 
       <div class="recommend-list">
-        <div class="thumb-wrapper" style="margin:20px; padding: 10px 20px; background-color:#; overflow:visible; position: relative;">
+        <div class="thumb-wrapper" style="margin:20px; padding: 10px 20px; background-color:#; overflow:hidden; position: relative;">
           <div id="thumbNails">
             <?php foreach ($dates_recommend as $date_recommend) { ?>
-            <div style="width:350px; height: auto; float:left; border:1px solid #ccc;">
+            <div style="width:350px; height: 500px; float:left; border:1px solid #ccc;">
               <a href="/planbox-plan/dates/date/<?php echo $date_recommend['Date']['id']; ?>">
+              <div style="overflow:hidden; width:350px; height:260px;">
               <?php echo $this->Html->image($date_recommend['Date']['photo'], array('alt' => 'baz', 'width'=>'350'));?>
+              </div>
               <table class="table" style="word-break: break-all;">
                 <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['name']; ?></td></tr>
                 <tr><td style="text-align: center; "><?php echo $date_recommend['Date']['description']; ?></td></tr>
@@ -38,46 +40,48 @@
 
     </div>
 
-    <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
+    <div class="col-sm-12">
       <div class="search-box" style="border:1px solid #ccc; margin-bottom: 30px;">
-        <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:180px">
+        <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:180px;">
           デートプラン検索
         </div>
-            <?php echo $this->Form->create('Date', array('action'=>'search')); ?>
-            <?php echo $this->Form->input('keyword', array('label' => false, 'size' => '100%', 'empty' => true)); ?>
-            <?php echo $this->Form->end('検索'); ?>
+            <?php echo $this->Form->create('Date', array('action'=>'search', 'class' => 'navbar-form')); ?>
+            <?php echo $this->Form->input('keyword', array('label' => false, 'size' => '150%', 'empty' => true, 'div' => array(
+        'class' => 'form-group'),'class' => 'form-control',)); ?>
+            <?php echo $this->Form->end(array('label' => '検索','class' => 'btn btn-default')); ?>
      </div>
    </div>
+   
 
-   <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
+   <div class="container">
+    <div class="row">
+   
+
+   <div class="col-sm-12">
 
     <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:400px">
       フォローしているカップルのデートプラン
     </div>
-
   </div>
 
-  <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
-    <div class="row">
       <div class="tabbox">
         <p class="tabs">
           <a href="#tab1" class="tab1" onclick="ChangeTab('tab1'); return false;">カップル</a>
           <a href="#tab2" class="tab2" onclick="ChangeTab('tab2'); return false;">自分</a>
           <a href="#tab3" class="tab3" onclick="ChangeTab('tab3'); return false;">相手</a>
         </p>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <!-- タブ開始 -->
           <?php for ($i=1; $i < 4; $i++) { ?>
           <div id="tab<?php echo $i; ?>" class="tab">
             <div class="follow-list" style="border:1px solid #ccc;">
               <?php foreach($dates_follow[$i] as $date_follow) { ?>
-              <article>
                 <!-- <a href=""> -->
-                  <div class="row">
+                  <div class="row" style="margin-top:20px;">
                     <div class="col-sm-5">
                       <a href='/planbox-plan/dates/date/<?php echo $date_follow['Date']['id']; ?>'>
-                      <div class="row">
-                        <?php echo $this->Html->image($date_follow['Date']['photo'], array('alt' => $date_follow['Date']['name'], 'width'=>'200'));?>
+                      <div class="row" style="height:200px;width:300px;overflow:hidden;margin:30px 0 0 15px;">
+                        <?php echo $this->Html->image($date_follow['Date']['photo'], array('alt' => $date_follow['Date']['name'], 'width'=>'300px'));?>
                       </div>
                       </a>
                     </div>
@@ -121,7 +125,6 @@
                       </div>
                     </div>
                   <!-- </a> -->
-                </article>
                 <?php } ?>
               </div>
             </div>
@@ -133,7 +136,7 @@
         <!-- フォローしているリスト終了-->
 
         <!--サイドバー開始-->
-        <div class="col-sm-offset-1 col-sm-3" style="padding:0;">
+        <div class="col-sm-offset-1 col-sm-2" style="padding:0;">
           <!--ランキング開始-->
           <div style="border:1px solid #ccc;margin:5px;">
           <h4 style="text-align:center">今週のデートランキング</h4>
@@ -185,9 +188,10 @@
         </div>        
         <!--サイドバー終了-->
       </div>
-    </div>
-  </div>
+  
 </div>
+ </div>
+   </div>
 </div>
 
 <script>

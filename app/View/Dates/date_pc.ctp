@@ -126,7 +126,7 @@ $j = 1;
         <div class="col-sm-8">
           <?php foreach ($posts as $post) { ?>
           <!--一つのツイートの塊-->
-          <div class="row" style="border:1px solid #ccc;" id="tweet<?php echo $j; ?>">
+          <div class="row" style="border:1px solid #ccc; margin-top:20px;" id="tweet<?php echo $j; ?>">
             <div class="col-sm-6" >
               <div class="tweet-image" style="width:300px;height:200px; overflow:hidden;">
                 <?php echo $this->Html->image($post['Post']['filename'][0], array('alt' => 'baz'));?>
@@ -191,7 +191,8 @@ $j = 1;
           <!--似ているプラン-->
           <?php foreach ($dates_suggest as $date_suggest) { ?>
           <hr>
-          <a href="/planbox-plan/dates/date/<?php echo $date_suggest['Date']['id']; ?>"><!--このデートプランに飛ぶリンク-->
+          <a href="/planbox-plan/dates/date/<?php echo $date_suggest['Date']['id']; ?>">
+            <!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FF8C00; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
                 <?php echo $this->Html->image($date_suggest['Date']['photo'], array('alt' => $date_suggest['Date']['name']));?>
@@ -298,8 +299,6 @@ window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.
 }(document, 'script', 'facebook-jssdk'));
 
 }
-
-$('#hoge li:eq(3))
 
 </script>
 

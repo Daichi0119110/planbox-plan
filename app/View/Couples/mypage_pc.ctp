@@ -115,8 +115,8 @@
       
       <?php foreach($dates as $date) { ?>
       <!--一つのデートの塊開始-->
-      <a href="/planbox-plan/dates/date/<?php echo $date['Date']['id']; ?>"><!--そのデートへ飛ぶリンク-->
-       <div class="row" style="border:1px solid #ccc;">
+      <a href="/planbox-plan/dates/date/<?php echo $date['Date']['id']; ?>" ><!--そのデートへ飛ぶリンク-->
+       <div class="row" style="border:1px solid #ccc; margin-top:20px;">
          <div class="col-sm-5 tweet-image" style="width:300px;height:200px; overflow:hidden;margin-top:20px;">
           <?php echo $this->Html->image($date['Date']['photo'], array('alt' => 'kohei'));?>
         </div>

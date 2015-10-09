@@ -8,18 +8,19 @@
         </div>
         </div>
 
-        <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
-          <div class="search-box" style="border:1px solid #ccc;">
-            <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:180px">
-            デートプラン検索
-            </div>
-            <form class="navbar-form" role="search">
-                <div class="form-group">
-                     <input type="text" class="form-control" placeholder="検索してください" size="100%">
-                </div>
-                    <button type="submit" class="btn btn-default">検索</button>
-            </form>
-            </div>
+    <div class="col-sm-12">
+      <div class="search-box" style="border:1px solid #ccc; margin-bottom: 30px;">
+        <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:180px;">
+          デートプラン検索
+        </div>
+            <?php echo $this->Form->create('Date', array('action'=>'search', 'class' => 'navbar-form')); ?>
+            <?php echo $this->Form->input('keyword', array('label' => false, 'size' => '150%', 'empty' => true, 'div' => array(
+        'class' => 'form-group'),'class' => 'form-control',)); ?>
+            <?php echo $this->Form->end(array('label' => '検索','class' => 'btn btn-default')); ?>
+     </div>
+    </div>
+
+    <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
 
         <div class="recommend-list">
                 <a href="">
@@ -56,5 +57,5 @@
             </div>
         </div>
     </div>
-
+</div>
 </div>
