@@ -51,5 +51,108 @@ body{
 }
 .navbar-fixed-top{
   background-color: #FFE4E1;
+
+/******************************
+ ソーシャルエリア全体を囲む要素
+ * 他のコンテンツと距離を取りたい場合は[margin]を設定して下さい
+******************************/
+.social-area-plan
+{
+  width: 100% ;
+  min-height: 190px ;
+  padding: 1.5em 0 ;
+}
+
+/* デスクトップPCでは高さを拡張する */
+@media screen and ( min-width:480px )
+{
+  .social-area-plan
+  {
+    min-height: 119px ;
+  }
+}
+
+/******************************
+ [ul]要素
+******************************/
+/* スマホ */
+ul.social-button-plan
+{
+  width: 238px ;
+  margin: 24px auto ;
+  padding: 0 ;
+  border: none ;
+  list-style-type: none ;
+}
+
+/* デスクトップ */
+@media screen and ( min-width:480px )
+{
+  ul.social-button-plan
+  {
+    width: 410px ;
+  }
+}
+
+/******************************
+ [li]要素
+******************************/
+ul.social-button-plan li
+{
+  float: left ;
+  text-align: center ;
+  height: 71px ;
+  margin: 0 8px ;
+  padding:0 ;
+  padding-left: 0px ;
+}
+/* デスクトップ */
+@media screen and ( min-width:480px )
+{
+  ul.social-button-plan li
+  {
+    padding-left: 100px ;
+  }
+}
+
+/******************************
+ 各種ボタン
+******************************/
+/* [Twitter] */
+.sc-tw
+{
+  width: 71px ;
+}
+
+/* [Facebook] */
+.sc-fb
+{
+  z-index: 99 ;
+  width: 69px ;
+}
+
+/* [LINE] */
+.sc-li
+{
+  width: 50px ;
+}
+
+.sc-li-img
+{
+  border: none ;
+  margin: 0 auto ;
+  padding:0 ;
+  width: 36px ;
+  height: 60px ;
+}
+
+/* デスクトップPCではLINEボタンを表示しない */
+@media screen and ( min-width:480px )
+{
+  .sc-li
+  {
+    display: none ;
+  }
+
 }
 
