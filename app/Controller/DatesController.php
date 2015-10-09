@@ -109,13 +109,15 @@ class DatesController extends AppController {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->set('results', $this->paginate());
-    		$this->set('title', '検索 ');
+			$results = $this->_date_road($this->paginate());
+			$this->set('results', $results);
+    		$this->set('title', '検索結果');
 			$this->render('search_sp');
 		} else {
 			// PCだったら
-			$this->set('results', $this->paginate());
-    		$this->set('title', '検索 ');
+			$results = $this->_date_road($this->paginate());
+			$this->set('results', $results);
+    		$this->set('title', '検索結果');
 			$this->render('search_pc');
 			}
 	}
