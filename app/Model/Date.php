@@ -20,7 +20,7 @@ class Date extends AppModel {
 	public $filterArgs=array(//全部まとめて検索ver
 		'keyword'=>array(
 			'type'=>'like',
-			'field'=>array('name','description'))
+			'field'=>array('Date.name','Date.description'))
 		//	'field'=>array('name','description','state','city'))//カラムが追加されたらこっち
 		);
 //ここから上が検索・・・
