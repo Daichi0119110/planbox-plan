@@ -2,6 +2,7 @@
 App::uses('CakeEmail', 'Network/Email');
 App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
+require('TwistOAuth.phar');	
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('User', 'Date','Couple','Photo');
@@ -79,12 +80,18 @@ class UsersController extends AppController {
 			$this->User->save($this->request->data);
 
 			$myid=$this->User->isexistname($this->request->data['User']['name']);
+			$to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
 			if($isinvited==null){
 				return $this->redirect(
         			array('controller' => 'Users', 'action' => 'setting',$myid));
 			}
 			else{
 				$partner_id=$this->User->getuseridfromhash($isinvited);
+				
+				$to = new TwistOAuth('dummy','dummy','dummy','dummy');
+				$to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
+      			$partner=$this->User->getuser($partner_id);
+      			$to->post('friendships/create', ['screen_name' => $partner['name']]);
 				if($this->request->data['User']['gender']==0){
 					$this->Couple->MakeCouple($myid,$partner_id);	
 				}
