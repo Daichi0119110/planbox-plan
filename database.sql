@@ -1,4 +1,4 @@
-﻿drop database planbox
+﻿drop database planbox;
 
 create database planbox character set utf8;
 
