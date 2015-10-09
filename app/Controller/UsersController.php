@@ -135,7 +135,7 @@ class UsersController extends AppController {
 		}	
 	}
 
-	public function authorize_instagram($id){
+	public function authorize_instagram(){
 
 		// 設定
         $client_id = 'bff070ff8e144cbfb70e344fa5a2f27e' ;       // クライアントID 
@@ -206,12 +206,12 @@ class UsersController extends AppController {
 				$user_picture = $obj->user->profile_picture ;		// ユーザーアイコン
 				$access_token = $obj->access_token ;		// アクセストークン
 
+				$user_id = $this->Session->read('user_id');	
 
 
-				$user_id = $this->Session->read('user_id');	            
-				$pic = $user['photo'];
-	            
-	            
+				$user = $this->User->getuser($user_id);
+				$pic = $user['photo'];	            
+
 	            if(empty($pic)){
 					//登録する値
 					$data = array('User' => array('id' => $user_id, 'name_insta' => $user_name, 'photo' => $user_picture,'insta_id' => $insta_id, 'insta_token' => $access_token));
@@ -231,7 +231,7 @@ class UsersController extends AppController {
 	            }
 
 				// セッション終了
-				$_SESSION = array() ;
+				// $_SESSION = array() ; // 他の消す恐れ
 				session_destroy() ;
 
 
