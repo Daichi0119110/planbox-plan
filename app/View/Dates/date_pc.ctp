@@ -104,8 +104,8 @@ $j = 1;
                 <!-- Facebook -->
                 <li class="sc-fb"><div class="fb-like" data-href="<?php echo $currenturl ; ?>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></li>
 
-                <!-- LINE [画像は公式ウェブサイトからダウンロードして下さい] -->
-                <li class="sc-li"><a href="http://line.me/R/msg/text/?<?php echo rawurlencode($currenturl); ?>"><img src="./linebutton_36x60.png" width="36" height="60" alt="LINEに送る" class="sc-li-img"></a></li>
+                <!-- LINE-->
+                <li class="sc-li"><a href="http://line.me/R/msg/text/?<?php echo rawurlencode($currenturl); ?>"><?php echo $this->Html->image('/img//util/linebutton.png', array('alt' => 'LINEに送る','width' => '36','height' => '60','class' => 'sc-li-img')) ; ?></a></li>
               </ul>
 
             <!-- Facebook用 -->

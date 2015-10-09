@@ -68,27 +68,27 @@
  */
 class DATABASE_CONFIG {
 
-	public $default = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'dbuser',
-		'password' => 'planbox',
-
-		'database' => 'planbox',
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);
 	// public $default = array(
 	// 	'datasource' => 'Database/Mysql',
 	// 	'persistent' => false,
-	// 	'host' => 'mysql102.phy.lolipop.lan',
-	// 	'login' => 'LAA0628410',
-	// 	'password' => 'planbox2015',
-	// 	'database' => 'LAA0628410-insta',
+	// 	'host' => 'localhost',
+	// 	'login' => 'dbuser',
+	// 	'password' => 'planbox',
+
+	// 	'database' => 'planbox',
 	// 	'prefix' => '',
 	// 	'encoding' => 'utf8',
 	// );
+	public $default = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'mysql102.phy.lolipop.lan',
+		'login' => 'LAA0628410',
+		'password' => 'planbox2015',
+		'database' => 'LAA0628410-insta',
+		'prefix' => '',
+		'encoding' => 'utf8',
+	);
 
 	public $test = array(
 		'datasource' => 'Database/Mysql',
