@@ -154,6 +154,7 @@
 
 </div>
 
+<?php echo $this->element('footer_date_sp'); ?>
 <script>
 $(function() {
   $.post('/planbox-plan/follows/ready/',

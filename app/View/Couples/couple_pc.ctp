@@ -218,3 +218,5 @@
 
 
 </div>
+
+<?php echo $this->element('footer_couple_pc'); ?>

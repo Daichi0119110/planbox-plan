@@ -200,7 +200,7 @@
   </div>
 </div>
 
-<?php echo $this->element('footer'); ?>
+<?php echo $this->element('footer_date_pc'); ?>
 <script>
 $(function() {
   $.post('/planbox-plan/follows/ready/',
