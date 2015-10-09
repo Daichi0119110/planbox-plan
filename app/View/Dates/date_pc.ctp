@@ -95,8 +95,9 @@ $j = 1;
               </div>
             </a>
 
-            <div class="social-area-syncer">
-              <ul class="social-button-syncer">
+            <!-- シェアボタン -->
+            <div class="social-area-plan">
+              <ul class="social-button-plan">
                 <!-- Twitter -->
                 <li class="sc-tw"><a data-url="<?php echo $currenturl ; ?>" href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="vertical" data-dnt="true">ツイート</a></li>
 
@@ -111,7 +112,7 @@ $j = 1;
             <div id="fb-root"></div>
 
             </div>
-            <!-- シェアボタン [ここまでコピー] -->
+            <!-- シェアボタン -->
 
           </div>
         </div>
@@ -269,6 +270,8 @@ $(function() {
     }, "json");
   });
 });
+
+
 /* DOMの読み込み完了後に処理 */
 if(window.addEventListener) {
   window.addEventListener( "load" , shareButtonReadSyncer, false );

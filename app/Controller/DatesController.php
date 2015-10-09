@@ -158,7 +158,6 @@ class DatesController extends AppController {
 		$this->set('currenturl', $currenturl);
 		
 
-
 		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
@@ -212,6 +211,10 @@ class DatesController extends AppController {
 	public function date_sp($date_id) {
 		$user_id = $this->Session->read('user_id');
 		$this->set('user_id', $user_id);
+
+		$currenturl = Router::url( NULL, true );
+		$this->set('currenturl', $currenturl);
+
 
 		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));

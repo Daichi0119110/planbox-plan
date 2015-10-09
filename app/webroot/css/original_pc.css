@@ -50,18 +50,17 @@
  ソーシャルエリア全体を囲む要素
  * 他のコンテンツと距離を取りたい場合は[margin]を設定して下さい
 ******************************/
-.social-area-syncer
+.social-area-plan
 {
   width: 100% ;
   min-height: 190px ;
-  background: #F5F1E9 ; /* 背景色 */
   padding: 1.5em 0 ;
 }
 
 /* デスクトップPCでは高さを拡張する */
 @media screen and ( min-width:480px )
 {
-  .social-area-syncer
+  .social-area-plan
   {
     min-height: 119px ;
   }
@@ -71,7 +70,7 @@
  [ul]要素
 ******************************/
 /* スマホ */
-ul.social-button-syncer
+ul.social-button-plan
 {
   width: 238px ;
   margin: 24px auto ;
@@ -83,7 +82,7 @@ ul.social-button-syncer
 /* デスクトップ */
 @media screen and ( min-width:480px )
 {
-  ul.social-button-syncer
+  ul.social-button-plan
   {
     width: 410px ;
   }
@@ -92,13 +91,22 @@ ul.social-button-syncer
 /******************************
  [li]要素
 ******************************/
-ul.social-button-syncer li
+ul.social-button-plan li
 {
   float: left ;
   text-align: center ;
   height: 71px ;
   margin: 0 8px ;
   padding:0 ;
+  padding-left: 0px ;
+}
+/* デスクトップ */
+@media screen and ( min-width:480px )
+{
+  ul.social-button-plan li
+  {
+    padding-left: 100px ;
+  }
 }
 
 /******************************

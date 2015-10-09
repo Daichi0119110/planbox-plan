@@ -76,6 +76,25 @@ $j = 1;
       </div>
     </a>
 
+    <!-- シェアボタン -->
+    <div class="social-area-plan">
+      <ul class="social-button-plan">
+        <!-- Twitter -->
+        <li class="sc-tw"><a data-url="<?php echo $currenturl ; ?>" href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="vertical" data-dnt="true">ツイート</a></li>
+
+        <!-- Facebook -->
+        <li class="sc-fb"><div class="fb-like" data-href="<?php echo $currenturl ; ?>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></li>
+
+        <!-- LINE [画像は公式ウェブサイトからダウンロードして下さい] -->
+        <li class="sc-li"><a href="http://line.me/R/msg/text/?<?php echo rawurlencode($currenturl); ?>"><img src="./linebutton_36x60.png" width="36" height="60" alt="LINEに送る" class="sc-li-img"></a></li>
+      </ul>
+
+      <!-- Facebook用 -->
+      <div id="fb-root"></div>
+
+    </div>
+    <!-- シェアボタン -->
+
     <!--デート全体説明終了--> 
 
 
@@ -151,27 +170,54 @@ $j = 1;
     <!--コメントの追加終了-->
 
   </div>
- <script>
-$(function() {
-  $.post('/planbox-plan/follows/ready/',
-    {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
-    ,function(res){
-      if(res == 1){
-        $('#button_follow').html('登録済み');
-      }
-    }, "json");
+  <script>
+    $(function() {
+      $.post('/planbox-plan/follows/ready/',
+        {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+        ,function(res){
+          if(res == 1){
+            $('#button_follow').html('登録済み');
+          }
+        }, "json");
 
-  $('button.follow').click(function(e){
-    $.post('/planbox-plan/follows/change/',
-      {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
-      ,function(res){
-        if($('#button_follow').html() == "フォロー！"){
-          $('#button_follow').html('登録済み');
-        } else{
-          $('#button_follow').html('フォロー！');
-        }
-    }, "json");
-  });
-});
-</script>
+      $('button.follow').click(function(e){
+        $.post('/planbox-plan/follows/change/',
+          {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
+          ,function(res){
+            if($('#button_follow').html() == "フォロー！"){
+              $('#button_follow').html('登録済み');
+            } else{
+              $('#button_follow').html('フォロー！');
+            }
+          }, "json");
+      });
+    });
+
+
+/* DOMの読み込み完了後に処理 */
+if(window.addEventListener) {
+  window.addEventListener( "load" , shareButtonReadSyncer, false );
+}else{
+  window.attachEvent( "onload", shareButtonReadSyncer );
+}
+
+    /* シェアボタンを読み込む関数 */
+function shareButtonReadSyncer(){
+
+//遅延ロードする場合は次の行と、終わりの方にある行のコメント(//)を外す
+//setTimeout(function(){
+
+//Twitter
+window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+
+//Facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+}
+  </script>
 
