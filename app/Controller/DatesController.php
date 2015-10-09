@@ -15,23 +15,6 @@ class DatesController extends AppController {
   	);
   	public $presetVars = true;
 
-  	public function search_pc(){
-  		 $this->Prg->commonProcess();
-       $this->paginate = array(
-            'conditions' => $this->Date->parseCriteria($this->passedArgs),
-        );
-    $this->set('results', $this->paginate());
-    	$this->set('title', '検索 ');
-  	}
-
-	public function search_sp(){
-		$this->Prg->commonProcess();
-   		$this->paginate = array(
-   			'conditions' => $this->Date->parseCriteria($this->passedArgs),
-        );
-   	    $this->set('results', $this->paginate());
-   	    $this->set('title', '検索 ');
-	}
   	//ここから上が検索・・・
 	public function favorite() {
 		$this->autoRender = false;
@@ -117,20 +100,24 @@ class DatesController extends AppController {
 	}
 
 	public function search(){
-		$this->autoRender = false;
-		$this->autoLayout = false;
+		$this->Prg->commonProcess();
+        $this->paginate = array(
+            'conditions' => $this->Date->parseCriteria($this->passedArgs),
+        );
 
 		// スマホかPCを判別して振り分け
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
 			// スマホだったら
-			$this->redirect('/dates/search_sp');
-			exit();
+			$this->set('results', $this->paginate());
+    		$this->set('title', '検索 ');
+			$this->render('search_sp');
 		} else {
 			// PCだったら
-			$this->redirect('/dates/search_pc');
-			exit();
-		}
+			$this->set('results', $this->paginate());
+    		$this->set('title', '検索 ');
+			$this->render('search_pc');
+			}
 	}
 
 	public function date($date_id){
@@ -153,6 +140,9 @@ class DatesController extends AppController {
 	public function date_pc($date_id) {
 		$user_id = $this->Session->read('user_id');
 		$this->set('user_id', $user_id);
+
+		$currenturl = Router::url( NULL, true );
+		$this->set('currenturl', $currenturl);
 
 		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
@@ -209,11 +199,15 @@ class DatesController extends AppController {
 		$user_id = $this->Session->read('user_id');
 		$this->set('user_id', $user_id);
 
+		$currenturl = Router::url( NULL, true );
+		$this->set('currenturl', $currenturl);
+
+
 		$posts = $this->Post->getposts($date_id);
 		$this->set('date', $this->Date->getdate($date_id));
 		$this->set('date_id', $date_id);
 		$this->set('favo', $this->Favorite->getnumber($date_id));
-		$couple_id = $this->Date->getcoupleid($date_id);
+		$couple_id = $this->Date->getcoupleid($date_id);	
 		$this->set('follow', $this->Follow->getnumber($couple_id));
 
 		// 似ているデートの取得
