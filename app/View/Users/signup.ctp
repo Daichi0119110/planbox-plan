@@ -72,6 +72,12 @@
     'class' => 'form-control',
     'style' => 'display: inline-block; width: auto;',
     'type' => 'datetime',
+    'dateFormat' => 'YMD',
+    'minYear' => 1950, 
+    'maxYear' => date('Y'),
+	'monthNames' => false,
+    'timeFormat' => false,
+    'separator' => '/',
     'interval' => 15
 ));
 ?>
