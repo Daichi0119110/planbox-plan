@@ -162,6 +162,7 @@ insert into photos (post_id, user_id, filename, created, modified) values
     (2, null, 'photo2.jpg', now(), now()),
     (3, null, 'photo3.jpg', now(), now()),
     (1, null, 'shibuya.jpg', now(), now()),
+<<<<<<< HEAD
     (42, null, 'shinjuku.jpg', now(), now()),
     (12, null, 'daikanyama.jpg', now(), now()),
     (16, null, 'enoshima.jpg', now(), now()),
@@ -171,6 +172,22 @@ insert into photos (post_id, user_id, filename, created, modified) values
     (38, null, 'kamakura.jpg', now(), now()),
     (34, null, 'ikubukuro.jpg', now(), now()),
     (8, null, 'nakameguro.jpg', now(), now());
+=======
+    (3, null, 'shinjuku.jpg', now(), now()),
+    (12, null, 'daikanyama.jpg', now(), now()),
+    (16, null, 'enoshima.jpg', now(), now()),
+    (3, null, 'jiyugaoka.jpg', now(), now()),
+    (3, null, 'nikotama.jpg', now(), now()),
+    (3, null, 'roppongi.jpg', now(), now()),
+    (3, null, 'kamakura.jpg', now(), now()),
+    (8, null, 'nakameguro.jpg', now(), now()),
+    (null, 1, '1.jpg', now(), now()),
+    (null, 3, '3.jpg', now(), now()),
+    (null, 4, '4.jpg', now(), now()),
+    (null, 6, '6.jpg', now(), now()),
+    (null, 7, '7.jpg', now(), now()),
+    (null, 8, '8.jpg', now(), now());
+>>>>>>> be0b05332aff7ff786700a32211223b5acf98718
      
 /*countriesのテーブル作成*/
 create table favorites (
