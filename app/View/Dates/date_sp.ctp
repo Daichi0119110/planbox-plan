@@ -150,8 +150,11 @@ $j = 1;
 
     <!--コメントの追加終了-->
 
-  </div>
- <script>
+<?php echo $this->element('footer_date_sp'); ?>
+
+</div>
+
+<script>
 $(function() {
   $.post('/planbox-plan/follows/ready/',
     {'user_id':1, 'couple_id':$('#button_follow').data('couple-id')}
@@ -174,4 +177,3 @@ $(function() {
   });
 });
 </script>
-

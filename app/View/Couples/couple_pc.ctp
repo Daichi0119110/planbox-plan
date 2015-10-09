@@ -203,6 +203,8 @@
 
 </div>
 
+<?php echo $this->element('footer_couple_pc'); ?>
+
 <script>
 $(function() {
   $.post('/planbox-plan/favorites/ready_favorite/',

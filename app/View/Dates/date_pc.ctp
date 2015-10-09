@@ -196,7 +196,7 @@ $j = 1;
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <ol class="nav navbar-nav list-inline">
-      <li style="margin: 0 50px 0 400px;"><button id="button_favo" type="button" class="btn btn-warning btn-lg" data-date-id="<?php echo $date[0]['Date']['id']; ?>" data-user-id="">行きたい！</button></li>
+      <li style="margin: 0 50px 0 250px;"><button id="button_favo" type="button" class="btn btn-warning btn-lg" data-date-id="<?php echo $date[0]['Date']['id']; ?>" data-user-id="">行きたい！</button></li>
       <li style="margin: 0 200px 0 0;"><span id="favo_num"><?php echo $favo;?></span>人が行きたい<br>と言っています</li>
       <li  style="margin: 0 50px 0 0;"><button id="button_follow" type="button" class="btn btn-warning btn-lg" data-couple-id="<?php echo $date[0]['Date']['couple_id']; ?>" data-user-id="">フォロー！</button></li>
       <li style="margin: 0 200px 0 0;"><span id="follow_num"><?php echo $follow;?></span>人がフォロー<br>しています</li>
