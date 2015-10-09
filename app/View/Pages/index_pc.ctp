@@ -138,8 +138,9 @@
           <?php $i = 1; ?>
           <?php foreach ($ranking_dates as $ranking_date) { ?>
           <!--ランキングプラン-->
+          <div class="ranking">
           <hr>
-          <h4 style="font-style: italic;"><?php echo $i; ?>位</h4>
+          <h4 style="font-style: italic;" ><?php echo $i; ?>位</h4>
           <a href="/planbox-plan/dates/date/<?php echo $ranking_date['Date']['id']; ?>"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FFDAB9; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
@@ -150,7 +151,7 @@
               </a>
               <p><?php echo $ranking_date['Date']['favo']; ?>行きたい！</p>
             </div>
-          <hr>
+          </div>
           <!--ランキングプラン終了-->
           <?php $i=$i+1 ;?>
           <?php } ?>
@@ -185,5 +186,14 @@ $(function() {
         $('#favo_num_feed'+res.id).html(res.favo);
     }, "json");
   });
+});
+
+
+$('.ranking:eq(4)').nextAll().hide();
+$('.ranking:eq(4)').append('<a id="open_ranking" class="btn btn-warning feed">▽▽もっと見る▽▽</a>');
+$('#open_ranking').css('cssText','width:80%;margin:10px auto 10px 20px');
+$('#open_ranking').click(function() {
+  $('.ranking:eq(4)').nextAll().show("slow");
+  $('#open_ranking').hide();
 });
 </script>
