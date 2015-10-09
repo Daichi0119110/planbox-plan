@@ -133,7 +133,9 @@
         <!-- フォローしているリスト終了-->
 
         <!--サイドバー開始-->
-        <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
+        <div class="col-sm-offset-1 col-sm-3" style="padding:0;">
+          <!--ランキング開始-->
+          <div style="border:1px solid #ccc;margin:5px;">
           <h4 style="text-align:center">今週のデートランキング</h4>
           <?php $i = 1; ?>
           <?php foreach ($ranking_dates as $ranking_date) { ?>
@@ -149,12 +151,37 @@
               <h4 ><?php echo $ranking_date['Date']['name']; ?></h4>
               <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $ranking_date['Date']['city']; ?></p>
               </a>
-              <p><?php echo $ranking_date['Date']['favo']; ?>行きたい！</p>
+              <p><?php echo $ranking_date['Date']['description']; ?></p>
             </div>
           </div>
           <!--ランキングプラン終了-->
           <?php $i=$i+1 ;?>
           <?php } ?>
+          </div>
+          <!--ランキング終了-->
+          <br>
+          <!--新着開始-->
+          <div style="border:1px solid #ccc;margin:5px;">
+          <h4 style="text-align:center">新着のデート</h4>
+          <?php foreach ($dates_new as $date_new) { ?>
+          <!--新着プラン-->
+          <div class="ranking">
+          <hr>
+          <a href="/planbox-plan/dates/date/<?php echo $date_new['Date']['id']; ?>"><!--このデートプランに飛ぶリンク-->
+            <div style="background-color:#FFDAB9; padding:5px;">
+              <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
+                 <?php echo $this->Html->image($date_new['Date']['photo'], array('alt' => $date_new['Date']['name']));?>
+              </div>
+              <h4 ><?php echo $date_new['Date']['name']; ?></h4>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $date_new['Date']['city']; ?></p>
+              </a>
+              <p><?php echo $date_new['Date']['description']; ?></p>
+            </div>
+          </div>
+          <!--新着プラン終了-->
+          <?php } ?>
+          </div>
+          <!--新着終了-->
         </div>        
         <!--サイドバー終了-->
       </div>
