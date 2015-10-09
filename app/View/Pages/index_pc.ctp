@@ -18,7 +18,7 @@
               <table class="table" style="word-break: break-all;">
                 <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['name']; ?></td></tr>
                 <tr><td style="text-align: center; "><?php echo $date_recommend['Date']['description']; ?></td></tr>
-                <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $date_recommend['Date']['location']; ?></i></td></tr>
+                <tr><td style="text-align: center;"><i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $date_recommend['Date']['city']; ?></i></td></tr>
                 <tr><td style="text-align: right;">行きたい!!:<?php echo $date_recommend['Date']['favo']; ?></td></tr>
               </table>
               </a>
@@ -90,7 +90,7 @@
                         <td colspan="3" style="text-align: center;"><?php echo $date_follow['Date']['description']; ?></td>
                       </tr>
                       <tr><!--３行目:デートの場所、日時、予算-->
-                        <td style="text-align:center;" class="fa fa-map-marker"><?php echo $date_follow['Date']['location']; ?></td>
+                        <td style="text-align:center;" class="fa fa-map-marker"><?php echo $date_follow['Date']['city']; ?></td>
                         <td style="text-align:center;" class="fa fa-jpy"><?php echo $date_follow['Date']['budget']; ?></td>
                         <td style="text-align:center;" class="fa fa-calendar"><?php echo $date_follow['Date']['created']; ?></td>
                       </tr>
@@ -147,7 +147,7 @@
                  <?php echo $this->Html->image($ranking_date['Date']['photo'], array('alt' => $ranking_date['Date']['name']));?>
               </div>
               <h4 ><?php echo $ranking_date['Date']['name']; ?></h4>
-              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $ranking_date['Date']['location']; ?></p>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $ranking_date['Date']['city']; ?></p>
               </a>
               <p><?php echo $ranking_date['Date']['favo']; ?>行きたい！</p>
             </div>
