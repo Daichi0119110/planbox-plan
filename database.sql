@@ -8,23 +8,27 @@ use planbox;
 create table users (
     id int not null auto_increment primary key,
     gender int not null,
+    anony_flg int not null,
     name varchar(255),
+    name_insta varchar(255),
     couple_id int,
     password varchar(255),
     photo varchar(255),
     birthday varchar(255),
-    age int
+    age int,
+    insta_id varchar(255),
+    insta_token varchar(255)
 );
 
-insert into users (gender, name, couple_id, age, photo, birthday) values 
-    (0,'@daichi119', 1, 21, "daichi.jpg", '1994/1/24'),
-    (0,'@k0hei1993', 2, 21, "kohei.jpeg", '1993/5/24'),
-    (0,'@toshichan', 3, 21, "taniguchi.jpg", '1993/5/4'),
-    (1,'@azuman', 4, 23, "azuma.jpg",'1992/2/2'),
-    (1,'@gakigaki', 3, 21, "gaki.jpeg",'1991/7/21'),
-    (1,'@mitsuki', 1, 28, "yamamoto.jpg",'1992/2/24'),
-    (0,'GIGcl', 4, 20, "tsumabuki.jpeg", '1995/1/1'),
-    (1,'@makihori', 2, 17, "horikita.png",'1994/6/24');
+insert into users (gender, name, anony_flg, name_insta, couple_id, password, age, photo, birthday, insta_id, insta_token) values 
+    (0,'@daichi119',0,null,1,"tsetet",21,"daichi.jpg",'1994/1/24',null,null),
+    (0,'@k0hei1993',0,null,2,"tsetet",21,"kohei.jpeg",'1993/5/24',null,null),
+    (0,'@toshichan',0,null,3,"tsetet",21,"taniguchi.jpg",'1993/5/4',null,null),
+    (1,'@azuman',0,null,4,"tsetet",23,"azuma.jpg",'1992/2/2',null,null),
+    (1,'@gakigaki',0,null,3,"tsetet",21,"gaki.jpeg",'1991/7/21',null,null),
+    (1,'@mitsuki',0,null,1,"tsetet",28,"yamamoto.jpg",'1992/2/24',null,null),
+    (0,'GIGcl',0,null,4,"tsetet",20,"tsumabuki.jpeg",'1995/1/1',null,null),
+    (1,'@makihori',0,null,2,"tsetet",17,"horikita.png",'1994/6/24',null,null);
 
 /*couplesのテーブル作成*/
 create table couples (
