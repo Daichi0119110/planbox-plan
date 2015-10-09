@@ -23,8 +23,10 @@
             <?php foreach ($results as $date) {?>
         <div class="recommend-list">
                 <a href="">
-                <div style="width:300px; height: auto; float:left; border:1px solid #ccc; margin: 10px 5px;">
+                <div style="width:300px; height: 700px; float:left; border:1px solid #ccc; margin: 10px 5px;">
+                    <div style="overflow:hidden; width:350px; height:260px;">
                     <?php echo $this->Html->image($date['Date']['photo'], array('alt' => $date['Date']['name'], 'style'=>"width:300px; height: auto;"));?>
+                    </div>
                     <table class="table">
                         <tr><td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;"><?php echo $date['Date']['name']; ?></td></tr>
                         <tr><td colspan="3" style="text-align: center;"><?php echo $date['Date']['description']; ?></td></tr>
