@@ -142,7 +142,7 @@
           <td style="text-align:center" class="fa fa-map-marker"><?php echo $date['Date']['city']; ?></td>
           <td style="text-align:center" class="fa fa-jpy"><?php echo $date['Date']['budget']; ?></td>
           
-          <td style="text-align:center" class="fa fa-calendar"><?php echo $date['Date']['created']; ?></td>
+          <td style="text-align:center" class="fa fa-calendar"><?php echo $date['Date']['modified']; ?></td>
         </tr>
             <tr>
               <td><?php echo $date['Date']['num_view']; ?>View</td>
