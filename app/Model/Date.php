@@ -119,4 +119,14 @@ class Date extends AppModel {
 		}
 		return $date_ids;
 	}
+
+	function getnonamedate($couple_id){
+		$status=array(
+			'conditions'=>array(
+				'couple_id'=>$couple_id,
+				'name'=> null
+				),
+		);
+		return $this->find('first',$status);
+	}
 }

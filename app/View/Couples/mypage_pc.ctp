@@ -109,9 +109,11 @@
     <!--今までのデート一覧開始-->
     <div class="col-sm-8">
 
-      <!--未完成のデート開始-->
-      <a href="/planbox-plan/dates/date_new/"><button type="button" class="btn btn-warning" style="width:100%;font-size:26px;">未完成のデート<span class="badge">2</span></button></a>
-      <!--未完成のデート終了-->
+      <?php if($nondate==1){ 
+      echo '<!--未完成のデート開始-->
+      <a href="/planbox-plan/dates/date_new"><button type="button" class="btn btn-warning" style="width:100%;font-size:26px;">未完成のデート<span class="badge">1</span></button></a>
+      <!--未完成のデート終了--> ';
+      } ?>
       
       <?php foreach($dates as $date) { ?>
       <!--一つのデートの塊開始-->

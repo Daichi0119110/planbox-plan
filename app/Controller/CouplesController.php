@@ -180,7 +180,7 @@ class CouplesController extends AppController {
 			$this->redirect('/users/signup');
 		}
 		$user_id = $this->Session->read('user_id');
-		$this->set('user_id', $user_id);
+		$this->set('user_id', 2);
 
 		// カップル情報の取得
 		$couple_id = $this->User->getcoupleid($user_id);
@@ -242,6 +242,11 @@ class CouplesController extends AppController {
 			}
 		}
 		$this->set('couples', $couples);
+		if($this->Date->getnonamedate($couple_id)){
+			$this->set("nondate",1);
+		} else {
+			$this->set("nondate",0);
+		}
 		$this->set('title', 'マイページ ');
 	}
 

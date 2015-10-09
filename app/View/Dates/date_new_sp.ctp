@@ -3,7 +3,7 @@ $i = 1;
 $j = 1;
  ?>
 
-<div class="container">
+<div class="container" data-user-id='<?php echo $user_id; ?>'>
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
 
@@ -45,20 +45,16 @@ $j = 1;
         </a>
       </div>
       <!--写真のスライドショー終了-->
-      <?php $i = 1;?>
+<?php $i = 1;?>
       <!--デート全体説明-->
       <div style="border:1px solid #ccc;">
         <!--デートのタイトルをつける-->
-        <form method='post' action="">
+        <form>
         <div class="form-group has-error">
-          <label class="control-label" for="name">デートのタイトルを付ける</label>
-          <input type="text" name='name' class="form-control" placeholder="例：横浜1日満喫散歩デート" style="width:80%;margin:0 auto 0 auto">
-          <label class="control-label" for="description">デートの詳細を記述する</label>
-          <input type="textarea" name="description" class="form-control" placeholder="例：横浜1日満喫散歩デート" style="height:150px;width:80%;margin:0 auto 0 auto">
-          <label class="control-label" for="budget">デートの予算を記入する</label>
-          <input type="text" name="budget" class="form-control" placeholder="例：5000" style="width:80%;margin:0 auto 0 auto">
-          <label class="control-label" for="id"></label>
-          <input type="hidden" name="id" class="form-control" value="<?php echo $date['Date']['id']; ?>">
+          <label class="control-label" for="title">デートのタイトルを付ける</label>
+          <input type="text" id="title" class="form-control" placeholder="例：横浜1日満喫散歩デート" style="width:80%;margin:0 auto 0 auto">
+          <label class="control-label" for="discription">デートの詳細を記述する</label>
+          <input type="textarea" id="discription" class="form-control" placeholder="例：横浜1日満喫散歩デート" style="height:150px;width:80%;margin:0 auto 0 auto">
         </div>
         <div class="form-group clearfix">
           <input type="submit" value="このデートを公開する" class="btn btn-warning" style="float:right;margin-right:10%;">
@@ -69,7 +65,7 @@ $j = 1;
             <h3 style="text-align:center">デートスケジュール</h3>
             <?php foreach ($posts as $post) { ?>
             <table class="table table-hover">
-              <tr><td style="width:200px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"> <?php echo date('H:i',strtotime($post['Post']['created'])); ?></a></td><td style="width:250px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"> <?php echo $post['Post']['city']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
+              <tr><td style="width:200px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['created']; ?></a></td><td style="width:250px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['location']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
               <?php $i++; ?>
               <?php } ?>
             </table>
@@ -79,28 +75,28 @@ $j = 1;
 
             <div class="row" style="margin:10px 0 10px 0;">
               <div class="col-sm-4">
-                <i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"> <?php echo $posts[0]['Post']['city']; ?></i>
+                <i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $posts[0]['Post']['location']; ?></i>
               </div>
               <div class="col-sm-5">
-                <i class="fa fa-calendar" style="font-size:16px;font-weight:bold;"> <?php echo date('Y/n/j',strtotime($date['Date']['modified'])); ?></i>
+                <i class="fa fa-calendar" style="font-size:16px;font-weight:bold;"><?php echo $date[0]['Date']['created']; ?></i>
               </div>
               <div class="col-sm-3">
-                <i class="fa fa-jpy" style="font-size:16px;font-weight:bold;"> <?php echo $date['Date']['budget']; ?></i>
+                <i class="fa fa-jpy" style="font-size:16px;font-weight:bold;"><?php echo $date[0]['Date']['budget']; ?></i>
               </div>
             </div>
 
-           <a href="/planbox-plan/couples/couple/<?php echo $date['Date']['couple_id']; ?>"><!--カップルページへのリンク-->
+           <a href="/planbox-plan/couples/couple/<?php echo $date[0]['Date']['couple_id']; ?>"><!--カップルページへのリンク-->
               <div class="row">
 
-                <?php foreach ($date['Date']['user'] as $user) { ?>
+                <?php foreach ($users as $user) { ?>
                 <div class="col-sm-6">
                   <div class="row" style="position: relative;">
                     <div class="col-sm-6 user-image">
-                      <?php echo $this->Html->image($user['photo'], array('alt' => $user['name']));?>
+                      <?php echo $this->Html->image($user['User']['photo'], array('alt' => 'baz'));?>
                     </div>
                     <div class="col-sm-6" style="position: absolute;top: 20px;left:120px;">
-                      <h4><?php echo $user['name']?></h4>
-                      <p><?php echo $user['age']?>歳</p>
+                      <h4><?php echo $user['User']['name']?></h4>
+                      <p><?php echo $user['User']['age']?>歳</p>
                     </div>
                   </div>
                 </div>
@@ -123,17 +119,17 @@ $j = 1;
           <div class="row" style="border:1px solid #ccc;" id="tweet<?php echo $j; ?>">
             <div class="col-sm-6" >
               <div class="tweet-image" style="width:300px;height:200px; overflow:hidden;">
-                <?php echo $this->Html->image($post['Post']['filename'][0], array('alt' => $post['Post']['content']));?>
+                <?php echo $this->Html->image($post['Post']['filename'][0], array('alt' => 'baz'));?>
               </div>
             </div>
             <div class="col-sm-6" style="position: relative; width:300px;height:200px;">
               <p style="font-weight:bold;font-size:18px;margin-top:20px;"><?php echo $post['Post']['content']; ?></p>
               <div class="row" style="position: absolute;bottom: 10px; width:300px;">
                 <div class="col-sm-6">
-                  <i class="fa fa-clock-o" style="font-size:13px;font-weight:bold;"> <?php echo date('H:i',strtotime($post['Post']['created'])); ?></i>
+                  <i class="fa fa-clock-o" style="font-size:13px;font-weight:bold;"><?php echo $post['Post']['created']; ?></i>
                 </div>
                 <div class="col-sm-6">
-                  <i class="fa fa-map-marker" style="font-size:13px;font-weight:bold;"> <?php echo $post['Post']['city']; ?></i>
+                  <i class="fa fa-map-marker" style="font-size:13px;font-weight:bold;"><?php echo $post['Post']['location']; ?></i>
                 </div>
               </div>
             </div>
