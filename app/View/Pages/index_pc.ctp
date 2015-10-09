@@ -133,7 +133,9 @@
         <!-- フォローしているリスト終了-->
 
         <!--サイドバー開始-->
-        <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
+        <div class="col-sm-offset-1 col-sm-3" style="padding:0;">
+          <!--ランキング開始-->
+          <div style="border:1px solid #ccc;margin:5px;">
           <h4 style="text-align:center">今週のデートランキング</h4>
           <?php $i = 1; ?>
           <?php foreach ($ranking_dates as $ranking_date) { ?>
@@ -155,6 +157,8 @@
           <!--ランキングプラン終了-->
           <?php $i=$i+1 ;?>
           <?php } ?>
+          </div>
+          <!--ランキング終了-->
         </div>        
         <!--サイドバー終了-->
       </div>
