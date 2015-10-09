@@ -120,6 +120,12 @@ create table photos (
 insert into photos (post_id, user_id, filename, created, modified) values 
     (null, 2, 'kohei.jpg', now(), now()),
     (null, 5, 'aragaki.jpg', now(), now()),
+    (null, 1, '1.jpg', now(), now()),
+    (null, 3, '3.jpg', now(), now()),
+    (null, 4, '4.jpg', now(), now()),
+    (null, 6, '6.jpg', now(), now()),
+    (null, 7, '7.jpg', now(), now()),
+    (null, 8, '8.jpg', now(), now()),
     (1, null, 'photo1.jpg', now(), now()),
     (2, null, 'photo2.jpg', now(), now()),
     (3, null, 'photo3.jpg', now(), now());
