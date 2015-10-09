@@ -78,64 +78,47 @@ create table posts(
     modified datetime default null
 );
 
-insert into posts (date_id, content, location, created, modified) values 
+insert into posts (date_id, content, state, city, created, modified) values 
     (2, "ヒカリエに集合！天気も良好◎　さすが晴れ男！！", "渋谷", now(), now()),
-    (2, "ハチ公前で写真撮影！いぇーい！！", "渋谷", now(), now()),
-    (2, "TOHOシネマで映画鑑賞！疲れてたからちょっと寝ちゃった…笑", "渋谷", now(), now()),
-    (2, "楽天カフェで一休み！ワンピースの音楽が永遠リピート。。。懐かしい！！", "渋谷", now(), now()),
-    (2, "LOFTでお買い物！二人でお揃いの手帳ゲッチュ(*^^*)カラクリすごかった！！", "渋谷", now(), now()),
-    (2, "ディナーは予約してました！美味しい料理がたくさんあって幸せだった♪", "原宿", now(), now()),
-    (2, "寂しいけど、ばいばーい（泣）夜景すごくキレイだった！！", "表参道", now(), now()),
-    (3, "駅前で集合、人やばい。", "自由が丘", now(), now()),
-    (3, "スタバでいっぱい！新作のフラペチーノ美味しい♡", "自由が丘", now(), now()),
-    (3, "メインストリートをゆっくりお散歩", "自由が丘", now(), now()),
-    (3, "デザート食べまくってお昼スキップー！ジェラート美味しすぎた！", "自由が丘", now(), now()),
-    (3, "雑貨屋さんに行ってきたよー！", "自由が丘", now(), now()),
-    (3, "ディナーはイタリアン！ラボエムにいってきたよー！オシャレな内装でおすすめ！", "自由が丘", now(), now()),
-    (3, "夜景すごくキレイだった！！また来たい街だなー自由が丘！", "自由が丘", now(), now()),    
-    (4, "駅前で集合、彼氏が遅刻！", "藤沢駅", now(), now()),
-    (4, "はじめての江ノ電！ローカル線すぎるー！ゆっくり動くー！", "江の電", now(), now()),
-    (4, "江ノ電で途中下車、スラムダンク発祥の高校があるみたい", "七里ガ浜駅", now(), now()),
-    (4, "江の島到着！江の島って橋を渡っていけるんだね！散歩行ってきまーす！", "江の島", now(), now()),
-    (4, "江の島といえば、しらす丼だよね！美味しい！", "江の島", now(), now()),
-    (4, "夜も綺麗な江の島ー！でもお店閉まるの早すぎ！早めの帰宅ー", "江の島", now(), now()),
-    (4, "家に帰って来ちゃった〜！江の島散策の1日でした！", "横浜", now(), now()),
-    (1, "みなさん、開発お疲れ様でした！！！","",now(),now());
+    (2, "ハチ公前で写真撮影！いぇーい！！", "渋谷区", "東京都", now(), now()),
+    (2, "TOHOシネマで映画鑑賞！疲れてたからちょっと寝ちゃった…笑", "渋谷", "東京都", now(), now()),
+    (2, "楽天カフェで一休み！ワンピースの音楽が永遠リピート。。。懐かしい！！", "渋谷","東京都", now(), now()),
+    (2, "LOFTでお買い物！二人でお揃いの手帳ゲッチュ(*^^*)カラクリすごかった！！", "渋谷","東京都" now(), now()),
+    (2, "ディナーは予約してました！美味しい料理がたくさんあって幸せだった♪", "原宿", "東京都", now(), now()),
+    (2, "寂しいけど、ばいばーい（泣）夜景すごくキレイだった！！", "表参道", "東京都", now(), now()),
+    (3, "駅前で集合、人やばい。", "自由が丘", "東京都", now(), now()),
+    (3, "スタバでいっぱい！新作のフラペチーノ美味しい♡", "自由が丘", "東京都", now(), now()),
+    (3, "メインストリートをゆっくりお散歩", "自由が丘", "東京都", now(), now()),
+    (3, "デザート食べまくってお昼スキップー！ジェラート美味しすぎた！", "自由が丘", "東京都", now(), now()),
+    (3, "雑貨屋さんに行ってきたよー！", "自由が丘", "東京都", now(), now()),
+    (3, "ディナーはイタリアン！ラボエムにいってきたよー！オシャレな内装でおすすめ！", "自由が丘", "東京都", now(), now()),
+    (3, "夜景すごくキレイだった！！また来たい街だなー自由が丘！", "自由が丘", "東京都", now(), now()),    
+    (4, "駅前で集合、彼氏が遅刻！", "藤沢駅", "神奈川県", now(), now()),
+    (4, "はじめての江ノ電！ローカル線すぎるー！ゆっくり動くー！", "江の電", "神奈川県", now(), now()),
+    (4, "江ノ電で途中下車、スラムダンク発祥の高校があるみたい", "七里ガ浜駅", "神奈川県", now(), now()),
+    (4, "江の島到着！江の島って橋を渡っていけるんだね！散歩行ってきまーす！", "江の島", "神奈川県", now(), now()),
+    (4, "江の島といえば、しらす丼だよね！美味しい！", "江の島", "神奈川県", now(), now()),
+    (4, "夜も綺麗な江の島ー！でもお店閉まるの早すぎ！早めの帰宅ー", "江の島", "神奈川県", now(), now()),
+    (4, "家に帰って来ちゃった〜！江の島散策の1日でした！", "横浜", "神奈川県", now(), now()),
+    (1, "みなさん、開発お疲れ様でした！！！","渋谷","東京都",now(),now());
 
 /*photosのテーブル作成*/
 create table photos (
     id int not null auto_increment primary key,
-    post_id int,
+    post_id int default null,
+    user_id int default null,
     filename varchar(255),
     created datetime default null, 
     modified datetime default null
 );
 
-insert into photos (post_id, filename, created, modified) values 
-    (1, 'hikarie.jpg', now(), now()),
-    (2, 'hachiko.jpg', now(), now()),
-    (3, 'tohocinema.jpeg', now(), now()),
-    (4, 'rakutencafe_inner.jpg', now(), now()),
-    (4, 'rakutencafe_outer.jpg', now(), now()),
-    (5, 'loft.jpg', now(), now()),
-    (6, 'dinner.jpg', now(), now()),
-    (7, 'omotesando.jpg', now(), now()),
-    (8, 'j.station.jpg', now(), now()),
-    (9, 'j.starbucks.jpg', now(), now()),
-    (10, 'j.walking.jpg', now(), now()),
-    (11, 'j.deseart.jpg', now(), now()),
-    (12, 'j.store.jpg', now(), now()),
-    (13, 'j.italian.jpg', now(), now()),
-    (14, 'j.nightview.jpg', now(), now()),
-    (15, 'f.station.jpg', now(), now()),
-    (16, 'f.train.jpg', now(), now()),
-    (17, 'f.highschool.jpg', now(), now()),
-    (18, 'f.bridge.jpg', now(), now()),
-    (19, 'f.shirasu.jpg', now(), now()),
-    (20, 'f.nightview.jpg', now(), now()),
-    (21, 'f.yokohama.jpg', now(), now()),
-    (22, 'paak.png', now(), now());
-
+insert into photos (post_id, user_id, filename, created, modified) values 
+    (null, 2, 'kohei.jpg', now(), now()),
+    (null, 5, 'aragaki.jpg', now(), now()),
+    (1, null, 'photo1.jpg', now(), now()),
+    (2, null, 'photo2.jpg', now(), now()),
+    (3, null, 'photo3.jpg', now(), now());
+     
 /*countriesのテーブル作成*/
 create table favorites (
     id int not null auto_increment primary key,
