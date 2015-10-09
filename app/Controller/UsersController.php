@@ -24,6 +24,15 @@ class UsersController extends AppController {
 	}
 
 	public function setting_pc($id){
+		if($this->request->is('post')) {
+		/*	if($this->Auth->login())
+				return $this->redirect('index');
+			else{
+				$this->Session->setFlash('ログイン失敗');
+			}*///上のような感じでやるみたいです
+    
+  }
+
 		$this->set('user',$this->User->getuser($id));
 	}
 
