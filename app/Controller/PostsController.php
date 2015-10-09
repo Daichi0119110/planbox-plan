@@ -46,34 +46,34 @@ class PostsController extends AppController {
     }
 
     function search_in_array($str, $array){
-      $pattern = '/' . preg_quote($str, '/') . '/i';
-      foreach($array as $val){
-        if(preg_match($pattern, $val)){
-          return TRUE;
-        }
-       }
+        $pattern = '/' . preg_quote($str, '/') . '/i';
+        foreach($array as $val){
+            if(preg_match($pattern, $val)){
+              return TRUE;
+          }
+      }
       return FALSE;
     }
 
     //　planboxというアプリ自体、そしてこの関数のインスタグラム側への登録
     //  サーバー変えたりしたら else コメントアウトして~/posts/callback_instagram を１度叩くが、二度と実行する必要はない
     public function callback_instagram(){
-        
+
             // 設定
-        $client_id = 'bff070ff8e144cbfb70e344fa5a2f27e' ;       // クライアントID 
-        $client_secret = '1f3892ae4dad4350be7921316953cb7e' ;       // クライアントシークレット
+        $client_id = '5e3fb1c655b14c6f9b47b89bfe59c71c' ;       // クライアントID 
+        $client_secret = '65d605ca29ea4d02aac10fb8ffcb1e1f' ;       // クライアントシークレット
         // test code
-        $callback_url = 'http://k0hei.science/planbox_instatest/posts/callback_instagram' ;        // コールバックURL
+        $callback_url = 'http://k0hei.science/planbox-plan/posts/callback_instagram' ;        // コールバックURL
         // $callback_url = explode( '?' , ( !isset($_SERVER['HTTPS']) || empty($_SERVER['HTTPS']) ? 'http://' : 'https://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] )[0] ;      // このプログラムを設置するURL
         $verify_token = 'techlabpaak' ;     // 合い言葉となるキー
 
-        // if (isset ($_GET['hub_challenge']))
-        // {
-        //     // 確認用のキーを返却する
-        //     echo $_GET[ 'hub_challenge' ] ;
-        //     exit ;
-        // }
-        // // else if($this->request->is('post')){
+        if (isset ($_GET['hub_challenge']))
+        {
+            // 確認用のキーを返却する
+            echo $_GET[ 'hub_challenge' ] ;
+            exit ;
+        }
+        else if($this->request->is('post')){
         // else{
             $myString = @file_get_contents('php://input');
             $obj = json_decode($myString);
@@ -120,7 +120,7 @@ class PostsController extends AppController {
                 $tags = ( isset($item->tags) && !empty($item->tags) ) ? $tags = $item->tags : '' ;
                 $tagres = $this->search_in_array($nosharp, $tags);
                 if($tagres==1){
-                
+
                     $time = $item->created_time;
                     $time = date( 'Y-m-d h:i:s' , $date ) ;
                                 // 文章
@@ -133,12 +133,16 @@ class PostsController extends AppController {
                             // 写真
                     $photo = $item->images->standard_resolution->url;
 
-                    // $this->log( 'text='. $text.' location='. $location_name.' tagres='. $tagres.' tagres2='. $tagres2.' photo='. $photo. 'fin', LOG_FOR_YOU);
+                    $test = 'text='. $text.' location='. $location_name.' id='. $id.' photo='. $photo. 'fin';
+                    $file = new File(WWW_ROOT.'insta_log.txt',true);
+                    $file->write($test."\n",'a');
+                    $file->close();
                     $city = "FromInstagram";
                     
-                    $newpost=$this->Post->AddPosts($text,$time,$id,$photo,$location_lat,$location_long,$location_name,$city);
+                    $newpost=$this->Post->AddPosts($text,$time,$id,$photo,$location_lat,$location_long,$city,$location_name);
                 }
             }
+        }
 
         // パラメータを連想配列形式で指定(サンプルはGeographyの場合)
         $params = array(
