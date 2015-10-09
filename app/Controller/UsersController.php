@@ -77,10 +77,17 @@ class UsersController extends AppController {
 
 		if($this->request->is('post')){
 			$this->request->data['User']['password']=crypt($this->request->data['User']['password'],'$2y$10$VdH3ZiUm7EzSiPPyzsRXCc');
-			$this->User->save($this->request->data);
 
+			// 誕生日の配列を文字列に整形
+			$birth_array = $this->request->data['User']['birthday'];
+			$birthday = $birth_array['year']. '/' .$birth_array['month']. '/' .$birth_array['day'] ;
+			$this->request->data['User']['birthday'] = $birthday;
+
+			$this->User->save($this->request->data);
 			$myid=$this->User->isexistname($this->request->data['User']['name']);
-			$to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
+
+			// これは多分要らない
+			// $to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
 			if($isinvited==null){
 				return $this->redirect(
         			array('controller' => 'Users', 'action' => 'setting',$myid));
