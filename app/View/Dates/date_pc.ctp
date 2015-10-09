@@ -54,7 +54,7 @@ $j = 1;
             <h3 style="text-align:center">デートスケジュール</h3>
             <?php foreach ($posts as $post) { ?>
             <table class="table table-hover">
-              <tr><td style="width:200px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['created']; ?></a></td><td style="width:250px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['location']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
+              <tr><td style="width:200px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-clock-o" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['created']; ?></a></td><td style="width:250px;height:40px;"><a href="#tweet<?php echo $i; ?>" class="fa fa-map-marker" style="display:block;width:100%;height:100%;"><?php echo $post['Post']['city']; ?></a></td></tr><!--ページ内リンクを貼り付け-->
               <?php $i++; ?>
               <?php } ?>
             </table>
@@ -64,7 +64,7 @@ $j = 1;
 
             <div class="row" style="margin:10px 0 10px 0;">
               <div class="col-sm-4">
-                <i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $posts[0]['Post']['location']; ?></i>
+                <i class="fa fa-map-marker" style="font-size:16px;font-weight:bold;"><?php echo $posts[0]['Post']['city']; ?></i>
               </div>
               <div class="col-sm-5">
                 <i class="fa fa-calendar" style="font-size:16px;font-weight:bold;"><?php echo $date[0]['Date']['created']; ?></i>
@@ -119,7 +119,7 @@ $j = 1;
                   <i class="fa fa-clock-o" style="font-size:13px;font-weight:bold;"><?php echo $post['Post']['created']; ?></i>
                 </div>
                 <div class="col-sm-6">
-                  <i class="fa fa-map-marker" style="font-size:13px;font-weight:bold;"><?php echo $post['Post']['location']; ?></i>
+                  <i class="fa fa-map-marker" style="font-size:13px;font-weight:bold;"><?php echo $post['Post']['city']; ?></i>
                 </div>
               </div>
             </div>
@@ -174,10 +174,10 @@ $j = 1;
           <a href="/planbox-plan/dates/date/<?php echo $date_suggest['Date']['id']; ?>"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FF8C00; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
-                <?php echo $this->Html->image($date_suggest['Date']['photo'], array('alt' => 'photo1'));?>
+                <?php echo $this->Html->image($date_suggest['Date']['photo'], array('alt' => $date_suggest['Date']['name']));?>
               </div>
               <h4 ><?php echo $date_suggest['Date']['name']; ?></h4>
-              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;">自由が丘</p>
+              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $date_suggest['Date']['city']; ?></p>
               <p><?php echo $date_suggest['Date']['description']; ?></p>
             </div>
           </a>
@@ -196,7 +196,7 @@ $j = 1;
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <ol class="nav navbar-nav list-inline">
-      <li style="margin: 0 50px 0 400px;"><button id="button_favo" type="button" class="btn btn-warning btn-lg" data-date-id="<?php echo $date[0]['Date']['id']; ?>" data-user-id="">行きたい！</button></li>
+      <li style="margin: 0 50px 0 250px;"><button id="button_favo" type="button" class="btn btn-warning btn-lg" data-date-id="<?php echo $date[0]['Date']['id']; ?>" data-user-id="">行きたい！</button></li>
       <li style="margin: 0 200px 0 0;"><span id="favo_num"><?php echo $favo;?></span>人が行きたい<br>と言っています</li>
       <li  style="margin: 0 50px 0 0;"><button id="button_follow" type="button" class="btn btn-warning btn-lg" data-couple-id="<?php echo $date[0]['Date']['couple_id']; ?>" data-user-id="">フォロー！</button></li>
       <li style="margin: 0 200px 0 0;"><span id="follow_num"><?php echo $follow;?></span>人がフォロー<br>しています</li>

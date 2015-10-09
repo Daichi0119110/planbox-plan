@@ -43,7 +43,7 @@ class CouplesController extends AppController {
 		$dates = $this->Date->getdatesfromcouple($couple_id);
 		for ($i=0; $i < count($dates); $i++) {
 			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']); // いいね数の取得
-			$dates[$i]['Date']['location'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
+			$dates[$i]['Date']['city'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
 
 			// 写真の読み込み
 			$posts = $this->Post->getpostids($dates[$i]['Date']['id']);
@@ -111,7 +111,7 @@ class CouplesController extends AppController {
 		$dates = $this->Date->getdatesfromcouple($couple_id);
 		for ($i=0; $i < count($dates); $i++) {
 			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']); // いいね数の取得
-			$dates[$i]['Date']['location'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
+			$dates[$i]['Date']['city'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
 
 			// 写真の読み込み
 			$posts = $this->Post->getpostids($dates[$i]['Date']['id']);
@@ -199,7 +199,7 @@ class CouplesController extends AppController {
 		$dates = $this->Date->getdatesfromcouple($couple_id);
 		for ($i=0; $i < count($dates); $i++) {
 			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']); // いいね数の取得
-			$dates[$i]['Date']['location'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
+			$dates[$i]['Date']['city'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
 
 			// 写真の読み込み
 			$posts = $this->Post->getpostids($dates[$i]['Date']['id']);
@@ -270,7 +270,7 @@ class CouplesController extends AppController {
 		$dates = $this->Date->getdatesfromcouple($couple_id);
 		for ($i=0; $i < count($dates); $i++) {
 			$dates[$i]['Date']['favo'] = $this->Favorite->getnumber($dates[$i]['Date']['id']); // いいね数の取得
-			$dates[$i]['Date']['location'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
+			$dates[$i]['Date']['city'] = $this->Post->getlocation($dates[$i]['Date']['id']); // 位置情報の取得
 
 			// 写真の読み込み
 			$posts = $this->Post->getpostids($dates[$i]['Date']['id']);
