@@ -153,10 +153,10 @@ create table photos (
 insert into photos (post_id, user_id, filename, created, modified) values 
     (null, 2, 'kohei.jpg', now(), now()),
     (null, 5, 'aragaki.jpg', now(), now()),
-    (1, null, 'photo1.jpg', now(), now()),
+    (4, null, 'photo1.jpg', now(), now()),
     (2, null, 'photo2.jpg', now(), now()),
     (3, null, 'photo3.jpg', now(), now());
-    (4, null, 'shibuya.jpg', now(), now());
+    (1, null, 'shibuya.jpg', now(), now());
     (3, null, 'shinjuku.jpg', now(), now());
     (3, null, 'daikanyama.jpg', now(), now());
     (3, null, 'enoshima.jpg', now(), now());
