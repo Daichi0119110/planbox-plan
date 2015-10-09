@@ -45,5 +45,11 @@
   valign:middle;
 }
 
-
+/*全ページ*/
+body{
+  background-color: #FFF0F5;
+}
+.navbar-fixed-top{
+  background-color: #FFE4E1;
+}
 

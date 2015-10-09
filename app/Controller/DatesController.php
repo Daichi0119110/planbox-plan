@@ -283,4 +283,7 @@ class DatesController extends AppController {
 		}
 		return $dates;
 	}
+	public function date_new_pc() {
+
+	}
 }
