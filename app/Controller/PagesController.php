@@ -64,6 +64,8 @@ class PagesController extends AppController {
 		$this->_date_set('ranking_dates', $ranking_dates);
 
 		// 新着
+		$dates_new = $this->Date->getnewdate();
+		$this->_date_set('dates_new', $dates_new);
 
 		$this->set('title', 'トップページ ');
 	}
