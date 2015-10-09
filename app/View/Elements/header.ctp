@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top header">
       <div class="navbar-header">
         <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
           <span class="icon-bar"></span>
@@ -10,7 +10,7 @@
  
       <div class="collapse navbar-collapse target">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/planbox-plan/dates/favorite">行きたいリスト</a></li>
+          <li class=""><a href="/planbox-plan/dates/favorite">行きたいリスト</a></li>
           <li><a href="/planbox-plan/couples/mypage">マイページ</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
