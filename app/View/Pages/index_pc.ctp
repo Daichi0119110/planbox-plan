@@ -38,26 +38,24 @@
 
     </div>
 
-    <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
+    <div class="col-sm-12">
       <div class="search-box" style="border:1px solid #ccc; margin-bottom: 30px;">
-        <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:180px">
+        <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:180px;">
           デートプラン検索
         </div>
-            <?php echo $this->Form->create('Date', array('action'=>'search')); ?>
-            <?php echo $this->Form->input('keyword', array('label' => false, 'size' => '100%', 'empty' => true)); ?>
-            <?php echo $this->Form->end('検索'); ?>
+            <?php echo $this->Form->create('Date', array('action'=>'search', 'class' => 'navbar-form')); ?>
+            <?php echo $this->Form->input('keyword', array('label' => false, 'size' => '150%', 'empty' => true, 'div' => array(
+        'class' => 'form-group'),'class' => 'form-control',)); ?>
+            <?php echo $this->Form->end(array('label' => '検索','class' => 'btn btn-default')); ?>
      </div>
    </div>
 
-   <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
+   <div class="col-sm-12">
 
     <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:400px">
       フォローしているカップルのデートプラン
     </div>
 
-  </div>
-
-  <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1">
     <div class="row">
       <div class="tabbox">
         <p class="tabs">
@@ -65,7 +63,7 @@
           <a href="#tab2" class="tab2" onclick="ChangeTab('tab2'); return false;">自分</a>
           <a href="#tab3" class="tab3" onclick="ChangeTab('tab3'); return false;">相手</a>
         </p>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <!-- タブ開始 -->
           <?php for ($i=1; $i < 4; $i++) { ?>
           <div id="tab<?php echo $i; ?>" class="tab">
@@ -133,7 +131,7 @@
         <!-- フォローしているリスト終了-->
 
         <!--サイドバー開始-->
-        <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
+        <div class="col-sm-offset-1 col-sm-2" style="border:1px solid #ccc;">
           <h4 style="text-align:center">今週のデートランキング</h4>
           <?php $i = 1; ?>
           <?php foreach ($ranking_dates as $ranking_date) { ?>
