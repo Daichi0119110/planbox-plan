@@ -184,8 +184,8 @@ create table favorites (
   );
 
 insert into favorites (fav_flg, user_id, date_id, created, modified) values 
-    (1, 1, 3, now(), now()),
-    (1, 1, 4, now(), now()),
+    (1, 1, 5, now(), now()),
+    (1, 1, 7, now(), now()),
     (1, 2, 1, now(), now()),
     (1, 2, 2, now(), now()),
     (1, 3, 2, now(), now()),
@@ -203,7 +203,6 @@ create table follows (
   );
 
 insert into follows (fav_flg, user_id, couple_id, created, modified) values 
-    (1, 1, 1, now(), now()),
     (1, 1, 2, now(), now()),
     (1, 1, 3, now(), now()),
     (1, 1, 4, now(), now()),
