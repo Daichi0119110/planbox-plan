@@ -24,10 +24,10 @@ insert into users (gender, name, anony_flg, name_insta, couple_id, password, age
     (0,'@daichi119',0,null,1,"tsetet",21,"daichi.jpg",'1994/1/24',null,null),
     (0,'@k0hei1993',0,null,2,"tsetet",21,"kohei.jpeg",'1993/5/24',null,null),
     (0,'@toshichan',0,null,3,"tsetet",21,"taniguchi.jpg",'1993/5/4',null,null),
-    (1,'@azuman',0,null,4,"tsetet",23,"azuma.jpg",'1992/2/2',null,null),
+    (1,'@miwa',0,null,4,"tsetet",23,"azuma.jpg",'1992/2/2',null,null),
     (1,'@gakigaki',0,null,3,"tsetet",21,"gaki.jpeg",'1991/7/21',null,null),
     (1,'@mitsuki',0,null,1,"tsetet",28,"yamamoto.jpg",'1992/2/24',null,null),
-    (0,'GIGcl',0,null,4,"tsetet",20,"tsumabuki.jpeg",'1995/1/1',null,null),
+    (0,'@kondo',0,null,4,"tsetet",20,"tsumabuki.jpeg",'1995/1/1',null,null),
     (1,'@makihori',0,null,2,"tsetet",17,"horikita.png",'1994/6/24',null,null);
 
 /*couplesのテーブル作成*/
@@ -89,7 +89,7 @@ create table posts(
     modified datetime default null
 );
 
-insert into posts (date_id, content, city, state created, modified) values 
+insert into posts (date_id, content, city, state, created, modified) values 
     (1, "ヒカリエに集合！天気も良好◎　さすが晴れ男！！", "渋谷", "東京都", now(), now()),
     (1, "ハチ公前で写真撮影！いぇーい！！", "渋谷", "東京都", now(), now()),
     (1, "TOHOシネマで映画鑑賞！疲れてたからちょっと寝ちゃった…笑", "渋谷", "東京都", now(), now()),
@@ -153,17 +153,23 @@ create table photos (
 insert into photos (post_id, user_id, filename, created, modified) values 
     (null, 2, 'kohei.jpg', now(), now()),
     (null, 5, 'aragaki.jpg', now(), now()),
+    (null, 2, 'kohei.jpg', now(), now()),
+    (null, 5, 'aragaki.jpg', now(), now()),
+    (null, 2, 'kohei.jpg', now(), now()),
+    (null, 5, 'aragaki.jpg', now(), now()),
+    
     (4, null, 'photo1.jpg', now(), now()),
     (2, null, 'photo2.jpg', now(), now()),
-    (3, null, 'photo3.jpg', now(), now());
-    (1, null, 'shibuya.jpg', now(), now());
-    (3, null, 'shinjuku.jpg', now(), now());
-    (12, null, 'daikanyama.jpg', now(), now());
-    (16, null, 'enoshima.jpg', now(), now());
-    (3, null, 'jiyugaoka.jpg', now(), now());
-    (3, null, 'nikotama.jpg', now(), now());
-    (3, null, 'roppongi.jpg', now(), now());
-    (3, null, 'kamakura.jpg', now(), now());
+    (3, null, 'photo3.jpg', now(), now()),
+    (1, null, 'shibuya.jpg', now(), now()),
+    (42, null, 'shinjuku.jpg', now(), now()),
+    (12, null, 'daikanyama.jpg', now(), now()),
+    (16, null, 'enoshima.jpg', now(), now()),
+    (23, null, 'jiyugaoka.jpg', now(), now()),
+    (30, null, 'nikotama.jpg', now(), now()),
+    (46, null, 'roppongi.jpg', now(), now()),
+    (38, null, 'kamakura.jpg', now(), now()),
+    (34, null, 'ikubukuro.jpg', now(), now()),
     (8, null, 'nakameguro.jpg', now(), now());
      
 /*countriesのテーブル作成*/
