@@ -145,11 +145,6 @@ class UsersController extends AppController {
 		// $redirect_uri = "http://k0hei.science/planbox_instatest/users/authorize_instagram";
 		$scope = 'basic' ;		// スコープ
 
-
-		// セキュリティやばい
-		session_id($id);
-
-
 		// セッションスタート
 		session_start() ;
 		// モーダル的なメッセージ用
@@ -213,16 +208,13 @@ class UsersController extends AppController {
 
 
 
-				$id = session_id();
-				
-
-				$this->User->getuser($id);
-	            $pic = $user['photo'];
+				$user_id = $this->Session->read('user_id');	            
+				$pic = $user['photo'];
 	            
 	            
 	            if(empty($pic)){
 					//登録する値
-					$data = array('User' => array('id' => $id, 'name_insta' => $user_name, 'photo' => $user_picture,'insta_id' => $insta_id, 'insta_token' => $access_token));
+					$data = array('User' => array('id' => $user_id, 'name_insta' => $user_name, 'photo' => $user_picture,'insta_id' => $insta_id, 'insta_token' => $access_token));
 					// 登録するフィールド
 					$fields = array('name_insta','photo' ,'insta_id', 'insta_token');
 					// 更新
@@ -231,7 +223,7 @@ class UsersController extends AppController {
 	            else{
 
 					//登録する値
-					$data = array('User' => array('id' => $id, 'name_insta' => $user_name, 'insta_id' => $insta_id, 'insta_token' => $access_token));
+					$data = array('User' => array('id' => $user_id, 'name_insta' => $user_name, 'insta_id' => $insta_id, 'insta_token' => $access_token));
 					// 登録するフィールド
 					$fields = array('name_insta','insta_id', 'insta_token');
 					// 更新
@@ -243,7 +235,7 @@ class UsersController extends AppController {
 				session_destroy() ;
 
 
-				$this->setting($id);
+				$this->setting($user_id);
 			}
 		}
 		// [手順1] 初回アクセスの場合、ユーザーをアプリ認証画面へアクセスさせる
