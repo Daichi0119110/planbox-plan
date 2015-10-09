@@ -5,7 +5,6 @@ App::uses('File', 'Utility');
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('User', 'Date','Couple','Photo');
-
 	public function setting($id) {
 		$this->autoRender = false;
 		$this->autoLayout = false;
@@ -24,15 +23,19 @@ class UsersController extends AppController {
 	}
 
 	public function setting_pc($id){
-		if($this->request->is('post')) {
-		/*	if($this->Auth->login())
-				return $this->redirect('index');
-			else{
-				$this->Session->setFlash('ログイン失敗');
-			}*///上のような感じでやるみたいです
-    
-  }
-
+		if ($this->request->is('post') || $this->request->is('put')) {
+				$image = $this->request->data['User']['image'];
+				$this->User->create();
+				$data['User']=array('id'=>$id,'photo'=>$image['name']);
+				if($this->User->save($data)){
+					
+					move_uploaded_file($image['tmp_name'], './img/'.$image['name']);
+					$data=array();
+				}
+				else{
+					echo "失敗しました。";
+				}
+		}
 		$this->set('user',$this->User->getuser($id));
 	}
 
@@ -130,5 +133,16 @@ class UsersController extends AppController {
 	public function upload()
 	{
 
+	}
+
+	public function login()
+	{
+		if($this->request->is('post')) {
+			/*	if($this->Auth->login())
+				return $this->redirect('index');
+			else{
+				$this->Session->setFlash('ログイン失敗');
+			}*///上のような感じでやるみたいです
+    	}
 	}
 }
