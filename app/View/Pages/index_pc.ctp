@@ -1,5 +1,4 @@
 <?php echo $this->Html->script('hoge', array('inline' => false)); ?>
-
 <div class="container" data-user-id='<?php echo $user_id; ?>'>
   <div class="row">
     <div class="col-sm-12">
@@ -44,12 +43,9 @@
         <div class="search-title" style="font-size:20px; border:2px solid #ccc; width:180px">
           デートプラン検索
         </div>
-        <form class="navbar-form" action="search">
-          <div class="form-group">
-           <input type="text" class="form-control" placeholder="検索してください" size="100%">
-         </div>
-         <button type="submit" class="btn btn-default">検索</button>
-       </form>
+            <?php echo $this->Form->create('Date', array('action'=>'search')); ?>
+            <?php echo $this->Form->input('keyword', array('label' => false, 'size' => '100%', 'empty' => true)); ?>
+            <?php echo $this->Form->end('検索'); ?>
      </div>
    </div>
 
@@ -137,15 +133,14 @@
         <!-- フォローしているリスト終了-->
 
         <!--サイドバー開始-->
-        <div class="col-sm-offset-1 col-sm-3" style="padding:0;">
-          <!--ランキング開始-->
-          <div style="border:1px solid #ccc; padding:5px;"> 
+        <div class="col-sm-offset-1 col-sm-3" style="border:1px solid #ccc;">
           <h4 style="text-align:center">今週のデートランキング</h4>
           <?php $i = 1; ?>
           <?php foreach ($ranking_dates as $ranking_date) { ?>
           <!--ランキングプラン-->
+          <div class="ranking">
           <hr>
-          <h4 style="font-style: italic;"><?php echo $i; ?>位</h4>
+          <h4 style="font-style: italic;" ><?php echo $i; ?>位</h4>
           <a href="/planbox-plan/dates/date/<?php echo $ranking_date['Date']['id']; ?>"><!--このデートプランに飛ぶリンク-->
             <div style="background-color:#FFDAB9; padding:5px;">
               <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
@@ -156,34 +151,10 @@
               </a>
               <p><?php echo $ranking_date['Date']['favo']; ?>行きたい！</p>
             </div>
-          <hr>
+          </div>
           <!--ランキングプラン終了-->
           <?php $i=$i+1 ;?>
           <?php } ?>
-          </div>
-          <!--ランキング終了-->
-          <br>
-          <!--新着開始-->
-          <div style="border:1px solid #ccc; padding:5px;"> 
-          <h4 style="text-align:center">新着のデート</h4>
-          <?php foreach ($dates_new as $date_new) { ?>
-          <!--新着プラン-->
-          <hr>
-          <a href="/planbox-plan/dates/date/<?php echo $date_new['Date']['id']; ?>"><!--このデートプランに飛ぶリンク-->
-            <div style="background-color:#FFDAB9; padding:5px;">
-              <div class="sidebar-image" style="overflow:hidden; width:100%; height:180px;">
-                 <?php echo $this->Html->image($date_new['Date']['photo'], array('alt' => $date_new['Date']['name']));?>
-              </div>
-              <h4 ><?php echo $date_new['Date']['name']; ?></h4>
-              <p class="fa fa-map-marker" style="font-size:13px;font-weight:bold;text-align:center;width:100%;"><?php echo $date_new['Date']['city']; ?></p>
-              </a>
-              <p><?php echo $date_new['Date']['favo']; ?>行きたい！</p>
-            </div>
-          <hr>
-          <!--新着プラン終了-->
-          <?php } ?>
-          </div>
-          <!--新着終了-->
         </div>        
         <!--サイドバー終了-->
       </div>
@@ -215,5 +186,14 @@ $(function() {
         $('#favo_num_feed'+res.id).html(res.favo);
     }, "json");
   });
+});
+
+
+$('.ranking:eq(4)').nextAll().hide();
+$('.ranking:eq(4)').append('<a id="open_ranking" class="btn btn-warning feed">▽▽もっと見る▽▽</a>');
+$('#open_ranking').css('cssText','width:80%;margin:10px auto 10px 20px');
+$('#open_ranking').click(function() {
+  $('.ranking:eq(4)').nextAll().show("slow");
+  $('#open_ranking').hide();
 });
 </script>
