@@ -2,6 +2,7 @@
 App::uses('CakeEmail', 'Network/Email');
 App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
+require('TwistOAuth.phar');	
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('User', 'Date','Couple','Photo');
@@ -31,11 +32,23 @@ class UsersController extends AppController {
 		$user_id = $this->Session->read('user_id');
 
 		$this->set('user',$this->User->getuser($user_id));
-
 		$this->set('title', '設定 ');
+		if ($this->request->is('post') || $this->request->is('put')) {
+				$image = $this->request->data['User']['image'];
+				$this->User->create();
+				$data['User']=array('id'=>$user_id,'photo'=>$image['name']);
+				if($this->User->save($data)){
+					
+					move_uploaded_file($image['tmp_name'], './img/'.$image['name']);
+					$data=array();
+				}
+				else{
+					echo "失敗しました。";
+				}
+		}
 	}
 
-	public function setting_sp($user_id){
+	public function setting_sp(){
 		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
 		if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
@@ -63,15 +76,22 @@ class UsersController extends AppController {
 		$this->set('title', '新規登録 ');
 
 		if($this->request->is('post')){
+			$this->request->data['User']['password']=crypt($this->request->data['User']['password'],'$2y$10$VdH3ZiUm7EzSiPPyzsRXCc');
 			$this->User->save($this->request->data);
 
 			$myid=$this->User->isexistname($this->request->data['User']['name']);
+			$to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
 			if($isinvited==null){
 				return $this->redirect(
         			array('controller' => 'Users', 'action' => 'setting',$myid));
 			}
 			else{
 				$partner_id=$this->User->getuseridfromhash($isinvited);
+				
+				$to = new TwistOAuth('dummy','dummy','dummy','dummy');
+				$to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
+      			$partner=$this->User->getuser($partner_id);
+      			$to->post('friendships/create', ['screen_name' => $partner['name']]);
 				if($this->request->data['User']['gender']==0){
 					$this->Couple->MakeCouple($myid,$partner_id);	
 				}
@@ -262,5 +282,16 @@ class UsersController extends AppController {
 	public function upload()
 	{
 
+	}
+
+	public function login()
+	{
+		if($this->request->is('post')) {
+			/*	if($this->Auth->login())
+				return $this->redirect('index');
+			else{
+				$this->Session->setFlash('ログイン失敗');
+			}*///上のような感じでやるみたいです
+    	}
 	}
 }
