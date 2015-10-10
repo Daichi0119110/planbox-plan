@@ -23,8 +23,8 @@
                     <div class="follow-list" style="border:1px solid #ccc;">
                          <div style="width:300px; height: 700px; float:left; border:1px solid #ccc; margin: 10px 5px;">
                             <a href="/planbox-plan/dates/date/<?php echo $date['Date']['id']; ?>">
-                                <div style="overflow:hidden; width:350px; height:260px;">
-                                <?php echo $this->Html->image($date['Date']['photo'], array('alt' => $date['Date']['name'], 'style'=>"width:300px; height: auto;"));?>
+                                <div style="overflow:hidden; width:350px; height:260px; display: table-cell; vertical-align: middle; text-align: center;">
+                                <?php echo $this->Html->image($date['Date']['photo'], array('alt' => $date['Date']['name'], 'style'=>"width:300px; height: auto; vertical-align:middle;"));?>
                                 </div>
                             </a>
                             <table class="table">

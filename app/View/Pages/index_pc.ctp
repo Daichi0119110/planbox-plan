@@ -14,8 +14,8 @@
             <?php foreach ($dates_recommend as $date_recommend) { ?>
             <div style="width:350px; height: 500px; float:left; border:1px solid #ccc;">
               <a href="/planbox-plan/dates/date/<?php echo $date_recommend['Date']['id']; ?>">
-              <div style="overflow:hidden; width:350px; height:260px;">
-              <?php echo $this->Html->image($date_recommend['Date']['photo'], array('alt' => 'baz', 'width'=>'350'));?>
+              <div style="overflow:hidden; width:350px; height:260px; display: table-cell; vertical-align: middle; text-align: center;">
+              <?php echo $this->Html->image($date_recommend['Date']['photo'], array('alt' => 'baz', 'width'=>'350', 'style'=>'vertical-align:middle;'));?>
               </div>
               <table class="table" style="word-break: break-all;">
                 <tr><td style="text-align: center;"><?php echo $date_recommend['Date']['name']; ?></td></tr>

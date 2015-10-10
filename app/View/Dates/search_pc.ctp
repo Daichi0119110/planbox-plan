@@ -24,8 +24,8 @@
         <div class="recommend-list">
                 <a href="">
                 <div style="width:300px; height: 700px; float:left; border:1px solid #ccc; margin: 10px 5px;">
-                    <div style="overflow:hidden; width:350px; height:260px;">
-                    <?php echo $this->Html->image($date['Date']['photo'], array('alt' => $date['Date']['name'], 'style'=>"width:300px; height: auto;"));?>
+                    <div style="overflow:hidden; width:350px; height:260px; display: table-cell; vertical-align: middle; text-align: center;">
+                    <?php echo $this->Html->image($date['Date']['photo'], array('alt' => $date['Date']['name'], 'style'=>"width:300px; height: auto; vertical-align:middle;"));?>
                     </div>
                     <table class="table">
                         <tr><td colspan="3" style="text-align: center;font-size:20px;font-weight:bold;"><?php echo $date['Date']['name']; ?></td></tr>
