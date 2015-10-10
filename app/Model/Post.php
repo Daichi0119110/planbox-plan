@@ -52,13 +52,57 @@ class Post extends AppModel {
 		$mypostid=$this->GetRecentPostid($Dateid);//いま追加したばかりのpostidを拾ってきます
 		App::import('Model','Photo');
 		$Photo=new Photo;
-		foreach ($medias as $value) {
+
+		// $keyInsta = 'FromInstagram';
+  //       if(strpos($state, $keyInsta)!==false){
+ 	// 		$Photo->loadgraphs($mypostid,$medias);//画像保存fromInsta
+  //       }
+  //   	else{
+			foreach ($medias as $value) {
  				$Photo->loadgraphs($mypostid,$value->media_url);//画像をもらってきます
  			}
-
+		// }
 		$Date->updatebyNewPost($time,$Dateid);//デートにポストが追加された時間を記述します
 		return $mypostid;
 	}
+	function AddPostsDemo($text,$time,$user_id,$medias,$ido,$keido,$state,$city){
+	//	var_dump($medias);
+		// date_default_timezone_set('Asia/Tokyo');
+		// App::import('Model','Couple');
+		// $this->loadModel('Couple');
+		// // $Couple=new Couple;
+		// $cid=$this->Couple->getcidfromuid($user_id);//ユーザIDからカップルIDを持ってきます
+
+		// App::import('Model','Date');
+		// App::import('Model','Post');
+	//		var_dump($locatenames);
+		
+		$Dateid = 100;
+		// $Date=new Date;
+		// $Dateid=$Date->getRecentDate($time,$cid,$state,$city);//時間とカップルIDから入れるべきデートを検索し、なければ追加します
+		// if($this->CheckDouble($text,$Dateid,$time)==0){return;}//多重取得の防止をしてくれてるはずです
+		//	$location=$this->Getfromcoordinates($coordinates);//緯度経度からいろいろなものを取得してきます
+
+		// $this->loadModel('Post');
+		
+		$this->create();
+		$data = array('Post' => array('date_id' => $Dateid, 'content' => $text, 'state' => $state, 'city' => $city));
+		// 登録するフィールド
+		$fields = array('date_id','content', 'state','city');
+		// 更新
+		$this->save($data, false, $fields);	            		            	
+
+		$mypostid=$this->GetRecentPostid($Dateid);//いま追加したばかりのpostidを拾ってきます
+		App::import('Model','Photo');
+		
+		$Photo=new Photo;
+		$Photo->loadgraphs($mypostid,$medias);//画像保存fromInsta
+        
+		$Date->updatebyNewPost($time,$Dateid);//デートにポストが追加された時間を記述します
+		return $mypostid;
+
+	}
+
 	function CheckDouble($text,$date_id,$time)
 	{
 		$status=array(

@@ -77,10 +77,17 @@ class UsersController extends AppController {
 
 		if($this->request->is('post')){
 			$this->request->data['User']['password']=crypt($this->request->data['User']['password'],'$2y$10$VdH3ZiUm7EzSiPPyzsRXCc');
-			$this->User->save($this->request->data);
 
+			// 誕生日の配列を文字列に整形
+			$birth_array = $this->request->data['User']['birthday'];
+			$birthday = $birth_array['year']. '/' .$birth_array['month']. '/' .$birth_array['day'] ;
+			$this->request->data['User']['birthday'] = $birthday;
+
+			$this->User->save($this->request->data);
 			$myid=$this->User->isexistname($this->request->data['User']['name']);
-			$to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
+
+			// これは多分要らない
+			// $to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
 			if($isinvited==null){
 				return $this->redirect(
         			array('controller' => 'Users', 'action' => 'setting',$myid));
@@ -158,8 +165,8 @@ class UsersController extends AppController {
 	public function authorize_instagram(){
 
 		// 設定
-        $client_id = 'bff070ff8e144cbfb70e344fa5a2f27e' ;       // クライアントID 
-        $client_secret = '1f3892ae4dad4350be7921316953cb7e' ;       // クライアントシークレット
+        $client_id = '5e3fb1c655b14c6f9b47b89bfe59c71c' ;       // クライアントID 
+        $client_secret = '65d605ca29ea4d02aac10fb8ffcb1e1f' ;       // クライアントシークレット
 		
 		$redirect_uri = explode( '?' , ( !isset($_SERVER['HTTPS']) || empty($_SERVER['HTTPS']) ? 'http://' : 'https://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] )[0] ;		// このプログラムを設置するURL
 		// $redirect_uri = "http://k0hei.science/planbox_instatest/users/authorize_instagram";
@@ -226,21 +233,21 @@ class UsersController extends AppController {
 				$user_picture = $obj->user->profile_picture ;		// ユーザーアイコン
 				$access_token = $obj->access_token ;		// アクセストークン
 
-				$user_id = $this->Session->read('user_id');	
+				//デモ用
+				$user_id=1;
+				// $user_id = $this->Session->read('user_id');	
+				// $user = $this->User->getuser($user_id);
+				// $pic = $user[0]["User"]["photo"];	            
 
-
-				$user = $this->User->getuser($user_id);
-				$pic = $user['photo'];	            
-
-	            if(empty($pic)){
-					//登録する値
-					$data = array('User' => array('id' => $user_id, 'name_insta' => $user_name, 'photo' => $user_picture,'insta_id' => $insta_id, 'insta_token' => $access_token));
-					// 登録するフィールド
-					$fields = array('name_insta','photo' ,'insta_id', 'insta_token');
-					// 更新
-					$this->User->save($data, false, $fields);	            		            		            	
-	            }
-	            else{
+	   //          if(empty($pic)){
+				// 	//登録する値
+				// 	$data = array('User' => array('id' => $user_id, 'name_insta' => $user_name, 'photo' => $user_picture,'insta_id' => $insta_id, 'insta_token' => $access_token));
+				// 	// 登録するフィールド
+				// 	$fields = array('name_insta','photo' ,'insta_id', 'insta_token');
+				// 	// 更新
+				// 	$this->User->save($data, false, $fields);	            		            		            	
+	   //          }
+	   //          else{
 
 					//登録する値
 					$data = array('User' => array('id' => $user_id, 'name_insta' => $user_name, 'insta_id' => $insta_id, 'insta_token' => $access_token));
@@ -248,7 +255,7 @@ class UsersController extends AppController {
 					$fields = array('name_insta','insta_id', 'insta_token');
 					// 更新
 					$this->User->save($data, false, $fields);	            		            	
-	            }
+	            // }
 
 				// セッション終了
 				// $_SESSION = array() ; // 他の消す恐れ

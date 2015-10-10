@@ -21,9 +21,11 @@
 
                     <?php foreach($dates[$i] as $date){ ?>
                     <div class="follow-list" style="border:1px solid #ccc;">
-                         <div style="width:300px; height: auto; float:left; border:1px solid #ccc; margin: 10px 5px;">
+                         <div style="width:300px; height: 700px; float:left; border:1px solid #ccc; margin: 10px 5px;">
                             <a href="/planbox-plan/dates/date/<?php echo $date['Date']['id']; ?>">
+                                <div style="overflow:hidden; width:350px; height:260px;">
                                 <?php echo $this->Html->image($date['Date']['photo'], array('alt' => $date['Date']['name'], 'style'=>"width:300px; height: auto;"));?>
+                                </div>
                             </a>
                             <table class="table">
                                 <tr>
@@ -33,9 +35,9 @@
                                 </tr>
                                 <tr><td colspan="3" style="text-align: center;"><?php echo $date['Date']['description']; ?></td></tr>
                                 <tr><!--３行目:デートの場所、日時、予算-->
-                                    <td style="text-align:center;" class="fa fa-map-marker"><?php echo $date['Date']['city']; ?></td>
-                                    <td style="text-align:center;" class="fa fa-jpy"><?php echo $date['Date']['budget']; ?></td>
-                                    <td style="text-align:center;" class="fa fa-calendar"><?php echo $date['Date']['created']; ?></td>
+                                    <td style="text-align:center;" class="fa fa-map-marker"> <?php echo $date['Date']['city']; ?></td>
+                                    <td style="text-align:center;" class="fa fa-jpy"> <?php echo $date['Date']['budget']; ?></td>
+                                    <td style="text-align:center;" class="fa fa-calendar"> <?php echo date('Y/n/j',strtotime($date['Date']['modified'])); ?></td>
                                 </tr>
                                 <tr><!--４行目：カップルの一人目-->
 

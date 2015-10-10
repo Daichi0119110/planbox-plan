@@ -281,7 +281,97 @@ class DatesController extends AppController {
 		}
 		return $dates;
 	}
+
+	public function date_new(){
+		$this->autoRender = false;
+		$this->autoLayout = false;
+
+		// スマホかPCを判別して振り分け
+		$ua = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
+			// スマホだったら
+			$this->redirect('/dates/date_new_sp/');
+			exit();
+		} else {
+			// PCだったら
+			$this->redirect('/dates/date_new_pc/');
+			exit();
+		}
+	}
 	public function date_new_pc() {
+		if($this->request->is('post')){
+			//データの保存
+			$data = array(
+				'Date'=>array(
+					'id'=>$_POST['id'],
+					'name'=>$_POST['name'],
+					'description'=>$_POST['description'],
+					'budget'=>$_POST['budget']
+					)
+			);
+            if ($this->Date->save($data)) {
+                $this->redirect(array('controller'=>'couples', 'action' => 'mypage'));
+                exit();
+            }
+            echo 'ミス';
+
+		} else {
+			// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
+			if(!$this->Session->check('user_id')){
+				$this->redirect('/users/signup');
+			}
+			$user_id = $this->Session->read('user_id');
+			$couple_id = $this->User->getcoupleid($user_id);
+			$date = $this->Date->getnonamedate($couple_id);
+			$posts = $this->Post->getposts($date['Date']['id']);
+
+			// カルーセル用の写真の取得
+			$post_ids = $this->Post->getpostids($date['Date']['id']);
+			$this->set('photos', $this->Photo->getpostallphotos($post_ids));
+
+			// dateの読み込み
+			$date['Date']['favo'] = $this->Favorite->getnumber($date['Date']['id']); // いいね数の取得
+			$date['Date']['city'] = $this->Post->getlocation($date['Date']['id']); // 位置情報の取得
+			
+			// カップルの読み込み
+			$couple_id = $this->Date->getcoupleid($date['Date']['id']);
+			$users = $this->User->getuserfromcouple($couple_id);
+			$a = array();
+			for ($j=0; $j < 2; $j++) { 
+				$users[$j]['User']['photo'] = $this->Photo->getuserphoto($users[$j]['User']['id']);
+				$date['Date']['user'][$j] = $users[$j]['User'];
+			}
+
+			// post配列の中に写真の情報をいれる
+			for ($j=0; $j < count($posts); $j++) {
+				$a = $this->Photo->getphotos($posts[$j]['Post']['id']);
+				$filenames = array();
+				foreach ($a as $b) {
+					array_push($filenames, $b['Photo']['filename']);
+				}
+				if(!$filenames){
+					$posts[$j]['Post']['filename'] = null;
+					continue;
+				}
+				$posts[$j]['Post']['filename'] = $filenames;
+			}
+			$this->set('posts', $posts);
+
+			// 写真の読み込み
+			$posts = $this->Post->getpostids($date['Date']['id']);
+			$photos = $this->Photo->getpostallphotos($posts);
+			if(!$photos){
+				$date['Date']['photo'] = null;
+				continue;
+			}
+			$date['Date']['photo'] = $photos[0];
+			$this->set("date", $date);
+
+			$this->set('title', '未公開のデート ');
+		}
+	}
+
+	public function date_new_sp() {
 
 	}
 }

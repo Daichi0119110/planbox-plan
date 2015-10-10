@@ -109,14 +109,16 @@
     <!--今までのデート一覧開始-->
     <div class="col-sm-8">
 
-      <!--未完成のデート開始-->
-      <a href="/planbox-plan/dates/date_new/"><button type="button" class="btn btn-warning" style="width:100%;font-size:26px;">未完成のデート<span class="badge">2</span></button></a>
-      <!--未完成のデート終了-->
+      <?php if($nondate==1){ 
+      echo '<!--未完成のデート開始-->
+      <a href="/planbox-plan/dates/date_new"><button type="button" class="btn btn-warning" style="width:100%;font-size:26px;">未完成のデート<span class="badge">1</span></button></a>
+      <!--未完成のデート終了--> ';
+      } ?>
       
       <?php foreach($dates as $date) { ?>
       <!--一つのデートの塊開始-->
-      <a href="/planbox-plan/dates/date/<?php echo $date['Date']['id']; ?>"><!--そのデートへ飛ぶリンク-->
-       <div class="row" style="border:1px solid #ccc;">
+      <a href="/planbox-plan/dates/date/<?php echo $date['Date']['id']; ?>" ><!--そのデートへ飛ぶリンク-->
+       <div class="row" style="border:1px solid #ccc; margin-top:20px;">
          <div class="col-sm-5 tweet-image" style="width:300px;height:200px; overflow:hidden;margin-top:20px;">
           <?php echo $this->Html->image($date['Date']['photo'], array('alt' => 'kohei'));?>
         </div>
@@ -130,10 +132,10 @@
             <td colspan="3"><?php echo $date['Date']['description']; ?></td>
           </tr>
           <tr><!--３行目:デートの場所、日時、予算-->
-            <td style="text-align:center" class="fa fa-map-marker"><?php echo $date['Date']['city']; ?></td>
-            <td style="text-align:center" class="fa fa-jpy"><?php echo $date['Date']['budget']; ?></td>
+            <td style="text-align:center" class="fa fa-map-marker"> <?php echo $date['Date']['city']; ?></td>
+            <td style="text-align:center" class="fa fa-jpy"> <?php echo $date['Date']['budget']; ?></td>
 
-            <td style="text-align:center" class="fa fa-calendar"><?php echo $date['Date']['created']; ?></td>
+            <td style="text-align:center" class="fa fa-calendar"> <?php echo date('Y/n/j',strtotime($date['Date']['modified'])); ?></td>
           </tr>
           <tr>
             <td></td>

@@ -26,16 +26,14 @@ class Date extends AppModel {
 //ここから上が検索・・・
 	function getdate($id){
 		$status=array(
-			'conditions'=>
-			array('id'=>$id)
+			'conditions'=>array('id'=>$id, 'NOT' => array('name' => ""))
 		);
 		return $this->find('all',$status);
 	}
 
 	function getdatesfromcouple($couple_ids){
 		$status=array(
-			'conditions'=>
-			array('couple_id'=>$couple_ids)
+			'conditions'=>array('couple_id'=>$couple_ids, 'NOT' => array('name' => ""))
 		);
 		return $this->find('all',$status);
 	}
@@ -82,6 +80,7 @@ class Date extends AppModel {
 	}
 	function getnewdate(){
 		$status=array(
+			'conditions' => array('NOT' => array('name' => "")),
 			'order' => array('created'=> "desc"),
 			'limit' => 5
 		);
@@ -89,7 +88,11 @@ class Date extends AppModel {
 	}
 
 	function getalldateids(){
-		$status=array('fields'=>'id', 'order'=>array('Date.created'=>'Desc'));
+		$status=array(
+			'fields'=>'id', 
+			'order'=>array('Date.created'=>'Desc'),
+			'conditions'=>array('NOT' => array('name' => ""))
+			);
 		$a = $this->find('all', $status);
 		$date_ids = array();
 		foreach ($a as $b) {
@@ -100,7 +103,7 @@ class Date extends AppModel {
 
 	function getcoupleid($date_ids){
 		$status=array(
-			'conditions'=>array('id'=>$date_ids),
+			'conditions'=>array('id'=>$date_ids, 'NOT' => array('name' => "")),
 			'fields'=>array('couple_id')
 		);
 		$a = $this->find('first',$status);
@@ -109,7 +112,7 @@ class Date extends AppModel {
 
 	function getdateidsfromcouple($couple_id){
 		$status=array(
-			'conditions'=>array('couple_id'=>$couple_id),
+			'conditions'=>array('couple_id'=>$couple_id, 'NOT' => array('name' => "")),
 			'fields'=>'id'
 		);
 		$a = $this->find('all',$status);
@@ -118,5 +121,15 @@ class Date extends AppModel {
 			array_push($date_ids, $b['Date']['id']);
 		}
 		return $date_ids;
+	}
+
+	function getnonamedate($couple_id){
+		$status=array(
+			'conditions'=>array(
+				'couple_id'=>$couple_id,
+				'name'=> null
+				),
+		);
+		return $this->find('first',$status);
 	}
 }
