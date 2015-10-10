@@ -121,10 +121,10 @@ class PostsController extends AppController {
                 $tagres = $this->search_in_array($nosharp, $tags);
                 if($tagres==1){
 
-                    $time = $item->created_time;
-                    $time = date( 'Y-m-d h:i:s' , $date ) ;
+                    $time = date( 'Y-m-d h:i:s' , time() ) ;
                                 // 文章
-                    $text = $item->caption->text;
+                    // $text = $item->caption->text;
+                    $text = ( isset($item->caption->text) ) ? $item->caption->text : '' ;      // 場所ID
                                 // 場所情報
                     $location_id = ( isset($item->location->id) ) ? $item->location->id : '' ;      // 場所ID
                     $location_name = ( isset($item->location->name) ) ? $item->location->name : '' ;        // 場所名
@@ -133,13 +133,13 @@ class PostsController extends AppController {
                             // 写真
                     $photo = $item->images->standard_resolution->url;
 
-                    $test = 'text='. $text.' location='. $location_name.' id='. $id.' photo='. $photo. 'fin';
+                    $test = 'time='. $text.' time='. $time.' location='. $location_name.' id='. $id.' photo='. $photo. 'fin';
                     $file = new File(WWW_ROOT.'insta_log.txt',true);
                     $file->write($test."\n",'a');
                     $file->close();
-                    $city = "FromInstagram";
+                    $city = 'FromInstagram';
                     
-                    $newpost=$this->Post->AddPosts($text,$time,$id,$photo,$location_lat,$location_long,$city,$location_name);
+                    $newpost=$this->Post->AddPostsDemo($text,$time,$id,$photo,$location_lat,$location_long,$city,$location_name);
                 }
             }
         }
