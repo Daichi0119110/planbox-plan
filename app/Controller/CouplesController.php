@@ -22,7 +22,14 @@ class CouplesController extends AppController {
 	}
 
 	public function couple_pc($couple_id){
+		if(!$this->Session->check('user_id')){
+			$this->redirect('/users/signup');
+		}
 		$user_id = $this->Session->read('user_id');
+		$user=$this->User->getuser($user_id);
+		if($user["0"]["User"]["couple_id"]==null){
+			$this->redirect('/users/invite');
+		}
 		$this->set('user_id', $user_id);
 
 		// カップル情報の取得

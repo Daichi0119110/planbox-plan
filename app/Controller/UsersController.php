@@ -30,8 +30,10 @@ class UsersController extends AppController {
 			$this->redirect('/users/signup');
 		}
 		$user_id = $this->Session->read('user_id');
-
+		$user=$this->User->getuser($user_id);
 		$this->set('user',$this->User->getuser($user_id));
+		var_dump($user["0"]);
+
 		$this->set('title', '設定 ');
 		if ($this->request->is('post') || $this->request->is('put')) {
 				$image = $this->request->data['User']['image'];
@@ -89,6 +91,7 @@ class UsersController extends AppController {
 			// これは多分要らない
 			// $to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
 			if($isinvited==null){
+				$this->Session->write('user_id',$myid);
 				return $this->redirect(
         			array('controller' => 'Users', 'action' => 'setting',$myid));
 			}
@@ -114,14 +117,18 @@ class UsersController extends AppController {
         			array('controller' => 'Users', 'action' => 'setting',$myid));
 			}
 		}	
-		$this->Session->write('user_id',1); // sessionにuser_idを保存
+		//$this->Session->write('user_id',1); // sessionにuser_idを保存
 	}
 
-	public function invite($id)//メール
+	public function invite()//メール
 	{
 	//諸所設定はhttp://qiita.com/kazu56/items/cd58366f5fb74881ae06を見て行う
+		if(!$this->Session->check('user_id')){
+			$this->redirect('/users/signup');
+		}
+		$user_id = $this->Session->read('user_id');
 		$mail="";//メールアドレス
-		$user=$this->User->getuser($id);
+		$user=$this->User->getuser($user_id);
 	//var_dump($user[0]["User"]);
 		$name=$user[0]["User"]["name"];
 		if($this->request->is('post')){

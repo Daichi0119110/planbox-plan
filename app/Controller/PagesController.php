@@ -28,6 +28,10 @@ class PagesController extends AppController {
 			$this->redirect('/users/signup');
 		}
 		$user_id = $this->Session->read('user_id');
+		$user=$this->User->getuser($user_id);
+		if($user["0"]["User"]["couple_id"]==null){
+			$this->redirect('/users/invite');
+		}
 		$this->set('user_id', $user_id);
 
 		// フィード
