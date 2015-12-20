@@ -4,6 +4,17 @@ class User extends AppModel {
 	public $name='User';
 	public $useTable='users';
 	public $validate = array(
+		'password'=>array(
+			array(
+				'rule'=>'alphaNumeric',
+				'message'=>'パスワードは半角英数字でお願いします。'
+				),
+			array(
+				'rule'=>array('between',8,32),
+				'message'=>'パスワードは8文字以上32文字以内にしてください。'
+				)
+			),
+
 		'photo'=>array(
 			'rule1' => array(
          //拡張子の指定
@@ -23,8 +34,9 @@ class User extends AppModel {
 			'conditions'=>
 			array('id'=>$id)
 		);
-	return $this->find('all',$status);
+	return $this->find('first',$status);
 	}
+
 
 	public function getcoupleid($id){
 		$status=array(
@@ -38,7 +50,7 @@ class User extends AppModel {
 	public function isexistname($name){
 		$status=array(
 			'conditions' => 
-			array('name'=>$name)
+			array('username'=>$name)
 		);
 		$data=$this->find('first',$status);
 		if(empty($data)){return 0;}
@@ -87,5 +99,26 @@ class User extends AppModel {
 		);
 		$user=$this->find('first',$status);
 		return $user;
+	}
+
+	public function makecouple($user_id,$lovers_id){
+
+		$status=array('conditions'=>array('id'=>$user_id));
+		$data=$this->find('first',$status);
+		App::import('Model','Couple');
+		$Couple=new Couple;
+		$id=$Couple->makecouple();
+		$user=$this->getuser($user_id);
+		$user['User']['couple_id']=$id;
+		$this->save($user);
+		$lover=$this->getuser($lovers_id);
+		$lover['User']['couple_id']=$id;
+		$this->save($lover);
+
+	}
+
+	public function beforesave($options=array()){
+		$this->data['User']['password']=AuthComponent::password($this->data['User']['password']);
+		return true;
 	}
 }

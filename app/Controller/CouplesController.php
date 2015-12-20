@@ -3,7 +3,7 @@
 class CouplesController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses=array('Couple','Date','Post','User','Favorite','Follow','Photo');
-
+	public $components=array('Auth');
 	public function couple($couple_id) {
 		$this->autoRender = false;
 		$this->autoLayout = false;
@@ -22,12 +22,13 @@ class CouplesController extends AppController {
 	}
 
 	public function couple_pc($couple_id){
-		if(!$this->Session->check('user_id')){
+	/*	if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
 		}
-		$user_id = $this->Session->read('user_id');
+		$user_id = $this->Session->read('user_id');*/
+		$user_id=$this->Auth->user('id');
 		$user=$this->User->getuser($user_id);
-		if($user["0"]["User"]["couple_id"]==null){
+		if($user["User"]["couple_id"]==null){
 			$this->redirect('/users/invite');
 		}
 		$this->set('user_id', $user_id);
@@ -97,7 +98,8 @@ class CouplesController extends AppController {
 	}
 
 	public function couple_sp($couple_id){
-		$user_id = $this->Session->read('user_id');
+	//	$user_id = $this->Session->read('user_id');
+		$user_id=$this->Auth->user('id');
 		$this->set('user_id', $user_id);
 
 		// カップル情報の取得
@@ -167,7 +169,7 @@ class CouplesController extends AppController {
 	public function mypage() {
 		$this->autoRender = false;
 		$this->autoLayout = false;
-
+		$this->Couple->makecouple(1,2);
 		// スマホかPCを判別して振り分け
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {
@@ -183,10 +185,11 @@ class CouplesController extends AppController {
 
 	public function mypage_pc(){
 		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
-		if(!$this->Session->check('user_id')){
+	/*	if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
 		}
-		$user_id = $this->Session->read('user_id');
+		$user_id = $this->Session->read('user_id');*/
+		$user_id=$this->Auth->user('id');
 		$this->set('user_id', 2);
 
 		// カップル情報の取得
@@ -259,10 +262,11 @@ class CouplesController extends AppController {
 
 	public function mypage_sp($user_id){
 		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
-		if(!$this->Session->check('user_id')){
+		/*if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
 		}
-		$user_id = $this->Session->read('user_id');
+		$user_id = $this->Session->read('user_id');*/
+		$user_id=$this->Auth->user('id');
 		$this->set('user_id', $user_id);
 
 		// カップル情報の取得
@@ -345,6 +349,7 @@ class CouplesController extends AppController {
 	}
 
 	public function signup() {
+
 		if($this->request->is('post')){
 			$this->Couple->save($this->request->data);
 		}

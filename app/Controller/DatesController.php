@@ -4,7 +4,6 @@ class DatesController extends AppController {
 	public $helper = array('HTML', 'form');
 
 	public $uses = array('Date','Follow','Favorite','Post','Photo','User');
-	
 	public $components = array(
         'Search.Prg' => array(
         'commonProcess' => array(
@@ -12,9 +11,15 @@ class DatesController extends AppController {
           	'filterEmpty' =>  true,
         	),
     	 ),
+        'Auth'
   	);
   	public $presetVars = true;
-
+  		
+  	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		$this->Auth->allow('search','date','date_pc','date_sp');
+	}
   	//ここから上が検索・・・
 	public function favorite() {
 		$this->autoRender = false;
@@ -35,10 +40,11 @@ class DatesController extends AppController {
 
 	public function favorite_pc(){
 		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
-		if(!$this->Session->check('user_id')){
+		/*if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
 		}
-		$user_id = $this->Session->read('user_id');
+		$user_id = $this->Session->read('user_id');*/
+		$user_id=$this->Auth->user('id');
 		$this->set('user_id', $user_id);
 
 		for ($i=1; $i<4; $i++) { 
@@ -68,10 +74,11 @@ class DatesController extends AppController {
 
 	public function favorite_sp(){
 		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
-		if(!$this->Session->check('user_id')){
+		/*if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
 		}
-		$user_id = $this->Session->read('user_id');
+		$user_id = $this->Session->read('user_id');*/
+		$user_id=$this->Auth->user('id');
 		$this->set('user_id', $user_id);
 
 		for ($i=1; $i<4; $i++) { 
@@ -140,7 +147,8 @@ class DatesController extends AppController {
 	}
 
 	public function date_pc($date_id) {
-		$user_id = $this->Session->read('user_id');
+		//$user_id = $this->Session->read('user_id');
+		$user_id=$this->Auth->user('id');
 		$this->set('user_id', $user_id);
 
 		$currenturl = Router::url( NULL, true );
@@ -198,7 +206,8 @@ class DatesController extends AppController {
 	}
 
 	public function date_sp($date_id) {
-		$user_id = $this->Session->read('user_id');
+		//$user_id = $this->Session->read('user_id');
+		$user_id=$this->Auth->user('id');
 		$this->set('user_id', $user_id);
 
 		$currenturl = Router::url( NULL, true );
@@ -317,10 +326,11 @@ class DatesController extends AppController {
 
 		} else {
 			// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
-			if(!$this->Session->check('user_id')){
+		/*	if(!$this->Session->check('user_id')){
 				$this->redirect('/users/signup');
 			}
-			$user_id = $this->Session->read('user_id');
+			$user_id = $this->Session->read('user_id');*/
+			$user_id=$this->Auth->user('id');
 			$couple_id = $this->User->getcoupleid($user_id);
 			$date = $this->Date->getnonamedate($couple_id);
 			$posts = $this->Post->getposts($date['Date']['id']);

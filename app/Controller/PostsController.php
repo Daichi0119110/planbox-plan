@@ -3,6 +3,24 @@ require('TwistOAuth.phar');
 class PostsController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('Date', 'Couple','User','Post');
+    public $components=array('Auth');
+   /* public function beforeFilter(){
+        parent::beforeFilter();
+    }*/
+    public function newpost(){
+       /* if(!$this->Session->check('user_id')){
+            $this->redirect('/users/signup');
+        }
+        $user_id = $this->Session->read('user_id');*/
+        $user_id=$this->Auth->user('id');
+        $couple_id=$this->User->getcoupleid($user_id);
+        if($this->request->is('post')){
+            $this->request->data['couple_id']=$couple_id;
+            $this->Post->save($this->request->data);
+        }
+
+    }
+
 	public function getTweet()//とりあえずここに記述。ユーザはアクセスしない。
 	{	
 		$this->autoRender = false;
