@@ -14,11 +14,31 @@ class PostsController extends AppController {
         $user_id = $this->Session->read('user_id');*/
         $user_id=$this->Auth->user('id');
         $couple_id=$this->User->getcoupleid($user_id);
+        $couple=$this->Couple->getcouple($couple_id);
         if($this->request->is('post')){
-            $this->request->data['couple_id']=$couple_id;
-            $this->Post->save($this->request->data);
+           // $this->request->data['couple_id']=$couple_id;
+            ///なぜdata[date_id]が0に？
+            
+            $this->request->data['Post']['date_id']=$couple['0']['Couple']['isdate'];var_dump($this->request->data);
+           // var_dump($couple['0']['Couple']['isdate']);
+           $this->Post->save($this->request->data);
         }
+    }
 
+    public function newdate(){
+        $user_id=$this->Auth->user('id');
+        $couple_id=$this->User->getcoupleid($user_id);
+        if($this->request->is('post')){
+            $data=$this->Couple->getcouple($couple_id);
+           // $this->create();
+
+           // $data['0']['Couple']=array('id'=>$couple_id);
+           //var_dump($data['0']);
+           // var_dump($this->request->data);
+            if($this->request->data['Post']['check']==0){$data['0']['Couple']['isdate']=$data['0']['Couple']['defdate'];}
+            else{$data['0']['Couple']['isdate']=$this->Date->makenewDate($couple_id);}
+            $this->Couple->save($data['0']);
+        }
     }
 
 	public function getTweet()//とりあえずここに記述。ユーザはアクセスしない。

@@ -49,7 +49,10 @@ class Couple extends AppModel {
 		$id=$thiscouple['Couple']['id'];
 		App::import('Model','Date');
 		$Date=new Date;
-		$Date->makenewdate($id);
+	//	$Date->makenewdate($id);
+	//	$Date_id = $Date->getLastInsertID();
+		$thiscouple['Couple']['defdate']=$Date->makenewdate($id);
+		$this->save($thiscouple);
 		return $id;
 	}
 

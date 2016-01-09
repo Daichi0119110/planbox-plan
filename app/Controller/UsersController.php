@@ -97,7 +97,7 @@ class UsersController extends AppController {
 			printf("a");
 			$myid=$this->User->isexistname($this->request->data['User']['username']);
 			var_dump($myid);
-			$this->Auth->login();
+			if(!$this->Auth->login()){return;}
 			// これは多分要らない
 			// $to->post('friendships/create', ['screen_name' => $this->request->data['User']['username']]);
 			if($isinvited==null){

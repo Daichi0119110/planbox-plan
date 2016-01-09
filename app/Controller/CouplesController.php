@@ -169,7 +169,7 @@ class CouplesController extends AppController {
 	public function mypage() {
 		$this->autoRender = false;
 		$this->autoLayout = false;
-		$this->Couple->makecouple(1,2);
+	//	$this->Couple->makecouple(15,16);
 		// スマホかPCを判別して振り分け
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 		if (preg_match('/(iPhone|Android.*Mobile|Windows.*Phone)/', $ua)) {

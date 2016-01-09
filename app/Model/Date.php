@@ -71,6 +71,7 @@ class Date extends AppModel {
 		$this->create();
 		$data['Date']=array('couple_id'=>$couple_id);
 		$this->save($data);
+		return $this->getLastInsertID();
 	}
 	function updatebyNewPost($time,$date_id)
 	{
@@ -131,5 +132,12 @@ class Date extends AppModel {
 				),
 		);
 		return $this->find('first',$status);
+	}
+	function getnewdateid(){
+		$status=array(
+			'order' => array('id DESC')
+			);
+		$data=$this->find('first',$status);
+		return $data['id']+1;
 	}
 }
