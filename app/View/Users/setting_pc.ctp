@@ -13,7 +13,7 @@
 			<div class="form-group">
 
 				<label class="control-label" for="email">twitterアカウント</label>
-				<input type="text" id="email" class="form-control" value="@planbox.date" style="margin-bottom:10px;">
+				<input type="text" id="email" class="form-control" value=<?php echo $user["0"]["User"]["name"]?> style="margin-bottom:10px;">
 
 				<label class="control-label" for="email">ユーザー名</label>
 				<input type="text" id="email" class="form-control" value="荻原大地" style="margin-bottom:10px;">

@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 
 class PagesController extends AppController {
 	public $uses = array('Date','Follow','Favorite','Post','User','Photo');
-
+	public $components=array('Auth');
 	public function index(){
 		$this->autoRender = false;
 		$this->autoLayout = false;
@@ -24,10 +24,15 @@ class PagesController extends AppController {
 
 	public function index_pc(){
 		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
-		if(!$this->Session->check('user_id')){
+		/*if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
 		}
-		$user_id = $this->Session->read('user_id');
+		$user_id = $this->Session->read('user_id');*/
+		$user_id=$this->Auth->user('id');
+		$user=$this->User->getuser($user_id);
+		if($user["User"]["couple_id"]==null){
+			$this->redirect('/users/invite');
+		}
 		$this->set('user_id', $user_id);
 
 		// フィード
@@ -72,10 +77,11 @@ class PagesController extends AppController {
 
 	public function index_sp(){
 		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
-		if(!$this->Session->check('user_id')){
+		/*if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
 		}
-		$user_id = $this->Session->read('user_id');
+		$user_id = $this->Session->read('user_id');*/
+		$user_id=$this->Auth->user('id');
 		$this->set('user_id', $user_id);
 
 		// フィード

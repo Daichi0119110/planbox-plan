@@ -6,7 +6,7 @@
 <hr>
   
 <?php
-  echo $this->Form->input('name',array(
+  echo $this->Form->input('username',array(
     'label' => array(
         'text' => '名前',       
         'class' => 'control-label' 

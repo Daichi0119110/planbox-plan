@@ -6,7 +6,7 @@ require('TwistOAuth.phar');
 class UsersController extends AppController {
 	public $helper = array('HTML', 'form');
 	public $uses = array('User', 'Date','Couple','Photo');
-
+	public $components=array('Auth');
 	public function setting() {
 		$this->autoRender = false;
 		$this->autoLayout = false;
@@ -23,15 +23,23 @@ class UsersController extends AppController {
 			exit();
 		}
 	}
-
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		$this->Auth->allow('login','signup');
+	}
 	public function setting_pc(){
 		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
-		if(!$this->Session->check('user_id')){
+		/*if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
 		}
-		$user_id = $this->Session->read('user_id');
 
+		$user_id = $this->Session->read('user_id');*/
+		$user_id=$this->Auth->user('id');
+		$user=$this->User->getuser($user_id);
 		$this->set('user',$this->User->getuser($user_id));
+		var_dump($user);
+
 		$this->set('title', '設定 ');
 		if ($this->request->is('post') || $this->request->is('put')) {
 				$image = $this->request->data['User']['image'];
@@ -50,10 +58,11 @@ class UsersController extends AppController {
 
 	public function setting_sp(){
 		// セッションを確認（登録しているか確認）→なければ登録/ログイン画面へ
-		if(!$this->Session->check('user_id')){
+		/*if(!$this->Session->check('user_id')){
 			$this->redirect('/users/signup');
 		}
-		$user_id = $this->Session->read('user_id');
+		$user_id = $this->Session->read('user_id');*/
+		$user_id=$this->Auth->user('id');
 
 		$this->set('user',$this->User->getuser($user_id));
 
@@ -76,29 +85,35 @@ class UsersController extends AppController {
 		$this->set('title', '新規登録 ');
 
 		if($this->request->is('post')){
-			$this->request->data['User']['password']=crypt($this->request->data['User']['password'],'$2y$10$VdH3ZiUm7EzSiPPyzsRXCc');
+			//$this->request->data['User']['password']=crypt($this->request->data['User']['password'],'$2y$10$VdH3ZiUm7EzSiPPyzsRXCc');
 
 			// 誕生日の配列を文字列に整形
 			$birth_array = $this->request->data['User']['birthday'];
 			$birthday = $birth_array['year']. '/' .$birth_array['month']. '/' .$birth_array['day'] ;
 			$this->request->data['User']['birthday'] = $birthday;
 
-			$this->User->save($this->request->data);
-			$myid=$this->User->isexistname($this->request->data['User']['name']);
-
+			if($this->User->save($this->request->data)){printf("de");}
+			else{printf("no");}
+			printf("a");
+			$myid=$this->User->isexistname($this->request->data['User']['username']);
+			var_dump($myid);
+			if(!$this->Auth->login()){return;}
 			// これは多分要らない
-			// $to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
+			// $to->post('friendships/create', ['screen_name' => $this->request->data['User']['username']]);
 			if($isinvited==null){
+			//
+				$this->Session->write('user_id',$myid);
 				return $this->redirect(
         			array('controller' => 'Users', 'action' => 'setting',$myid));
 			}
 			else{
 				$partner_id=$this->User->getuseridfromhash($isinvited);
 				
-				$to = new TwistOAuth('dummy','dummy','dummy','dummy');
-				$to->post('friendships/create', ['screen_name' => $this->request->data['User']['name']]);
+			/*	$to = new TwistOAuth('dummy','dummy','dummy','dummy');
+				$to->post('friendships/create', ['screen_name' => $this->request->data['User']['username']]);
+      			*/
       			$partner=$this->User->getuser($partner_id);
-      			$to->post('friendships/create', ['screen_name' => $partner['name']]);
+      			//$to->post('friendships/create', ['screen_name' => $partner['username']]);
 				if($this->request->data['User']['gender']==0){
 					$this->Couple->MakeCouple($myid,$partner_id);	
 				}
@@ -114,16 +129,21 @@ class UsersController extends AppController {
         			array('controller' => 'Users', 'action' => 'setting',$myid));
 			}
 		}	
-		$this->Session->write('user_id',1); // sessionにuser_idを保存
+		//$this->Session->write('user_id',1); // sessionにuser_idを保存
 	}
 
-	public function invite($id)//メール
+	public function invite()//メール
 	{
 	//諸所設定はhttp://qiita.com/kazu56/items/cd58366f5fb74881ae06を見て行う
+	/*	if(!$this->Session->check('user_id')){
+			$this->redirect('/users/signup');
+		}*/
+		//$user_id = $this->Session->read('user_id');
+		$user_id=$this->Auth->user('id');
 		$mail="";//メールアドレス
-		$user=$this->User->getuser($id);
+		$user=$this->User->getuser($user_id);
 	//var_dump($user[0]["User"]);
-		$name=$user[0]["User"]["name"];
+		$name=$user["User"]["username"];
 		if($this->request->is('post')){
 		//	var_dump($this->request->data);
 		$mail=$this->request->data["User"]["mail"];
@@ -288,17 +308,22 @@ class UsersController extends AppController {
 
 	public function upload()
 	{
-
+		var_dump($this->Auth->user('id'));
 	}
 
 	public function login()
 	{
 		if($this->request->is('post')) {
-			/*	if($this->Auth->login())
-				return $this->redirect('index');
+			if($this->Auth->login()){
+				return $this->redirect('setting');
+			}
 			else{
 				$this->Session->setFlash('ログイン失敗');
-			}*///上のような感じでやるみたいです
+			}
     	}
+	}
+	public function logout(){
+		$this->Auth->logout();
+		$this->redirect('login');
 	}
 }
