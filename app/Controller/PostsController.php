@@ -2,7 +2,7 @@
 require('TwistOAuth.phar');	
 class PostsController extends AppController {
 	public $helper = array('HTML', 'form');
-	public $uses = array('Date', 'Couple','User','Post');
+	public $uses = array('Date', 'Couple','User','Post','PostsTag');
     public $components=array('Auth');
    /* public function beforeFilter(){
         parent::beforeFilter();
@@ -15,13 +15,16 @@ class PostsController extends AppController {
         $user_id=$this->Auth->user('id');
         $couple_id=$this->User->getcoupleid($user_id);
         $couple=$this->Couple->getcouple($couple_id);
+
+       // $d=$this->PostsTag->test();var_dump($d);
+
         if($this->request->is('post')){
-           // $this->request->data['couple_id']=$couple_id;
-            ///なぜdata[date_id]が0に？
-            
-            $this->request->data['Post']['date_id']=$couple['0']['Couple']['isdate'];var_dump($this->request->data);
+            $this->request->data['Post']['date_id']=$couple['0']['Couple']['isdate'];
+            $this->request->data['Tag']=$this->PostsTag->getTagid(explode(",", $this->request->data['Post']['tag']));
+            //explode(",", $this->request->data['Post']['tag']);
+            var_dump($this->request->data);
            // var_dump($couple['0']['Couple']['isdate']);
-           $this->Post->save($this->request->data);
+           $this->Post->saveAll($this->request->data);
         }
     }
 

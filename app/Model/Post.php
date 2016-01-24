@@ -3,7 +3,25 @@ class Post extends AppModel {
 	public $name='Post';
 	public $useTable='posts';
 	//public $hasMany='Photo';
-
+	 public $hasAndBelongsToMany = array(
+        'Tag' =>
+            array(
+                'className'              => 'Tag',
+                'joinTable'              => 'posts_tags',
+                'foreignKey'             => 'post_id',
+                'associationForeignKey'  => 'tag_id',
+                'unique'                 => false,
+                'conditions'             => '',
+                'fields'                 => '',
+                'order'                  => '',
+                'limit'                  => '',
+                'offset'                 => '',
+                'finderQuery'            => '',
+                'deleteQuery'            => '',
+                'insertQuery'            => '',
+                'with'                   => 'PostsTag'
+            )
+    );
 	function getposts($date_id){
 		$status=array(
 			'conditions'=>array('date_id'=>$date_id)
@@ -149,4 +167,24 @@ class Post extends AppModel {
 		$decoded=json_decode($json, true);
 		return $decoded;
 	}
+/*	public function save($data = null, $validate = true, $fieldList = array()) 
+	{	 
+  		$this->PostsTag->bindModel( 
+    	array( 
+      		'belongsTo' => array( 
+    	    	'Post' => array( 
+      			    'foreignKey' => 'post_id', 
+        	  		'type'       => 'INNER', 
+         	 		'conditions' => array('PostsTag.post_id = Post.id') 
+       		 		), 
+      	 		'Tag' => array( 
+         			'foreignKey' => 'tag_id', 
+         			 'type'       => 'INNER', 
+          			'conditions' => array('PostsTag.tag_id = Tag.id') 
+        			) 
+      			) 
+    		) 
+  		); 
+ 	 return $this->PostsTag->saveAll($data); 
+	} */
 }

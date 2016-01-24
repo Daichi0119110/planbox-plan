@@ -17,6 +17,18 @@
     'class' => 'form-control',
     'style' => 'width: 30%;'
 ));
+    echo $this->Form->input('tag',array(
+    'label' => array(
+        'text' => 'タグ',       
+        'class' => 'control-label' 
+    ),
+    'div' => array(
+        'class' => 'form-group'    
+    ),
+    'class' => 'form-control',
+    'style' => 'width: 30%;'
+));
+
   echo $this->Form->end(array('label' => '登録','class' => 'btn btn-default'));
 ?> 
 </div>
