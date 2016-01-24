@@ -2,7 +2,7 @@
 class Post extends AppModel {
 	public $name='Post';
 	public $useTable='posts';
-	//public $hasMany='Photo';
+
 	 public $hasAndBelongsToMany = array(
         'Tag' =>
             array(
@@ -167,24 +167,29 @@ class Post extends AppModel {
 		$decoded=json_decode($json, true);
 		return $decoded;
 	}
-/*	public function save($data = null, $validate = true, $fieldList = array()) 
-	{	 
-  		$this->PostsTag->bindModel( 
-    	array( 
-      		'belongsTo' => array( 
-    	    	'Post' => array( 
-      			    'foreignKey' => 'post_id', 
-        	  		'type'       => 'INNER', 
-         	 		'conditions' => array('PostsTag.post_id = Post.id') 
-       		 		), 
-      	 		'Tag' => array( 
-         			'foreignKey' => 'tag_id', 
-         			 'type'       => 'INNER', 
-          			'conditions' => array('PostsTag.tag_id = Tag.id') 
-        			) 
-      			) 
-    		) 
-  		); 
- 	 return $this->PostsTag->saveAll($data); 
-	} */
+//検索機能
+	public $filterArgs = array(
+    array('name' => 'tag', 'type' => 'subquery', 'method' => 'findByTags', 'field' => 'Post.id'),
+	);
+	public function findByTags($data = array()) {
+	   	$this->PostsTag->Behaviors->attach('Containable', array('autoFields' => false));
+    	$this->PostsTag->Behaviors->attach('Search.Searchable');
+   		/*$query = $this->PostsTag->getQuery('all',array(
+        	'conditions' => array(
+        	    'Tag.tag' => $data['tag']
+        	),
+        	'fields' => array('post_id'),
+        	'contain' => array('Tag')
+   		));*/
+var_dump($data);
+   		$query = $this->PostsTag->Find('all',array(
+        	'conditions' => array(
+        	    'Tag.tag' => $data
+        	),
+        	'fields' => array('post_id'),
+        	'contain' => array('Tag')
+   		));
+
+   	 return $query;
+	}
 }

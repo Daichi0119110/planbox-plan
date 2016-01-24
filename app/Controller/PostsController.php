@@ -224,4 +224,10 @@ class PostsController extends AppController {
         echo $html;
     }
 
+    public function tagstest()
+    {
+        $data=$this->Post->findByTags(array("sss","NAME"));
+        var_dump($data);
+    }
+
 }
