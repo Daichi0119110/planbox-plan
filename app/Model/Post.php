@@ -170,8 +170,10 @@ class Post extends AppModel {
 //検索機能
 	public $filterArgs = array(
     array('name' => 'tag', 'type' => 'subquery', 'method' => 'findByTags', 'field' => 'Post.id'),
-	);
-	public function findByTags($data = array()) {
+//  	array('name' => 'post', 'type' => 'subquery', 'method' => 'findByTags', 'field' => 'Post.id'),
+  	
+  	);
+	public function findByTags($content=null,$tag = array()) {
 	   	$this->PostsTag->Behaviors->attach('Containable', array('autoFields' => false));
     	$this->PostsTag->Behaviors->attach('Search.Searchable');
    		/*$query = $this->PostsTag->getQuery('all',array(
@@ -181,10 +183,11 @@ class Post extends AppModel {
         	'fields' => array('post_id'),
         	'contain' => array('Tag')
    		));*/
-var_dump($data);
+var_dump($tag);
    		$query = $this->PostsTag->Find('all',array(
         	'conditions' => array(
-        	    'Tag.tag' => $data
+        	    'Tag.tag' => $tag,
+        	   $this->alias.'.content LIKE'=>'%'. $content. '%'
         	),
         	'fields' => array('post_id'),
         	'contain' => array('Tag')
