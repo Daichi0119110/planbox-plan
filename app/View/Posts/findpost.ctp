@@ -1,5 +1,5 @@
 <div align="center">
-<h1>新規投稿</h1>
+<h1>検索</h1>
 <?php
   echo $this->Form->create('Post');
 ?>

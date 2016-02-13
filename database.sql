@@ -220,3 +220,10 @@ insert into follows (fav_flg, user_id, couple_id, created, modified) values
     (1, 4, 2, now(), now()),
     (1, 4, 1, now(), now()),
     (1, 5, 2, now(), now());
+
+/*contentsのテーブル作成*/
+create table contents (
+    id int not null auto_increment primary key,
+    content int ,
+    tag varchar(255),
+);

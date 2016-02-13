@@ -181,7 +181,7 @@ class UsersController extends AppController {
        			array('controller' => 'Users', 'action' => 'signup',$hashed_mail));
 		}	
 	}
-
+/*
 	public function authorize_instagram(){
 
 		// 設定
@@ -305,7 +305,7 @@ class UsersController extends AppController {
 			// モーダル的にメッセージを出す
 		}
 	}
-
+*/
 	public function upload()
 	{
 		var_dump($this->Auth->user('id'));

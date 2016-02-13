@@ -2,8 +2,26 @@
 class Post extends AppModel {
 	public $name='Post';
 	public $useTable='posts';
-	//public $hasMany='Photo';
 
+	 public $hasAndBelongsToMany = array(
+        'Tag' =>
+            array(
+                'className'              => 'Tag',
+                'joinTable'              => 'posts_tags',
+                'foreignKey'             => 'post_id',
+                'associationForeignKey'  => 'tag_id',
+                'unique'                 => false,
+                'conditions'             => '',
+                'fields'                 => '',
+                'order'                  => '',
+                'limit'                  => '',
+                'offset'                 => '',
+                'finderQuery'            => '',
+                'deleteQuery'            => '',
+                'insertQuery'            => '',
+                'with'                   => 'PostsTag'
+            )
+    );
 	function getposts($date_id){
 		$status=array(
 			'conditions'=>array('date_id'=>$date_id)
@@ -148,5 +166,33 @@ class Post extends AppModel {
 		$json=file_get_contents($url);
 		$decoded=json_decode($json, true);
 		return $decoded;
+	}
+//検索機能
+	public $filterArgs = array(
+    array('name' => 'tag', 'type' => 'subquery', 'method' => 'findByTags', 'field' => 'Post.id'),
+//  	array('name' => 'post', 'type' => 'subquery', 'method' => 'findByTags', 'field' => 'Post.id'),
+  	
+  	);
+	public function findByTags($content=null,$tag = array()) {
+	   	$this->PostsTag->Behaviors->attach('Containable', array('autoFields' => false));
+    	$this->PostsTag->Behaviors->attach('Search.Searchable');
+   		/*$query = $this->PostsTag->getQuery('all',array(
+        	'conditions' => array(
+        	    'Tag.tag' => $data['tag']
+        	),
+        	'fields' => array('post_id'),
+        	'contain' => array('Tag')
+   		));*/
+var_dump($tag);
+   		$query = $this->PostsTag->Find('all',array(
+        	'conditions' => array(
+        	    'Tag.tag' => $tag,
+        	   $this->alias.'.content LIKE'=>'%'. $content. '%'
+        	),
+        	'fields' => array('post_id'),
+        	'contain' => array('Tag')
+   		));
+
+   	 return $query;
 	}
 }
