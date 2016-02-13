@@ -20,6 +20,7 @@ class PostsController extends AppController {
 
         if($this->request->is('post')){
             $this->request->data['Post']['date_id']=$couple['0']['Couple']['isdate'];
+            $this->request->data['Post']['user_id']=$user_id;
             $this->request->data['Tag']=$this->PostsTag->getTagid(explode(",", $this->request->data['Post']['tag']));
             //explode(",", $this->request->data['Post']['tag']);
             var_dump($this->request->data);
@@ -44,7 +45,7 @@ class PostsController extends AppController {
         }
     }
 
-	public function getTweet()//とりあえずここに記述。ユーザはアクセスしない。
+/*	public function getTweet()//とりあえずここに記述。ユーザはアクセスしない。
 	{	
 		$this->autoRender = false;
 		$this->autoLayout = false;
@@ -231,6 +232,6 @@ class PostsController extends AppController {
         }
         $data=$this->Post->findByTags("pl",array("sss","NAME"));
         var_dump($data);
-    }
+    }*/
 
 }

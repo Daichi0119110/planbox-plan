@@ -276,7 +276,7 @@ class CouplesController extends AppController {
 		$users[0]['User']['photo'] = $this->Photo->getuserphoto($users[0]['User']['id']);
 		$users[1]['User']['photo'] = $this->Photo->getuserphoto($users[1]['User']['id']);
 		$this->set('users', $users);
-
+		
 		// カルーセル用の写真の取得
 		$date_ids = $this->Date->getdateidsfromcouple($couple_id);
 		$post_ids = $this->Post->getpostids($date_ids);
