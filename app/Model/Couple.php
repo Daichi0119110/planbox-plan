@@ -26,19 +26,8 @@ class Couple extends AppModel {
 		return $data['Couple']['id'];
 	}
 
-	/*function makecouple($male_id,$female_id){
-		$this->create();
-		$data=array();
-		$data['Couple']=array('male_id'=>$male_id,'female_id'=>$female_id);
-		$this->save($data);
-		App::import('Model',Date);
-		$id=$this->getcidfromuid($male_id);
-		$Date=new Date;
-		$Date->makenewdate($id);
 
-	}*/
-
-	function makecouple(){
+	function makecouple(){//カップルを作った直後に呼び出す、defdateなどを設定するメソッド
 		$this->create();
 		$data=array();
 		$this->save($data);

@@ -103,22 +103,52 @@ class User extends AppModel {
 
 	public function makecouple($user_id,$lovers_id){
 
+		
 		$status=array('conditions'=>array('id'=>$user_id));
 		$data=$this->find('first',$status);
 		App::import('Model','Couple');
 		$Couple=new Couple;
 		$id=$Couple->makecouple();
-		$user=$this->getuser($user_id);
+		$user=Array('User'=>Array('id'=>$user_id));
 		$user['User']['couple_id']=$id;
 		$this->save($user);
-		$lover=$this->getuser($lovers_id);
+		$lover=Array('User'=>Array('id'=>$lovers_id));
 		$lover['User']['couple_id']=$id;
 		$this->save($lover);
+		return $id;
 
 	}
 
+	public function clearinviteid($user_id){
+		$user=Array('User'=>Array('id'=>$user_id));
+		$user['User']['Invite']=-1;
+		$this->save($user);
+	}
+	public function findfromInvite($id){
+		$status=array('conditions'=>array('Invite'=>$id));
+		$data=$this->find('first',$status);
+		return $data;
+	}
 	public function beforesave($options=array()){
+		if(array_key_exists('password', $this->data['User'])){return true;}
 		$this->data['User']['password']=AuthComponent::password($this->data['User']['password']);
 		return true;
 	}
+
+	public function MakeRnd()//ユーザ認証用の乱数を生成
+	{
+		$rnd=1;
+		$yuser=array();
+		do{
+		$rnd=rand(10000000, 99999999);
+		$yuser=$this->findfromInvite($rnd);
+		}
+		while(!empty($yuser));
+		return $rnd;
+		/*$user=$this->getuser($user_id);
+		$user['User']['Invite']=$rnd;
+		var_dump($user);
+		$this->save($user);*/
+	}
+
 }

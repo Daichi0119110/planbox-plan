@@ -85,17 +85,18 @@ class UsersController extends AppController {
 		$this->set('title', '新規登録 ');
 
 		if($this->request->is('post')){
-			//$this->request->data['User']['password']=crypt($this->request->data['User']['password'],'$2y$10$VdH3ZiUm7EzSiPPyzsRXCc');
+			//$this->request->data['User']Ma['password']=crypt($this->request->data['User']['password'],'$2y$10$VdH3ZiUm7EzSiPPyzsRXCc');
 
 			// 誕生日の配列を文字列に整形
 			$birth_array = $this->request->data['User']['birthday'];
 			$birthday = $birth_array['year']. '/' .$birth_array['month']. '/' .$birth_array['day'] ;
 			$this->request->data['User']['birthday'] = $birthday;
-
+		    $this->request->data['User']['Invite']=$this->User->MakeRnd();
 			if($this->User->save($this->request->data)){printf("de");}
 			else{printf("no");}
 			printf("a");
 			$myid=$this->User->isexistname($this->request->data['User']['username']);
+		//	$this->User->MakeRnd($myid);
 			var_dump($myid);
 			if(!$this->Auth->login()){return;}
 			// これは多分要らない
@@ -115,10 +116,10 @@ class UsersController extends AppController {
       			$partner=$this->User->getuser($partner_id);
       			//$to->post('friendships/create', ['screen_name' => $partner['username']]);
 				if($this->request->data['User']['gender']==0){
-					$this->Couple->MakeCouple($myid,$partner_id);	
+					$this->Couple->makeCouplewithid($myid,$partner_id);	
 				}
 				else{
-					$this->Couple->MakeCouple($partner_id,$myid);	
+					$this->Couple->makecouplewithid($partner_id,$myid);	
 				}
 
 				$data=array();
@@ -132,12 +133,26 @@ class UsersController extends AppController {
 		//$this->Session->write('user_id',1); // sessionにuser_idを保存
 	}
 
+	public function invite(){
+		$user_id=$this->Auth->user('id');
+		$user=$this->User->getuser($user_id);
+		$this->set('yourid',$user['User']['Invite']);
+		if($this->request->is('post')){
+			$inviteid=$this->request->data['User']['Inviteid'];
+			$tuser=$this->User->findfromInvite($inviteid);
+			if(empty($tuser)||$inviteid==-1){echo "存在しません。";return;}
+			$this->User->makecouple($user_id,$tuser['User']['id']);	
+			$this->User->clearinviteid($user_id);
+			$this->User->clearinviteid($tuser['User']['id']);
+		}
+	}
+/*
 	public function invite()//メール
 	{
 	//諸所設定はhttp://qiita.com/kazu56/items/cd58366f5fb74881ae06を見て行う
-	/*	if(!$this->Session->check('user_id')){
-			$this->redirect('/users/signup');
-		}*/
+	//	if(!$this->Session->check('user_id')){
+	//		$this->redirect('/users/signup');
+	//	}
 		//$user_id = $this->Session->read('user_id');
 		$user_id=$this->Auth->user('id');
 		$mail="";//メールアドレス
@@ -165,7 +180,7 @@ class UsersController extends AppController {
 		return $this->redirect(
         			array('controller' => 'Users', 'action' => 'setting',$myid));
 		}
-	}
+	}*/
 
 	public function add($hashed_mail)
 	{
